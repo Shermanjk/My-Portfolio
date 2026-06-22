@@ -2335,6 +2335,13 @@ section,
   border-top: 1px solid var(--border-color) !important;
   padding: 48px 0 32px !important;
   text-align: center;
+  margin-left: 0;
+}
+
+@media (min-width: 1200px) {
+  .footer {
+    margin-left: 200px;
+  }
 }
 
 .footer .sitename {
