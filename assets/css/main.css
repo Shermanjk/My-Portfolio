@@ -755,6 +755,11 @@ section,
   color: #ffffff;
 }
 
+.hero .social-links .social-link-github:hover {
+  background: #333333;
+  color: #ffffff;
+}
+
 @media (max-width: 768px) {
   .hero h2 {
     font-size: 42px;
@@ -2571,5 +2576,292 @@ section,
     left: 16px;
     max-width: 100%;
     min-width: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# CV Download Button
+--------------------------------------------------------------*/
+.btn-download-cv {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--nav-font);
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-download-cv:hover {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(240, 165, 0, 0.25);
+  text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# Skills — Enhanced with proficiency levels
+--------------------------------------------------------------*/
+.skill-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+  border-color: rgba(240, 165, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--shadow-color);
+}
+
+.skill-category-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.skill-category-header i {
+  font-size: 20px;
+  color: var(--accent-primary);
+}
+
+.skill-category-header h4 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.skill-category-note {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0 0 16px 0;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--nav-font);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.skill-tag em {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+/* Proficient — golden accent */
+.skill-tag.skill-proficient {
+  background: rgba(240, 165, 0, 0.1);
+  color: var(--text-primary);
+  border-color: rgba(240, 165, 0, 0.3);
+}
+
+.skill-tag.skill-proficient em {
+  background: rgba(240, 165, 0, 0.2);
+  color: var(--accent-primary);
+}
+
+.skill-tag.skill-proficient:hover {
+  background: rgba(240, 165, 0, 0.18);
+  border-color: rgba(240, 165, 0, 0.5);
+}
+
+/* Familiar — neutral/muted */
+.skill-tag.skill-familiar {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+.skill-tag.skill-familiar em {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+}
+
+.skill-tag.skill-familiar:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+}
+
+/* Proficiency Legend */
+.skill-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot.legend-proficient {
+  background: var(--accent-primary);
+}
+
+.legend-dot.legend-familiar {
+  background: var(--bg-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/*--------------------------------------------------------------
+# Screenshots Section
+--------------------------------------------------------------*/
+.screenshots-project {
+  margin-bottom: 56px;
+}
+
+.screenshots-project:last-child {
+  margin-bottom: 0;
+}
+
+.screenshots-project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.screenshots-project-header h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 10px 0;
+}
+
+.screenshots-item {
+  display: block;
+  text-decoration: none;
+}
+
+.screenshots-item:hover {
+  text-decoration: none;
+}
+
+.screenshots-thumb {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  aspect-ratio: 16 / 9;
+  background: var(--bg-card);
+}
+
+.screenshots-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.screenshots-item:hover .screenshots-thumb img {
+  transform: scale(1.04);
+}
+
+.screenshots-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.screenshots-item:hover .screenshots-overlay {
+  opacity: 1;
+}
+
+.screenshots-overlay i {
+  font-size: 32px;
+  color: var(--accent-primary);
+}
+
+.screenshots-caption {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 8px 0 0 0;
+  text-align: center;
+}
+
+/* Placeholder state when no image exists */
+.screenshots-thumb img[src=""],
+.screenshots-thumb img:not([src]) {
+  display: none;
+}
+
+.screenshots-thumb::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .screenshots-project-header {
+    flex-direction: column;
+  }
+
+  .skill-legend {
+    flex-direction: column;
+    gap: 12px;
   }
 }
