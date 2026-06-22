@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - MyResume Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Sherwen Mortis — Web &amp; Mobile Developer</title>
+  <meta content="Portfolio of Sherwen Mortis, a Web and Mobile Developer specializing in React, Flutter, Node.js, and PostgreSQL." name="description">
+  <meta content="web developer, mobile developer, full-stack, React, Flutter, Node.js, PostgreSQL, portfolio" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -40,9 +40,9 @@
       <ul>
         <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
         <li><a href="#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
+        <li><a href="#skills"><i class="bi bi-lightning navicon"></i><span>Skills</span></a></li>
         <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
-        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i><span>Services</span></a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
       </ul>
     </nav>
@@ -57,19 +57,19 @@
       <img src="assets/img/hero-bg.png" alt="" class="hero-background">
 
       <!-- Cinematic Layers -->
-      <div class="hero-overlay"></div>
-      <div class="moon-glow"></div>
+      <div class="hero-vignette"></div>
+      <canvas id="hero-stars"></canvas>
       <div class="fog-layer fog-1"></div>
       <div class="fog-layer fog-2"></div>
       <div class="fog-layer fog-3"></div>
-      <div class="light-rays"></div>
-      <div id="particles"></div>
+      <div class="fog-layer fog-4"></div>
+      <div class="fog-layer fog-5"></div>
 
       <div class="container" data-aos="zoom-out">
         <div class="row justify-content-center">
           <div class="col-lg-9">
             <h2>Sherwen Mortis</h2>
-            <p>I'm a <span class="typed" data-typed-items="Web Developer, Mobile Developer, Full-Stack Developer">Web Developer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+            <p><span class="typed" data-typed-items="Web Developer, Mobile Developer, Full-Stack Developer">Web Developer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
             <div class="social-links">
               <a href="https://www.facebook.com/mortis.shad/" target="_blank" class="social-link social-link-facebook"><i class="bi bi-facebook"></i></a>
               <a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" class="social-link social-link-linkedin"><i class="bi bi-linkedin"></i></a>
@@ -93,26 +93,28 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
+          <div class="col-lg-4 d-flex justify-content-center">
+            <div class="about-profile-wrap">
+              <img src="assets/img/profile-img.jpg" class="img-fluid about-profile-img" alt="Sherwen Mortis">
+            </div>
           </div>
           <div class="col-lg-8 content">
             <h2>Web &amp; Mobile Developer.</h2>
             <p class="fst-italic py-3">
               Experienced in developing full-stack applications, implementing system solutions, and providing technical support. Eager to contribute technical expertise and continue growing as a developer.
             </p>
-            <div class="row">
+            <div class="row g-3">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Pagadian City, Philippines</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+63 963 13 0910</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>mortis.sherwen@gmail.com</span></li>
+                  <li><i class="bi bi-geo-alt"></i> <strong>City</strong> <span>Pagadian City, Philippines</span></li>
+                  <li><i class="bi bi-telephone"></i> <strong>Phone</strong> <span>+63 963 13 0910</span></li>
+                  <li><i class="bi bi-envelope"></i> <strong>Email</strong> <span>mortis.sherwen@gmail.com</span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor of Science in Information Technology</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                  <li><i class="bi bi-mortarboard"></i> <strong>Degree</strong> <span>BS Information Technology</span></li>
+                  <li><i class="bi bi-briefcase"></i> <strong>Freelance</strong> <span class="available-badge">Available</span></li>
                 </ul>
               </div>
             </div>
@@ -137,28 +139,79 @@
         <div class="row gy-4">
 
           <div class="col-lg-6">
-            <h4>Frontend</h4>
-            <p>React.js, HTML, CSS, Bootstrap, Tailwind CSS</p>
+            <div class="skill-category">
+              <div class="skill-category-header">
+                <i class="bi bi-layout-wtf"></i>
+                <h4>Frontend</h4>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">React.js</span>
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">Bootstrap</span>
+                <span class="skill-tag">Tailwind CSS</span>
+              </div>
+            </div>
           </div>
 
           <div class="col-lg-6">
-            <h4>Backend</h4>
-            <p>Node.js, Express.js, REST APIs</p>
+            <div class="skill-category">
+              <div class="skill-category-header">
+                <i class="bi bi-server"></i>
+                <h4>Backend</h4>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Express.js</span>
+                <span class="skill-tag">REST APIs</span>
+              </div>
+            </div>
           </div>
 
           <div class="col-lg-6">
-            <h4>Database</h4>
-            <p>PostgreSQL, MySQL</p>
+            <div class="skill-category">
+              <div class="skill-category-header">
+                <i class="bi bi-database"></i>
+                <h4>Database</h4>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">MySQL</span>
+              </div>
+            </div>
           </div>
 
           <div class="col-lg-6">
-            <h4>Tools</h4>
-            <p>Git, GitHub, Postman, VS Code, Figma, Vercel, Render, GitHub Copilot, ChatGPT</p>
+            <div class="skill-category">
+              <div class="skill-category-header">
+                <i class="bi bi-tools"></i>
+                <h4>Tools &amp; Platforms</h4>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">Postman</span>
+                <span class="skill-tag">Figma</span>
+                <span class="skill-tag">VS Code</span>
+                <span class="skill-tag">Vercel</span>
+                <span class="skill-tag">Render</span>
+              </div>
+            </div>
           </div>
 
           <div class="col-lg-12">
-            <h4>Languages</h4>
-            <p>JavaScript, Dart, PHP, TypeScript</p>
+            <div class="skill-category">
+              <div class="skill-category-header">
+                <i class="bi bi-code-slash"></i>
+                <h4>Languages</h4>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">Dart</span>
+                <span class="skill-tag">PHP</span>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -191,7 +244,7 @@
             <h3 class="resume-title">Education</h3>
             <div class="resume-item">
               <h4>Bachelor of Science in Information Technology</h4>
-              <h5>2020</h5>
+              <h5>2026</h5>
               <p><em>Josefina H. Cerilles State College</em></p>
             </div><!-- Edn Resume Item -->
 
@@ -271,19 +324,26 @@
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="portfolio-info">
-              <h4>CENRO Waste Tracker System</h4>
-              <p><strong>Tech Stack:</strong> React.js • Flutter • PostgreSQL • Firebase</p>
+              <div class="portfolio-info-header">
+                <h4>CENRO Waste Tracker System</h4>
+                <div class="portfolio-tech-stack">
+                  <span class="tech-tag">React.js</span>
+                  <span class="tech-tag">Flutter</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                  <span class="tech-tag">Firebase</span>
+                </div>
+              </div>
               <ul>
                 <li>Developed a waste monitoring and collection platform.</li>
                 <li>Implemented authentication and role-based access.</li>
                 <li>Integrated real-time updates and reporting features.</li>
               </ul>
-              <div class="portfolio-links" style="margin-top: 15px;">
+              <div class="portfolio-links">
                 <a href="https://cenrotracker.vercel.app/" target="_blank" class="btn btn-outline-primary btn-sm">
-                <i class="bi bi-globe me-1"></i>Website
-              </a>
-                <a href="https://drive.google.com/file/d/1Q9a3HtwkF8f1EzNgpKVVeR28vwYkB7OO/view?usp=sharing" class="btn btn-outline-success btn-sm">
-                  <i class="bi bi-cloud-download me-1"></i>Mobile App (Google Drive)
+                  <i class="bi bi-globe me-1"></i>Website
+                </a>
+                <a href="https://drive.google.com/file/d/1Q9a3HtwkF8f1EzNgpKVVeR28vwYkB7OO/view?usp=sharing" target="_blank" class="btn btn-outline-success btn-sm">
+                  <i class="bi bi-cloud-download me-1"></i>Mobile App
                 </a>
               </div>
             </div>
@@ -291,8 +351,13 @@
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="portfolio-info">
-              <h4>Karenderya Inventory &amp; Billing System</h4>
-              <p><strong>Tech Stack:</strong> C# • MS Access</p>
+              <div class="portfolio-info-header">
+                <h4>Karenderya Inventory &amp; Billing System</h4>
+                <div class="portfolio-tech-stack">
+                  <span class="tech-tag">C#</span>
+                  <span class="tech-tag">MS Access</span>
+                </div>
+              </div>
               <ul>
                 <li>Developed inventory and billing modules.</li>
                 <li>Implemented CRUD operations and reporting functionalities.</li>
@@ -346,7 +411,7 @@
           </div>
 
           <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
-            <form action="https://formspree.io/f/mqevzwqy" method="POST">
+            <form id="contact-form" action="https://formspree.io/f/mqevzwqy" method="POST" class="contact-form" novalidate>
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -366,7 +431,9 @@
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <button type="submit" class="btn btn-contact-send">Send Message</button>
+                  <button type="submit" class="btn btn-send-msg">
+                    <i class="bi bi-send me-2"></i>Send Message
+                  </button>
                 </div>
 
               </div>
@@ -381,13 +448,35 @@
 
   </main>
 
-  <footer id="footer" class="footer position-relative light-background">
+  <footer id="footer" class="footer position-relative">
     <div class="container">
       <h3 class="sitename">Sherwen Mortis</h3>
-      <p>Information Technology graduate with experience in web and mobile application development.</p>
-     
+      <p>Web &amp; Mobile Developer — Building clean, functional, and scalable applications.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/mortis.shad/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.instagram.com/sherweennn/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="mailto:mortis.sherwen@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sherwen Mortis. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Contact Toast Notification -->
+  <div id="contact-toast" class="contact-toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="contact-toast-icon">
+      <i class="bi bi-check-circle-fill"></i>
+    </div>
+    <div class="contact-toast-body">
+      <p class="contact-toast-title">Message Sent!</p>
+      <p class="contact-toast-msg">Thanks for reaching out. I'll get back to you soon.</p>
+    </div>
+    <button class="contact-toast-close" id="contact-toast-close" aria-label="Close">
+      <i class="bi bi-x"></i>
+    </button>
+  </div>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

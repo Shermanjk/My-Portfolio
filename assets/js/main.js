@@ -227,3 +227,227 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+
+/**
+ * Contact Form — AJAX submission via Formspree
+ * Prevents page navigation, shows toast on success, clears inputs.
+ */
+(function () {
+  const form = document.getElementById('contact-form');
+  const toast = document.getElementById('contact-toast');
+  const toastClose = document.getElementById('contact-toast-close');
+  let toastTimer = null;
+
+  if (!form) return;
+
+  function showToast() {
+    toast.classList.add('show');
+    // Auto-dismiss after 5 seconds
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(hideToast, 5000);
+  }
+
+  function hideToast() {
+    toast.classList.remove('show');
+  }
+
+  toastClose.addEventListener('click', hideToast);
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const btn = form.querySelector('button[type="submit"]');
+    const originalLabel = btn.innerHTML;
+
+    // Loading state
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Sending…';
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        form.reset();
+        showToast();
+      } else {
+        // Formspree returned an error — show a brief inline message
+        const errorEl = document.createElement('p');
+        errorEl.className = 'contact-form-error';
+        errorEl.textContent = 'Something went wrong. Please try again or email directly.';
+        form.appendChild(errorEl);
+        setTimeout(() => errorEl.remove(), 5000);
+      }
+    } catch {
+      const errorEl = document.createElement('p');
+      errorEl.className = 'contact-form-error';
+      errorEl.textContent = 'Network error. Please check your connection and try again.';
+      form.appendChild(errorEl);
+      setTimeout(() => errorEl.remove(), 5000);
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = originalLabel;
+    }
+  });
+})();
+
+
+/**
+ * Hero — Twinkling stars with cursor repulsion + fog distortion
+ */
+(function () {
+  const canvas = document.getElementById('hero-stars');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const hero = canvas.closest('.hero');
+
+  // ---------- Resize ----------
+  function resize() {
+    canvas.width  = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); });
+
+  // ---------- Mouse tracking (relative to hero) ----------
+  let mouse = { x: -9999, y: -9999 };
+  hero.addEventListener('mousemove', (e) => {
+    const r = hero.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+  hero.addEventListener('mouseleave', () => {
+    mouse.x = -9999;
+    mouse.y = -9999;
+  });
+
+  // ---------- Star generation ----------
+  const STAR_COUNT  = 70;
+  const REPEL_RADIUS = 120;  // px — how far cursor pushes stars
+  const REPEL_FORCE  = 180;  // strength of push
+
+  const stars = Array.from({ length: STAR_COUNT }, () => {
+    const bx = Math.random() * 1; // base x (0-1)
+    const by = Math.random() * 0.62;
+    return {
+      bx, by,          // base position (normalized)
+      ox: 0, oy: 0,    // current offset from base (px)
+      vx: 0, vy: 0,    // velocity
+      r:  Math.random() * 1.4 + 0.5,
+      twinkleSpeed: Math.random() * 0.012 + 0.004,
+      phase: Math.random() * Math.PI * 2,
+      drift: (Math.random() - 0.5) * 0.00005,
+    };
+  });
+
+  // ---------- Fog repulsion ----------
+  // We shift each fog layer's translateX based on cursor X position
+  const fogLayers = Array.from(hero.querySelectorAll('.fog-layer'));
+  // Each layer has a depth multiplier (closer = stronger push)
+  const fogDepth = [1.0, 0.7, 0.45, 0.3, 0.18];
+  let fogOffset = 0;        // current extra horizontal offset
+  let fogOffsetTarget = 0;
+
+  // ---------- Render loop ----------
+  let last = 0;
+  function draw(ts) {
+    const dt = Math.min((ts - last) / 1000, 0.05);
+    last = ts;
+
+    const W = canvas.width;
+    const H = canvas.height;
+
+    ctx.clearRect(0, 0, W, H);
+
+    // --- Star physics ---
+    stars.forEach((s) => {
+      // Base position in px
+      s.bx += s.drift;
+      if (s.bx < 0) s.bx = 1;
+      if (s.bx > 1) s.bx = 0;
+
+      const bpx = s.bx * W;
+      const bpy = s.by * H;
+
+      // Current world position
+      const wx = bpx + s.ox;
+      const wy = bpy + s.oy;
+
+      // Repulsion from cursor
+      const dx = wx - mouse.x;
+      const dy = wy - mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < REPEL_RADIUS && dist > 0) {
+        const force = (REPEL_RADIUS - dist) / REPEL_RADIUS;
+        const angle = Math.atan2(dy, dx);
+        s.vx += Math.cos(angle) * force * REPEL_FORCE * dt;
+        s.vy += Math.sin(angle) * force * REPEL_FORCE * dt;
+      }
+
+      // Spring back to base position
+      s.vx += -s.ox * 6 * dt;
+      s.vy += -s.oy * 6 * dt;
+
+      // Damping
+      s.vx *= 0.88;
+      s.vy *= 0.88;
+
+      s.ox += s.vx * dt;
+      s.oy += s.vy * dt;
+
+      // Final draw position
+      const sx = bpx + s.ox;
+      const sy = bpy + s.oy;
+
+      // Twinkle brightness
+      const brightness = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(ts * 0.001 * s.twinkleSpeed * 600 + s.phase));
+
+      // Glow halo
+      if (brightness > 0.55) {
+        const glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, s.r * 6);
+        glow.addColorStop(0, `rgba(255,220,100,${brightness * 0.35})`);
+        glow.addColorStop(1, 'rgba(255,220,100,0)');
+        ctx.beginPath();
+        ctx.arc(sx, sy, s.r * 6, 0, Math.PI * 2);
+        ctx.fillStyle = glow;
+        ctx.fill();
+      }
+
+      // Star core
+      ctx.beginPath();
+      ctx.arc(sx, sy, s.r * brightness, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,235,180,${brightness})`;
+      ctx.fill();
+    });
+
+    // --- Fog repulsion ---
+    // Cursor position drives a horizontal push on each fog layer
+    if (mouse.x > 0 && mouse.x < W) {
+      const cx = (mouse.x / W - 0.5); // -0.5 to 0.5
+      fogOffsetTarget = cx * 80;       // max ±80px push
+    } else {
+      fogOffsetTarget = 0;
+    }
+
+    // Smooth lerp
+    fogOffset += (fogOffsetTarget - fogOffset) * 0.06;
+
+    fogLayers.forEach((layer, i) => {
+      const depth = fogDepth[i] ?? 0.15;
+      // Drive via CSS custom property so it compounds with the drift animation
+      layer.style.setProperty('--fog-push', `${fogOffset * depth}px`);
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  requestAnimationFrame(draw);
+})();

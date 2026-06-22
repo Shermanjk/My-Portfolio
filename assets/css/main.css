@@ -27,8 +27,8 @@
   --text-primary: #F5F5F5;
   --text-secondary: #B0B0B0;
 
-  --accent-primary: #D6D6D6;
-  --accent-secondary: #8A8A8A;
+  --accent-primary: #F0A500;
+  --accent-secondary: #B07800;
 
   --border-color: rgba(255,255,255,0.08);
   --shadow-color: rgba(0,0,0,0.4);
@@ -560,75 +560,130 @@ section,
   object-fit: cover;
   z-index: 0;
   filter: grayscale(100%) contrast(1.15) brightness(0.85);
+  transform-origin: center center;
+  transition: transform 0.1s linear;
+  will-change: transform;
 }
 
-/* Hero Overlay - Clean and Subtle */
+/* Hero Overlay - Deep atmospheric gradient */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 10, 10, 0.3) 0%,
-    rgba(10, 10, 10, 0.6) 50%,
-    rgba(10, 10, 10, 0.95) 100%
-  );
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(10,10,10,0.95) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 60% at 50% 0%,  rgba(10,10,10,0.5) 0%, transparent 80%),
+    linear-gradient(to bottom, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.97) 100%);
+  pointer-events: none;
 }
 
-/* Cinematic Elements - Simplified */
-.moon-glow {
+/* Edge vignette — frames the scene like a photograph */
+.hero-vignette {
   position: absolute;
-  top: 12%;
-  right: 18%;
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(214, 214, 214, 0.25) 0%, rgba(214, 214, 214, 0.08) 35%, transparent 70%);
-  filter: blur(50px);
+  inset: 0;
   z-index: 1;
-  animation: pulse-glow 8s ease-in-out infinite;
+  background: radial-gradient(ellipse 110% 110% at 50% 50%,
+    transparent 55%,
+    rgba(0,0,0,0.35) 75%,
+    rgba(0,0,0,0.75) 100%);
+  pointer-events: none;
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.15); }
+/* ── Stars canvas ── */
+#hero-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
+/* ── Fog layer base ── */
 .fog-layer {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 300%;
-  height: 35%;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
+  will-change: transform;
+  --fog-push: 0px;
 }
 
+/* Fog 1 — heavy ground fog, slow drift right */
 .fog-1 {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C342.85,32.27,418.13,73,475.83,92.05c55.71,18.15,114.25,20.79,169.84,6.08C710.23,83.22,757.5,47.74,810.55,32.05c54.51-16.18,111.19-15.41,166.42-5.08,41.35,7.76,81.94,22.83,121.8,34.44,39.13,11.34,78.48,16.94,118.92,17.85,39.41.89,78.29-3.29,115.81-12.51,36.56-8.91,70.96-24.32,100.49-45.3V0Z' fill='rgba(214,214,214,0.08)'/%3E%3C/svg%3E") repeat-x;
-  opacity: 0.6;
-  animation: fog-move1 70s linear infinite;
+  height: 28%;
+  bottom: -2%;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,80 C180,40 360,120 540,80 C720,40 900,130 1080,85 C1260,40 1380,110 1440,80 L1440,160 L0,160 Z' fill='rgba(200,200,200,0.18)'/%3E%3C/svg%3E") repeat-x bottom;
+  opacity: 1;
+  animation: fog-drift1 25s linear infinite;
+  filter: blur(4px);
 }
 
+/* Fog 2 — mid fog, faster, slightly higher */
 .fog-2 {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C342.85,32.27,418.13,73,475.83,92.05c55.71,18.15,114.25,20.79,169.84,6.08C710.23,83.22,757.5,47.74,810.55,32.05c54.51-16.18,111.19-15.41,166.42-5.08,41.35,7.76,81.94,22.83,121.8,34.44,39.13,11.34,78.48,16.94,118.92,17.85,39.41.89,78.29-3.29,115.81-12.51,36.56-8.91,70.96-24.32,100.49-45.3V0Z' fill='rgba(214,214,214,0.12)'/%3E%3C/svg%3E") repeat-x;
-  opacity: 0.4;
+  height: 35%;
+  bottom: 2%;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 C200,50 400,140 600,90 C800,40 1000,130 1200,80 C1320,50 1400,110 1440,95 L1440,180 L0,180 Z' fill='rgba(180,180,180,0.13)'/%3E%3C/svg%3E") repeat-x bottom;
+  opacity: 1;
+  animation: fog-drift2 35s linear infinite;
+  filter: blur(8px);
+}
+
+/* Fog 3 — wispy high fog */
+.fog-3 {
   height: 45%;
-  animation: fog-move2 90s linear infinite;
+  bottom: 5%;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,120 C240,70 480,160 720,110 C960,60 1200,150 1440,100 L1440,200 L0,200 Z' fill='rgba(160,160,160,0.09)'/%3E%3C/svg%3E") repeat-x bottom;
+  opacity: 1;
+  animation: fog-drift3 50s linear infinite;
+  filter: blur(14px);
 }
 
-@keyframes fog-move1 {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Fog 4 — soft valley mist */
+.fog-4 {
+  height: 55%;
+  bottom: 8%;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,140 C300,100 600,170 900,130 C1100,100 1300,160 1440,130 L1440,220 L0,220 Z' fill='rgba(140,140,140,0.07)'/%3E%3C/svg%3E") repeat-x bottom;
+  opacity: 1;
+  animation: fog-drift4 70s linear infinite;
+  filter: blur(22px);
 }
 
-@keyframes fog-move2 {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+/* Fog 5 — high atmosphere haze */
+.fog-5 {
+  height: 65%;
+  bottom: 15%;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,160 C360,120 720,190 1080,150 C1260,130 1380,170 1440,155 L1440,240 L0,240 Z' fill='rgba(120,120,120,0.05)'/%3E%3C/svg%3E") repeat-x bottom;
+  opacity: 1;
+  animation: fog-drift5 90s linear infinite;
+  filter: blur(32px);
 }
 
-/* Hide unused elements */
+@keyframes fog-drift1 {
+  0%   { transform: translateX(calc(0%          + var(--fog-push))); }
+  100% { transform: translateX(calc(-33.33%     + var(--fog-push))); }
+}
+@keyframes fog-drift2 {
+  0%   { transform: translateX(calc(-33.33%     + var(--fog-push))); }
+  100% { transform: translateX(calc(0%          + var(--fog-push))); }
+}
+@keyframes fog-drift3 {
+  0%   { transform: translateX(calc(0%          + var(--fog-push))); }
+  100% { transform: translateX(calc(-33.33%     + var(--fog-push))); }
+}
+@keyframes fog-drift4 {
+  0%   { transform: translateX(calc(-33.33%     + var(--fog-push))); }
+  100% { transform: translateX(calc(0%          + var(--fog-push))); }
+}
+@keyframes fog-drift5 {
+  0%   { transform: translateX(calc(0%          + var(--fog-push))); }
+  100% { transform: translateX(calc(-33.33%     + var(--fog-push))); }
+}
+
+/* Hide legacy unused elements */
 .light-rays,
 #particles {
   display: none;
@@ -636,7 +691,7 @@ section,
 
 .hero .container {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .hero h2 {
@@ -931,7 +986,7 @@ section,
 }
 
 .portfolio .portfolio-links .btn-outline-primary:hover {
-  background: #3fa9f5;
+  background: #F0A500;
   border-color: var(--accent-primary);
   color: var(--bg-primary);
 }
@@ -1011,8 +1066,8 @@ section,
 }
 
 .contact .btn.btn-contact-send:hover {
-  background-color: #3fa9f5 !important;
-  background: #3fa9f5 !important;
+  background-color: #F0A500 !important;
+  background: #F0A500 !important;
   border-color: var(--accent-primary) !important;
   color: var(--bg-primary) !important;
 }
@@ -1027,8 +1082,8 @@ section,
 }
 
 .contact .php-email-form .form-control:focus {
-  border-color: #3fa9f5;
-  box-shadow: 0 0 0 3px rgba(63, 169, 245, 0.1);
+  border-color: #F0A500;
+  box-shadow: 0 0 0 3px rgba(240, 165, 0, 0.12);
   background: var(--bg-card);
   color: var(--text-primary);
 }
@@ -2017,9 +2072,504 @@ section,
   color: var(--accent-color);
 }
 
+
+
 /*--------------------------------------------------------------
-# Starter Section Section
+# Professional Design Improvements
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+
+/* ── About: Profile Image ── */
+.about-profile-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.about-profile-img {
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  max-width: 320px;
+  width: 100%;
+}
+
+.about-profile-img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+  border-color: rgba(214, 214, 214, 0.2);
+}
+
+/* ── About: Info List Redesign ── */
+.about .content ul li {
+  border-left: 2px solid rgba(214, 214, 214, 0.15);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  background: var(--bg-card);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.about .content ul li:hover {
+  border-left-color: var(--accent-primary);
+  transform: translateX(4px);
+}
+
+.about .content ul li i {
+  font-size: 16px;
+  color: var(--accent-secondary);
+  flex-shrink: 0;
+}
+
+.about .content ul strong {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 60px;
+}
+
+.about .content ul span {
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+/* ── Available Badge ── */
+.available-badge {
+  display: inline-block;
+  background: rgba(50, 205, 50, 0.1);
+  color: #32cd32;
+  border: 1px solid rgba(50, 205, 50, 0.25);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* ── Skills: Category Cards ── */
+.skill-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px 24px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+  border-color: rgba(214, 214, 214, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px var(--shadow-color);
+}
+
+.skill-category-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skill-category-header i {
+  font-size: 18px;
+  color: var(--accent-secondary);
+}
+
+.skill-category-header h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  display: inline-block;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-family: var(--nav-font);
+  transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(214, 214, 214, 0.08);
+  color: var(--text-primary);
+  border-color: rgba(214, 214, 214, 0.25);
+}
+
+/* ── Portfolio: Header with Tech Stack ── */
+.portfolio-info-header {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.portfolio-info-header h4 {
+  margin-bottom: 10px;
+}
+
+.portfolio-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-tag {
+  display: inline-block;
+  background: rgba(214, 214, 214, 0.05);
+  color: var(--accent-secondary);
+  border: 1px solid rgba(214, 214, 214, 0.12);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-family: var(--nav-font);
+  letter-spacing: 0.02em;
+}
+
+.portfolio .portfolio-info ul {
+  padding-left: 16px;
+  margin-bottom: 20px;
+}
+
+.portfolio .portfolio-info ul li {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+  padding-bottom: 4px;
+}
+
+.portfolio .portfolio-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.portfolio .portfolio-links .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Contact Form ── */
+.contact-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.contact-form .form-control {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+  border-color: rgba(240, 165, 0, 0.5);
+  box-shadow: 0 0 0 3px rgba(240, 165, 0, 0.08);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.contact-form .form-control::placeholder {
+  color: var(--accent-secondary);
+  opacity: 0.6;
+}
+
+.btn-send-msg {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--text-primary) !important;
+  border: 1px solid rgba(214, 214, 214, 0.25) !important;
+  border-radius: 8px !important;
+  padding: 12px 32px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-family: var(--nav-font);
+}
+
+.btn-send-msg:hover {
+  background: #F0A500 !important;
+  border-color: #F0A500 !important;
+  color: #0A0A0A !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(240, 165, 0, 0.25) !important;
+}
+
+/* ── Footer Redesign ── */
+.footer {
+  background: var(--bg-secondary) !important;
+  border-top: 1px solid var(--border-color) !important;
+  padding: 48px 0 32px !important;
+  text-align: center;
+}
+
+.footer .sitename {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-family: var(--heading-font);
+}
+
+.footer > .container > p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 24px;
+  font-style: normal !important;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 16px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-social a:hover {
+  background: rgba(214, 214, 214, 0.1);
+  border-color: rgba(214, 214, 214, 0.3);
+  color: var(--text-primary);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom p {
+  color: var(--accent-secondary);
+  font-size: 13px;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* ── Section Title Enhancement ── */
+.section-title h2::before {
+  display: none;
+}
+
+.section-title h2 {
+  padding-bottom: 20px;
+}
+
+.section-title h2::after {
+  width: 48px;
+  height: 2px;
+  background: var(--accent-primary);
+  opacity: 0.6;
+  bottom: 0;
+}
+
+/* ── Nav Active State ── */
+.navmenu .active,
+.navmenu .active:focus {
+  color: var(--text-primary) !important;
+  background: rgba(214, 214, 214, 0.1) !important;
+  border-left: 2px solid rgba(214, 214, 214, 0.5);
+}
+
+@media (min-width: 992px) {
+  .navmenu .active,
+  .navmenu .active:focus {
+    border-left: none;
+    border-bottom: 2px solid rgba(214, 214, 214, 0.5);
+  }
+}
+
+/* ── Resume Timeline Polish ── */
+.resume .resume-item {
+  border-left-color: rgba(214, 214, 214, 0.15);
+}
+
+.resume .resume-item::before {
+  width: 10px;
+  height: 10px;
+  left: -6px;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-secondary);
+  box-shadow: 0 0 8px rgba(214, 214, 214, 0.15);
+}
+
+.resume .resume-item h4 {
+  font-size: 16px;
+  letter-spacing: 0.01em;
+}
+
+/* ── Responsive Tweaks ── */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 20px;
+  }
+
+  .about-profile-img {
+    max-width: 240px;
+  }
+
+  .skill-category {
+    margin-bottom: 0;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Contact Toast Notification
+--------------------------------------------------------------*/
+.contact-toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 99999;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--bg-elevated);
+  border: 1px solid rgba(50, 205, 50, 0.25);
+  border-left: 3px solid #32cd32;
+  border-radius: 12px;
+  padding: 18px 20px;
+  min-width: 300px;
+  max-width: 360px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.contact-toast-icon {
+  flex-shrink: 0;
+  font-size: 22px;
+  color: #32cd32;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.contact-toast-body {
+  flex: 1;
+}
+
+.contact-toast-title {
+  font-family: var(--heading-font);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+.contact-toast-msg {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.contact-toast-close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--accent-secondary);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+  margin-top: 1px;
+}
+
+.contact-toast-close:hover {
+  color: var(--text-primary);
+}
+
+/* ── Send button loading spinner ── */
+.btn-send-msg .spinner,
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(214, 214, 214, 0.2);
+  border-top-color: var(--text-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Inline error message ── */
+.contact-form-error {
+  text-align: center;
+  color: #ff6b6b;
+  font-size: 13px;
+  margin-top: 12px;
+  margin-bottom: 0;
+  padding: 10px 16px;
+  background: rgba(255, 107, 107, 0.08);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  border-radius: 8px;
+}
+
+@media (max-width: 480px) {
+  .contact-toast {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    max-width: 100%;
+    min-width: 0;
+  }
 }
