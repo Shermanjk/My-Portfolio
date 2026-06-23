@@ -10,27 +10,47 @@
   "use strict";
 
   /**
-   * Header toggle
+   * Mobile nav toggle (top navbar)
    */
-  const headerToggleBtn = document.querySelector('.header-toggle');
+  const mobileToggle = document.getElementById('mobile-nav-toggle');
+  const mobileNav    = document.getElementById('mobile-nav');
 
-  function headerToggle() {
-    document.querySelector('#header').classList.toggle('header-show');
-    headerToggleBtn.classList.toggle('bi-list');
-    headerToggleBtn.classList.toggle('bi-x');
+  if (mobileToggle && mobileNav) {
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      mobileToggle.setAttribute('aria-expanded', isOpen);
+      mobileNav.setAttribute('aria-hidden', !isOpen);
+      const icon = mobileToggle.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('bi-list', !isOpen);
+        icon.classList.toggle('bi-x',    isOpen);
+      }
+    });
+
+    // Close mobile nav when a link is clicked
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        const icon = mobileToggle.querySelector('i');
+        if (icon) {
+          icon.classList.add('bi-list');
+          icon.classList.remove('bi-x');
+        }
+      });
+    });
   }
-  headerToggleBtn.addEventListener('click', headerToggle);
 
   /**
    * Hide mobile nav on same-page/hash links
    */
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
-      if (document.querySelector('.header-show')) {
-        headerToggle();
+      if (mobileNav && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
       }
     });
-
   });
 
   /**
@@ -207,7 +227,7 @@
   /**
    * Navmenu Scrollspy
    */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
+  let navmenulinks = document.querySelectorAll('.navmenu a, .mobile-nav a');
 
   function navmenuScrollspy() {
     navmenulinks.forEach(navmenulink => {
@@ -216,8 +236,10 @@
       if (!section) return;
       let position = window.scrollY + 200;
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+        document.querySelectorAll('.navmenu a.active, .mobile-nav a.active').forEach(link => link.classList.remove('active'));
         navmenulink.classList.add('active');
+        // sync the same href in the other nav
+        document.querySelectorAll(`.navmenu a[href="${navmenulink.hash}"], .mobile-nav a[href="${navmenulink.hash}"]`).forEach(l => l.classList.add('active'));
       } else {
         navmenulink.classList.remove('active');
       }
@@ -450,4 +472,88 @@
   }
 
   requestAnimationFrame(draw);
+})();
+
+
+/**
+ * Light / Dark mode toggle
+ * Persists preference to localStorage. Applies before paint to avoid flash.
+ */
+(function () {
+  const STORAGE_KEY = 'sm-theme';
+  const html = document.documentElement;
+  const btn  = document.getElementById('theme-toggle');
+
+  // Apply saved theme immediately (runs sync, before first paint)
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved === 'light') {
+    html.setAttribute('data-theme', 'light');
+  }
+
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    const isLight = html.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      html.removeAttribute('data-theme');
+      localStorage.setItem(STORAGE_KEY, 'dark');
+    } else {
+      html.setAttribute('data-theme', 'light');
+      localStorage.setItem(STORAGE_KEY, 'light');
+    }
+  });
+})();
+
+
+/**
+ * Navbar — hide on scroll down, reveal on scroll up
+ */
+(function () {
+  const header = document.getElementById('header');
+  if (!header) return;
+
+  let lastY    = window.scrollY;
+  let ticking  = false;
+  const THRESHOLD = 60; // px from top — don't hide until past this point
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        const scrollingDown = currentY > lastY;
+
+        if (currentY <= THRESHOLD) {
+          // Always show near the top
+          header.classList.remove('nav-hidden');
+        } else if (scrollingDown) {
+          header.classList.add('nav-hidden');
+        } else {
+          header.classList.remove('nav-hidden');
+        }
+
+        lastY = currentY;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+
+/**
+ * Scroll progress bar
+ */
+(function () {
+  const bar = document.getElementById('scroll-progress-bar');
+  if (!bar) return;
+
+  function updateProgress() {
+    const scrollTop    = window.scrollY;
+    const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
+    const progress     = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width    = progress + '%';
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
 })();

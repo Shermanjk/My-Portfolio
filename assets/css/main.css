@@ -2872,3 +2872,1153 @@ section,
     gap: 12px;
   }
 }
+
+/*--------------------------------------------------------------
+# Light Mode — Theme Variables
+--------------------------------------------------------------*/
+html[data-theme="light"] {
+  --bg-primary:    #F7F5F0;
+  --bg-secondary:  #EDEAE3;
+  --bg-card:       #FFFFFF;
+  --bg-elevated:   #F0EDE6;
+
+  --text-primary:  #1A1A1A;
+  --text-secondary:#5A5A5A;
+
+  --accent-primary:  #C47F00;
+  --accent-secondary:#8A5800;
+
+  --border-color:  rgba(0,0,0,0.10);
+  --shadow-color:  rgba(0,0,0,0.12);
+
+  --background-color: var(--bg-primary);
+  --default-color:    var(--text-primary);
+  --heading-color:    var(--text-primary);
+  --accent-color:     var(--accent-primary);
+  --surface-color:    var(--bg-card);
+  --contrast-color:   var(--text-primary);
+
+  --nav-color:                    var(--text-secondary);
+  --nav-hover-color:              var(--accent-primary);
+  --nav-mobile-background-color:  var(--bg-secondary);
+  --nav-dropdown-background-color:var(--bg-card);
+  --nav-dropdown-color:           var(--text-primary);
+  --nav-dropdown-hover-color:     var(--accent-primary);
+}
+
+/* ── Light mode: global overrides for hardcoded dark values ── */
+html[data-theme="light"] body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+html[data-theme="light"] main section,
+html[data-theme="light"] section,
+html[data-theme="light"] .section {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+html[data-theme="light"] .header {
+  background: rgba(247, 245, 240, 0.92);
+  border-right-color: var(--border-color);
+}
+
+html[data-theme="light"] .navmenu a,
+html[data-theme="light"] .navmenu a:focus {
+  color: var(--text-secondary);
+  background: transparent;
+}
+
+html[data-theme="light"] .navmenu a:hover,
+html[data-theme="light"] .navmenu .active,
+html[data-theme="light"] .navmenu .active:focus,
+html[data-theme="light"] .navmenu li:hover > a {
+  color: var(--accent-primary);
+  background: rgba(196, 127, 0, 0.08);
+}
+
+html[data-theme="light"] .navmenu .active,
+html[data-theme="light"] .navmenu .active:focus {
+  border-left-color: var(--accent-primary);
+}
+
+/* ── Light mode: Hero ── */
+html[data-theme="light"] .hero::before {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(247,245,240,0.90) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 60% at 50% 0%,  rgba(247,245,240,0.35) 0%, transparent 80%),
+    linear-gradient(to bottom, rgba(247,245,240,0.15) 0%, rgba(247,245,240,0.45) 55%, rgba(247,245,240,0.95) 100%);
+}
+
+html[data-theme="light"] .hero-vignette {
+  background: radial-gradient(ellipse 110% 110% at 50% 50%,
+    transparent 55%,
+    rgba(247,245,240,0.3) 75%,
+    rgba(247,245,240,0.65) 100%);
+}
+
+html[data-theme="light"] .hero-background {
+  filter: grayscale(60%) contrast(1.05) brightness(1.05);
+}
+
+html[data-theme="light"] #hero-stars {
+  opacity: 0;
+  pointer-events: none;
+}
+
+html[data-theme="light"] .fog-layer {
+  opacity: 0.35;
+}
+
+html[data-theme="light"] .hero h2 {
+  background: linear-gradient(180deg, #1A1A1A 0%, #4A4A4A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html[data-theme="light"] .hero p {
+  color: var(--text-secondary);
+}
+
+html[data-theme="light"] .hero .social-links a {
+  background: rgba(0,0,0,0.06);
+  color: var(--text-secondary);
+}
+
+/* ── Light mode: Cards & surfaces ── */
+html[data-theme="light"] .about .content ul li,
+html[data-theme="light"] .skill-category,
+html[data-theme="light"] .portfolio .portfolio-info,
+html[data-theme="light"] .contact .info-item,
+html[data-theme="light"] .contact-form {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+  box-shadow: 0 2px 12px var(--shadow-color);
+}
+
+html[data-theme="light"] .skill-tag {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+html[data-theme="light"] .tech-tag {
+  background: rgba(0,0,0,0.04);
+  color: var(--text-secondary);
+  border-color: rgba(0,0,0,0.10);
+}
+
+html[data-theme="light"] .resume .resume-item h5 {
+  background: var(--bg-elevated);
+  border-color: var(--border-color);
+  color: var(--accent-primary);
+}
+
+/* ── Light mode: form inputs ── */
+html[data-theme="light"] .contact-form .form-control {
+  background: var(--bg-elevated);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+html[data-theme="light"] .contact-form .form-control::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+html[data-theme="light"] .contact-form .form-control:focus {
+  border-color: rgba(196, 127, 0, 0.5);
+  box-shadow: 0 0 0 3px rgba(196, 127, 0, 0.10);
+}
+
+/* ── Light mode: preloader ── */
+html[data-theme="light"] #preloader {
+  background: var(--bg-primary);
+}
+
+/* ── Light mode: scroll top ── */
+html[data-theme="light"] .scroll-top {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* ── Light mode: footer ── */
+html[data-theme="light"] .footer {
+  background: var(--bg-secondary) !important;
+  border-top-color: var(--border-color) !important;
+}
+
+html[data-theme="light"] .footer-social a {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+html[data-theme="light"] .footer-bottom {
+  border-top-color: var(--border-color);
+}
+
+/* ── Light mode: contact toast ── */
+html[data-theme="light"] .contact-toast {
+  background: var(--bg-card);
+  box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+/* ── Light mode: portfolio buttons ── */
+html[data-theme="light"] .portfolio .portfolio-links .btn-outline-primary,
+html[data-theme="light"] .portfolio .portfolio-links .btn-outline-success,
+html[data-theme="light"] .btn-send-msg {
+  color: var(--accent-primary) !important;
+  border-color: rgba(196, 127, 0, 0.35) !important;
+}
+
+html[data-theme="light"] .available-badge {
+  background: rgba(50, 180, 50, 0.08);
+  border-color: rgba(50, 180, 50, 0.2);
+}
+
+/*--------------------------------------------------------------
+# Theme Toggle Button
+--------------------------------------------------------------*/
+/* Theme Toggle Button — old sidebar rules removed, see switch styles below */
+
+/* Expand label on hover / desktop nav hover */
+@media (min-width: 992px) {
+  /* old sidebar toggle rules removed — replaced by top-bar switch */
+}
+
+@media (max-width: 991px) {
+  /* old sidebar toggle rules removed */
+}
+
+/*--------------------------------------------------------------
+# Light mode: transition smoothing
+--------------------------------------------------------------*/
+body,
+.header,
+.hero::before,
+.hero-background,
+.hero h2,
+.hero p,
+section,
+.section,
+.about .content ul li,
+.skill-category,
+.skill-tag,
+.portfolio .portfolio-info,
+.contact .info-item,
+.contact-form,
+.contact-form .form-control,
+.footer,
+.scroll-top,
+.resume .resume-item h5 {
+  transition:
+    background-color 0.35s ease,
+    background     0.35s ease,
+    color          0.35s ease,
+    border-color   0.35s ease,
+    box-shadow     0.35s ease;
+}
+
+/*--------------------------------------------------------------
+# Top Navigation Bar — Full Rewrite
+--------------------------------------------------------------*/
+
+/* ── Reset side-nav layout ── */
+.header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  width: 100% !important;
+  min-width: unset !important;
+  height: 64px !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  flex-direction: row !important;
+  background: rgba(10, 10, 10, 0.88) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-right: none !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  z-index: 9997 !important;
+}
+
+/* ── Remove old side-nav main offset ── */
+.header ~ main {
+  margin-left: 0 !important;
+  padding-top: 64px !important;
+}
+
+.header ~ main .hero {
+  margin-left: 0 !important;
+  width: 100% !important;
+  /* Hero is full-viewport again — subtract navbar height */
+  min-height: calc(100vh - 64px) !important;
+  margin-top: 0 !important;
+}
+
+/* ── Inner flex row ── */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 64px;
+  padding: 0 28px;
+  gap: 24px;
+}
+
+/* ── Logo ── */
+.header-logo {
+  font-family: var(--heading-font);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-primary) !important;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.header-logo:hover {
+  opacity: 0.8;
+  color: var(--accent-primary) !important;
+}
+
+/* ── Desktop nav ── */
+.navmenu {
+  flex: 1;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 !important;
+  padding-right: 24px !important;
+}
+
+.navmenu ul {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.navmenu a,
+.navmenu a:focus {
+  display: inline-flex !important;
+  align-items: center;
+  padding: 8px 14px !important;
+  height: auto !important;
+  max-width: none !important;
+  width: auto !important;
+  font-family: var(--nav-font);
+  font-size: 13px !important;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--nav-color) !important;
+  background: transparent !important;
+  border-radius: 6px !important;
+  transition: color 0.2s ease, background 0.2s ease !important;
+  white-space: nowrap;
+  overflow: visible !important;
+}
+
+/* Hide all icons in top nav */
+.navmenu a i,
+.navmenu a .navicon {
+  display: none !important;
+}
+
+/* Show spans (text labels) always */
+.navmenu a span {
+  display: inline !important;
+  padding: 0 !important;
+  max-width: none !important;
+  font-size: 13px !important;
+  color: inherit !important;
+}
+
+.navmenu a:hover,
+.navmenu li:hover > a {
+  color: var(--accent-primary) !important;
+  background: rgba(240, 165, 0, 0.08) !important;
+  max-width: none !important;
+}
+
+.navmenu .active,
+.navmenu .active:focus {
+  color: var(--accent-primary) !important;
+  background: rgba(240, 165, 0, 0.1) !important;
+  border-left: none !important;
+  border-bottom: 2px solid var(--accent-primary) !important;
+  border-radius: 0 !important;
+}
+
+/* ── Header right actions ── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ── Theme toggle in top bar ── */
+.theme-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  color: var(--text-secondary) !important;
+  cursor: pointer !important;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ── Mobile hamburger ── */
+.header-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  /* Override old fixed positioning */
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: auto !important;
+}
+
+.header-toggle:hover {
+  background: rgba(240, 165, 0, 0.1);
+  border-color: rgba(240, 165, 0, 0.35);
+  color: var(--accent-primary);
+}
+
+/* ── Mobile nav drawer ── */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 0;
+  width: 100%;
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 12px 28px;
+  font-family: var(--nav-font);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--nav-color);
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+  color: var(--accent-primary);
+  background: rgba(240, 165, 0, 0.08);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1199px) {
+  .header-inner {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 991px) {
+  .navmenu {
+    display: none !important;
+  }
+
+  .header-toggle {
+    display: inline-flex !important;
+  }
+
+  .header ~ main {
+    padding-top: 64px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-inner {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .header-logo {
+    font-size: 18px;
+  }
+}
+
+/* ── Footer: remove old side-nav margin ── */
+@media (min-width: 1200px) {
+  .footer {
+    margin-left: 0 !important;
+  }
+}
+
+/* ── Light mode: top navbar ── */
+html[data-theme="light"] .header {
+  background: rgba(247, 245, 240, 0.94) !important;
+  border-bottom-color: var(--border-color) !important;
+  border-right: none !important;
+}
+
+html[data-theme="light"] .header-logo {
+  color: var(--accent-primary) !important;
+}
+
+html[data-theme="light"] .navmenu a,
+html[data-theme="light"] .navmenu a:focus {
+  color: var(--text-secondary) !important;
+  background: transparent !important;
+}
+
+html[data-theme="light"] .navmenu a:hover,
+html[data-theme="light"] .navmenu li:hover > a,
+html[data-theme="light"] .navmenu .active,
+html[data-theme="light"] .navmenu .active:focus {
+  color: var(--accent-primary) !important;
+  background: rgba(196, 127, 0, 0.08) !important;
+}
+
+html[data-theme="light"] .navmenu .active,
+html[data-theme="light"] .navmenu .active:focus {
+  border-bottom-color: var(--accent-primary) !important;
+  border-left: none !important;
+}
+
+html[data-theme="light"] .header-toggle {
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="light"] .mobile-nav {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+html[data-theme="light"] .mobile-nav a {
+  color: var(--text-secondary);
+}
+
+html[data-theme="light"] .mobile-nav a:hover,
+html[data-theme="light"] .mobile-nav a.active {
+  color: var(--accent-primary);
+  background: rgba(196, 127, 0, 0.08);
+}
+
+/*--------------------------------------------------------------
+# Theme Toggle — Animated Switch (Sun left / Moon right)
+--------------------------------------------------------------*/
+
+/* Override generic .theme-toggle styles */
+.theme-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+/* ── Track ── */
+.toggle-track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 72px;
+  height: 36px;
+  border-radius: 999px;
+  background: #2b2b2b;
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.6),
+    inset 0 -1px 2px rgba(255,255,255,0.04);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+/* Light mode track */
+html[data-theme="light"] .toggle-track {
+  background: #e0e0e0;
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.18),
+    inset 0 -1px 2px rgba(255,255,255,0.7);
+}
+
+/* ── Sun icon — always on the LEFT ── */
+.toggle-icon-sun {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+  transition: color 0.35s ease, opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* In light mode, sun is under the knob (knob is left) → dim it */
+html[data-theme="light"] .toggle-icon-sun {
+  color: rgba(255,255,255,0.9);
+}
+
+/* ── Moon icon — always on the RIGHT ── */
+.toggle-icon-moon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.35s ease, opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* In light mode, moon is exposed (knob is left) → dim it */
+html[data-theme="light"] .toggle-icon-moon {
+  color: rgba(0,0,0,0.25);
+}
+
+/* ── Knob ── */
+.toggle-knob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  /* Dark mode: knob is on the RIGHT covering the moon */
+  transform: translateX(36px);
+  background: radial-gradient(circle at 40% 35%,
+    #555 0%,
+    #3a3a3a 50%,
+    #2a2a2a 100%);
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.6),
+    0 1px 2px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1),
+    background 0.4s ease,
+    box-shadow 0.4s ease;
+  z-index: 2;
+}
+
+/* Light mode: knob slides LEFT covering the sun, turns gold */
+html[data-theme="light"] .toggle-knob {
+  transform: translateX(0px);
+  background: radial-gradient(circle at 38% 32%,
+    #FFD84D 0%,
+    #F0A500 55%,
+    #C47F00 100%);
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.25),
+    0 0 12px rgba(240,165,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+/* ── Press squish ── */
+.theme-toggle:active .toggle-knob {
+  width: 32px;
+}
+
+/* In dark mode, knob is right — squish leftward */
+html:not([data-theme="light"]) .theme-toggle:active .toggle-knob {
+  transform: translateX(32px);
+}
+
+/* In light mode, knob is left — squish rightward */
+html[data-theme="light"] .theme-toggle:active .toggle-knob {
+  transform: translateX(0px);
+  width: 32px;
+}
+
+/* ── Focus ring ── */
+.theme-toggle:focus-visible .toggle-track {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+/* ── Remove old icon rules ── */
+html:not([data-theme="light"]) .theme-icon-light,
+html:not([data-theme="light"]) .theme-icon-dark,
+html[data-theme="light"] .theme-icon-light,
+html[data-theme="light"] .theme-icon-dark {
+  display: none !important;
+}
+
+
+/*--------------------------------------------------------------
+# Theme Switch — Final guaranteed visibility rules
+--------------------------------------------------------------*/
+#theme-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  background: none !important;
+  border: none !important;
+  overflow: visible !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+}
+
+#theme-toggle .toggle-track {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  width: 54px !important;
+  height: 28px !important;
+  border-radius: 999px !important;
+  background: #2b2b2b !important;
+  overflow: hidden !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.6) !important;
+  flex-shrink: 0 !important;
+}
+
+html[data-theme="light"] #theme-toggle .toggle-track {
+  background: #e0e0e0 !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.18) !important;
+}
+
+#theme-toggle .toggle-icon-sun {
+  position: absolute !important;
+  left: 5px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 16px !important;
+  height: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 10px !important;
+  color: rgba(255,255,255,0.3) !important;
+  max-width: none !important;
+  overflow: visible !important;
+  z-index: 1 !important;
+  transition: color 0.35s ease !important;
+}
+
+html[data-theme="light"] #theme-toggle .toggle-icon-sun {
+  color: rgba(255,255,255,0.95) !important;
+}
+
+#theme-toggle .toggle-icon-moon {
+  position: absolute !important;
+  right: 5px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 16px !important;
+  height: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 10px !important;
+  color: rgba(255,255,255,0.85) !important;
+  max-width: none !important;
+  overflow: visible !important;
+  z-index: 1 !important;
+  transition: color 0.35s ease !important;
+}
+
+html[data-theme="light"] #theme-toggle .toggle-icon-moon {
+  color: rgba(0,0,0,0.22) !important;
+}
+
+#theme-toggle .toggle-knob {
+  position: absolute !important;
+  top: 4px !important;
+  left: 4px !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  transform: translateX(26px) !important;
+  background: radial-gradient(circle at 40% 35%, #555 0%, #3a3a3a 50%, #2a2a2a 100%) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08) !important;
+  z-index: 2 !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1),
+              background 0.4s ease,
+              box-shadow 0.4s ease,
+              width 0.15s ease !important;
+}
+
+html[data-theme="light"] #theme-toggle .toggle-knob {
+  transform: translateX(0px) !important;
+  background: radial-gradient(circle at 38% 32%, #FFD84D 0%, #F0A500 55%, #C47F00 100%) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25), 0 0 10px rgba(240,165,0,0.4), inset 0 1px 0 rgba(255,255,255,0.35) !important;
+}
+
+/*--------------------------------------------------------------
+# Navbar hide on scroll down, show on scroll up
+--------------------------------------------------------------*/
+.header {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity  0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.header.nav-hidden {
+  transform: translateY(-100%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/*--------------------------------------------------------------
+# Dark mode — switch glow for visibility
+--------------------------------------------------------------*/
+html:not([data-theme="light"]) #theme-toggle .toggle-track {
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(240,165,0,0.25),
+    0 0 8px rgba(240,165,0,0.2),
+    0 0 20px rgba(240,165,0,0.1) !important;
+}
+
+html:not([data-theme="light"]) #theme-toggle:hover .toggle-track {
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(240,165,0,0.45),
+    0 0 14px rgba(240,165,0,0.35),
+    0 0 32px rgba(240,165,0,0.18) !important;
+}
+
+/*--------------------------------------------------------------
+# Scroll Progress Bar
+--------------------------------------------------------------*/
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 99999;
+  background: transparent;
+  pointer-events: none;
+}
+
+#scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #C47F00, #F0A500, #FFD84D);
+  box-shadow: 0 0 8px rgba(240, 165, 0, 0.6);
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/*--------------------------------------------------------------
+# Services / What I Do Section
+--------------------------------------------------------------*/
+.services.section {
+  background-color: var(--bg-primary);
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 32px 28px;
+  height: 100%;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(135deg,
+    rgba(240, 165, 0, 0.04) 0%,
+    transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.service-card:hover {
+  border-color: rgba(240, 165, 0, 0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35),
+              0 0 0 1px rgba(240, 165, 0, 0.1);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(240, 165, 0, 0.08);
+  border: 1px solid rgba(240, 165, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: all 0.35s ease;
+}
+
+.service-card-icon i {
+  font-size: 22px;
+  color: var(--accent-primary);
+  transition: transform 0.35s ease;
+}
+
+.service-card:hover .service-card-icon {
+  background: rgba(240, 165, 0, 0.14);
+  border-color: rgba(240, 165, 0, 0.3);
+}
+
+.service-card:hover .service-card-icon i {
+  transform: scale(1.15);
+}
+
+.service-card h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  font-family: var(--heading-font);
+}
+
+.service-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Light mode adjustments */
+html[data-theme="light"] .service-card {
+  background: var(--bg-card);
+  box-shadow: 0 2px 12px var(--shadow-color);
+}
+
+html[data-theme="light"] .service-card:hover {
+  box-shadow: 0 16px 40px var(--shadow-color),
+              0 0 0 1px rgba(196, 127, 0, 0.15);
+  border-color: rgba(196, 127, 0, 0.3);
+}
+
+html[data-theme="light"] .service-card-icon {
+  background: rgba(196, 127, 0, 0.08);
+  border-color: rgba(196, 127, 0, 0.15);
+}
+
+/*--------------------------------------------------------------
+# Feature 5 — Currently Learning skill tags
+--------------------------------------------------------------*/
+.skill-tag.skill-learning {
+  background: transparent;
+  color: var(--accent-primary);
+  border: 1px dashed rgba(240, 165, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-tag.skill-learning em {
+  color: var(--accent-secondary);
+  opacity: 0.85;
+}
+
+.skill-tag.skill-learning::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(240, 165, 0, 0.06) 50%,
+    transparent 100%);
+  animation: learning-shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes learning-shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.legend-dot.legend-learning {
+  background: transparent;
+  border: 1.5px dashed var(--accent-primary);
+  box-shadow: none;
+}
+
+/* Currently Exploring block */
+.currently-exploring {
+  margin-top: 28px;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border: 1px dashed rgba(240, 165, 0, 0.3);
+  border-radius: 12px;
+}
+
+.exploring-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.exploring-header i {
+  font-size: 15px;
+  color: var(--accent-primary);
+}
+
+.exploring-header span {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent-primary);
+  font-family: var(--nav-font);
+}
+
+/*--------------------------------------------------------------
+# Feature 6 — Scroll-to-top button gold styling
+--------------------------------------------------------------*/
+.scroll-top {
+  background: var(--bg-card) !important;
+  border: 1px solid rgba(240, 165, 0, 0.35) !important;
+  box-shadow: 0 0 10px rgba(240, 165, 0, 0.15) !important;
+  border-radius: 12px !important;
+  width: 44px !important;
+  height: 44px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.scroll-top i {
+  color: var(--accent-primary) !important;
+  font-size: 22px;
+}
+
+.scroll-top:hover {
+  background: rgba(240, 165, 0, 0.1) !important;
+  border-color: rgba(240, 165, 0, 0.6) !important;
+  box-shadow: 0 0 18px rgba(240, 165, 0, 0.3) !important;
+  transform: translateY(-3px) !important;
+}
+
+html[data-theme="light"] .scroll-top {
+  background: var(--bg-card) !important;
+  border-color: rgba(196, 127, 0, 0.3) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12) !important;
+}
+
+html[data-theme="light"] .scroll-top:hover {
+  border-color: rgba(196, 127, 0, 0.55) !important;
+  box-shadow: 0 4px 20px rgba(196, 127, 0, 0.2) !important;
+}
+
+/*--------------------------------------------------------------
+# Feature 7 — Hero availability status
+--------------------------------------------------------------*/
+.hero-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 0 0;
+  padding: 7px 16px;
+  background: rgba(50, 205, 50, 0.08);
+  border: 1px solid rgba(50, 205, 50, 0.22);
+  border-radius: 999px;
+  font-size: 13px;
+  font-family: var(--nav-font);
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(4px);
+}
+
+.hero-availability-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #32cd32;
+  box-shadow: 0 0 0 0 rgba(50, 205, 50, 0.5);
+  animation: availability-pulse 2s ease-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes availability-pulse {
+  0%   { box-shadow: 0 0 0 0   rgba(50, 205, 50, 0.5); }
+  70%  { box-shadow: 0 0 0 7px rgba(50, 205, 50, 0);   }
+  100% { box-shadow: 0 0 0 0   rgba(50, 205, 50, 0);   }
+}
+
+html[data-theme="light"] .hero-availability {
+  background: rgba(50, 180, 50, 0.08);
+  border-color: rgba(50, 180, 50, 0.22);
+  color: rgba(30, 30, 30, 0.75);
+}

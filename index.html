@@ -27,27 +27,76 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Theme: apply saved preference before paint to prevent flash -->
+  <script>
+    (function(){
+      var t = localStorage.getItem('sm-theme');
+      if (t === 'light') document.documentElement.setAttribute('data-theme','light');
+    })();
+  </script>
+
 
 </head>
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex flex-column justify-content-center">
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress"><div id="scroll-progress-bar"></div></div>
 
-    <i class="header-toggle d-xl-none bi bi-list"></i>
+  <header id="header" class="header">
+    <div class="header-inner">
 
-    <nav id="navmenu" class="navmenu">
+      <!-- Logo / Name -->
+      <a href="#hero" class="header-logo">Sherwen Mortis</a>
+
+      <!-- Mobile toggle -->
+      <button class="header-toggle d-xl-none" id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <!-- Nav links -->
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#portfolio">Projects</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right side actions -->
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode" role="switch">
+          <span class="toggle-track">
+            <!-- Sun icon (left side) -->
+            <span class="toggle-icon-sun"><i class="bi bi-sun-fill"></i></span>
+            <!-- Moon icon (right side) -->
+            <span class="toggle-icon-moon"><i class="bi bi-moon-fill"></i></span>
+            <!-- Sliding knob -->
+            <span class="toggle-knob"></span>
+          </span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile nav drawer -->
+    <nav id="mobile-nav" class="mobile-nav" aria-hidden="true">
       <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
-        <li><a href="#skills"><i class="bi bi-lightning navicon"></i><span>Skills</span></a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
-        <li><a href="#screenshots"><i class="bi bi-grid navicon"></i><span>Screenshots</span></a></li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#portfolio">Projects</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-
   </header>
 
   <main class="main">
@@ -71,6 +120,10 @@
           <div class="col-lg-9">
             <h2>Sherwen Mortis</h2>
             <p><span class="typed" data-typed-items="Web Developer, Mobile Developer, Full-Stack Developer">Web Developer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+            <div class="hero-availability">
+              <span class="hero-availability-dot"></span>
+              Available for freelance &amp; full-time opportunities
+            </div>
             <div class="social-links">
               <a href="https://www.facebook.com/mortis.shad/" target="_blank" class="social-link social-link-facebook"><i class="bi bi-facebook"></i></a>
               <a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" class="social-link social-link-linkedin"><i class="bi bi-linkedin"></i></a>
@@ -240,6 +293,7 @@
                 <span class="skill-tag skill-proficient">Dart <em>Proficient</em></span>
                 <span class="skill-tag skill-proficient">PHP <em>Proficient</em></span>
                 <span class="skill-tag skill-proficient">C# <em>Proficient</em></span>
+                <span class="skill-tag skill-learning">Python <em>Learning</em></span>
               </div>
             </div>
           </div>
@@ -250,11 +304,83 @@
         <div class="skill-legend" data-aos="fade-up" data-aos-delay="200">
           <span class="legend-item"><span class="legend-dot legend-proficient"></span>Proficient — used in production projects</span>
           <span class="legend-item"><span class="legend-dot legend-familiar"></span>Familiar — used in coursework or personal projects</span>
+          <span class="legend-item"><span class="legend-dot legend-learning"></span>Learning — currently exploring</span>
+        </div>
+
+        <!-- Currently Exploring -->
+        <div class="currently-exploring" data-aos="fade-up" data-aos-delay="250">
+          <div class="exploring-header">
+            <i class="bi bi-stars"></i>
+            <span>Currently Exploring</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag skill-learning">Next.js <em>Learning</em></span>
+            <span class="skill-tag skill-learning">Docker <em>Learning</em></span>
+            <span class="skill-tag skill-learning">TypeScript Advanced <em>Learning</em></span>
+            <span class="skill-tag skill-learning">Python <em>Learning</em></span>
+          </div>
         </div>
 
       </div>
 
     </section><!-- /Skills Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>What I Do</h2>
+        <p>Services I provide as a freelance developer</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card">
+              <div class="service-card-icon">
+                <i class="bi bi-layout-wtf"></i>
+              </div>
+              <h4>Web Development</h4>
+              <p>Building responsive, performant web applications using React.js, Node.js, and modern frontend frameworks.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card">
+              <div class="service-card-icon">
+                <i class="bi bi-phone"></i>
+              </div>
+              <h4>Mobile Development</h4>
+              <p>Creating cross-platform mobile apps with Flutter and Dart that run natively on both iOS and Android.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card">
+              <div class="service-card-icon">
+                <i class="bi bi-server"></i>
+              </div>
+              <h4>Backend &amp; APIs</h4>
+              <p>Designing and building REST APIs, authentication systems, and server-side logic with Node.js and Express.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-card">
+              <div class="service-card-icon">
+                <i class="bi bi-database"></i>
+              </div>
+              <h4>Database Design</h4>
+              <p>Structuring relational databases with PostgreSQL and MySQL — schema design, queries, and optimization.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- /Services Section -->
 
     <!-- Resume Section -->
     <section id="resume" class="resume section">
@@ -357,7 +483,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Portfolio</h2>
+        <h2>Projects</h2>
         <p>Projects I've developed</p>
       </div><!-- End Section Title -->
 
