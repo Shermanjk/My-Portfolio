@@ -557,3 +557,41 @@
   window.addEventListener('scroll', updateProgress, { passive: true });
   updateProgress();
 })();
+
+
+/**
+ * Stats count-up animation — triggers when section scrolls into view
+ */
+(function () {
+  const statNumbers = document.querySelectorAll('.stat-number');
+  if (!statNumbers.length) return;
+
+  function countUp(el) {
+    const target   = parseInt(el.getAttribute('data-target'), 10);
+    const duration = 1200; // ms
+    const steps    = 40;
+    const stepTime = duration / steps;
+    let current    = 0;
+
+    const timer = setInterval(() => {
+      current += Math.ceil(target / steps);
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = current;
+    }, stepTime);
+  }
+
+  // Use IntersectionObserver so it fires when stats scroll into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        countUp(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statNumbers.forEach(el => observer.observe(el));
+})();
