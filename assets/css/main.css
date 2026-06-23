@@ -3990,11 +3990,11 @@ html[data-theme="light"] .scroll-top:hover {
   align-items: center;
   gap: 10px;
   margin: 18px 0 0 0;
-  padding: 9px 20px;
+  padding: 8px 16px;
   background: rgba(50, 205, 50, 0.07);
   border: 1px solid rgba(50, 205, 50, 0.2);
   border-radius: 999px;
-  font-size: 14px;
+  font-size: 13px;
   font-family: var(--nav-font);
   color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0.02em;
@@ -4041,7 +4041,7 @@ html[data-theme="light"] .scroll-top:hover {
   display: inline-block;
   height: 1.3em;
   overflow: hidden;
-  width: 155px;
+  width: 130px;
 }
 
 .availability-rotating span {
