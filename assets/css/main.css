@@ -4001,7 +4001,7 @@ html[data-theme="light"] .scroll-top:hover {
   backdrop-filter: blur(6px);
   box-shadow: 0 0 20px rgba(50, 205, 50, 0.06);
   overflow: hidden;
-  max-width: 340px;
+  width: fit-content;
 }
 
 /* Pulsing green dot */
@@ -4041,7 +4041,7 @@ html[data-theme="light"] .scroll-top:hover {
   display: inline-block;
   height: 1.3em;
   overflow: hidden;
-  min-width: 160px;
+  width: 155px;
 }
 
 .availability-rotating span {
@@ -4198,14 +4198,23 @@ html[data-theme="light"] .hero p span {
 
 /* Availability pill */
 html[data-theme="light"] .hero-availability {
-  background: rgba(30, 150, 30, 0.09) !important;
-  border-color: rgba(30, 150, 30, 0.28) !important;
+  background: rgba(196, 127, 0, 0.10) !important;
+  border-color: rgba(196, 127, 0, 0.35) !important;
   color: #1a1a1a !important;
-  box-shadow: 0 0 16px rgba(30, 150, 30, 0.08) !important;
+  box-shadow: 0 0 16px rgba(196, 127, 0, 0.12) !important;
 }
 
 html[data-theme="light"] .availability-static {
-  color: #444444 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .availability-rotating span {
+  color: #1a6e1a !important;
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
 }
 
 html[data-theme="light"] .availability-rotating span {
@@ -4397,4 +4406,56 @@ html[data-theme="light"] .footer-bottom p {
 
 html[data-theme="light"] .footer-social a {
   color: var(--text-secondary) !important;
+}
+
+/*--------------------------------------------------------------
+# Light mode — rotating words background highlight
+--------------------------------------------------------------*/
+html[data-theme="light"] .availability-rotating span {
+  color: #1a7a1a !important;
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Whole badge — frosted glass in light mode, no solid bg */
+html[data-theme="light"] .hero-availability {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(30, 140, 30, 0.55) !important;
+  color: #1a1a1a !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/*--------------------------------------------------------------
+# Stats bar — entrance animation
+--------------------------------------------------------------*/
+.stat-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.stat-item.stat-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay per item */
+.col-md-3:nth-child(1) .stat-item { transition-delay: 0s;    }
+.col-md-3:nth-child(2) .stat-item { transition-delay: 0.12s; }
+.col-md-3:nth-child(3) .stat-item { transition-delay: 0.24s; }
+.col-md-3:nth-child(4) .stat-item { transition-delay: 0.36s; }
+
+/* Gold flash on number when counting */
+.stat-number.counting {
+  color: #FFD84D;
+  transition: color 0.1s ease;
+}
+
+.stat-number.done {
+  color: var(--accent-primary);
+  transition: color 0.4s ease;
 }

@@ -568,30 +568,55 @@
 
   function countUp(el) {
     const target   = parseInt(el.getAttribute('data-target'), 10);
-    const duration = 1200; // ms
-    const steps    = 40;
-    const stepTime = duration / steps;
-    let current    = 0;
+    const duration = 1400;
+    const start    = performance.now();
 
-    const timer = setInterval(() => {
-      current += Math.ceil(target / steps);
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
+    el.classList.add('counting');
+
+    function easeOut(t) {
+      return 1 - Math.pow(1 - t, 3); // cubic ease-out
+    }
+
+    function update(now) {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value    = Math.round(easeOut(progress) * target);
+      el.textContent = value;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target;
+        el.classList.remove('counting');
+        el.classList.add('done');
       }
-      el.textContent = current;
-    }, stepTime);
+    }
+
+    requestAnimationFrame(update);
   }
 
-  // Use IntersectionObserver so it fires when stats scroll into view
+  // Observe stat items for entrance + count-up
+  const statItems = document.querySelectorAll('.stat-item');
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        countUp(entry.target);
-        observer.unobserve(entry.target);
+        const item   = entry.target;
+        const numEl  = item.querySelector('.stat-number');
+
+        // Trigger entrance animation
+        item.classList.add('stat-visible');
+
+        // Trigger count-up after entrance delay
+        if (numEl) {
+          const delay = parseFloat(getComputedStyle(item).transitionDelay) * 1000 || 0;
+          setTimeout(() => countUp(numEl), delay + 300);
+        }
+
+        observer.unobserve(item);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.4 });
 
-  statNumbers.forEach(el => observer.observe(el));
+  statItems.forEach(el => observer.observe(el));
 })();
