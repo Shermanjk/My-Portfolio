@@ -2688,6 +2688,20 @@ section,
   border-radius: 3px;
 }
 
+/* Skill tag icons */
+.skill-tag i {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.skill-tag i.bi {
+  color: var(--accent-primary);
+}
+
+.skill-tag i.devicon:not(.colored) {
+  color: var(--text-primary);
+}
+
 /* Proficient — golden accent */
 .skill-tag.skill-proficient {
   background: rgba(240, 165, 0, 0.1);
@@ -2860,6 +2874,30 @@ section,
   color: var(--text-secondary);
   font-size: 13px;
   font-style: italic;
+}
+
+/* Screenshot placeholder for projects without images yet */
+.screenshots-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--bg-elevated);
+  border: 1px dashed var(--border-color);
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.screenshots-placeholder i {
+  font-size: 28px;
+  opacity: 0.5;
+  color: var(--accent-primary);
+}
+
+.screenshots-placeholder span {
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
 @media (max-width: 768px) {
