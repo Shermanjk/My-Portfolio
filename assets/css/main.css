@@ -3067,8 +3067,10 @@ section,
 --------------------------------------------------------------*/
 .posters-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .poster-item {
@@ -3077,11 +3079,12 @@ section,
 
 .poster-thumb {
   position: relative;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border-color);
   background: var(--bg-card);
   transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .poster-thumb img {
@@ -3092,23 +3095,19 @@ section,
 }
 
 .poster-item:hover .poster-thumb {
-  border-color: rgba(240, 165, 0, 0.35);
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35);
+  border-color: rgba(240, 165, 0, 0.45);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
 }
 
 .poster-item:hover .poster-thumb img {
   transform: scale(1.03);
 }
 
-@media (max-width: 991px) {
-  .posters-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
+@media (max-width: 680px) {
   .posters-grid {
     grid-template-columns: 1fr;
+    max-width: 440px;
+    gap: 24px;
   }
 }
 
