@@ -5423,7 +5423,35 @@ html[data-theme="light"] .hero-availability {
   font-weight: 500;
 }
 
-/* ── Creative Work Gallery ── */
+/* ── Creative Work Categories & Gallery ── */
+.creative-categories {
+  margin-bottom: 28px;
+}
+
+.creative-cat-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.25s ease;
+}
+
+.creative-cat-badge i {
+  color: var(--accent-primary);
+}
+
+.creative-cat-badge.active,
+.creative-cat-badge:hover {
+  border-color: rgba(240, 165, 0, 0.45);
+  color: var(--text-primary);
+  background: rgba(240, 165, 0, 0.08);
+}
+
 .poster-item {
   border-radius: 10px;
   overflow: hidden;
@@ -5636,6 +5664,19 @@ html[data-theme="light"] .contact-info-panel .info-item a {
 
 html[data-theme="light"] .contact-info-panel .info-item a:hover {
   color: #b07800;
+}
+
+html[data-theme="light"] .creative-cat-badge {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  color: #4b5563;
+}
+
+html[data-theme="light"] .creative-cat-badge.active,
+html[data-theme="light"] .creative-cat-badge:hover {
+  background: rgba(240, 165, 0, 0.12);
+  border-color: rgba(240, 165, 0, 0.5);
+  color: #111827;
 }
 
 /* ── Responsive adjustments ── */
