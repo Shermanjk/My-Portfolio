@@ -4,9 +4,23 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Personal Portfolio</title>
-  <meta content="Portfolio of Sherwen Mortis, a Web and Mobile Developer specializing in React, Flutter, Node.js, and PostgreSQL." name="description">
-  <meta content="web developer, mobile developer, full-stack, React, Flutter, Node.js, PostgreSQL, portfolio" name="keywords">
+  <title>Sherwen Mortis | Full-Stack Web &amp; Mobile Developer</title>
+  <meta content="Portfolio of Sherwen Mortis, a Full-Stack Web &amp; Mobile Developer and Freelancer building web applications, mobile apps, POS systems, inventory solutions, and business software." name="description">
+  <meta content="Sherwen Mortis, Full-Stack Developer, Freelancer, Web Developer, Mobile Developer, React, Flutter, TypeScript, Node.js, Express, MySQL, PostgreSQL, POS System, Pagadian City" name="keywords">
+  <meta name="author" content="Sherwen Mortis">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shermanjk.github.io/My-Portfolio/">
+  <meta property="og:title" content="Sherwen Mortis | Full-Stack Web &amp; Mobile Developer">
+  <meta property="og:description" content="Portfolio of Sherwen Mortis, a Full-Stack Web &amp; Mobile Developer and Freelancer building web applications, mobile apps, POS systems, inventory solutions, and business software.">
+  <meta property="og:image" content="assets/img/profile-img.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Sherwen Mortis | Full-Stack Web &amp; Mobile Developer">
+  <meta property="twitter:description" content="Portfolio of Sherwen Mortis, a Full-Stack Web &amp; Mobile Developer and Freelancer building web applications, mobile apps, POS systems, inventory solutions, and business software.">
+  <meta property="twitter:image" content="assets/img/profile-img.jpg">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -23,7 +37,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -36,7 +49,6 @@
     })();
   </script>
 
-
 </head>
 
 <body class="index-page">
@@ -44,6 +56,7 @@
   <!-- Scroll progress bar -->
   <div id="scroll-progress"><div id="scroll-progress-bar"></div></div>
 
+  <!-- Header -->
   <header id="header" class="header">
     <div class="header-inner">
 
@@ -62,10 +75,9 @@
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#resume">Resume</a></li>
+          <li><a href="#experience">Experience</a></li>
           <li><a href="#portfolio">Projects</a></li>
-          <li><a href="#screenshots">Screenshots</a></li>
-          <li><a href="#posters">Posters</a></li>
+          <li><a href="#creative">Creative Work</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -93,10 +105,9 @@
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#resume">Resume</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#portfolio">Projects</a></li>
-        <li><a href="#screenshots">Screenshots</a></li>
-        <li><a href="#posters">Posters</a></li>
+        <li><a href="#creative">Creative Work</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -107,7 +118,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section">
 
-      <img src="assets/img/hero-bg.png" alt="" class="hero-background">
+      <img src="assets/img/hero-bg.png" alt="Mountain Landscape Background" class="hero-background">
 
       <!-- Cinematic Layers -->
       <div class="hero-vignette"></div>
@@ -119,29 +130,42 @@
       <div class="fog-layer fog-5"></div>
 
       <div class="container" data-aos="zoom-out">
-        <div class="row justify-content-center">
-          <div class="col-lg-9">
-            <h2>Sherwen Mortis</h2>
-            <p><span class="typed" data-typed-items="Web Developer, Mobile Developer, Full-Stack Developer">Web Developer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
-            <div class="hero-availability">
-              <span class="hero-availability-dot"></span>
-              <span class="hero-availability-text">
-                <span class="availability-static">Open to</span>
-                <span class="availability-rotating">
-                  <span>Freelance Projects</span>
-                  <span>Full-Time Roles</span>
-                  <span>Contract Work</span>
-                  <span>Collaborations</span>
-                </span>
-              </span>
-            </div>
-            <div class="social-links">
-              <a href="https://www.facebook.com/mortis.shad/" target="_blank" class="social-link social-link-facebook"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" class="social-link social-link-linkedin"><i class="bi bi-linkedin"></i></a>
-              <a href="https://www.instagram.com/sherweennn/" target="_blank" class="social-link social-link-instagram"><i class="bi bi-instagram"></i></a>
-              <a href="https://github.com/shermanjk" target="_blank" class="social-link social-link-github"><i class="bi bi-github"></i></a>
-            </div>
+        <div class="hero-content">
+          <h2 class="hero-name">Sherwen Mortis</h2>
+          <p class="hero-role-title">Full-Stack Web &amp; Mobile Developer <span class="hero-role-divider">|</span> Freelancer</p>
+          
+          <p class="hero-supporting-text">
+            I build practical web and mobile applications for businesses and clients using React, TypeScript, Node.js, Flutter, and modern backend technologies.
+          </p>
+
+          <div class="hero-availability">
+            <span class="hero-availability-dot"></span>
+            <span class="hero-availability-text">Available for freelance projects and full-time opportunities</span>
           </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="hero-cta-buttons">
+            <a href="#portfolio" class="btn-hero-primary">
+              <i class="bi bi-grid-fill me-2"></i>View Projects
+            </a>
+            <a href="https://github.com/shermanjk" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
+              <i class="bi bi-github me-2"></i>GitHub
+            </a>
+            <a href="assets/files/Sherwen-Mortis-CV.pdf" download class="btn-hero-secondary">
+              <i class="bi bi-file-earmark-arrow-down me-2"></i>Download CV
+            </a>
+            <a href="#contact" class="btn-hero-outline">
+              <i class="bi bi-envelope me-2"></i>Contact Me
+            </a>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-links mt-4">
+            <a href="https://github.com/shermanjk" target="_blank" rel="noopener noreferrer" class="social-link social-link-github" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            <a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" rel="noopener noreferrer" class="social-link social-link-linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="mailto:mortis.sherwen@gmail.com" class="social-link social-link-email" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+          </div>
+
         </div>
       </div>
 
@@ -152,41 +176,48 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p>Information Technology graduate with experience in web and mobile application development using React, Flutter, Node.js, and PostgreSQL.</p>
+        <h2>About Me</h2>
+        <p>Turning real business requirements into reliable and maintainable software</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row gy-4 justify-content-center">
+        <div class="row gy-4 justify-content-center align-items-center">
           <div class="col-lg-4 d-flex justify-content-center">
             <div class="about-profile-wrap">
-              <img src="assets/img/profile-img.jpg" class="img-fluid about-profile-img" alt="Sherwen Mortis">
+              <img src="assets/img/profile-img.jpg" class="img-fluid about-profile-img" alt="Sherwen Mortis - Full-Stack Developer">
             </div>
           </div>
           <div class="col-lg-8 content">
-            <h2>Web &amp; Mobile Developer.</h2>
-            <p class="fst-italic py-3">
-              Experienced in developing full-stack applications, implementing system solutions, and providing technical support. Eager to contribute technical expertise and continue growing as a developer.
+            <h3>Full-Stack Web &amp; Mobile Developer | Freelancer</h3>
+            <p class="py-2 lead-text">
+              I'm an Information Technology graduate and full-stack developer focused on building practical web and mobile systems. My experience includes POS systems, inventory management, real-time applications, REST APIs, relational databases, and Flutter mobile development. I enjoy turning real business requirements into reliable and maintainable software.
             </p>
-            <div class="row g-3">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-geo-alt"></i> <strong>City</strong> <span>Pagadian City, Philippines</span></li>
-                  <li><i class="bi bi-telephone"></i> <strong>Phone</strong> <span>+63 963 13 0910</span></li>
-                  <li><i class="bi bi-envelope"></i> <strong>Email</strong> <span>mortis.sherwen@gmail.com</span></li>
+            <p class="py-2 text-secondary-custom">
+              As a freelance developer, I partner directly with businesses and clients to design, engineer, and deploy tailored solutions—from retail cashier terminals and commodity trackers to municipal cloud platforms.
+            </p>
+            <div class="row g-3 mt-2">
+              <div class="col-sm-6">
+                <ul class="about-info-list">
+                  <li><i class="bi bi-geo-alt"></i> <strong>Location:</strong> <span>Pagadian City, Philippines</span></li>
+                  <li><i class="bi bi-telephone"></i> <strong>Phone:</strong> <span>+63 963 131 0910</span></li>
+                  <li><i class="bi bi-envelope"></i> <strong>Email:</strong> <span>mortis.sherwen@gmail.com</span></li>
                 </ul>
               </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-mortarboard"></i> <strong>Degree</strong> <span>BS Information Technology</span></li>
-                  <li><i class="bi bi-briefcase"></i> <strong>Freelance</strong> <span class="available-badge">Available</span></li>
+              <div class="col-sm-6">
+                <ul class="about-info-list">
+                  <li><i class="bi bi-mortarboard"></i> <strong>Education:</strong> <span>BS Information Technology (2026)</span></li>
+                  <li><i class="bi bi-briefcase"></i> <strong>Freelance:</strong> <span class="available-badge">Available for Hire</span></li>
+                  <li><i class="bi bi-check2-circle"></i> <strong>Focus:</strong> <span>Full-Stack &amp; Business Systems</span></li>
                 </ul>
               </div>
             </div>
-            <div class="mt-4">
+            <div class="about-actions mt-4 d-flex flex-wrap gap-3">
               <a href="assets/files/Sherwen-Mortis-CV.pdf" download class="btn-download-cv">
                 <i class="bi bi-file-earmark-arrow-down me-2"></i>Download CV
+              </a>
+              <a href="#contact" class="btn-work-together">
+                <i class="bi bi-chat-dots me-2"></i>Let's Work Together
               </a>
             </div>
           </div>
@@ -204,7 +235,7 @@
           <div class="col-6 col-md-3">
             <div class="stat-item">
               <div class="stat-value-row">
-                <span class="stat-number" data-target="1">0</span>
+                <span class="stat-number" data-target="1">1</span>
                 <span class="stat-suffix">Year</span>
               </div>
               <p class="stat-label">of Experience</p>
@@ -214,17 +245,17 @@
           <div class="col-6 col-md-3">
             <div class="stat-item">
               <div class="stat-value-row">
-                <span class="stat-number" data-target="3">0</span>
+                <span class="stat-number" data-target="3">3</span>
                 <span class="stat-suffix">+</span>
               </div>
-              <p class="stat-label">Projects Delivered</p>
+              <p class="stat-label">Production Systems</p>
             </div>
           </div>
 
           <div class="col-6 col-md-3">
             <div class="stat-item">
               <div class="stat-value-row">
-                <span class="stat-number" data-target="5">0</span>
+                <span class="stat-number" data-target="5">5</span>
                 <span class="stat-suffix"></span>
               </div>
               <p class="stat-label">Certifications</p>
@@ -234,10 +265,10 @@
           <div class="col-6 col-md-3">
             <div class="stat-item">
               <div class="stat-value-row">
-                <span class="stat-number" data-target="20">0</span>
+                <span class="stat-number" data-target="20">20</span>
                 <span class="stat-suffix">+</span>
               </div>
-              <p class="stat-label">Technologies</p>
+              <p class="stat-label">Technologies Used</p>
             </div>
           </div>
 
@@ -250,151 +281,151 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
-        <p>Technical skills from my experience and education</p>
+        <h2>Technical Skills</h2>
+        <p>Core technologies, frameworks, databases, and development workflows</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
 
-          <div class="col-lg-6">
+          <!-- Frontend -->
+          <div class="col-lg-6 col-md-6">
             <div class="skill-category">
               <div class="skill-category-header">
                 <i class="bi bi-layout-wtf"></i>
-                <h4>Frontend</h4>
+                <h4>Frontend Development</h4>
               </div>
-              <p class="skill-category-note">Building responsive UIs and SPAs</p>
+              <p class="skill-category-note">Responsive, accessible, and performant web interfaces</p>
               <div class="skill-tags">
-                <span class="skill-tag skill-proficient"><i class="devicon-react-original colored"></i> React.js <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-html5-plain colored"></i> HTML5 <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-css3-plain colored"></i> CSS3 <em>Proficient</em></span>
-                <span class="skill-tag skill-familiar"><i class="devicon-bootstrap-plain colored"></i> Bootstrap <em>Familiar</em></span>
-                <span class="skill-tag skill-familiar"><i class="devicon-tailwindcss-original colored"></i> Tailwind CSS <em>Familiar</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-vite-original colored"></i> Vite <em>Proficient</em></span>
+                <span class="skill-tag"><i class="devicon-react-original colored"></i> React</span>
+                <span class="skill-tag"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+                <span class="skill-tag"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                <span class="skill-tag"><i class="devicon-html5-plain colored"></i> HTML5</span>
+                <span class="skill-tag"><i class="devicon-css3-plain colored"></i> CSS3</span>
+                <span class="skill-tag"><i class="devicon-tailwindcss-original colored"></i> Tailwind CSS</span>
+                <span class="skill-tag"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+                <span class="skill-tag"><i class="devicon-vite-original colored"></i> Vite</span>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6">
+          <!-- Backend -->
+          <div class="col-lg-6 col-md-6">
             <div class="skill-category">
               <div class="skill-category-header">
                 <i class="bi bi-server"></i>
-                <h4>Backend</h4>
+                <h4>Backend Development</h4>
               </div>
-              <p class="skill-category-note">REST API design and server-side logic</p>
+              <p class="skill-category-note">Robust server-side logic, real-time messaging, and API design</p>
               <div class="skill-tags">
-                <span class="skill-tag skill-proficient"><i class="devicon-nodejs-plain colored"></i> Node.js <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-express-original"></i> Express.js <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="bi bi-hdd-network"></i> REST APIs <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="bi bi-broadcast"></i> WebSockets <em>Proficient</em></span>
+                <span class="skill-tag"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+                <span class="skill-tag"><i class="devicon-express-original"></i> Express.js</span>
+                <span class="skill-tag"><i class="bi bi-hdd-network"></i> REST APIs</span>
+                <span class="skill-tag"><i class="bi bi-broadcast"></i> WebSockets</span>
+                <span class="skill-tag"><i class="bi bi-shield-lock"></i> JWT / Authentication</span>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6">
-            <div class="skill-category">
-              <div class="skill-category-header">
-                <i class="bi bi-phone"></i>
-                <h4>Mobile</h4>
-              </div>
-              <p class="skill-category-note">Cross-platform mobile development</p>
-              <div class="skill-tags">
-                <span class="skill-tag skill-proficient"><i class="devicon-flutter-plain colored"></i> Flutter <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-dart-plain colored"></i> Dart <em>Proficient</em></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
+          <!-- Database -->
+          <div class="col-lg-6 col-md-6">
             <div class="skill-category">
               <div class="skill-category-header">
                 <i class="bi bi-database"></i>
-                <h4>Database</h4>
+                <h4>Databases &amp; Storage</h4>
               </div>
-              <p class="skill-category-note">Relational database design and queries</p>
+              <p class="skill-category-note">Relational schema design, normalization, queries, and optimization</p>
               <div class="skill-tags">
-                <span class="skill-tag skill-proficient"><i class="devicon-postgresql-plain colored"></i> PostgreSQL <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-mysql-plain colored"></i> MySQL <em>Proficient</em></span>
+                <span class="skill-tag"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+                <span class="skill-tag"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+                <span class="skill-tag"><i class="devicon-firebase-plain colored"></i> Firebase</span>
+                <span class="skill-tag"><i class="bi bi-table"></i> MS Access</span>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6">
+          <!-- Mobile -->
+          <div class="col-lg-6 col-md-6">
+            <div class="skill-category">
+              <div class="skill-category-header">
+                <i class="bi bi-phone"></i>
+                <h4>Mobile Development</h4>
+              </div>
+              <p class="skill-category-note">Cross-platform mobile applications with native device integration</p>
+              <div class="skill-tags">
+                <span class="skill-tag"><i class="devicon-flutter-plain colored"></i> Flutter</span>
+                <span class="skill-tag"><i class="devicon-dart-plain colored"></i> Dart</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Development Tools -->
+          <div class="col-lg-6 col-md-6">
             <div class="skill-category">
               <div class="skill-category-header">
                 <i class="bi bi-tools"></i>
-                <h4>Tools &amp; Platforms</h4>
+                <h4>Development Tools</h4>
               </div>
-              <p class="skill-category-note">Dev workflow, deployment, and design</p>
+              <p class="skill-category-note">Version control, API testing, and programming environments</p>
               <div class="skill-tags">
-                <span class="skill-tag skill-proficient"><i class="devicon-git-plain colored"></i> Git <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-github-original"></i> GitHub <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-postman-plain colored"></i> Postman <em>Proficient</em></span>
-                <span class="skill-tag skill-familiar"><i class="devicon-figma-plain colored"></i> Figma <em>Familiar</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-vscode-plain colored"></i> VS Code <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-vercel-plain"></i> Vercel <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="bi bi-cloud"></i> Render <em>Proficient</em></span>
-                <span class="skill-tag skill-familiar"><i class="bi bi-cursor"></i> Cursor <em>Familiar</em></span>
-                <span class="skill-tag skill-familiar"><i class="bi bi-robot"></i> GitHub Copilot <em>Familiar</em></span>
-                <span class="skill-tag skill-proficient"><i class="bi bi-chat-dots"></i> ChatGPT <em>Proficient</em></span>
+                <span class="skill-tag"><i class="devicon-git-plain colored"></i> Git</span>
+                <span class="skill-tag"><i class="devicon-github-original"></i> GitHub</span>
+                <span class="skill-tag"><i class="devicon-postman-plain colored"></i> Postman</span>
+                <span class="skill-tag"><i class="devicon-vscode-plain colored"></i> VS Code</span>
+                <span class="skill-tag"><i class="devicon-figma-plain colored"></i> Figma</span>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6">
+          <!-- Deployment & Platforms -->
+          <div class="col-lg-6 col-md-6">
             <div class="skill-category">
               <div class="skill-category-header">
-                <i class="bi bi-code-slash"></i>
-                <h4>Languages</h4>
+                <i class="bi bi-cloud-arrow-up"></i>
+                <h4>Deployment &amp; Platforms</h4>
               </div>
-              <p class="skill-category-note">Primary and secondary programming languages</p>
+              <p class="skill-category-note">Cloud hosting, web deployment, and environment configuration</p>
               <div class="skill-tags">
-                <span class="skill-tag skill-proficient"><i class="devicon-javascript-plain colored"></i> JavaScript <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-typescript-plain colored"></i> TypeScript <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-dart-plain colored"></i> Dart <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-php-plain colored"></i> PHP <em>Proficient</em></span>
-                <span class="skill-tag skill-proficient"><i class="devicon-csharp-plain colored"></i> C# <em>Proficient</em></span>
-                <span class="skill-tag skill-learning"><i class="devicon-python-plain colored"></i> Python <em>Learning</em></span>
+                <span class="skill-tag"><i class="devicon-vercel-plain"></i> Vercel</span>
+                <span class="skill-tag"><i class="bi bi-cloud"></i> Render</span>
+                <span class="skill-tag"><i class="bi bi-github"></i> GitHub Pages</span>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="150">
+          <!-- AI-Assisted Development -->
+          <div class="col-lg-6 col-md-6">
             <div class="skill-category">
+              <div class="skill-category-header">
+                <i class="bi bi-robot"></i>
+                <h4>AI-Assisted Development</h4>
+              </div>
+              <p class="skill-category-note">Accelerating testing, refactoring, and development workflows</p>
+              <div class="skill-tags">
+                <span class="skill-tag"><i class="bi bi-cpu"></i> GitHub Copilot</span>
+                <span class="skill-tag"><i class="bi bi-chat-dots"></i> ChatGPT</span>
+                <span class="skill-tag"><i class="bi bi-cursor"></i> Cursor</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Currently Learning -->
+          <div class="col-lg-6 col-md-6">
+            <div class="skill-category skill-category-learning">
               <div class="skill-category-header">
                 <i class="bi bi-stars"></i>
-                <h4>Other Skills</h4>
+                <h4>Currently Learning &amp; Expanding</h4>
               </div>
-              <p class="skill-category-note">Additional technical and creative capabilities</p>
+              <p class="skill-category-note">Continuous professional growth in modern frameworks and DevOps</p>
               <div class="skill-tags">
-                <span class="skill-tag skill-familiar"><i class="bi bi-camera-video"></i> Video Editing <em>Basic</em></span>
-                <span class="skill-tag skill-familiar"><i class="bi bi-palette"></i> Graphic Design <em>Basic</em></span>
-                <span class="skill-tag skill-familiar"><i class="bi bi-wrench"></i> Computer Troubleshooting <em>Basic</em></span>
+                <span class="skill-tag skill-tag-highlight"><i class="devicon-nextjs-plain"></i> Next.js</span>
+                <span class="skill-tag skill-tag-highlight"><i class="devicon-docker-plain colored"></i> Docker</span>
+                <span class="skill-tag skill-tag-highlight"><i class="devicon-python-plain colored"></i> Python</span>
               </div>
             </div>
           </div>
 
-        </div>
-
-        <!-- Proficiency Legend -->
-        <div class="skill-legend" data-aos="fade-up" data-aos-delay="200">
-          <span class="legend-item"><span class="legend-dot legend-proficient"></span>Proficient — used in production projects</span>
-          <span class="legend-item"><span class="legend-dot legend-familiar"></span>Familiar — used in coursework or personal projects</span>
-          <span class="legend-item"><span class="legend-dot legend-learning"></span>Learning — currently exploring</span>
-        </div>
-
-        <!-- Currently Exploring -->
-        <div class="currently-exploring" data-aos="fade-up" data-aos-delay="250">
-          <div class="exploring-header">
-            <i class="bi bi-stars"></i>
-            <span>Currently Exploring</span>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag skill-learning"><i class="devicon-nextjs-plain"></i> Next.js <em>Learning</em></span>
-            <span class="skill-tag skill-learning"><i class="devicon-docker-plain colored"></i> Docker <em>Learning</em></span>
-            <span class="skill-tag skill-learning"><i class="devicon-python-plain colored"></i> Python <em>Learning</em></span>
-          </div>
         </div>
 
       </div>
@@ -407,7 +438,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>What I Do</h2>
-        <p>Services I provide as a freelance developer</p>
+        <p>Software and web engineering services for businesses, clients, and teams</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -418,8 +449,8 @@
               <div class="service-card-icon">
                 <i class="bi bi-layout-wtf"></i>
               </div>
-              <h4>Web Development</h4>
-              <p>Building responsive, performant web applications using React.js, Node.js, and modern frontend frameworks.</p>
+              <h4>Web Application Development</h4>
+              <p>Building responsive, fast, and secure web applications using React, TypeScript, Vite, and modern CSS frameworks.</p>
             </div>
           </div>
 
@@ -428,8 +459,8 @@
               <div class="service-card-icon">
                 <i class="bi bi-phone"></i>
               </div>
-              <h4>Mobile Development</h4>
-              <p>Creating cross-platform mobile apps with Flutter and Dart that run natively on Android.</p>
+              <h4>Mobile App Development</h4>
+              <p>Creating cross-platform mobile applications with Flutter and Dart, connecting directly to cloud APIs and offline storage.</p>
             </div>
           </div>
 
@@ -438,28 +469,28 @@
               <div class="service-card-icon">
                 <i class="bi bi-server"></i>
               </div>
-              <h4>Backend &amp; APIs</h4>
-              <p>Designing and building REST APIs, authentication systems, and server-side logic with Node.js and Express.</p>
+              <h4>REST APIs &amp; Real-Time Backends</h4>
+              <p>Engineering server-side REST APIs, WebSockets for instant live data sync, and JWT-secured authentication flows using Node.js.</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-card">
               <div class="service-card-icon">
-                <i class="bi bi-database"></i>
+                <i class="bi bi-database-check"></i>
               </div>
-              <h4>Database Design</h4>
-              <p>Structuring relational databases with PostgreSQL and MySQL — schema design, queries, and optimization.</p>
+              <h4>Database Design &amp; Optimization</h4>
+              <p>Architecting normalized relational schemas with MySQL and PostgreSQL, writing optimized queries and ensuring data integrity.</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-card">
               <div class="service-card-icon">
-                <i class="bi bi-camera-video"></i>
+                <i class="bi bi-shop-window"></i>
               </div>
-              <h4>Video Editing</h4>
-              <p>Editing promotional clips, reels, and video content with smooth transitions and engaging pacing.</p>
+              <h4>POS &amp; Inventory Management</h4>
+              <p>Delivering custom point-of-sale solutions with barcode integration, inventory tracking, sales reporting, and receipt export.</p>
             </div>
           </div>
 
@@ -468,8 +499,8 @@
               <div class="service-card-icon">
                 <i class="bi bi-palette"></i>
               </div>
-              <h4>Graphic Design</h4>
-              <p>Creating logos, social media graphics, and visual assets using Figma and Canva.</p>
+              <h4>UI/UX &amp; Visual Design</h4>
+              <p>Designing user-centric layouts, wireframes, and branding assets with Figma to translate client requirements into clean software.</p>
             </div>
           </div>
 
@@ -478,115 +509,92 @@
 
     </section><!-- /Services Section -->
 
-    <!-- Resume Section -->
-    <section id="resume" class="resume section">
+    <!-- Experience & Education Section -->
+    <section id="experience" class="resume section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Resume</h2>
-        <p>My professional experience, education, and projects</p>
+        <h2>Experience &amp; Credentials</h2>
+        <p>My professional developer background, education, and verified technical certifications</p>
       </div><!-- End Section Title -->
 
       <div class="container">
 
-        <div class="row">
+        <div class="row gy-4">
 
+          <!-- Professional Experience Column -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Summary</h3>
+            <h3 class="resume-title"><i class="bi bi-briefcase-fill me-2 text-accent"></i>Professional Experience</h3>
 
-            <div class="resume-item pb-0">
-              <h4>Sherwen Mortis</h4>
-              <p><em>Information Technology graduate with experience in web and mobile application development using React, Flutter, Node.js, and PostgreSQL. Experienced in developing full-stack applications, implementing system solutions, and providing technical support. Eager to contribute technical expertise and continue growing as a developer.</em></p>
-            </div><!-- Edn Resume Item -->
+            <div class="resume-item">
+              <h4>Freelance Full-Stack Developer</h4>
+              <h5>2025 – Present</h5>
+              <p><em>Custom Web Applications &amp; Business Systems</em></p>
+              <ul>
+                <li>Design and develop custom web applications and business systems based on client requirements, including POS solutions, inventory management systems, responsive interfaces, REST APIs, databases, real-time functionality, and deployment.</li>
+                <li>Engineered a custom retail Hardware Store POS platform featuring barcode scanning, live inventory depletion, sales auditing, and multi-format reports (Excel, PDF).</li>
+                <li>Consult with clients directly to capture workflow bottlenecks, prototype solutions, and deploy reliable software to production environments.</li>
+              </ul>
+            </div>
 
-            <h3 class="resume-title">Education</h3>
+            <div class="resume-item">
+              <h4>Web &amp; Mobile Developer (Contract)</h4>
+              <h5>June 2025 – May 2026</h5>
+              <p><em>CENRO (Community Environment &amp; Natural Resources Office)</em></p>
+              <ul>
+                <li>Developed and maintained web and mobile applications using React.js and Flutter for municipal waste monitoring.</li>
+                <li>Integrated REST APIs, backend services, database structures, and role-based authentication modules across admin, driver, and citizen workflows.</li>
+                <li>Conducted thorough end-to-end testing, bug fixing, and continuous deployment workflows on Vercel and Render.</li>
+                <li>Collaborated closely with departmental stakeholders to refine operational dashboards and data visualization maps.</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Education & Certifications Column -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="resume-title"><i class="bi bi-mortarboard-fill me-2 text-accent"></i>Education</h3>
+
             <div class="resume-item">
               <h4>Bachelor of Science in Information Technology</h4>
-              <h5>2026</h5>
+              <h5>Graduating Class 2026</h5>
               <p><em>Josefina H. Cerilles State College</em></p>
-            </div><!-- Edn Resume Item -->
+              <p class="text-secondary-custom">
+                Core coursework: Software Engineering, Database Systems, Web &amp; Mobile Development, Data Structures &amp; Algorithms, Network Administration.
+              </p>
+            </div>
 
-            <h3 class="resume-title">Certifications</h3>
+            <h3 class="resume-title mt-4"><i class="bi bi-award-fill me-2 text-accent"></i>Certifications</h3>
+
             <div class="resume-item">
               <h4>User Experience Design: Discovering Thinking Framework</h4>
               <h5>2025</h5>
-            </div><!-- Edn Resume Item -->
+              <p class="text-secondary-custom">Frameworks for user research, design thinking, information architecture, and interface usability.</p>
+            </div>
+
             <div class="resume-item">
               <h4>Pixel Perfect: A Beginner's Journey to Graphic Design</h4>
               <h5>2025</h5>
-            </div><!-- Edn Resume Item -->
+              <p class="text-secondary-custom">Visual hierarchy, color theory, typography, and professional asset preparation.</p>
+            </div>
+
             <div class="resume-item">
               <h4>Introduction to Android Studio: A Hands-On Project for Game Logic</h4>
               <h5>2025</h5>
-            </div><!-- Edn Resume Item -->
+              <p class="text-secondary-custom">Component lifecycles, event listeners, state handling, and interactive Android logic.</p>
+            </div>
+
             <div class="resume-item">
               <h4>Introduction to SQL</h4>
               <h5>2025</h5>
               <p><em>SoloLearn</em></p>
-            </div><!-- Edn Resume Item -->
+            </div>
+
             <div class="resume-item">
               <h4>Python Developer</h4>
               <h5>2025</h5>
               <p><em>SoloLearn</em></p>
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Freelance Full-Stack Developer</h4>
-              <h5>2025 - Present</h5>
-              <p><em>Hardware Store POS System</em></p>
-              <ul>
-                <li>Developed a custom Point of Sale system with barcode scanner integration for hardware store operations</li>
-                <li>Implemented inventory management, sales reporting, and customer management modules</li>
-                <li>Built copra and charcoal tracking features specific to the hardware store's product line</li>
-                <li>Integrated real-time updates with WebSockets and exportable reports (Excel, PDF)</li>
-                <li>Architected as a monorepo with React, TypeScript, Node.js, Express, and MySQL</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Web &amp; Mobile Developer (Contract)</h4>
-              <h5>June 2025 - May 2026</h5>
-              <p><em>CENRO</em></p>
-              <ul>
-                <li>Developed and maintained web and mobile applications using React.js and Flutter</li>
-                <li>Integrated REST APIs and backend services</li>
-                <li>Implemented database structures and authentication modules</li>
-                <li>Conducted testing, debugging, deployment, and maintenance activities</li>
-                <li>Collaborated with stakeholders to improve system functionality</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <h3 class="resume-title">Projects</h3>
-            <div class="resume-item">
-              <h4>CENRO Waste Tracker System</h4>
-              <p><em>React.js • Flutter • PostgreSQL • Firebase</em></p>
-              <ul>
-                <li>Developed a waste monitoring platform with admin, driver, and citizen modules.</li>
-                <li>Implemented authentication, role management, and real-time updates.</li>
-                <li>Integrated reporting features and deployment on Vercel and Render.</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-            <div class="resume-item">
-              <h4>Karenderya Inventory &amp; Billing System</h4>
-              <p><em>C# • MS Access</em></p>
-              <ul>
-                <li>Developed inventory and billing modules.</li>
-                <li>Implemented CRUD operations and reporting functionalities.</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-            <div class="resume-item">
-              <h4>Hardware Store POS System</h4>
-              <p><em>React • TypeScript • Node.js • Express • MySQL</em></p>
-              <ul>
-                <li>Developed a custom POS system with barcode scanner integration for a hardware store.</li>
-                <li>Implemented inventory management, sales reporting, customer management, and copra/charcoal tracking.</li>
-                <li>Built real-time features with WebSockets and exportable reports in Excel and PDF formats.</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
+            </div>
 
           </div>
 
@@ -594,86 +602,267 @@
 
       </div>
 
-    </section><!-- /Resume Section -->
+    </section><!-- /Experience Section -->
 
-    <!-- Portfolio Section -->
+    <!-- Projects Section -->
     <section id="portfolio" class="portfolio section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Projects</h2>
-        <p>Projects I've developed</p>
+        <h2>Featured Projects</h2>
+        <p>Production business systems, full-stack applications, and client solutions</p>
       </div><!-- End Section Title -->
 
       <div class="container">
 
-        <div class="row gy-4">
+        <div class="projects-container d-flex flex-column gap-5">
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="portfolio-info">
-              <div class="portfolio-info-header">
-                <h4>CENRO Waste Tracker System</h4>
-                <div class="portfolio-tech-stack">
-                  <span class="tech-tag">React.js</span>
-                  <span class="tech-tag">Flutter</span>
-                  <span class="tech-tag">PostgreSQL</span>
-                  <span class="tech-tag">Firebase</span>
+          <!-- 1. FLAGSHIP PROJECT: Hardware Store POS System -->
+          <div class="project-card project-card-flagship" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-header">
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                <div>
+                  <div class="project-badges mb-2">
+                    <span class="badge-flagship"><i class="bi bi-star-fill me-1"></i>Flagship Project</span>
+                    <span class="badge-status badge-status-completed"><i class="bi bi-check-circle-fill me-1"></i>Completed / Production</span>
+                  </div>
+                  <h3 class="project-title">Hardware Store POS System</h3>
                 </div>
               </div>
-              <ul>
-                <li>Developed a waste monitoring platform with admin, driver, and citizen modules.</li>
-                <li>Implemented authentication, role management, and real-time updates.</li>
-                <li>Integrated reporting features and deployment on Vercel and Render.</li>
-              </ul>
-              <div class="portfolio-links">
-                <a href="https://cenrotracker.vercel.app/" target="_blank" class="btn btn-outline-primary btn-sm">
-                  <i class="bi bi-globe me-1"></i>Website
-                </a>
-                <a href="https://drive.google.com/file/d/1Q9a3HtwkF8f1EzNgpKVVeR28vwYkB7OO/view?usp=sharing" target="_blank" class="btn btn-outline-success btn-sm">
-                  <i class="bi bi-cloud-download me-1"></i>Mobile App
-                </a>
-              </div>
+              <p class="project-purpose mt-2">
+                <strong>Purpose:</strong> Built to solve inventory mismanagement, manual checkout delays, and unrecorded bulk commodity trades in a local hardware and construction supply business.
+              </p>
             </div>
-          </div><!-- End Portfolio Item -->
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="portfolio-info">
-              <div class="portfolio-info-header">
-                <h4>Karenderya Inventory &amp; Billing System</h4>
-                <div class="portfolio-tech-stack">
-                  <span class="tech-tag">C#</span>
-                  <span class="tech-tag">MS Access</span>
+            <div class="project-body">
+              <div class="row gy-4">
+                <div class="col-lg-7">
+                  <h5 class="section-subheading">What I Developed:</h5>
+                  <p>
+                    Architected and developed a full-stack, enterprise-grade Point of Sale and retail operations system as a monorepo. The application pairs a responsive React and TypeScript frontend with a high-performance Express/Node.js backend and a normalized MySQL relational database, leveraging shared TypeScript types between layers for end-to-end type safety.
+                  </p>
+
+                  <h5 class="section-subheading mt-3">Key Implemented Features:</h5>
+                  <ul class="project-features-list">
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Cashier &amp; POS Terminal:</strong> Rapid checkout workflow with automated total calculations, discounts, and item lookups.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Barcode Scanner Integration:</strong> Hardware scanner compatibility for zero-friction SKU barcode lookup.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Real-Time Inventory Management:</strong> Automatic stock level deductions, low-stock threshold alerts, and batch adjustments.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Customer Accounts &amp; Credit:</strong> Customer balance tracking, sales on credit, and payment ledger history.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Specialized Copra &amp; Charcoal Tracking:</strong> Custom module built specifically for the client's dual trade in agricultural commodities.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>WebSockets Real-Time Sync:</strong> Instant notification of register transactions across terminals without page refresh.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Authentication &amp; Role Security:</strong> JWT authentication with distinct Cashier vs. Manager permissions.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Financial Auditing &amp; Exports:</strong> Daily sales reporting with exportable reports in Excel (.xlsx) and PDF formats.</li>
+                  </ul>
+
+                  <div class="project-tech-stack mt-4">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Express.js</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">WebSockets</span>
+                    <span class="tech-tag">JWT</span>
+                  </div>
+                </div>
+
+                <div class="col-lg-5">
+                  <div class="project-gallery-box">
+                    <h6 class="gallery-title"><i class="bi bi-images me-2"></i>System Modules Preview</h6>
+                    <div class="row g-2">
+                      <div class="col-12">
+                        <div class="project-preview-card">
+                          <div class="preview-card-icon"><i class="bi bi-speedometer2"></i></div>
+                          <div class="preview-card-content">
+                            <h6>POS Cashier Terminal</h6>
+                            <p>Fast item scanning, cart calculations, and payment tender.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="project-preview-card">
+                          <div class="preview-card-icon"><i class="bi bi-boxes"></i></div>
+                          <div class="preview-card-content">
+                            <h6>Inventory &amp; Stock Ledger</h6>
+                            <p>Threshold alerts, supplier catalogs, and bulk batch tracking.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="project-preview-card">
+                          <div class="preview-card-icon"><i class="bi bi-upc-scan"></i></div>
+                          <div class="preview-card-content">
+                            <h6>Barcode Scanning &amp; Exports</h6>
+                            <p>Hardware barcode input, Excel auditing, and PDF receipts.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <ul>
-                <li>Developed inventory and billing modules.</li>
-                <li>Implemented CRUD operations and reporting functionalities.</li>
-              </ul>
             </div>
-          </div><!-- End Portfolio Item -->
+          </div><!-- End Hardware Store POS -->
 
-          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
-            <div class="portfolio-info">
-              <div class="portfolio-info-header">
-                <h4>Hardware Store POS System</h4>
-                <div class="portfolio-tech-stack">
-                  <span class="tech-tag">React</span>
-                  <span class="tech-tag">TypeScript</span>
-                  <span class="tech-tag">Tailwind CSS</span>
-                  <span class="tech-tag">Node.js</span>
-                  <span class="tech-tag">Express</span>
-                  <span class="tech-tag">MySQL</span>
-                  <span class="tech-tag">WebSockets</span>
+          <!-- 2. CENRO Waste Tracker System -->
+          <div class="project-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="project-header">
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                <div>
+                  <div class="project-badges mb-2">
+                    <span class="badge-status badge-status-live"><i class="bi bi-broadcast me-1"></i>Live Platform</span>
+                    <span class="badge-status badge-status-info"><i class="bi bi-phone me-1"></i>Web &amp; Mobile</span>
+                  </div>
+                  <h3 class="project-title">CENRO Waste Tracker System</h3>
+                </div>
+                <div class="project-links">
+                  <a href="https://cenrotracker.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">
+                    <i class="bi bi-globe me-1"></i>Live Website
+                  </a>
+                  <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill" title="Mobile APK available upon request">
+                    <i class="bi bi-android2 me-1"></i>Mobile App (Flutter)
+                  </span>
                 </div>
               </div>
-              <ul>
-                <li>Developed a full-featured Point of Sale (POS) system with barcode scanner integration for a hardware store.</li>
-                <li>Implemented inventory management, sales reporting, customer management, and copra/charcoal tracking modules.</li>
-                <li>Built real-time features with WebSockets, JWT authentication, and exportable reports (Excel, PDF).</li>
-                <li>Architected as a monorepo with shared types between frontend and backend for type safety.</li>
-              </ul>
+              <p class="project-purpose mt-2">
+                <strong>Purpose:</strong> Modernize city-wide municipal solid waste tracking, collection route visibility, and public reporting for the Community Environment and Natural Resources Office.
+              </p>
             </div>
-          </div><!-- End Portfolio Item -->
+
+            <div class="project-body">
+              <div class="row gy-4">
+                <div class="col-lg-7">
+                  <h5 class="section-subheading">What I Developed:</h5>
+                  <p>
+                    Engineered a multi-role web administration portal using React.js paired with a cross-platform mobile client in Flutter/Dart for field drivers and citizens. Connected the system with PostgreSQL for relational data storage and Firebase for real-time notifications.
+                  </p>
+
+                  <h5 class="section-subheading mt-3">Key Implemented Features:</h5>
+                  <ul class="project-features-list">
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Triple-Role Portal:</strong> Distinct dashboards for City Administrators, Collection Drivers, and Local Citizens.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Interactive Route Mapping:</strong> Waste collection territory maps and dispatch status monitoring.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Mobile Collection App (Flutter):</strong> Real-time task checklists and route navigation for truck drivers.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Citizen Reporting Module:</strong> Submission of missed collections and waste accumulation hot-spots.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Production Cloud Deployment:</strong> Automated production deployment on Vercel (Web frontend) and Render (Backend API).</li>
+                  </ul>
+
+                  <div class="project-tech-stack mt-4">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Dart</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">REST APIs</span>
+                    <span class="tech-tag">Vercel</span>
+                    <span class="tech-tag">Render</span>
+                  </div>
+                </div>
+
+                <div class="col-lg-5">
+                  <div class="project-gallery-box">
+                    <h6 class="gallery-title"><i class="bi bi-images me-2"></i>System Screenshots</h6>
+                    <div class="row g-2">
+                      <div class="col-6">
+                        <a href="assets/img/screenshots/cenro-1.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-cenro" data-title="CENRO — Admin Dashboard Overview">
+                          <img src="assets/img/screenshots/cenro-1.jpg" alt="CENRO Admin Dashboard Overview" class="img-fluid rounded" loading="lazy">
+                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+                        </a>
+                        <span class="thumb-caption">Admin Dashboard</span>
+                      </div>
+                      <div class="col-6">
+                        <a href="assets/img/screenshots/cenro-2.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-cenro" data-title="CENRO — Waste Collection Map">
+                          <img src="assets/img/screenshots/cenro-2.jpg" alt="CENRO Waste Collection Map" class="img-fluid rounded" loading="lazy">
+                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+                        </a>
+                        <span class="thumb-caption">Collection Map</span>
+                      </div>
+                      <div class="col-12">
+                        <a href="assets/img/screenshots/cenro-3.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-cenro" data-title="CENRO — Mobile App (Flutter)">
+                          <img src="assets/img/screenshots/cenro-3.jpg" alt="CENRO Mobile App Interface" class="img-fluid rounded" loading="lazy">
+                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+                        </a>
+                        <span class="thumb-caption">Mobile Application (Flutter)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End CENRO Project -->
+
+          <!-- 3. Karenderya Inventory & Billing System -->
+          <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-header">
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                <div>
+                  <div class="project-badges mb-2">
+                    <span class="badge-status badge-status-completed"><i class="bi bi-check-circle-fill me-1"></i>Completed</span>
+                    <span class="badge-status badge-status-info"><i class="bi bi-laptop me-1"></i>Desktop Software</span>
+                  </div>
+                  <h3 class="project-title">Karenderya Inventory &amp; Billing System</h3>
+                </div>
+              </div>
+              <p class="project-purpose mt-2">
+                <strong>Purpose:</strong> Eliminate order billing errors, paper receipt loss, and uncontrolled ingredient waste in a local canteen/food service establishment.
+              </p>
+            </div>
+
+            <div class="project-body">
+              <div class="row gy-4">
+                <div class="col-lg-7">
+                  <h5 class="section-subheading">What I Developed:</h5>
+                  <p>
+                    Developed a native desktop billing and inventory tracking system built with C# and Microsoft Access relational database. The software provides quick order tallying, automated change calculations, and raw ingredient stock reconciliation.
+                  </p>
+
+                  <h5 class="section-subheading mt-3">Key Implemented Features:</h5>
+                  <ul class="project-features-list">
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Counter Billing &amp; Calculations:</strong> Rapid order itemization with automatic tax, total, and change computation.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Menu &amp; Recipe Management:</strong> Complete CRUD operations for food categories, menu pricing, and ingredient bundles.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Ingredient Deduction Logic:</strong> Automatic deduction of raw stock inventory upon dish order confirmation.</li>
+                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Sales Auditing &amp; Reports:</strong> End-of-day revenue reports, top-selling items, and low-inventory warnings.</li>
+                  </ul>
+
+                  <div class="project-tech-stack mt-4">
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">.NET</span>
+                    <span class="tech-tag">MS Access</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Desktop App</span>
+                  </div>
+                </div>
+
+                <div class="col-lg-5">
+                  <div class="project-gallery-box">
+                    <h6 class="gallery-title"><i class="bi bi-images me-2"></i>System Screenshots</h6>
+                    <div class="row g-2">
+                      <div class="col-6">
+                        <a href="assets/img/screenshots/karenderya-1.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-karenderya" data-title="Karenderya — Inventory Module">
+                          <img src="assets/img/screenshots/karenderya-1.jpg" alt="Karenderya Inventory Module" class="img-fluid rounded" loading="lazy">
+                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+                        </a>
+                        <span class="thumb-caption">Inventory Module</span>
+                      </div>
+                      <div class="col-6">
+                        <a href="assets/img/screenshots/karenderya-2.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-karenderya" data-title="Karenderya — Billing Module">
+                          <img src="assets/img/screenshots/karenderya-2.jpg" alt="Karenderya Billing Module" class="img-fluid rounded" loading="lazy">
+                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+                        </a>
+                        <span class="thumb-caption">Billing Module</span>
+                      </div>
+                      <div class="col-12">
+                        <a href="assets/img/screenshots/karenderya-3.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-karenderya" data-title="Karenderya — Reports Module">
+                          <img src="assets/img/screenshots/karenderya-3.jpg" alt="Karenderya Reports Module" class="img-fluid rounded" loading="lazy">
+                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+                        </a>
+                        <span class="thumb-caption">Reports &amp; Analytics</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Karenderya Project -->
 
         </div>
 
@@ -681,325 +870,141 @@
 
     </section><!-- /Portfolio Section -->
 
-    <!-- Screenshots Section -->
-    <section id="screenshots" class="screenshots section">
+    <!-- Creative Work Section (Posters & Graphic Design) -->
+    <section id="creative" class="posters section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Screenshots</h2>
-        <p>A look inside the systems I've built</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <!-- CENRO Waste Tracker System -->
-        <div class="screenshots-project" data-aos="fade-up" data-aos-delay="100">
-          <div class="screenshots-project-header">
-            <div>
-              <h4>CENRO Waste Tracker System</h4>
-              <div class="portfolio-tech-stack">
-                <span class="tech-tag">React.js</span>
-                <span class="tech-tag">Flutter</span>
-                <span class="tech-tag">PostgreSQL</span>
-                <span class="tech-tag">Firebase</span>
-              </div>
-            </div>
-            <a href="https://cenrotracker.vercel.app/" target="_blank" class="btn btn-outline-primary btn-sm">
-              <i class="bi bi-globe me-1"></i>Visit Live
-            </a>
-          </div>
-
-          <div class="screenshots-slider init-swiper">
-            <script type="application/json" class="swiper-config">
-              {
-                "speed": 600,
-                "slidesPerView": "auto",
-                "centeredSlides": true,
-                "spaceBetween": 0,
-                "navigation": {
-                  "nextEl": ".swiper-button-next-cenro",
-                  "prevEl": ".swiper-button-prev-cenro"
-                },
-                "pagination": {
-                  "el": ".swiper-pagination-cenro",
-                  "clickable": true
-                }
-              }
-            </script>
-
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="screenshots-item">
-                  <div class="screenshots-thumb">
-                    <img src="assets/img/screenshots/cenro-1.jpg" alt="CENRO Dashboard" class="img-fluid">
-                  </div>
-                  <p class="screenshots-caption">Dashboard Overview</p>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="screenshots-item">
-                  <div class="screenshots-thumb">
-                    <img src="assets/img/screenshots/cenro-2.jpg" alt="CENRO Map" class="img-fluid">
-                  </div>
-                  <p class="screenshots-caption">Waste Collection Map</p>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="screenshots-item">
-                  <div class="screenshots-thumb">
-                    <img src="assets/img/screenshots/cenro-3.jpg" alt="CENRO Mobile App" class="img-fluid">
-                  </div>
-                  <p class="screenshots-caption">Mobile App (Flutter)</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-controls">
-              <button class="swiper-button-prev swiper-button-prev-cenro" aria-label="Previous screenshot"><i class="bi bi-chevron-left"></i></button>
-              <div class="swiper-pagination swiper-pagination-cenro"></div>
-              <button class="swiper-button-next swiper-button-next-cenro" aria-label="Next screenshot"><i class="bi bi-chevron-right"></i></button>
-            </div>
-          </div>
-        </div><!-- End CENRO Project -->
-
-        <!-- Karenderya Inventory & Billing System -->
-        <div class="screenshots-project" data-aos="fade-up" data-aos-delay="200">
-          <div class="screenshots-project-header">
-            <div>
-              <h4>Karenderya Inventory &amp; Billing System</h4>
-              <div class="portfolio-tech-stack">
-                <span class="tech-tag">C#</span>
-                <span class="tech-tag">MS Access</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="screenshots-slider init-swiper">
-            <script type="application/json" class="swiper-config">
-              {
-                "speed": 600,
-                "slidesPerView": "auto",
-                "centeredSlides": true,
-                "spaceBetween": 0,
-                "navigation": {
-                  "nextEl": ".swiper-button-next-karenderya",
-                  "prevEl": ".swiper-button-prev-karenderya"
-                },
-                "pagination": {
-                  "el": ".swiper-pagination-karenderya",
-                  "clickable": true
-                }
-              }
-            </script>
-
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="screenshots-item">
-                  <div class="screenshots-thumb">
-                    <img src="assets/img/screenshots/karenderya-1.jpg" alt="Karenderya Inventory" class="img-fluid">
-                  </div>
-                  <p class="screenshots-caption">Inventory Module</p>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="screenshots-item">
-                  <div class="screenshots-thumb">
-                    <img src="assets/img/screenshots/karenderya-2.jpg" alt="Karenderya Billing" class="img-fluid">
-                  </div>
-                  <p class="screenshots-caption">Billing Module</p>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="screenshots-item">
-                  <div class="screenshots-thumb">
-                    <img src="assets/img/screenshots/karenderya-3.jpg" alt="Karenderya Reports" class="img-fluid">
-                  </div>
-                  <p class="screenshots-caption">Reports</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-controls">
-              <button class="swiper-button-prev swiper-button-prev-karenderya" aria-label="Previous screenshot"><i class="bi bi-chevron-left"></i></button>
-              <div class="swiper-pagination swiper-pagination-karenderya"></div>
-              <button class="swiper-button-next swiper-button-next-karenderya" aria-label="Next screenshot"><i class="bi bi-chevron-right"></i></button>
-            </div>
-          </div>
-        </div><!-- End Karenderya Project -->
-
-        <!-- Hardware Store POS System -->
-        <div class="screenshots-project" data-aos="fade-up" data-aos-delay="300">
-          <div class="screenshots-project-header">
-            <div>
-              <h4>Hardware Store POS System</h4>
-              <div class="portfolio-tech-stack">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Express</span>
-                <span class="tech-tag">MySQL</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="screenshots-slider init-swiper">
-            <script type="application/json" class="swiper-config">
-              {
-                "speed": 600,
-                "slidesPerView": "auto",
-                "centeredSlides": true,
-                "spaceBetween": 0,
-                "navigation": {
-                  "nextEl": ".swiper-button-next-pos",
-                  "prevEl": ".swiper-button-prev-pos"
-                },
-                "pagination": {
-                  "el": ".swiper-pagination-pos",
-                  "clickable": true
-                }
-              }
-            </script>
-
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="screenshots-item">
-                  <div class="screenshots-thumb screenshots-placeholder">
-                    <i class="bi bi-image"></i>
-                    <span>POS Dashboard</span>
-                  </div>
-                  <p class="screenshots-caption">Dashboard Overview</p>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="screenshots-item">
-                  <div class="screenshots-thumb screenshots-placeholder">
-                    <i class="bi bi-image"></i>
-                    <span>Inventory Management</span>
-                  </div>
-                  <p class="screenshots-caption">Inventory Module</p>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="screenshots-item">
-                  <div class="screenshots-thumb screenshots-placeholder">
-                    <i class="bi bi-image"></i>
-                    <span>Barcode Scanner</span>
-                  </div>
-                  <p class="screenshots-caption">Barcode Scanning</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-controls">
-              <button class="swiper-button-prev swiper-button-prev-pos" aria-label="Previous screenshot"><i class="bi bi-chevron-left"></i></button>
-              <div class="swiper-pagination swiper-pagination-pos"></div>
-              <button class="swiper-button-next swiper-button-next-pos" aria-label="Next screenshot"><i class="bi bi-chevron-right"></i></button>
-            </div>
-          </div>
-        </div><!-- End Hardware Store POS Project -->
-
-      </div>
-
-    </section><!-- /Screenshots Section -->
-
-    <!-- Posters Section -->
-    <section id="posters" class="posters section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Posters</h2>
-        <p>Graphic designs and creative posters</p>
+        <h2>Creative Work</h2>
+        <p>Graphic designs, visual branding, and promotional media</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="posters-grid">
           <div class="poster-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="poster-thumb">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" alt="Poster Design 1" class="img-fluid">
-            </div>
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" class="glightbox poster-thumb" data-gallery="creative-work" data-title="Creative Visual Design 1">
+              <img src="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" alt="Creative Poster Design 1" class="img-fluid" loading="lazy">
+              <div class="poster-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+            </a>
           </div>
           <div class="poster-item" data-aos="fade-up" data-aos-delay="150">
-            <div class="poster-thumb">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" alt="Poster Design 2" class="img-fluid">
-            </div>
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" class="glightbox poster-thumb" data-gallery="creative-work" data-title="Creative Visual Design 2">
+              <img src="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" alt="Creative Poster Design 2" class="img-fluid" loading="lazy">
+              <div class="poster-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+            </a>
           </div>
           <div class="poster-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="poster-thumb">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" alt="Poster Design 3" class="img-fluid">
-            </div>
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" class="glightbox poster-thumb" data-gallery="creative-work" data-title="Creative Visual Design 3">
+              <img src="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" alt="Creative Poster Design 3" class="img-fluid" loading="lazy">
+              <div class="poster-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+            </a>
           </div>
           <div class="poster-item" data-aos="fade-up" data-aos-delay="250">
-            <div class="poster-thumb">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" alt="Poster Design 4" class="img-fluid">
-            </div>
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" class="glightbox poster-thumb" data-gallery="creative-work" data-title="Creative Visual Design 4">
+              <img src="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" alt="Creative Poster Design 4" class="img-fluid" loading="lazy">
+              <div class="poster-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+            </a>
           </div>
           <div class="poster-item" data-aos="fade-up" data-aos-delay="300">
-            <div class="poster-thumb">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" alt="Poster Design 5" class="img-fluid">
-            </div>
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" class="glightbox poster-thumb" data-gallery="creative-work" data-title="Creative Visual Design 5">
+              <img src="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" alt="Creative Poster Design 5" class="img-fluid" loading="lazy">
+              <div class="poster-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+            </a>
           </div>
           <div class="poster-item" data-aos="fade-up" data-aos-delay="350">
-            <div class="poster-thumb">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" alt="Poster Design 6" class="img-fluid">
-            </div>
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" class="glightbox poster-thumb" data-gallery="creative-work" data-title="Creative Visual Design 6">
+              <img src="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" alt="Creative Poster Design 6" class="img-fluid" loading="lazy">
+              <div class="poster-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+            </a>
           </div>
           <div class="poster-item" data-aos="fade-up" data-aos-delay="400">
-            <div class="poster-thumb">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" alt="Poster Design 7" class="img-fluid">
-            </div>
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" class="glightbox poster-thumb" data-gallery="creative-work" data-title="Creative Visual Design 7">
+              <img src="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" alt="Creative Poster Design 7" class="img-fluid" loading="lazy">
+              <div class="poster-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+            </a>
           </div>
           <div class="poster-item" data-aos="fade-up" data-aos-delay="450">
-            <div class="poster-thumb">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" alt="Poster Design 8" class="img-fluid">
-            </div>
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" class="glightbox poster-thumb" data-gallery="creative-work" data-title="Creative Visual Design 8">
+              <img src="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" alt="Creative Poster Design 8" class="img-fluid" loading="lazy">
+              <div class="poster-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+            </a>
           </div>
           <div class="poster-item" data-aos="fade-up" data-aos-delay="500">
-            <div class="poster-thumb">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" alt="Poster Design 9" class="img-fluid">
-            </div>
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" class="glightbox poster-thumb" data-gallery="creative-work" data-title="Creative Visual Design 9">
+              <img src="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" alt="Creative Poster Design 9" class="img-fluid" loading="lazy">
+              <div class="poster-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
+            </a>
           </div>
         </div>
       </div>
 
-    </section><!-- /Posters Section -->
+    </section><!-- /Creative Work Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Get in touch with me</p>
+        <h2>Get in Touch</h2>
+        <p>Have a project in mind or looking for a developer? I'm available for freelance projects, collaborations, and full-time opportunities.</p>
       </div><!-- End Section Title -->
 
-      <div class="container" data-aos="fade" data-aos-delay="100">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
 
           <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
-            <div class="info-item d-flex mb-4">
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Address</h3>
-                <p>Pagadian City, Philippines</p>
+            <div class="contact-info-panel">
+              
+              <div class="info-item d-flex mb-4">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3>Location</h3>
+                  <p>Pagadian City, Philippines</p>
+                </div>
               </div>
-            </div><!-- End Info Item -->
 
-            <div class="info-item d-flex mb-4">
-              <i class="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Call Me</h3>
-                <p>+63 963 13 0910</p>
+              <div class="info-item d-flex mb-4">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>Phone / WhatsApp</h3>
+                  <p><a href="tel:+639631310910">+63 963 131 0910</a></p>
+                </div>
               </div>
-            </div><!-- End Info Item -->
 
-            <div class="info-item d-flex">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Email Me</h3>
-                <p>mortis.sherwen@gmail.com</p>
+              <div class="info-item d-flex mb-4">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>Email</h3>
+                  <p><a href="mailto:mortis.sherwen@gmail.com">mortis.sherwen@gmail.com</a></p>
+                </div>
               </div>
-            </div><!-- End Info Item -->
+
+              <div class="info-item d-flex mb-4">
+                <i class="bi bi-github flex-shrink-0"></i>
+                <div>
+                  <h3>GitHub</h3>
+                  <p><a href="https://github.com/shermanjk" target="_blank" rel="noopener noreferrer">github.com/shermanjk</a></p>
+                </div>
+              </div>
+
+              <div class="info-item d-flex mb-4">
+                <i class="bi bi-linkedin flex-shrink-0"></i>
+                <div>
+                  <h3>LinkedIn</h3>
+                  <p><a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" rel="noopener noreferrer">linkedin.com/in/sherwen-mortis</a></p>
+                </div>
+              </div>
+
+              <div class="info-item d-flex">
+                <i class="bi bi-file-earmark-arrow-down flex-shrink-0"></i>
+                <div>
+                  <h3>Curriculum Vitae</h3>
+                  <p><a href="assets/files/Sherwen-Mortis-CV.pdf" download class="link-download-cv">Download Sherwen-Mortis-CV.pdf</a></p>
+                </div>
+              </div>
+
+            </div>
           </div>
 
           <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
@@ -1007,19 +1012,23 @@
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  <label for="contact-name" class="form-label visually-hidden">Your Name</label>
+                  <input type="text" id="contact-name" name="name" class="form-control" placeholder="Your Name" required>
                 </div>
 
                 <div class="col-md-6">
-                  <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                  <label for="contact-email" class="form-label visually-hidden">Your Email</label>
+                  <input type="email" id="contact-email" name="email" class="form-control" placeholder="Your Email" required>
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                  <label for="contact-subject" class="form-label visually-hidden">Subject</label>
+                  <input type="text" id="contact-subject" name="subject" class="form-control" placeholder="Project Inquiry / Job Opportunity Subject" required>
                 </div>
 
                 <div class="col-md-12">
-                  <textarea name="message" class="form-control" rows="6" placeholder="Message" required></textarea>
+                  <label for="contact-message" class="form-label visually-hidden">Message</label>
+                  <textarea id="contact-message" name="message" class="form-control" rows="6" placeholder="Tell me about your project, timeline, or requirements..." required></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
@@ -1043,13 +1052,13 @@
   <footer id="footer" class="footer position-relative">
     <div class="container">
       <h3 class="sitename">Sherwen Mortis</h3>
-      <p>Web &amp; Mobile Developer — Building clean, functional, and scalable applications.</p>
+      <p>Full-Stack Web &amp; Mobile Developer | Freelancer — Building reliable business systems and modern applications.</p>
       <div class="footer-social">
-        <a href="https://www.facebook.com/mortis.shad/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-        <a href="https://www.instagram.com/sherweennn/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        <a href="https://github.com/shermanjk" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
-        <a href="mailto:mortis.sherwen@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+        <a href="https://github.com/shermanjk" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="mailto:mortis.sherwen@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+        <a href="https://www.facebook.com/mortis.shad/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/sherweennn/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Sherwen Mortis. All rights reserved.</p>
@@ -1063,8 +1072,8 @@
       <i class="bi bi-check-circle-fill"></i>
     </div>
     <div class="contact-toast-body">
-      <p class="contact-toast-title">Message Sent!</p>
-      <p class="contact-toast-msg">Thanks for reaching out. I'll get back to you soon.</p>
+      <p class="contact-toast-title">Message Sent Successfully!</p>
+      <p class="contact-toast-msg">Thank you for reaching out. I'll get back to you promptly.</p>
     </div>
     <button class="contact-toast-close" id="contact-toast-close" aria-label="Close">
       <i class="bi bi-x"></i>
@@ -1072,22 +1081,15 @@
   </div>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#hero" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Scroll to top"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>

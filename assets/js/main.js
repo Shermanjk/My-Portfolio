@@ -1,10 +1,7 @@
 /**
-* Template Name: MyResume
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-* Updated: Jun 29 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+ * Sherwen Mortis — Portfolio Scripts
+ * Custom interactions, animations, theme transitions, and validations.
+ */
 
 (function() {
   "use strict";
@@ -43,25 +40,13 @@
   }
 
   /**
-   * Hide mobile nav on same-page/hash links
+   * Hide mobile nav on same-page/hash links from desktop menu
    */
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
       if (mobileNav && mobileNav.classList.contains('open')) {
         mobileNav.classList.remove('open');
       }
-    });
-  });
-
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
     });
   });
 
@@ -78,145 +63,82 @@
   /**
    * Scroll top button
    */
-  let scrollTop = document.querySelector('.scroll-top');
-
+  const scrollTop = document.querySelector('.scroll-top');
   function toggleScrollTop() {
     if (scrollTop) {
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
 
   /**
-   * Animation on scroll function and init
+   * Animation on scroll (AOS)
    */
   function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 600,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+    }
   }
   window.addEventListener('load', aosInit);
 
   /**
-   * Init typed.js
+   * Optional Typed.js Initialization
    */
   const selectTyped = document.querySelector('.typed');
-  if (selectTyped) {
+  if (selectTyped && typeof Typed !== 'undefined') {
     let typed_strings = selectTyped.getAttribute('data-typed-items');
-    typed_strings = typed_strings.split(',');
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
-  }
-
-  /**
-   * Initiate Pure Counter
-   */
-  new PureCounter();
-
-  /**
-   * Animate the skills items on reveal
-   */
-  let skillsAnimation = document.querySelectorAll('.skills-animation');
-  skillsAnimation.forEach((item) => {
-    new Waypoint({
-      element: item,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = item.querySelectorAll('.progress .progress-bar');
-        progress.forEach(el => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%';
-        });
-      }
-    });
-  });
-
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
-
-  /**
-   * Init isotope layout and filters
-   */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
-
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
+    if (typed_strings) {
+      typed_strings = typed_strings.split(',');
+      new Typed('.typed', {
+        strings: typed_strings,
+        loop: true,
+        typeSpeed: 90,
+        backSpeed: 45,
+        backDelay: 2000
       });
-    });
-
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
-    });
-
-  });
-
-  /**
-   * Init swiper sliders
-   */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
-
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
-    });
+    }
   }
 
-  window.addEventListener("load", initSwiper);
+  /**
+   * Initiate GLightbox (Project screenshots and creative posters)
+   */
+  if (typeof GLightbox !== 'undefined') {
+    GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+      zoomable: true
+    });
+  }
 
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
    */
-  window.addEventListener('load', function(e) {
+  window.addEventListener('load', function() {
     if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
+      const section = document.querySelector(window.location.hash);
+      if (section) {
         setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
+          const scrollMarginTop = getComputedStyle(section).scrollMarginTop;
           window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
+            top: section.offsetTop - parseInt(scrollMarginTop || 0),
             behavior: 'smooth'
           });
         }, 100);
@@ -227,23 +149,22 @@
   /**
    * Navmenu Scrollspy
    */
-  let navmenulinks = document.querySelectorAll('.navmenu a, .mobile-nav a');
+  const navmenulinks = document.querySelectorAll('.navmenu a, .mobile-nav a');
 
   function navmenuScrollspy() {
     navmenulinks.forEach(navmenulink => {
       if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
+      const section = document.querySelector(navmenulink.hash);
       if (!section) return;
-      let position = window.scrollY + 200;
+      const position = window.scrollY + 200;
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
         document.querySelectorAll('.navmenu a.active, .mobile-nav a.active').forEach(link => link.classList.remove('active'));
         navmenulink.classList.add('active');
-        // sync the same href in the other nav
         document.querySelectorAll(`.navmenu a[href="${navmenulink.hash}"], .mobile-nav a[href="${navmenulink.hash}"]`).forEach(l => l.classList.add('active'));
       } else {
         navmenulink.classList.remove('active');
       }
-    })
+    });
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
@@ -264,17 +185,20 @@
   if (!form) return;
 
   function showToast() {
+    if (!toast) return;
     toast.classList.add('show');
-    // Auto-dismiss after 5 seconds
     clearTimeout(toastTimer);
     toastTimer = setTimeout(hideToast, 5000);
   }
 
   function hideToast() {
+    if (!toast) return;
     toast.classList.remove('show');
   }
 
-  toastClose.addEventListener('click', hideToast);
+  if (toastClose) {
+    toastClose.addEventListener('click', hideToast);
+  }
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -284,7 +208,7 @@
 
     // Loading state
     btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span> Sending…';
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Sending…';
 
     const data = new FormData(form);
 
@@ -299,16 +223,15 @@
         form.reset();
         showToast();
       } else {
-        // Formspree returned an error — show a brief inline message
         const errorEl = document.createElement('p');
-        errorEl.className = 'contact-form-error';
+        errorEl.className = 'contact-form-error text-danger mt-2';
         errorEl.textContent = 'Something went wrong. Please try again or email directly.';
         form.appendChild(errorEl);
         setTimeout(() => errorEl.remove(), 5000);
       }
     } catch {
       const errorEl = document.createElement('p');
-      errorEl.className = 'contact-form-error';
+      errorEl.className = 'contact-form-error text-danger mt-2';
       errorEl.textContent = 'Network error. Please check your connection and try again.';
       form.appendChild(errorEl);
       setTimeout(() => errorEl.remove(), 5000);
@@ -329,6 +252,7 @@
 
   const ctx = canvas.getContext('2d');
   const hero = canvas.closest('.hero');
+  if (!hero) return;
 
   // ---------- Resize ----------
   function resize() {
@@ -351,17 +275,17 @@
   });
 
   // ---------- Star generation ----------
-  const STAR_COUNT  = 70;
+  const STAR_COUNT   = 70;
   const REPEL_RADIUS = 120;  // px — how far cursor pushes stars
   const REPEL_FORCE  = 180;  // strength of push
 
   const stars = Array.from({ length: STAR_COUNT }, () => {
-    const bx = Math.random() * 1; // base x (0-1)
+    const bx = Math.random() * 1;
     const by = Math.random() * 0.62;
     return {
-      bx, by,          // base position (normalized)
-      ox: 0, oy: 0,    // current offset from base (px)
-      vx: 0, vy: 0,    // velocity
+      bx, by,
+      ox: 0, oy: 0,
+      vx: 0, vy: 0,
       r:  Math.random() * 1.4 + 0.5,
       twinkleSpeed: Math.random() * 0.012 + 0.004,
       phase: Math.random() * Math.PI * 2,
@@ -370,16 +294,38 @@
   });
 
   // ---------- Fog repulsion ----------
-  // We shift each fog layer's translateX based on cursor X position
   const fogLayers = Array.from(hero.querySelectorAll('.fog-layer'));
-  // Each layer has a depth multiplier (closer = stronger push)
   const fogDepth = [1.0, 0.7, 0.45, 0.3, 0.18];
-  let fogOffset = 0;        // current extra horizontal offset
+  let fogOffset = 0;
   let fogOffsetTarget = 0;
 
-  // ---------- Render loop ----------
+  // ---------- Render loop with IntersectionObserver Optimization ----------
   let last = 0;
+  let isHeroVisible = true;
+  let animFrameId = null;
+
+  if ('IntersectionObserver' in window) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isHeroVisible = entry.isIntersecting;
+        if (isHeroVisible && !animFrameId) {
+          last = performance.now();
+          animFrameId = requestAnimationFrame(draw);
+        } else if (!isHeroVisible && animFrameId) {
+          cancelAnimationFrame(animFrameId);
+          animFrameId = null;
+        }
+      });
+    }, { threshold: 0.05 });
+    heroObserver.observe(hero);
+  }
+
   function draw(ts) {
+    if (!isHeroVisible) {
+      animFrameId = null;
+      return;
+    }
+
     const dt = Math.min((ts - last) / 1000, 0.05);
     last = ts;
 
@@ -390,7 +336,6 @@
 
     // --- Star physics ---
     stars.forEach((s) => {
-      // Base position in px
       s.bx += s.drift;
       if (s.bx < 0) s.bx = 1;
       if (s.bx > 1) s.bx = 0;
@@ -398,11 +343,9 @@
       const bpx = s.bx * W;
       const bpy = s.by * H;
 
-      // Current world position
       const wx = bpx + s.ox;
       const wy = bpy + s.oy;
 
-      // Repulsion from cursor
       const dx = wx - mouse.x;
       const dy = wy - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -414,25 +357,20 @@
         s.vy += Math.sin(angle) * force * REPEL_FORCE * dt;
       }
 
-      // Spring back to base position
       s.vx += -s.ox * 6 * dt;
       s.vy += -s.oy * 6 * dt;
 
-      // Damping
       s.vx *= 0.88;
       s.vy *= 0.88;
 
       s.ox += s.vx * dt;
       s.oy += s.vy * dt;
 
-      // Final draw position
       const sx = bpx + s.ox;
       const sy = bpy + s.oy;
 
-      // Twinkle brightness
       const brightness = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(ts * 0.001 * s.twinkleSpeed * 600 + s.phase));
 
-      // Glow halo
       if (brightness > 0.55) {
         const glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, s.r * 6);
         glow.addColorStop(0, `rgba(255,220,100,${brightness * 0.35})`);
@@ -443,7 +381,6 @@
         ctx.fill();
       }
 
-      // Star core
       ctx.beginPath();
       ctx.arc(sx, sy, s.r * brightness, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(255,235,180,${brightness})`;
@@ -451,32 +388,29 @@
     });
 
     // --- Fog repulsion ---
-    // Cursor position drives a horizontal push on each fog layer
     if (mouse.x > 0 && mouse.x < W) {
-      const cx = (mouse.x / W - 0.5); // -0.5 to 0.5
-      fogOffsetTarget = cx * 80;       // max ±80px push
+      const cx = (mouse.x / W - 0.5);
+      fogOffsetTarget = cx * 80;
     } else {
       fogOffsetTarget = 0;
     }
 
-    // Smooth lerp
     fogOffset += (fogOffsetTarget - fogOffset) * 0.06;
 
     fogLayers.forEach((layer, i) => {
       const depth = fogDepth[i] ?? 0.15;
-      // Drive via CSS custom property so it compounds with the drift animation
       layer.style.setProperty('--fog-push', `${fogOffset * depth}px`);
     });
 
-    requestAnimationFrame(draw);
+    animFrameId = requestAnimationFrame(draw);
   }
 
-  requestAnimationFrame(draw);
+  animFrameId = requestAnimationFrame(draw);
 })();
 
 
 /**
- * Light / Dark mode toggle
+ * Light / Dark mode toggle with Circular Wave Transition
  * Persists preference to localStorage. Applies before paint to avoid flash.
  */
 (function () {
@@ -484,7 +418,6 @@
   const html = document.documentElement;
   const btn  = document.getElementById('theme-toggle');
 
-  // Apply saved theme immediately (runs sync, before first paint)
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved === 'light') {
     html.setAttribute('data-theme', 'light');
@@ -492,14 +425,84 @@
 
   if (!btn) return;
 
-  btn.addEventListener('click', () => {
-    const isLight = html.getAttribute('data-theme') === 'light';
-    if (isLight) {
-      html.removeAttribute('data-theme');
-      localStorage.setItem(STORAGE_KEY, 'dark');
-    } else {
-      html.setAttribute('data-theme', 'light');
-      localStorage.setItem(STORAGE_KEY, 'light');
+  btn.addEventListener('click', async () => {
+    const isCurrentlyLight = html.getAttribute('data-theme') === 'light';
+    const nextTheme = isCurrentlyLight ? 'dark' : 'light';
+
+    const rect = btn.getBoundingClientRect();
+    const x = Math.round(rect.left + rect.width / 2);
+    const y = Math.round(rect.top + rect.height / 2);
+    const endRadius = Math.ceil(Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    )) + 30;
+
+    btn.classList.remove('wave-in-dark', 'wave-out-light');
+    void btn.offsetWidth;
+    btn.classList.add(nextTheme === 'dark' ? 'wave-in-dark' : 'wave-out-light');
+
+    setTimeout(() => {
+      btn.classList.remove('wave-in-dark', 'wave-out-light');
+    }, 700);
+
+    const switchTheme = () => {
+      if (nextTheme === 'dark') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem(STORAGE_KEY, 'dark');
+      } else {
+        html.setAttribute('data-theme', 'light');
+        localStorage.setItem(STORAGE_KEY, 'light');
+      }
+    };
+
+    if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      switchTheme();
+      return;
+    }
+
+    html.classList.remove('theme-wave-to-dark', 'theme-wave-to-light');
+    html.classList.add(nextTheme === 'dark' ? 'theme-wave-to-dark' : 'theme-wave-to-light');
+
+    const transition = document.startViewTransition(() => {
+      switchTheme();
+    });
+
+    try {
+      await transition.ready;
+
+      if (nextTheme === 'light') {
+        await document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${endRadius}px at ${x}px ${y}px)`
+            ]
+          },
+          {
+            duration: 650,
+            easing: 'cubic-bezier(0.25, 1, 0.35, 1)',
+            pseudoElement: '::view-transition-new(root)'
+          }
+        ).finished;
+      } else {
+        await document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(${endRadius}px at ${x}px ${y}px)`,
+              `circle(0px at ${x}px ${y}px)`
+            ]
+          },
+          {
+            duration: 650,
+            easing: 'cubic-bezier(0.25, 1, 0.35, 1)',
+            pseudoElement: '::view-transition-old(root)'
+          }
+        ).finished;
+      }
+    } catch {
+      // Fallback if animation rejected
+    } finally {
+      html.classList.remove('theme-wave-to-dark', 'theme-wave-to-light');
     }
   });
 })();
@@ -514,7 +517,7 @@
 
   let lastY    = window.scrollY;
   let ticking  = false;
-  const THRESHOLD = 60; // px from top — don't hide until past this point
+  const THRESHOLD = 60;
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -523,7 +526,6 @@
         const scrollingDown = currentY > lastY;
 
         if (currentY <= THRESHOLD) {
-          // Always show near the top
           header.classList.remove('nav-hidden');
         } else if (scrollingDown) {
           header.classList.add('nav-hidden');
@@ -548,10 +550,10 @@
   if (!bar) return;
 
   function updateProgress() {
-    const scrollTop    = window.scrollY;
-    const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
-    const progress     = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    bar.style.width    = progress + '%';
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress  = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = progress + '%';
   }
 
   window.addEventListener('scroll', updateProgress, { passive: true });
@@ -561,17 +563,19 @@
 
 /**
  * Stats count-up animation — triggers when section scrolls into view
+ * Preserves semantic values in HTML while rolling smoothly up from 0
  */
 (function () {
   const statNumbers = document.querySelectorAll('.stat-number');
   if (!statNumbers.length) return;
 
   function countUp(el) {
-    const target   = parseInt(el.getAttribute('data-target'), 10);
+    const target   = parseInt(el.getAttribute('data-target'), 10) || parseInt(el.textContent, 10) || 0;
     const duration = 1400;
     const start    = performance.now();
 
     el.classList.add('counting');
+    el.textContent = '0'; // start visual roll from 0
 
     function easeOut(t) {
       return 1 - Math.pow(1 - t, 3); // cubic ease-out
@@ -595,28 +599,32 @@
     requestAnimationFrame(update);
   }
 
-  // Observe stat items for entrance + count-up
   const statItems = document.querySelectorAll('.stat-item');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const item   = entry.target;
-        const numEl  = item.querySelector('.stat-number');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const item   = entry.target;
+          const numEl  = item.querySelector('.stat-number');
 
-        // Trigger entrance animation
-        item.classList.add('stat-visible');
+          item.classList.add('stat-visible');
 
-        // Trigger count-up after entrance delay
-        if (numEl) {
-          const delay = parseFloat(getComputedStyle(item).transitionDelay) * 1000 || 0;
-          setTimeout(() => countUp(numEl), delay + 300);
+          if (numEl) {
+            const delay = parseFloat(getComputedStyle(item).transitionDelay) * 1000 || 0;
+            setTimeout(() => countUp(numEl), delay + 300);
+          }
+
+          observer.unobserve(item);
         }
+      });
+    }, { threshold: 0.4 });
 
-        observer.unobserve(item);
-      }
+    statItems.forEach(el => observer.observe(el));
+  } else {
+    statItems.forEach(item => {
+      const numEl = item.querySelector('.stat-number');
+      if (numEl) countUp(numEl);
     });
-  }, { threshold: 0.4 });
-
-  statItems.forEach(el => observer.observe(el));
+  }
 })();
