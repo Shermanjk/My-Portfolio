@@ -5268,6 +5268,24 @@ html[data-theme="light"] .hero-availability {
   border: 1px solid rgba(168, 85, 247, 0.3);
 }
 
+.badge-status-dev {
+  background: rgba(240, 165, 0, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(240, 165, 0, 0.35);
+}
+
+.badge-pill-dev {
+  background: rgba(240, 165, 0, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(240, 165, 0, 0.3);
+  font-weight: 500;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+}
+
 .project-title {
   font-size: clamp(1.4rem, 2.5vw, 1.85rem);
   font-weight: 700;
@@ -5677,6 +5695,84 @@ html[data-theme="light"] .creative-cat-badge:hover {
   background: rgba(240, 165, 0, 0.12);
   border-color: rgba(240, 165, 0, 0.5);
   color: #111827;
+}
+
+html[data-theme="light"] .badge-status-dev {
+  background: rgba(240, 165, 0, 0.12);
+  color: #b45309;
+  border-color: rgba(240, 165, 0, 0.4);
+}
+
+html[data-theme="light"] .badge-pill-dev {
+  background: rgba(240, 165, 0, 0.1);
+  color: #b45309;
+  border-color: rgba(240, 165, 0, 0.35);
+}
+
+/* ── Project Details Modal ── */
+.modal-project .modal-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  color: var(--text-primary);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+}
+
+.modal-project .modal-header {
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.25rem 1.75rem;
+}
+
+.modal-project .modal-title {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+
+.modal-project .modal-body {
+  padding: 1.75rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.modal-project .modal-body p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.modal-project .modal-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 1.75rem;
+}
+
+.modal-project .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+
+.modal-project .btn-close:hover {
+  opacity: 1;
+}
+
+html[data-theme="light"] .modal-project .modal-content {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  color: #111827;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+html[data-theme="light"] .modal-project .modal-title {
+  color: #111827;
+}
+
+html[data-theme="light"] .modal-project .modal-body,
+html[data-theme="light"] .modal-project .modal-body p {
+  color: #4b5563;
+}
+
+html[data-theme="light"] .modal-project .btn-close {
+  filter: none;
 }
 
 /* ── Responsive adjustments ── */
