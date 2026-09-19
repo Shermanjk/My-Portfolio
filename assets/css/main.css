@@ -5197,7 +5197,7 @@ html[data-theme="light"] .hero-availability {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 72px; /* plenty of spacing between cards */
+  gap: 48px; /* generous spacing between showcase cards */
 }
 
 .project-card-showcase {
