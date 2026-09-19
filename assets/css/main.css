@@ -5368,6 +5368,36 @@ html[data-theme="light"] .hero-availability {
   }
 }
 
+.pos-gallery-thumbs {
+  padding-top: 6px;
+}
+
+.pos-gallery-thumbs a {
+  transition: all 0.25s ease;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pos-gallery-thumbs a:hover {
+  background: rgba(240, 165, 0, 0.2) !important;
+  border-color: var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
+  transform: translateY(-1px);
+}
+
+html[data-theme="light"] .pos-gallery-thumbs a {
+  background: #f3f4f6 !important;
+  color: #1f2937 !important;
+  border-color: #d1d5db !important;
+}
+
+html[data-theme="light"] .pos-gallery-thumbs a:hover {
+  background: rgba(240, 165, 0, 0.15) !important;
+  border-color: #d97706 !important;
+  color: #b45309 !important;
+}
+
 .project-badges {
   display: flex;
   flex-wrap: wrap;
