@@ -39,7 +39,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/main.css?v=1.1" rel="stylesheet">
 
   <!-- Theme: apply saved preference before paint to prevent flash -->
   <script>
@@ -621,358 +621,277 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Featured Projects</h2>
-        <p>Production business systems, full-stack applications, and client solutions</p>
+        <p>Selected full-stack applications and production projects</p>
       </div><!-- End Section Title -->
 
       <div class="container">
 
-        <div class="projects-container d-flex flex-column gap-5">
+        <div class="projects-showcase-container">
 
           <!-- 1. FLAGSHIP PROJECT: Hardware Store POS System -->
-          <div class="project-card project-card-flagship" data-aos="fade-up" data-aos-delay="100">
-            <div class="project-header">
-              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                <div>
-                  <div class="project-badges mb-2">
-                    <span class="badge-flagship"><i class="bi bi-star-fill me-1"></i>Flagship Project</span>
-                    <span class="badge-status badge-status-completed"><i class="bi bi-check-circle-fill me-1"></i>Completed / Production</span>
-                  </div>
-                  <h3 class="project-title">Hardware Store POS System</h3>
-                </div>
+          <!-- Layout: Details on TOP ➔ Large Screenshot on BOTTOM -->
+          <div class="project-card-showcase flagship" data-aos="fade-up" data-aos-delay="100">
+            <!-- Header Row with Badges -->
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+              <div class="project-badges">
+                <span class="badge-flagship"><i class="bi bi-star-fill me-1"></i>Flagship Project</span>
               </div>
-              <p class="project-purpose mt-2">
-                <strong>Purpose:</strong> Built to solve inventory mismanagement, manual checkout delays, and unrecorded bulk commodity trades in a local hardware and construction supply business.
-              </p>
+              <div class="project-badges">
+                <span class="badge-status badge-status-completed"><i class="bi bi-check-circle-fill me-1"></i>Production</span>
+              </div>
             </div>
 
-            <div class="project-body">
-              <div class="row gy-4">
-                <div class="col-lg-7">
-                  <h5 class="section-subheading">What I Developed:</h5>
-                  <p>
-                    Architected and developed a full-stack, enterprise-grade Point of Sale and retail operations system as a monorepo. The application pairs a responsive React and TypeScript frontend with a high-performance Express/Node.js backend and a normalized MySQL relational database, leveraging shared TypeScript types between layers for end-to-end type safety.
-                  </p>
+            <h3 class="showcase-title">Hardware Store POS System</h3>
+            <p class="showcase-purpose">
+              Full-stack point-of-sale and inventory management system developed for real hardware-store operations.
+            </p>
 
-                  <h5 class="section-subheading mt-3">Key Implemented Features:</h5>
-                  <ul class="project-features-list">
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Cashier &amp; POS Terminal:</strong> Rapid checkout workflow with automated total calculations, discounts, and item lookups.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Barcode Scanner Integration:</strong> Hardware scanner compatibility for zero-friction SKU barcode lookup.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Real-Time Inventory Management:</strong> Automatic stock level deductions, low-stock threshold alerts, and batch adjustments.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Customer Accounts &amp; Credit:</strong> Customer balance tracking, sales on credit, and payment ledger history.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Specialized Copra &amp; Charcoal Tracking:</strong> Custom module built specifically for the client's dual trade in agricultural commodities.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>WebSockets Real-Time Sync:</strong> Instant notification of register transactions across terminals without page refresh.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Authentication &amp; Role Security:</strong> JWT authentication with distinct Cashier vs. Manager permissions.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Financial Auditing &amp; Exports:</strong> Daily sales reporting with exportable reports in Excel (.xlsx) and PDF formats.</li>
-                  </ul>
+            <div class="project-tech-stack my-3">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Express</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">WebSockets</span>
+              <span class="tech-tag">JWT</span>
+            </div>
 
-                  <div class="project-tech-stack mt-4">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">TypeScript</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">Express.js</span>
-                    <span class="tech-tag">MySQL</span>
-                    <span class="tech-tag">WebSockets</span>
-                    <span class="tech-tag">JWT</span>
-                  </div>
+            <ul class="showcase-features-list">
+              <li><i class="bi bi-check-circle-fill"></i> Keyboard-first cashier checkout workflow</li>
+              <li><i class="bi bi-check-circle-fill"></i> Real-time inventory &amp; stock ledger</li>
+              <li><i class="bi bi-check-circle-fill"></i> Hardware barcode scanner integration</li>
+              <li><i class="bi bi-check-circle-fill"></i> Customer credit / Utang tracking</li>
+            </ul>
+
+            <div class="showcase-actions my-4 d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#posProjectModal">
+                <i class="bi bi-file-earmark-text me-1"></i>View Case Study
+              </button>
+            </div>
+
+            <!-- Large Screenshot Window -->
+            <div class="project-showcase-window">
+              <div class="window-header">
+                <div class="window-controls">
+                  <span class="ctrl-dot dot-red"></span>
+                  <span class="ctrl-dot dot-yellow"></span>
+                  <span class="ctrl-dot dot-green"></span>
                 </div>
-
-                <div class="col-lg-5">
-                  <div class="project-gallery-box">
-                    <h6 class="gallery-title"><i class="bi bi-images me-2"></i>System Modules Preview</h6>
-                    <div class="row g-2">
-                      <div class="col-12">
-                        <div class="project-preview-card">
-                          <div class="preview-card-icon"><i class="bi bi-speedometer2"></i></div>
-                          <div class="preview-card-content">
-                            <h6>POS Cashier Terminal</h6>
-                            <p>Fast item scanning, cart calculations, and payment tender.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="project-preview-card">
-                          <div class="preview-card-icon"><i class="bi bi-boxes"></i></div>
-                          <div class="preview-card-content">
-                            <h6>Inventory &amp; Stock Ledger</h6>
-                            <p>Threshold alerts, supplier catalogs, and bulk batch tracking.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="project-preview-card">
-                          <div class="preview-card-icon"><i class="bi bi-upc-scan"></i></div>
-                          <div class="preview-card-content">
-                            <h6>Barcode Scanning &amp; Exports</h6>
-                            <p>Hardware barcode input, Excel auditing, and PDF receipts.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="window-address-bar">
+                  <i class="bi bi-pc-display me-1"></i> POS Cashier Terminal &amp; Inventory Management
                 </div>
+                <div class="window-actions text-secondary">
+                  <i class="bi bi-arrows-fullscreen"></i>
+                </div>
+              </div>
+              <div class="window-viewport">
+                <a href="assets/img/screenshots/pos-1.jpg" class="glightbox" data-gallery="showcase-pos" data-title="Hardware Store POS System — Cashier Terminal &amp; Inventory Management">
+                  <img src="assets/img/screenshots/pos-1.jpg" alt="Hardware Store POS System Terminal" class="img-fluid" loading="lazy">
+                  <div class="viewport-overlay"><i class="bi bi-arrows-angle-expand"></i> Click to view screenshot</div>
+                </a>
               </div>
             </div>
           </div><!-- End Hardware Store POS -->
 
           <!-- 2. Isra Hardware Trading Website -->
-          <div class="project-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="project-header">
-              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                <div>
-                  <div class="project-badges mb-2">
-                    <span class="badge-status badge-status-live"><i class="bi bi-broadcast me-1"></i>Live Website</span>
-                    <span class="badge-status badge-status-info"><i class="bi bi-globe me-1"></i>Full-Stack Business Website</span>
-                  </div>
-                  <h3 class="project-title">Isra Hardware Trading Website</h3>
+          <!-- Layout: Large Screenshot on TOP ➔ Details on BOTTOM -->
+          <div class="project-card-showcase" data-aos="fade-up" data-aos-delay="150">
+            <!-- Large Screenshot Window -->
+            <div class="project-showcase-window mb-4">
+              <div class="window-header">
+                <div class="window-controls">
+                  <span class="ctrl-dot dot-red"></span>
+                  <span class="ctrl-dot dot-yellow"></span>
+                  <span class="ctrl-dot dot-green"></span>
                 </div>
-                <div class="project-links d-flex flex-wrap align-items-center gap-2">
-                  <a href="https://israhardware.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">
-                    <i class="bi bi-globe me-1"></i>Live Website
-                  </a>
-                  <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#israProjectModal">
-                    <i class="bi bi-info-circle me-1"></i>Details
-                  </button>
+                <div class="window-address-bar">
+                  <i class="bi bi-lock-fill me-1 text-success"></i> israhardware.onrender.com
+                </div>
+                <div class="window-actions text-secondary">
+                  <i class="bi bi-box-arrow-up-right"></i>
                 </div>
               </div>
-              <p class="project-purpose mt-2">
-                <strong>Purpose:</strong> A responsive full-stack business website developed for a local hardware store, featuring product browsing, organized categories, business information, store location, customer inquiries, and cloud-based content management.
-              </p>
+              <div class="window-viewport">
+                <a href="assets/img/screenshots/isra-3.png" class="glightbox" data-gallery="screenshots-isra" data-title="Isra Hardware Trading — Product Catalog Administration">
+                  <img src="assets/img/screenshots/isra-3.png" alt="Isra Hardware Trading Website" class="img-fluid" loading="lazy">
+                  <div class="viewport-overlay"><i class="bi bi-arrows-angle-expand"></i> Click to view screenshots</div>
+                </a>
+              </div>
             </div>
 
-            <div class="project-body">
-              <div class="row gy-4">
-                <div class="col-lg-7">
-                  <h5 class="section-subheading">What I Developed:</h5>
-                  <p>
-                    Designed and developed a modern, responsive business website for Isra Hardware Trading to establish the hardware store's online presence. The platform allows customers to easily discover products, browse organized hardware categories, view store information and operating hours, locate the physical store via interactive maps, and contact the business directly. Architected with TypeScript type safety and a scalable cloud database foundation.
-                  </p>
-
-                  <h5 class="section-subheading mt-3">Key Implemented Features:</h5>
-                  <ul class="project-features-list">
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Responsive Multi-Device Layout:</strong> Mobile-first UI optimized for seamless browsing across desktop, tablet, and mobile screens using Tailwind CSS.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Hardware Product Catalog:</strong> Categorized inventory browsing for power tools, plumbing, electrical equipment, hand tools, and building supplies.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Product Search &amp; Discovery:</strong> Fast product filtering and lookup to quickly find items, specifications, and availability.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Store Location &amp; Google Maps:</strong> Comprehensive business details, operating hours, phone contact, and embedded Google Maps store locator.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Direct Customer Inquiry Section:</strong> Online contact forms for customer quotes, product inquiries, and automated customer communication.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Cloud Database &amp; Storage (Supabase):</strong> Scalable PostgreSQL relational schema with Supabase Storage for high-resolution product media.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Admin Content Management Portal:</strong> Administrative backend for managing inventory, categories, price updates, and customer leads.</li>
-                  </ul>
-
-                  <div class="project-tech-stack mt-4">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">TypeScript</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">Vite</span>
-                    <span class="tech-tag">Supabase</span>
-                    <span class="tech-tag">PostgreSQL</span>
-                    <span class="tech-tag">Supabase Storage</span>
-                    <span class="tech-tag">Git</span>
-                    <span class="tech-tag">GitHub</span>
-                  </div>
-                </div>
-
-                <div class="col-lg-5">
-                  <div class="project-gallery-box">
-                    <h6 class="gallery-title"><i class="bi bi-images me-2"></i>System Screenshots &amp; Previews</h6>
-                    <!-- 
-                      NOTE: Screenshot Placeholders
-                      To update screenshots with actual photos, replace files in:
-                      - assets/img/screenshots/isra-1.jpg (Catalog & Discovery)
-                      - assets/img/screenshots/isra-2.jpg (Store Location & Inquiries)
-                      - assets/img/screenshots/isra-3.jpg (Admin & Cloud Management)
-                    -->
-                    <div class="row g-2">
-                      <div class="col-6">
-                        <a href="assets/img/screenshots/isra-1.png" class="glightbox project-thumb-link" data-gallery="screenshots-isra" data-title="Isra Hardware Trading — Copra &amp; Charcoal Station &amp; Counter Service">
-                          <img src="assets/img/screenshots/isra-1.png" alt="Isra Hardware Trading Copra &amp; Charcoal Station" class="img-fluid rounded" loading="lazy">
-                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
-                        </a>
-                        <span class="thumb-caption">Copra &amp; Trade Counter</span>
-                      </div>
-                      <div class="col-6">
-                        <a href="assets/img/screenshots/isra-2.png" class="glightbox project-thumb-link" data-gallery="screenshots-isra" data-title="Isra Hardware Trading — Contact &amp; Inquiries Portal">
-                          <img src="assets/img/screenshots/isra-2.png" alt="Isra Hardware Trading Contact &amp; Inquiries Portal" class="img-fluid rounded" loading="lazy">
-                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
-                        </a>
-                        <span class="thumb-caption">Contact &amp; Inquiries</span>
-                      </div>
-                      <div class="col-12">
-                        <a href="assets/img/screenshots/isra-3.png" class="glightbox project-thumb-link" data-gallery="screenshots-isra" data-title="Isra Hardware Trading — Product Catalog Administration">
-                          <img src="assets/img/screenshots/isra-3.png" alt="Isra Hardware Trading Product Catalog Administration" class="img-fluid rounded" loading="lazy">
-                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
-                        </a>
-                        <span class="thumb-caption">Catalog Administration</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <!-- Details on Bottom -->
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+              <div class="project-badges">
+                <span class="badge-status badge-status-info"><i class="bi bi-globe me-1"></i>Full-Stack Business Website</span>
               </div>
+              <div class="project-badges">
+                <span class="badge-status badge-status-live"><i class="bi bi-broadcast me-1"></i>Live Website</span>
+              </div>
+            </div>
+
+            <h3 class="showcase-title">Isra Hardware Trading Website</h3>
+            <p class="showcase-purpose">
+              Responsive full-stack business website with catalog, search, maps and inquiries.
+            </p>
+
+            <div class="project-tech-stack my-3">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Supabase</span>
+              <span class="tech-tag">Tailwind CSS</span>
+              <span class="tech-tag">Vite</span>
+              <span class="tech-tag">PostgreSQL</span>
+            </div>
+
+            <ul class="showcase-features-list">
+              <li><i class="bi bi-check-circle-fill"></i> Product catalog &amp; categorized inventory</li>
+              <li><i class="bi bi-check-circle-fill"></i> Fast search &amp; multi-parameter filtering</li>
+              <li><i class="bi bi-check-circle-fill"></i> Embedded Google Maps store locator</li>
+              <li><i class="bi bi-check-circle-fill"></i> Direct customer quotation &amp; inquiry system</li>
+            </ul>
+
+            <div class="showcase-actions mt-4 d-flex flex-wrap gap-2">
+              <a href="https://israhardware.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <i class="bi bi-globe me-1"></i>Live Website
+              </a>
+              <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#israProjectModal">
+                <i class="bi bi-file-earmark-text me-1"></i>View Case Study
+              </button>
             </div>
           </div><!-- End Isra Hardware Trading Website -->
 
           <!-- 3. CENRO Waste Tracker System -->
-          <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="project-header">
-              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                <div>
-                  <div class="project-badges mb-2">
-                    <span class="badge-status badge-status-live"><i class="bi bi-broadcast me-1"></i>Live Platform</span>
-                    <span class="badge-status badge-status-info"><i class="bi bi-phone me-1"></i>Web &amp; Mobile</span>
-                  </div>
-                  <h3 class="project-title">CENRO Waste Tracker System</h3>
-                </div>
-                <div class="project-links">
-                  <a href="https://cenrotracker.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">
-                    <i class="bi bi-globe me-1"></i>Live Website
-                  </a>
-                  <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill" title="Mobile APK available upon request">
-                    <i class="bi bi-android2 me-1"></i>Mobile App (Flutter)
-                  </span>
-                </div>
+          <!-- Layout: Details on TOP ➔ Large Screenshot on BOTTOM -->
+          <div class="project-card-showcase" data-aos="fade-up" data-aos-delay="200">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+              <div class="project-badges">
+                <span class="badge-status badge-status-info"><i class="bi bi-phone me-1"></i>Web &amp; Mobile</span>
               </div>
-              <p class="project-purpose mt-2">
-                <strong>Purpose:</strong> Modernize city-wide municipal solid waste tracking, collection route visibility, and public reporting for the Community Environment and Natural Resources Office.
-              </p>
+              <div class="project-badges">
+                <span class="badge-status badge-status-live"><i class="bi bi-broadcast me-1"></i>Live Platform</span>
+              </div>
             </div>
 
-            <div class="project-body">
-              <div class="row gy-4">
-                <div class="col-lg-7">
-                  <h5 class="section-subheading">What I Developed:</h5>
-                  <p>
-                    Engineered a multi-role web administration portal using React.js paired with a cross-platform mobile client in Flutter/Dart for field drivers and citizens. Connected the system with PostgreSQL for relational data storage and Firebase for real-time notifications.
-                  </p>
+            <h3 class="showcase-title">CENRO Waste Tracker System</h3>
+            <p class="showcase-purpose">
+              Municipal solid waste tracking, collection route visibility, and public citizen reporting system.
+            </p>
 
-                  <h5 class="section-subheading mt-3">Key Implemented Features:</h5>
-                  <ul class="project-features-list">
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Triple-Role Portal:</strong> Distinct dashboards for City Administrators, Collection Drivers, and Local Citizens.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Interactive Route Mapping:</strong> Waste collection territory maps and dispatch status monitoring.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Mobile Collection App (Flutter):</strong> Real-time task checklists and route navigation for truck drivers.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Citizen Reporting Module:</strong> Submission of missed collections and waste accumulation hot-spots.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Production Cloud Deployment:</strong> Automated production deployment on Vercel (Web frontend) and Render (Backend API).</li>
-                  </ul>
+            <div class="project-tech-stack my-3">
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Dart</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">REST APIs</span>
+              <span class="tech-tag">Vercel</span>
+              <span class="tech-tag">Render</span>
+            </div>
 
-                  <div class="project-tech-stack mt-4">
-                    <span class="tech-tag">React.js</span>
-                    <span class="tech-tag">Flutter</span>
-                    <span class="tech-tag">Dart</span>
-                    <span class="tech-tag">PostgreSQL</span>
-                    <span class="tech-tag">Firebase</span>
-                    <span class="tech-tag">REST APIs</span>
-                    <span class="tech-tag">Vercel</span>
-                    <span class="tech-tag">Render</span>
-                  </div>
+            <ul class="showcase-features-list">
+              <li><i class="bi bi-check-circle-fill"></i> Triple-role portal (Admin, Driver, Citizen)</li>
+              <li><i class="bi bi-check-circle-fill"></i> Interactive collection route dispatch mapping</li>
+              <li><i class="bi bi-check-circle-fill"></i> Mobile collection driver app (Flutter / Dart)</li>
+              <li><i class="bi bi-check-circle-fill"></i> Citizen reporting for missed collections &amp; waste hotspots</li>
+            </ul>
+
+            <div class="showcase-actions my-4 d-flex flex-wrap gap-2">
+              <a href="https://cenrotracker.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <i class="bi bi-globe me-1"></i>Live Website
+              </a>
+              <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill d-inline-flex align-items-center">
+                <i class="bi bi-android2 me-1"></i>Mobile App (Flutter)
+              </span>
+            </div>
+
+            <!-- Large Screenshot Window -->
+            <div class="project-showcase-window">
+              <div class="window-header">
+                <div class="window-controls">
+                  <span class="ctrl-dot dot-red"></span>
+                  <span class="ctrl-dot dot-yellow"></span>
+                  <span class="ctrl-dot dot-green"></span>
                 </div>
-
-                <div class="col-lg-5">
-                  <div class="project-gallery-box">
-                    <h6 class="gallery-title"><i class="bi bi-images me-2"></i>System Screenshots</h6>
-                    <div class="row g-2">
-                      <div class="col-6">
-                        <a href="assets/img/screenshots/cenro-1.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-cenro" data-title="CENRO — Admin Dashboard Overview">
-                          <img src="assets/img/screenshots/cenro-1.jpg" alt="CENRO Admin Dashboard Overview" class="img-fluid rounded" loading="lazy">
-                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
-                        </a>
-                        <span class="thumb-caption">Admin Dashboard</span>
-                      </div>
-                      <div class="col-6">
-                        <a href="assets/img/screenshots/cenro-2.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-cenro" data-title="CENRO — Waste Collection Map">
-                          <img src="assets/img/screenshots/cenro-2.jpg" alt="CENRO Waste Collection Map" class="img-fluid rounded" loading="lazy">
-                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
-                        </a>
-                        <span class="thumb-caption">Collection Map</span>
-                      </div>
-                      <div class="col-12">
-                        <a href="assets/img/screenshots/cenro-3.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-cenro" data-title="CENRO — Mobile App (Flutter)">
-                          <img src="assets/img/screenshots/cenro-3.jpg" alt="CENRO Mobile App Interface" class="img-fluid rounded" loading="lazy">
-                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
-                        </a>
-                        <span class="thumb-caption">Mobile Application (Flutter)</span>
-                      </div>
-                    </div>
-                  </div>
+                <div class="window-address-bar">
+                  <i class="bi bi-lock-fill me-1 text-success"></i> cenrotracker.vercel.app
                 </div>
+                <div class="window-actions text-secondary">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </div>
+              </div>
+              <div class="window-viewport">
+                <a href="assets/img/screenshots/cenro-1.jpg" class="glightbox" data-gallery="screenshots-cenro" data-title="CENRO — Admin Dashboard Overview">
+                  <img src="assets/img/screenshots/cenro-1.jpg" alt="CENRO Admin Dashboard Overview" class="img-fluid" loading="lazy">
+                  <div class="viewport-overlay"><i class="bi bi-arrows-angle-expand"></i> Click to view screenshots</div>
+                </a>
               </div>
             </div>
           </div><!-- End CENRO Project -->
 
           <!-- 4. Karenderya Inventory & Billing System -->
-          <div class="project-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="project-header">
-              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                <div>
-                  <div class="project-badges mb-2">
-                    <span class="badge-status badge-status-completed"><i class="bi bi-check-circle-fill me-1"></i>Completed</span>
-                    <span class="badge-status badge-status-info"><i class="bi bi-laptop me-1"></i>Desktop Software</span>
-                  </div>
-                  <h3 class="project-title">Karenderya Inventory &amp; Billing System</h3>
+          <!-- Layout: Large Screenshot on TOP ➔ Details on BOTTOM -->
+          <div class="project-card-showcase" data-aos="fade-up" data-aos-delay="250">
+            <!-- Large Screenshot Window -->
+            <div class="project-showcase-window mb-4">
+              <div class="window-header">
+                <div class="window-controls">
+                  <span class="ctrl-dot dot-red"></span>
+                  <span class="ctrl-dot dot-yellow"></span>
+                  <span class="ctrl-dot dot-green"></span>
+                </div>
+                <div class="window-address-bar">
+                  <i class="bi bi-laptop me-1"></i> Karenderya POS &amp; Inventory Suite (.NET)
+                </div>
+                <div class="window-actions text-secondary">
+                  <i class="bi bi-window"></i>
                 </div>
               </div>
-              <p class="project-purpose mt-2">
-                <strong>Purpose:</strong> Eliminate order billing errors, paper receipt loss, and uncontrolled ingredient waste in a local canteen/food service establishment.
-              </p>
+              <div class="window-viewport">
+                <a href="assets/img/screenshots/karenderya-1.jpg" class="glightbox" data-gallery="screenshots-karenderya" data-title="Karenderya — Inventory Module">
+                  <img src="assets/img/screenshots/karenderya-1.jpg" alt="Karenderya Inventory Module" class="img-fluid" loading="lazy">
+                  <div class="viewport-overlay"><i class="bi bi-arrows-angle-expand"></i> Click to view screenshots</div>
+                </a>
+              </div>
             </div>
 
-            <div class="project-body">
-              <div class="row gy-4">
-                <div class="col-lg-7">
-                  <h5 class="section-subheading">What I Developed:</h5>
-                  <p>
-                    Developed a native desktop billing and inventory tracking system built with C# and Microsoft Access relational database. The software provides quick order tallying, automated change calculations, and raw ingredient stock reconciliation.
-                  </p>
-
-                  <h5 class="section-subheading mt-3">Key Implemented Features:</h5>
-                  <ul class="project-features-list">
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Counter Billing &amp; Calculations:</strong> Rapid order itemization with automatic tax, total, and change computation.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Menu &amp; Recipe Management:</strong> Complete CRUD operations for food categories, menu pricing, and ingredient bundles.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Ingredient Deduction Logic:</strong> Automatic deduction of raw stock inventory upon dish order confirmation.</li>
-                    <li><i class="bi bi-check-circle text-accent"></i> <strong>Sales Auditing &amp; Reports:</strong> End-of-day revenue reports, top-selling items, and low-inventory warnings.</li>
-                  </ul>
-
-                  <div class="project-tech-stack mt-4">
-                    <span class="tech-tag">C#</span>
-                    <span class="tech-tag">.NET</span>
-                    <span class="tech-tag">MS Access</span>
-                    <span class="tech-tag">SQL</span>
-                    <span class="tech-tag">Desktop App</span>
-                  </div>
-                </div>
-
-                <div class="col-lg-5">
-                  <div class="project-gallery-box">
-                    <h6 class="gallery-title"><i class="bi bi-images me-2"></i>System Screenshots</h6>
-                    <div class="row g-2">
-                      <div class="col-6">
-                        <a href="assets/img/screenshots/karenderya-1.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-karenderya" data-title="Karenderya — Inventory Module">
-                          <img src="assets/img/screenshots/karenderya-1.jpg" alt="Karenderya Inventory Module" class="img-fluid rounded" loading="lazy">
-                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
-                        </a>
-                        <span class="thumb-caption">Inventory Module</span>
-                      </div>
-                      <div class="col-6">
-                        <a href="assets/img/screenshots/karenderya-2.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-karenderya" data-title="Karenderya — Billing Module">
-                          <img src="assets/img/screenshots/karenderya-2.jpg" alt="Karenderya Billing Module" class="img-fluid rounded" loading="lazy">
-                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
-                        </a>
-                        <span class="thumb-caption">Billing Module</span>
-                      </div>
-                      <div class="col-12">
-                        <a href="assets/img/screenshots/karenderya-3.jpg" class="glightbox project-thumb-link" data-gallery="screenshots-karenderya" data-title="Karenderya — Reports Module">
-                          <img src="assets/img/screenshots/karenderya-3.jpg" alt="Karenderya Reports Module" class="img-fluid rounded" loading="lazy">
-                          <div class="thumb-overlay"><i class="bi bi-arrows-angle-expand"></i></div>
-                        </a>
-                        <span class="thumb-caption">Reports &amp; Analytics</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <!-- Details on Bottom -->
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+              <div class="project-badges">
+                <span class="badge-status badge-status-info"><i class="bi bi-laptop me-1"></i>Desktop Software</span>
               </div>
+              <div class="project-badges">
+                <span class="badge-status badge-status-completed"><i class="bi bi-check-circle-fill me-1"></i>Completed</span>
+              </div>
+            </div>
+
+            <h3 class="showcase-title">Karenderya Inventory &amp; Billing System</h3>
+            <p class="showcase-purpose">
+              Native desktop billing and inventory tracking system built to eliminate order errors and ingredient waste in local canteen operations.
+            </p>
+
+            <div class="project-tech-stack my-3">
+              <span class="tech-tag">C#</span>
+              <span class="tech-tag">.NET</span>
+              <span class="tech-tag">MS Access</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">Desktop App</span>
+            </div>
+
+            <ul class="showcase-features-list">
+              <li><i class="bi bi-check-circle-fill"></i> Counter billing with instant change calculation</li>
+              <li><i class="bi bi-check-circle-fill"></i> Automatic raw stock ingredient deduction</li>
+              <li><i class="bi bi-check-circle-fill"></i> Menu, recipes, and category CRUD management</li>
+              <li><i class="bi bi-check-circle-fill"></i> End-of-day sales auditing &amp; revenue reports</li>
+            </ul>
+
+            <div class="showcase-actions mt-4 d-flex flex-wrap gap-2">
+              <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill d-inline-flex align-items-center">
+                <i class="bi bi-check2-all me-1"></i>Production Deployed at Client Location
+              </span>
             </div>
           </div><!-- End Karenderya Project -->
 
         </div>
-
       </div>
 
     </section><!-- /Portfolio Section -->
@@ -1142,6 +1061,64 @@
     <button class="contact-toast-close" id="contact-toast-close" aria-label="Close">
       <i class="bi bi-x"></i>
     </button>
+  </div>
+
+  <!-- Hardware Store POS Project Details Modal -->
+  <div class="modal fade modal-project" id="posProjectModal" tabindex="-1" aria-labelledby="posProjectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge-flagship"><i class="bi bi-star-fill me-1"></i>Flagship Project</span>
+              <span class="badge-status badge-status-completed"><i class="bi bi-check-circle-fill me-1"></i>Production</span>
+              <span class="badge-status badge-status-info"><i class="bi bi-hdd-network me-1"></i>Point of Sale</span>
+            </div>
+            <h4 class="modal-title" id="posProjectModalLabel">Hardware Store POS &amp; Inventory Management System</h4>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6 class="text-uppercase fw-bold text-accent mb-2" style="font-size: 0.82rem; letter-spacing: 0.5px;">Project Overview</h6>
+          <p>
+            The Hardware Store POS &amp; Inventory Management System is a full-stack, enterprise-grade retail platform developed specifically for daily hardware and construction supply operations. Unlike generic retail software, hardware retail demands multi-unit conversions (boxes, pieces, meters, kilograms), rapid keyboard-driven checkout, real-time stock balance tracking, supplier replenishment pipelines, and dedicated customer credit ledger tracking (<em>pautang</em>).
+          </p>
+          <p>
+            Architected with a modern client-server stack using React, TypeScript, Node.js, and MySQL, the system guarantees high-speed transaction processing, instant barcode scanner integration, and real-time inventory ledger synchronization across cash registers and warehouse computers.
+          </p>
+
+          <h6 class="text-uppercase fw-bold text-accent mt-4 mb-2" style="font-size: 0.82rem; letter-spacing: 0.5px;">Key Features &amp; Engineering Highlights</h6>
+          <ul class="project-features-list mb-3">
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Keyboard-First Cashier Terminal:</strong> Ergonomic checkout flow equipped with hotkeys (F1–F12, Enter, Esc), allowing cashiers to ring up orders, modify quantities, and process payments without touching the mouse.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Barcode Scanning &amp; Fuzzy Search:</strong> Instant SKU detection via physical handheld barcode scanners, supplemented with sub-millisecond keyword and category search.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Live Stock Ledger &amp; Auditing:</strong> Complete chronological audit log of every stock addition, counter deduction, damage write-off, and supplier return to prevent discrepancy.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Customer Credit &amp; Utang Ledger:</strong> Tracks customer credit limits, billing statements, partial repayments, and outstanding balance aging reports.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Real-Time Multi-Terminal Sync:</strong> WebSocket events broadcast stock changes and cash drawer events across concurrent stations instantly.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Thermal Receipt &amp; Invoice Printing:</strong> Native formatting for ESC/POS thermal printers with automated sales summary receipts and official customer invoices.</li>
+          </ul>
+
+          <h6 class="text-uppercase fw-bold text-accent mt-4 mb-2" style="font-size: 0.82rem; letter-spacing: 0.5px;">Technology Stack</h6>
+          <div class="project-tech-stack">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">WebSockets</span>
+            <span class="tech-tag">JWT</span>
+            <span class="tech-tag">REST APIs</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">ESC/POS</span>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between align-items-center">
+          <a href="assets/img/screenshots/pos-1.jpg" class="btn btn-outline-primary btn-sm glightbox" data-gallery="modal-pos-preview" data-title="Hardware Store POS System Interface">
+            <i class="bi bi-zoom-in me-1"></i>Enlarge Interface Preview
+          </a>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Isra Hardware Project Details Modal -->
