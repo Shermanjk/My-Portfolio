@@ -78,6 +78,7 @@
           <li><a href="#experience">Experience</a></li>
           <li><a href="#portfolio">Projects</a></li>
           <li><a href="#creative">Creative Work</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -108,6 +109,7 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#portfolio">Projects</a></li>
         <li><a href="#creative">Creative Work</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -732,12 +734,13 @@
 
             <h3 class="showcase-title">Isra Hardware Trading Website</h3>
             <p class="showcase-purpose">
-              Responsive full-stack business website with catalog, search, maps and inquiries.
+              Responsive full-stack business website with interactive customer quotation chat, catalog browsing, search, and store information.
             </p>
 
             <div class="project-tech-stack my-3">
               <span class="tech-tag">React</span>
               <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Cloudflare Workers</span>
               <span class="tech-tag">Supabase</span>
               <span class="tech-tag">Tailwind CSS</span>
               <span class="tech-tag">Vite</span>
@@ -745,19 +748,65 @@
             </div>
 
             <ul class="showcase-features-list">
-              <li><i class="bi bi-check-circle-fill"></i> Product catalog &amp; categorized inventory</li>
-              <li><i class="bi bi-check-circle-fill"></i> Fast search &amp; multi-parameter filtering</li>
-              <li><i class="bi bi-check-circle-fill"></i> Embedded Google Maps store locator</li>
-              <li><i class="bi bi-check-circle-fill"></i> Direct customer quotation &amp; inquiry system</li>
+              <li><i class="bi bi-check-circle-fill"></i> Modern storefront &amp; categorized inventory catalog</li>
+              <li><i class="bi bi-check-circle-fill"></i> Interactive customer chat assistant for quotes &amp; stock inquiry</li>
+              <li><i class="bi bi-check-circle-fill"></i> Admin customer helpdesk &amp; quotation desk with stock verification</li>
+              <li><i class="bi bi-check-circle-fill"></i> Embedded Google Maps store locator &amp; counter pickup</li>
             </ul>
 
-            <div class="showcase-actions mt-4 d-flex flex-wrap gap-2">
-              <a href="https://israhardware.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+            <div class="showcase-actions mt-4 mb-4 d-flex flex-wrap gap-2">
+              <a href="https://store.israhardware.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
                 <i class="bi bi-globe me-1"></i>Live Website
               </a>
               <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#israProjectModal">
                 <i class="bi bi-file-earmark-text me-1"></i>View Case Study
               </button>
+              <a href="assets/img/screenshots/isra-1.png" class="btn btn-outline-secondary btn-sm glightbox" data-gallery="showcase-isra" data-title="Isra Hardware Trading — Storefront Landing Page (Essential Building Categories &amp; Catalog)">
+                <i class="bi bi-images me-1"></i>View Screenshots (3 Screens)
+              </a>
+            </div>
+
+            <!-- Large Screenshot Window -->
+            <div class="project-showcase-window">
+              <div class="window-header">
+                <div class="window-controls">
+                  <span class="ctrl-dot dot-red"></span>
+                  <span class="ctrl-dot dot-yellow"></span>
+                  <span class="ctrl-dot dot-green"></span>
+                </div>
+                <div class="window-address-bar">
+                  <i class="bi bi-lock-fill me-1 text-success"></i> store.israhardware.workers.dev
+                </div>
+                <div class="window-actions text-secondary">
+                  <a href="https://store.israhardware.workers.dev/" target="_blank" rel="noopener noreferrer" class="badge bg-success-subtle text-success px-2 py-1 rounded-pill text-decoration-none" style="font-size: 0.72rem;"><i class="bi bi-circle-fill me-1" style="font-size: 0.5rem;"></i>Live</a>
+                </div>
+              </div>
+              <div class="window-viewport">
+                <a href="assets/img/screenshots/isra-1.png" class="glightbox" data-gallery="showcase-isra" data-title="Isra Hardware Trading — Storefront Landing Page (Essential Building Categories &amp; Catalog)">
+                  <img src="assets/img/screenshots/isra-1.png" alt="Isra Hardware Trading Storefront Landing Page" class="img-fluid" loading="lazy">
+                  <div class="viewport-overlay"><i class="bi bi-arrows-angle-expand"></i> Click to enlarge screenshot (1 of 3)</div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Hidden gallery links for the other screens to cycle in GLightbox -->
+            <div class="d-none">
+              <a href="assets/img/screenshots/isra-2.png" class="glightbox" data-gallery="showcase-isra" data-title="Isra Hardware Trading — Interactive Customer Inquiry &amp; Quotation Assistant"></a>
+              <a href="assets/img/screenshots/isra-3.png" class="glightbox" data-gallery="showcase-isra" data-title="Isra Hardware Trading — Admin Customer Helpdesk &amp; Quotation Desk (Triage, Stock Verification &amp; Direct Reply)"></a>
+            </div>
+
+            <!-- Screen Switcher Pills -->
+            <div class="pos-gallery-thumbs project-gallery-thumbs d-flex flex-wrap gap-2 mt-3 align-items-center">
+              <span class="text-secondary small me-1"><i class="bi bi-camera me-1"></i>Screenshots:</span>
+              <a href="assets/img/screenshots/isra-1.png" class="glightbox badge bg-secondary-subtle text-light-emphasis border border-secondary-subtle text-decoration-none px-2.5 py-1.5 rounded-pill" data-gallery="showcase-isra-thumbs" data-title="Isra Hardware Trading — Storefront Landing Page">
+                <i class="bi bi-house-door me-1 text-primary"></i>Landing Page
+              </a>
+              <a href="assets/img/screenshots/isra-2.png" class="glightbox badge bg-secondary-subtle text-light-emphasis border border-secondary-subtle text-decoration-none px-2.5 py-1.5 rounded-pill" data-gallery="showcase-isra-thumbs" data-title="Isra Hardware Trading — Interactive Customer Inquiry &amp; Quotation Assistant">
+                <i class="bi bi-chat-dots me-1 text-warning"></i>Customer Chat Box
+              </a>
+              <a href="assets/img/screenshots/isra-3.png" class="glightbox badge bg-secondary-subtle text-light-emphasis border border-secondary-subtle text-decoration-none px-2.5 py-1.5 rounded-pill" data-gallery="showcase-isra-thumbs" data-title="Isra Hardware Trading — Admin Customer Helpdesk &amp; Quotation Desk">
+                <i class="bi bi-headset me-1 text-info"></i>Admin Helpdesk
+              </a>
             </div>
           </div><!-- End Isra Hardware Trading Website -->
 
@@ -795,13 +844,66 @@
               <li><i class="bi bi-check-circle-fill"></i> Citizen reporting for missed collections &amp; waste hotspots</li>
             </ul>
 
-            <div class="showcase-actions mt-4 d-flex flex-wrap gap-2">
+            <div class="showcase-actions mt-4 mb-4 d-flex flex-wrap gap-2">
               <a href="https://cenrotracker.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
                 <i class="bi bi-globe me-1"></i>Live Website
+              </a>
+              <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#cenroProjectModal">
+                <i class="bi bi-file-earmark-text me-1"></i>View Case Study
+              </button>
+              <a href="assets/img/screenshots/cenro-1.png" class="btn btn-outline-secondary btn-sm glightbox" data-gallery="showcase-cenro" data-title="CENRO Waste Tracker — Admin Terminal Dashboard (Route Progress, Dispatch Mapping &amp; Live Tracking)">
+                <i class="bi bi-images me-1"></i>View Screenshots (4 Screens)
               </a>
               <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill d-inline-flex align-items-center">
                 <i class="bi bi-android2 me-1"></i>Mobile App (Flutter)
               </span>
+            </div>
+
+            <!-- Large Screenshot Window -->
+            <div class="project-showcase-window">
+              <div class="window-header">
+                <div class="window-controls">
+                  <span class="ctrl-dot dot-red"></span>
+                  <span class="ctrl-dot dot-yellow"></span>
+                  <span class="ctrl-dot dot-green"></span>
+                </div>
+                <div class="window-address-bar">
+                  <i class="bi bi-lock-fill me-1 text-success"></i> cenrotracker.vercel.app
+                </div>
+                <div class="window-actions text-secondary">
+                  <a href="https://cenrotracker.vercel.app/" target="_blank" rel="noopener noreferrer" class="badge bg-success-subtle text-success px-2 py-1 rounded-pill text-decoration-none" style="font-size: 0.72rem;"><i class="bi bi-circle-fill me-1" style="font-size: 0.5rem;"></i>Live</a>
+                </div>
+              </div>
+              <div class="window-viewport">
+                <a href="assets/img/screenshots/cenro-1.png" class="glightbox" data-gallery="showcase-cenro" data-title="CENRO Waste Tracker — Admin Terminal Dashboard (Route Progress, Dispatch Mapping &amp; Live Tracking)">
+                  <img src="assets/img/screenshots/cenro-1.png" alt="CENRO Waste Tracker Admin Terminal Dashboard" class="img-fluid" loading="lazy">
+                  <div class="viewport-overlay"><i class="bi bi-arrows-angle-expand"></i> Click to enlarge screenshot (1 of 4)</div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Hidden gallery links for the other screens to cycle in GLightbox -->
+            <div class="d-none">
+              <a href="assets/img/screenshots/cenro-2.jpg" class="glightbox" data-gallery="showcase-cenro" data-title="CENRO Waste Tracker — Waste Collection Route Dispatch Mapping"></a>
+              <a href="assets/img/screenshots/cenro-4.jpg" class="glightbox" data-gallery="showcase-cenro" data-title="CENRO Waste Tracker — Driver Mobile App (Live Route Map &amp; Checkpoint Navigation)"></a>
+              <a href="assets/img/screenshots/cenro-5.jpg" class="glightbox" data-gallery="showcase-cenro" data-title="CENRO Waste Tracker — Citizen Mobile Portal (Live Waste Collection Tracking &amp; Truck Map)"></a>
+            </div>
+
+            <!-- Screen Switcher Pills -->
+            <div class="pos-gallery-thumbs project-gallery-thumbs d-flex flex-wrap gap-2 mt-3 align-items-center">
+              <span class="text-secondary small me-1"><i class="bi bi-camera me-1"></i>Screenshots:</span>
+              <a href="assets/img/screenshots/cenro-1.png" class="glightbox badge bg-secondary-subtle text-light-emphasis border border-secondary-subtle text-decoration-none px-2.5 py-1.5 rounded-pill" data-gallery="showcase-cenro-thumbs" data-title="CENRO Waste Tracker — Admin Terminal Dashboard">
+                <i class="bi bi-speedometer2 me-1 text-primary"></i>Admin Terminal
+              </a>
+              <a href="assets/img/screenshots/cenro-2.jpg" class="glightbox badge bg-secondary-subtle text-light-emphasis border border-secondary-subtle text-decoration-none px-2.5 py-1.5 rounded-pill" data-gallery="showcase-cenro-thumbs" data-title="CENRO Waste Tracker — Route Mapping &amp; Street GIS Coordinates">
+                <i class="bi bi-map me-1 text-warning"></i>Route Mapping
+              </a>
+              <a href="assets/img/screenshots/cenro-4.jpg" class="glightbox badge bg-secondary-subtle text-light-emphasis border border-secondary-subtle text-decoration-none px-2.5 py-1.5 rounded-pill" data-gallery="showcase-cenro-thumbs" data-title="CENRO Waste Tracker — Driver Mobile App (Live Route Map &amp; Checkpoint Navigation)">
+                <i class="bi bi-geo-alt-fill me-1 text-danger"></i>Driver Map
+              </a>
+              <a href="assets/img/screenshots/cenro-5.jpg" class="glightbox badge bg-secondary-subtle text-light-emphasis border border-secondary-subtle text-decoration-none px-2.5 py-1.5 rounded-pill" data-gallery="showcase-cenro-thumbs" data-title="CENRO Waste Tracker — Citizen Mobile Portal (Live Waste Collection Tracking &amp; Truck Map)">
+                <i class="bi bi-truck me-1 text-info"></i>Citizen Map
+              </a>
             </div>
           </div><!-- End CENRO Project -->
 
@@ -882,6 +984,162 @@
       </div>
 
     </section><!-- /Creative Work Section -->
+
+    <!-- Work in Action / Personal Gallery Section -->
+    <section id="gallery" class="gallery-section section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Work in Action</h2>
+        <p>A personal gallery of real-world client deployments, hardware diagnostics, build staging, and developer life.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Category Highlights -->
+        <div class="gallery-highlight-pills">
+          <span class="gallery-pill"><i class="bi bi-people-fill text-info"></i> Stakeholder Walkthroughs</span>
+          <span class="gallery-pill"><i class="bi bi-geo-alt-fill text-warning"></i> On-Site Deployments</span>
+          <span class="gallery-pill"><i class="bi bi-tools text-danger"></i> Hardware Diagnostics</span>
+          <span class="gallery-pill"><i class="bi bi-display text-primary"></i> Dev Workstation</span>
+          <span class="gallery-pill"><i class="bi bi-terminal-fill text-success"></i> Build Staging &amp; POS</span>
+          <span class="gallery-pill"><i class="bi bi-moon-stars-fill text-warning"></i> Late-Night Dev</span>
+        </div>
+
+        <!-- Bento Grid Gallery -->
+        <div class="gallery-bento-grid">
+
+          <!-- 1. CENRO System Walkthrough & Field Training -->
+          <div class="gallery-card" data-aos="fade-up" data-aos-delay="100">
+            <a href="assets/img/photos/cenro-deployment.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="CENRO Waste Tracker — Field Walkthrough &amp; Driver App Training" data-description="On-site field training session reviewing real-time route checkpoints on the Flutter driver mobile app and coordinating with dispatch staff via the web admin portal.">
+              <span class="gallery-card-badge"><i class="bi bi-people-fill me-1 text-info"></i>Field Walkthrough</span>
+              <img src="assets/img/photos/cenro-deployment.jpg" alt="Sherwen Mortis conducting CENRO mobile app and dispatch system training" style="object-position: center 30%;" loading="lazy">
+              <div class="gallery-card-overlay">
+                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
+              </div>
+            </a>
+            <div class="gallery-card-body">
+              <h4 class="gallery-card-title">CENRO System Walkthrough &amp; Training</h4>
+              <p class="gallery-card-desc">
+                Conducting an on-site walkthrough of the CENRO Waste Tracker driver mobile navigation app and administrative dispatch terminal with operational personnel.
+              </p>
+              <div class="gallery-card-footer">
+                <span class="gallery-tag"><i class="bi bi-phone me-1"></i>Flutter Driver &amp; Web Admin</span>
+                <span class="text-secondary small"><i class="bi bi-check2-circle text-success me-1"></i>Field Validated</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. On-Site Client Deployment -->
+          <div class="gallery-card" data-aos="fade-up" data-aos-delay="150">
+            <a href="assets/img/photos/field-deployment.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="On-Site Client Deployment &amp; POS Setup" data-description="Configuring and testing custom inventory and billing software on-site with thermal receipt printing at client food service location.">
+              <span class="gallery-card-badge"><i class="bi bi-geo-alt-fill me-1 text-warning"></i>Client On-Site</span>
+              <img src="assets/img/photos/field-deployment.jpg" alt="Sherwen Mortis deploying POS software on-site at client premises" style="object-position: center 25%;" loading="lazy">
+              <div class="gallery-card-overlay">
+                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
+              </div>
+            </a>
+            <div class="gallery-card-body">
+              <h4 class="gallery-card-title">On-Site Client Deployment</h4>
+              <p class="gallery-card-desc">
+                Deploying, configuring, and testing point-of-sale software live in production with thermal receipt printer integration at the client's counter.
+              </p>
+              <div class="gallery-card-footer">
+                <span class="gallery-tag"><i class="bi bi-receipt me-1"></i>POS &amp; Thermal Printing</span>
+                <span class="text-secondary small"><i class="bi bi-check2-circle text-success me-1"></i>Live Deployed</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Hardware Diagnostics & Servicing -->
+          <div class="gallery-card" data-aos="fade-up" data-aos-delay="200">
+            <a href="assets/img/photos/hardware-servicing.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="Hardware Diagnostics &amp; Motherboard Servicing" data-description="Hands-on laptop disassembly, motherboard diagnostics, thermal paste repasting, cooling fan overhaul, and component servicing.">
+              <span class="gallery-card-badge"><i class="bi bi-tools me-1 text-danger"></i>Hardware Lab</span>
+              <img src="assets/img/photos/hardware-servicing.jpg" alt="Laptop hardware diagnostics, motherboard repair and thermal maintenance" style="object-position: center 40%;" loading="lazy">
+              <div class="gallery-card-overlay">
+                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
+              </div>
+            </a>
+            <div class="gallery-card-body">
+              <h4 class="gallery-card-title">Hardware Diagnostics &amp; Repair</h4>
+              <p class="gallery-card-desc">
+                Hands-on laptop disassembly, component diagnostics, thermal repasting, heatsink maintenance, and internal hardware repairs.
+              </p>
+              <div class="gallery-card-footer">
+                <span class="gallery-tag"><i class="bi bi-cpu me-1"></i>Motherboard &amp; Cooling</span>
+                <span class="text-secondary small"><i class="bi bi-shield-check text-info me-1"></i>Bench Serviced</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Developer Workstation -->
+          <div class="gallery-card" data-aos="fade-up" data-aos-delay="250">
+            <a href="assets/img/photos/dev-battlestation.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="Primary Developer Workstation &amp; Battlestation" data-description="Dual-monitor engineering setup configured for database schema modeling, full-stack development, and system architecture with custom PC build.">
+              <span class="gallery-card-badge"><i class="bi bi-display me-1 text-primary"></i>Engineering Rig</span>
+              <img src="assets/img/photos/dev-battlestation.jpg" alt="Dual monitor developer workstation setup with code and architecture schema" loading="lazy">
+              <div class="gallery-card-overlay">
+                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
+              </div>
+            </a>
+            <div class="gallery-card-body">
+              <h4 class="gallery-card-title">Primary Developer Workstation</h4>
+              <p class="gallery-card-desc">
+                Dual-screen workspace tuned for productivity — interactive database schema design on the left, code editor on the right, and custom gaming/dev PC.
+              </p>
+              <div class="gallery-card-footer">
+                <span class="gallery-tag"><i class="bi bi-diagram-3 me-1"></i>Dual Monitors &amp; Schema</span>
+                <span class="text-secondary small"><i class="bi bi-lightning-charge text-primary me-1"></i>Daily Driver</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Build Staging Bench -->
+          <div class="gallery-card" data-aos="fade-up" data-aos-delay="300">
+            <a href="assets/img/photos/build-staging.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="Build Staging Bench &amp; POS Peripherals Testing" data-description="Compiling production Vite assets via PowerShell terminal, testing thermal barcode/receipt printer integration, and uninterrupted power supply (UPS) safety staging.">
+              <span class="gallery-card-badge"><i class="bi bi-terminal-fill me-1 text-success"></i>Staging Bench</span>
+              <img src="assets/img/photos/build-staging.jpg" alt="Hardware test bench with PowerShell build terminal, UPS, and barcode printer" loading="lazy">
+              <div class="gallery-card-overlay">
+                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
+              </div>
+            </a>
+            <div class="gallery-card-body">
+              <h4 class="gallery-card-title">Build Staging &amp; Hardware Testing</h4>
+              <p class="gallery-card-desc">
+                PowerShell compilation station building production bundles, testing receipt &amp; barcode thermal printers, and verifying UPS battery backup reliability.
+              </p>
+              <div class="gallery-card-footer">
+                <span class="gallery-tag"><i class="bi bi-printer me-1"></i>PowerShell Builds &amp; POS</span>
+                <span class="text-secondary small"><i class="bi bi-battery-charging text-success me-1"></i>UPS Protected</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Late-Night Engineering -->
+          <div class="gallery-card" data-aos="fade-up" data-aos-delay="350">
+            <a href="assets/img/photos/late-night-coding.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="Late-Night Engineering &amp; GitHub Contributions" data-description="Deep focus coding session architecting backend REST API controllers in VS Code with active Git version control and GitHub contribution streaks.">
+              <span class="gallery-card-badge"><i class="bi bi-moon-stars-fill me-1 text-warning"></i>Late-Night Dev</span>
+              <img src="assets/img/photos/late-night-coding.jpg" alt="Late night coding session in VS Code with GitHub contributions" style="object-position: center 45%;" loading="lazy">
+              <div class="gallery-card-overlay">
+                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
+              </div>
+            </a>
+            <div class="gallery-card-body">
+              <h4 class="gallery-card-title">Deep Focus &amp; Backend APIs</h4>
+              <p class="gallery-card-desc">
+                Late-night development sessions writing modular backend endpoints, database queries in VS Code, and committing code to GitHub.
+              </p>
+              <div class="gallery-card-footer">
+                <span class="gallery-tag"><i class="bi bi-code-square me-1"></i>VS Code &amp; REST APIs</span>
+                <span class="text-secondary small"><i class="bi bi-git text-warning me-1"></i>Continuous Shipping</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /Bento Grid -->
+
+      </div>
+
+    </section><!-- /Work in Action Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
@@ -1090,28 +1348,30 @@
         <div class="modal-body">
           <h6 class="text-uppercase fw-bold text-accent mb-2" style="font-size: 0.82rem; letter-spacing: 0.5px;">Project Overview</h6>
           <p>
-            Isra Hardware Trading Website is a full-stack business website developed to establish a professional online presence for Isra Hardware Trading. It provides customers with an accessible way to browse hardware and construction products, explore product categories, find store information, locate the physical shop, and communicate with the business.
+            Isra Hardware Trading Website is a full-stack business website developed to establish a professional online presence for Isra Hardware Trading. It provides customers with an accessible way to browse hardware and construction products, explore product categories, find store information, locate the physical shop, and communicate directly with the business.
           </p>
           <p>
-            The application is designed with future scalability in mind, including backend/database integration, cloud-based image management, product administration, customer inquiries, and additional online services.
+            The platform features a modern storefront interface, an integrated interactive customer service chat assistant designed for real-time quotation assistance, and an administrative Customer Helpdesk &amp; Quotation Desk allowing store staff to triage inquiries, verify warehouse stock, and send prompt replies.
           </p>
 
           <h6 class="text-uppercase fw-bold text-accent mt-4 mb-2" style="font-size: 0.82rem; letter-spacing: 0.5px;">Core Objectives &amp; Features</h6>
           <ul class="project-features-list mb-3">
             <li><i class="bi bi-check-circle text-accent"></i> <strong>Responsive Digital Storefront:</strong> Extends the reach of the local hardware store to online shoppers, contractors, and builders across mobile, tablet, and desktop devices.</li>
-            <li><i class="bi bi-check-circle text-accent"></i> <strong>Structured Product Catalog:</strong> Filterable category hierarchy for power tools, plumbing, electrical, paints, and raw construction materials.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Interactive Customer Chat Box:</strong> Conversational quotation and product inquiry assistant allowing customers to check stock, ask store staff questions, and request official quotations.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Admin Customer Helpdesk &amp; Quotation Desk:</strong> Dedicated back-office dashboard to triage customer chats, review AI assistant escalations, verify warehouse inventory stock in real time, and dispatch tailored quotations.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Structured Product Catalog:</strong> Filterable category hierarchy for power tools, plumbing, electrical, paints, masonry, and raw construction materials.</li>
             <li><i class="bi bi-check-circle text-accent"></i> <strong>Store Locator &amp; Information:</strong> Embedded Google Maps locator, physical store address, operating hours, and direct telephone/WhatsApp links.</li>
-            <li><i class="bi bi-check-circle text-accent"></i> <strong>Customer Inquiry &amp; Quote System:</strong> Direct customer inquiry pipeline allowing prospective clients to request quotes and ask questions.</li>
-            <li><i class="bi bi-check-circle text-accent"></i> <strong>Cloud-Based Architecture:</strong> PostgreSQL database schema hosted on Supabase with Supabase Storage for reliable asset delivery.</li>
-            <li><i class="bi bi-check-circle text-accent"></i> <strong>Admin &amp; Content Management:</strong> Administrative portal to update catalog products, adjust inventory, manage categories, and handle inquiries.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Cloud-Based Architecture &amp; Edge Delivery:</strong> High-performance serverless deployment on Cloudflare Workers edge network with Supabase PostgreSQL and Storage for blazing-fast asset delivery.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Admin &amp; Content Management:</strong> Administrative portal to update catalog products, adjust inventory, manage categories, and handle customer requests.</li>
           </ul>
 
           <h6 class="text-uppercase fw-bold text-accent mt-4 mb-2" style="font-size: 0.82rem; letter-spacing: 0.5px;">Technology Stack</h6>
           <div class="project-tech-stack">
             <span class="tech-tag">React</span>
             <span class="tech-tag">TypeScript</span>
-            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">Cloudflare Workers</span>
             <span class="tech-tag">Vite</span>
+            <span class="tech-tag">Tailwind CSS</span>
             <span class="tech-tag">Supabase</span>
             <span class="tech-tag">PostgreSQL</span>
             <span class="tech-tag">Supabase Storage</span>
@@ -1120,9 +1380,82 @@
           </div>
         </div>
         <div class="modal-footer d-flex justify-content-between align-items-center">
-          <a href="https://israhardware.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">
-            <i class="bi bi-globe me-1"></i>Live Website
-          </a>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="https://store.israhardware.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">
+              <i class="bi bi-globe me-1"></i>Live Website
+            </a>
+            <a href="assets/img/screenshots/isra-1.png" class="btn btn-outline-secondary btn-sm glightbox" data-gallery="modal-isra" data-title="Isra Hardware Trading — Storefront Landing Page">
+              <i class="bi bi-images me-1"></i>Browse Screenshots (3 Screens)
+            </a>
+            <a href="assets/img/screenshots/isra-2.png" class="d-none glightbox" data-gallery="modal-isra" data-title="Isra Hardware Trading — Interactive Customer Inquiry &amp; Quotation Assistant"></a>
+            <a href="assets/img/screenshots/isra-3.png" class="d-none glightbox" data-gallery="modal-isra" data-title="Isra Hardware Trading — Admin Customer Helpdesk &amp; Quotation Desk"></a>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CENRO Waste Tracker Project Details Modal -->
+  <div class="modal fade modal-project" id="cenroProjectModal" tabindex="-1" aria-labelledby="cenroProjectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+              <span class="badge-status badge-status-live"><i class="bi bi-broadcast me-1"></i>Live Platform</span>
+              <span class="badge-status badge-status-info"><i class="bi bi-phone me-1"></i>Web &amp; Mobile</span>
+            </div>
+            <h4 class="modal-title" id="cenroProjectModalLabel">CENRO Waste Tracker System</h4>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6 class="text-uppercase fw-bold text-accent mb-2" style="font-size: 0.82rem; letter-spacing: 0.5px;">Project Overview</h6>
+          <p>
+            CENRO Waste Tracker System is a municipal solid waste management and route monitoring platform engineered for the Community Environment &amp; Natural Resources Office (CENRO). The platform unifies administrative logistics, real-time driver navigation, and citizen participation into a single end-to-end ecosystem.
+          </p>
+          <p>
+            The system comprises a desktop web administrative terminal, cross-platform mobile dispatch tools for sanitation truck drivers, and public reporting portals to optimize waste collection schedules, reduce fuel overhead, and eliminate missed pickups.
+          </p>
+
+          <h6 class="text-uppercase fw-bold text-accent mt-4 mb-2" style="font-size: 0.82rem; letter-spacing: 0.5px;">Core Objectives &amp; Features</h6>
+          <ul class="project-features-list mb-3">
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Admin Terminal &amp; Route Dispatch:</strong> Centralized dashboard for city environmental officers to monitor active routes, track completed vs. pending collections, and visualize live collection status.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Interactive Route GIS Mapping:</strong> Real-time map displaying municipal zones, collection progress, road blockages, and truck positions.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Mobile Collection Driver App (Flutter):</strong> Native cross-platform Android app for waste truck drivers featuring live route navigation, interactive checkpoint tracking, on-duty status dispatching, and equipment issue reporting.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Citizen Live Map &amp; Reporting Portal:</strong> Public mobile interface allowing residents to track real-time waste collection progress, view approaching garbage truck locations on the map, and report uncollected bins or illegal dumping hotspots.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Real-Time Data Sync:</strong> Powered by PostgreSQL and Firebase for sub-second synchronization of vehicle coordinates, status changes, and notifications.</li>
+            <li><i class="bi bi-check-circle text-accent"></i> <strong>Analytics &amp; Environmental Auditing:</strong> Generates automated compliance reports, collection efficiency indices, and driver activity logs.</li>
+          </ul>
+
+          <h6 class="text-uppercase fw-bold text-accent mt-4 mb-2" style="font-size: 0.82rem; letter-spacing: 0.5px;">Technology Stack</h6>
+          <div class="project-tech-stack">
+            <span class="tech-tag">React.js</span>
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Dart</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">REST APIs</span>
+            <span class="tech-tag">Vercel</span>
+            <span class="tech-tag">Render</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">GitHub</span>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-wrap gap-2">
+            <a href="https://cenrotracker.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">
+              <i class="bi bi-globe me-1"></i>Live Website
+            </a>
+            <a href="assets/img/screenshots/cenro-1.png" class="btn btn-outline-secondary btn-sm glightbox" data-gallery="modal-cenro" data-title="CENRO Waste Tracker — Admin Terminal Dashboard">
+              <i class="bi bi-images me-1"></i>Screenshots &amp; Field Photos (5)
+            </a>
+            <a href="assets/img/screenshots/cenro-2.jpg" class="d-none glightbox" data-gallery="modal-cenro" data-title="CENRO Waste Tracker — Waste Collection Route Dispatch Mapping"></a>
+            <a href="assets/img/screenshots/cenro-4.jpg" class="d-none glightbox" data-gallery="modal-cenro" data-title="CENRO Waste Tracker — Driver Mobile App (Live Route Map &amp; Checkpoint Navigation)"></a>
+            <a href="assets/img/screenshots/cenro-5.jpg" class="d-none glightbox" data-gallery="modal-cenro" data-title="CENRO Waste Tracker — Citizen Mobile Portal (Live Waste Collection Tracking &amp; Truck Map)"></a>
+            <a href="assets/img/photos/cenro-deployment.jpg" class="d-none glightbox" data-gallery="modal-cenro" data-title="CENRO Waste Tracker — Live Field Walkthrough &amp; Stakeholder Driver Training"></a>
+          </div>
           <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
