@@ -5192,22 +5192,33 @@ html[data-theme="light"] .hero-availability {
 
 /* ── Projects Cards & Integrated Galleries ── */
 /* ── Featured Projects Showcase Cards ── */
+/*--------------------------------------------------------------
+# Featured Projects Showcase (Horizontal Landscape Layout)
+--------------------------------------------------------------*/
+#portfolio .container {
+  max-width: 1340px;
+}
+
 .projects-showcase-container {
-  max-width: 1060px;
+  max-width: 1320px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 48px; /* generous spacing between showcase cards */
+  gap: 36px; /* balanced spacing between wide landscape cards */
 }
 
 .project-card-showcase {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 20px;
-  padding: 42px 48px;
+  padding: 28px 32px;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
   transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+  gap: 32px 36px;
+  align-items: center;
 }
 
 .project-card-showcase:hover {
@@ -5222,44 +5233,84 @@ html[data-theme="light"] .hero-availability {
   box-shadow: 0 18px 52px rgba(240, 165, 0, 0.08);
 }
 
+/* Left Column: Project Information (approx 38-42%) */
+.showcase-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
 .showcase-title {
-  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-size: clamp(1.22rem, 1.7vw, 1.5rem);
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.5px;
   color: var(--text-primary);
-  margin-top: 10px;
-  margin-bottom: 8px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  line-height: 1.28;
 }
 
 .showcase-purpose {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.92rem;
+  line-height: 1.52;
   color: var(--text-secondary);
-  margin-bottom: 0;
+  margin-bottom: 8px;
+}
+
+.showcase-content-col .project-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 10px;
 }
 
 .showcase-features-list {
   list-style: none;
   padding-left: 0;
-  margin: 18px 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 10px 24px;
+  margin: 8px 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .showcase-features-list li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.93rem;
+  gap: 8px;
+  font-size: 0.86rem;
   color: var(--text-secondary);
+  line-height: 1.35;
 }
 
 .showcase-features-list li i {
   color: var(--accent-primary);
-  font-size: 1rem;
+  font-size: 0.92rem;
   flex-shrink: 0;
+}
+
+.showcase-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.showcase-actions .btn {
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Right Column: Project Preview Area (approx 58-62%) */
+.showcase-preview-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
 
 /* ── Project Showcase Window (Browser / App Mockup Frame) ── */
@@ -5268,32 +5319,33 @@ html[data-theme="light"] .hero-availability {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
   transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  width: 100%;
 }
 
 .project-showcase-window:hover {
   border-color: rgba(240, 165, 0, 0.4);
-  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
 }
 
 .window-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(0, 0, 0, 0.45);
-  padding: 11px 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .window-controls {
   display: flex;
-  gap: 7px;
+  gap: 6px;
 }
 
 .ctrl-dot {
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   display: inline-block;
 }
@@ -5305,35 +5357,51 @@ html[data-theme="light"] .hero-availability {
 .window-address-bar {
   background: rgba(255, 255, 255, 0.06);
   border-radius: 6px;
-  padding: 4px 16px;
-  font-size: 0.8rem;
+  padding: 3px 12px;
+  font-size: 0.76rem;
   color: var(--text-secondary);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   display: flex;
   align-items: center;
   gap: 6px;
-  max-width: 360px;
+  max-width: 320px;
   width: 100%;
   justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .window-viewport {
   position: relative;
   overflow: hidden;
   background: #090a0d;
+  height: 275px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-viewport a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .window-viewport img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  max-height: 275px;
+  object-fit: contain;
+  object-position: center;
   display: block;
   transition: transform 0.4s ease;
-  object-fit: cover;
-  max-height: 540px;
 }
 
 .project-showcase-window:hover .window-viewport img {
-  transform: scale(1.015);
+  transform: scale(1.02);
 }
 
 .viewport-overlay {
@@ -5344,41 +5412,35 @@ html[data-theme="light"] .hero-availability {
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 600;
   gap: 8px;
   opacity: 0;
   transition: opacity 0.25s ease;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 .project-showcase-window:hover .viewport-overlay {
   opacity: 1;
 }
 
-@media (max-width: 768px) {
-  .project-card-showcase {
-    padding: 24px 20px;
-  }
-  .projects-showcase-container {
-    gap: 48px;
-  }
-  .showcase-features-list {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-}
-
 .pos-gallery-thumbs,
 .project-gallery-thumbs {
-  padding-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding-top: 8px;
 }
 
 .pos-gallery-thumbs a,
 .project-gallery-thumbs a {
   transition: all 0.25s ease;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 500;
   cursor: pointer;
+  padding: 4px 10px;
 }
 
 .pos-gallery-thumbs a:hover,
@@ -5387,6 +5449,52 @@ html[data-theme="light"] .hero-availability {
   border-color: var(--accent-primary) !important;
   color: var(--accent-primary) !important;
   transform: translateY(-1px);
+}
+
+/* ── Responsive adjustments for Horizontal Landscape Layout ── */
+@media (max-width: 1199px) {
+  .project-card-showcase {
+    grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+    padding: 24px 26px;
+    gap: 24px;
+  }
+  .window-viewport {
+    height: 250px;
+  }
+  .window-viewport img {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 991px) {
+  .project-card-showcase {
+    grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+    padding: 22px 20px;
+    gap: 20px;
+  }
+  .window-viewport {
+    height: 230px;
+  }
+  .window-viewport img {
+    max-height: 230px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-card-showcase {
+    grid-template-columns: 1fr;
+    padding: 22px 18px;
+    gap: 22px;
+  }
+  .projects-showcase-container {
+    gap: 32px;
+  }
+  .window-viewport {
+    height: 240px;
+  }
+  .window-viewport img {
+    max-height: 240px;
+  }
 }
 
 html[data-theme="light"] .pos-gallery-thumbs a,
@@ -5401,6 +5509,10 @@ html[data-theme="light"] .project-gallery-thumbs a:hover {
   background: rgba(240, 165, 0, 0.15) !important;
   border-color: #d97706 !important;
   color: #b45309 !important;
+}
+
+html[data-theme="light"] .window-viewport {
+  background: #f3f4f6;
 }
 
 .project-badges {
