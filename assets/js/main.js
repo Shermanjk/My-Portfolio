@@ -129,45 +129,258 @@
   }
 
   /**
-   * Correct scrolling position upon page load for URLs containing hash links.
+   * Section Router & Clean URL Navigation (HTML5 History API, no '#' in URLs)
+   * Supports:
+   *  - Clean pathnames: /gallery, /about, /skills, /services, /experience, /portfolio, /creative, /contact, /
+   *  - Legacy hash redirects: /#gallery seamlessly rewrites to /gallery
+   *  - Smooth scrolling with fixed header offset (64px)
+   *  - Scrollspy with synchronized, non-flickering URL bar updates
+   *  - Full browser back/forward (popstate) navigation support
    */
-  window.addEventListener('load', function() {
-    if (window.location.hash) {
-      const section = document.querySelector(window.location.hash);
-      if (section) {
-        setTimeout(() => {
-          const scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop || 0),
-            behavior: 'smooth'
-          });
-        }, 100);
+  const routeSectionMap = {
+    '/': 'hero',
+    '/hero': 'hero',
+    '/about': 'about',
+    '/skills': 'skills',
+    '/services': 'services',
+    '/experience': 'experience',
+    '/portfolio': 'portfolio',
+    '/projects': 'portfolio',
+    '/creative': 'creative',
+    '/gallery': 'gallery',
+    '/contact': 'contact'
+  };
+
+  const trackedSections = [
+    { id: 'hero', path: '/' },
+    { id: 'about', path: '/about' },
+    { id: 'skills', path: '/skills' },
+    { id: 'services', path: '/services' },
+    { id: 'experience', path: '/experience' },
+    { id: 'portfolio', path: '/portfolio' },
+    { id: 'creative', path: '/creative' },
+    { id: 'gallery', path: '/gallery' },
+    { id: 'contact', path: '/contact' }
+  ];
+
+  const HEADER_OFFSET = 64;
+  let isProgrammaticScroll = false;
+  let scrollTimeout = null;
+  let currentRoutePath = null;
+
+  function getPathForSection(sectionId) {
+    if (!sectionId || sectionId === 'hero') return '/';
+    return '/' + sectionId;
+  }
+
+  function setActiveNav(path) {
+    const navLinks = document.querySelectorAll('.navmenu a, .mobile-nav a');
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      const normalizedHref = href ? href.replace(/\/+$/, '') || '/' : '';
+      const isMatch = normalizedHref === path || (path === '/' && (normalizedHref === '/' || normalizedHref === '/hero'));
+      link.classList.toggle('active', isMatch);
+    });
+  }
+
+  function scrollToSection(sectionId, updateUrl = true, pushHistory = true) {
+    const section = (sectionId === 'hero') ? document.getElementById('hero') : document.getElementById(sectionId);
+    if (!section && sectionId !== 'hero') return;
+
+    isProgrammaticScroll = true;
+    clearTimeout(scrollTimeout);
+
+    const targetTop = (sectionId === 'hero' || !section) 
+      ? 0 
+      : Math.max(0, section.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET);
+
+    window.scrollTo({
+      top: targetTop,
+      behavior: 'smooth'
+    });
+
+    const targetPath = getPathForSection(sectionId);
+    currentRoutePath = targetPath;
+    setActiveNav(targetPath);
+
+    if (updateUrl) {
+      if (pushHistory) {
+        if (window.location.pathname !== targetPath) {
+          history.pushState({ sectionId }, '', targetPath);
+        }
+      } else {
+        if (window.location.pathname !== targetPath) {
+          history.replaceState({ sectionId }, '', targetPath);
+        }
+      }
+    }
+
+    scrollTimeout = setTimeout(() => {
+      isProgrammaticScroll = false;
+    }, 750);
+  }
+
+  // Intercept in-page section link clicks
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    if (href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
+    if (link.target === '_blank') return;
+
+    let targetSection = null;
+
+    // Check if link is hash
+    if (href.startsWith('#')) {
+      const id = href.slice(1);
+      if (document.getElementById(id)) {
+        targetSection = id;
+      }
+    } else {
+      // Check if path matches routeSectionMap
+      try {
+        const url = new URL(link.href, window.location.origin);
+        if (url.origin === window.location.origin) {
+          const path = url.pathname.replace(/\/+$/, '') || '/';
+          if (routeSectionMap[path]) {
+            targetSection = routeSectionMap[path];
+          }
+        }
+      } catch (_) {}
+    }
+
+    if (targetSection) {
+      e.preventDefault();
+      scrollToSection(targetSection, true, true);
+
+      // Close mobile navigation drawer if open
+      if (mobileNav && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        if (mobileToggle) {
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          mobileNav.setAttribute('aria-hidden', 'true');
+          const icon = mobileToggle.querySelector('i');
+          if (icon) {
+            icon.classList.add('bi-list');
+            icon.classList.remove('bi-x');
+          }
+        }
       }
     }
   });
 
-  /**
-   * Navmenu Scrollspy
-   */
-  const navmenulinks = document.querySelectorAll('.navmenu a, .mobile-nav a');
+  // Browser Back/Forward navigation
+  window.addEventListener('popstate', function() {
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
+    const sectionId = routeSectionMap[path] || 'hero';
+    scrollToSection(sectionId, false, false);
+  });
 
-  function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      const section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      const position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active, .mobile-nav a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
-        document.querySelectorAll(`.navmenu a[href="${navmenulink.hash}"], .mobile-nav a[href="${navmenulink.hash}"]`).forEach(l => l.classList.add('active'));
-      } else {
-        navmenulink.classList.remove('active');
+  // Scrollspy: highlight active menu item and cleanly synchronize URL pathname
+  function updateScrollspy() {
+    if (isProgrammaticScroll) return;
+
+    const scrollY = window.scrollY;
+
+    // Top of page -> Home / Hero
+    if (scrollY < 120) {
+      setActiveNav('/');
+      if (currentRoutePath !== '/' && window.location.pathname !== '/') {
+        history.replaceState({ sectionId: 'hero' }, '', '/');
+        currentRoutePath = '/';
       }
-    });
+      return;
+    }
+
+    // Bottom of page -> Contact
+    if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 60) {
+      const last = trackedSections[trackedSections.length - 1];
+      setActiveNav(last.path);
+      if (currentRoutePath !== last.path && window.location.pathname !== last.path) {
+        history.replaceState({ sectionId: last.id }, '', last.path);
+        currentRoutePath = last.path;
+      }
+      return;
+    }
+
+    // Check which section is in view
+    const triggerPoint = scrollY + HEADER_OFFSET + 120;
+    let activeItem = trackedSections[0];
+
+    for (let i = 0; i < trackedSections.length; i++) {
+      const sec = document.getElementById(trackedSections[i].id);
+      if (sec) {
+        const top = sec.offsetTop;
+        const bottom = top + sec.offsetHeight;
+        if (triggerPoint >= top && triggerPoint < bottom) {
+          activeItem = trackedSections[i];
+          break;
+        } else if (triggerPoint >= top) {
+          activeItem = trackedSections[i];
+        }
+      }
+    }
+
+    setActiveNav(activeItem.path);
+
+    if (currentRoutePath !== activeItem.path && window.location.pathname !== activeItem.path) {
+      history.replaceState({ sectionId: activeItem.id }, '', activeItem.path);
+      currentRoutePath = activeItem.path;
+    }
   }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
+
+  window.addEventListener('scroll', updateScrollspy, { passive: true });
+
+  // Initial Route Dispatcher on page load
+  function dispatchInitialRoute() {
+    let targetSection = null;
+    let targetPath = '/';
+
+    // 1. Check legacy hash (e.g. #gallery -> rewrite to /gallery)
+    if (window.location.hash) {
+      const hashId = window.location.hash.replace('#', '').toLowerCase();
+      if (document.getElementById(hashId)) {
+        targetSection = hashId;
+        targetPath = getPathForSection(hashId);
+      }
+    }
+
+    // 2. Check path (e.g. /gallery)
+    if (!targetSection) {
+      const path = window.location.pathname.replace(/\/+$/, '') || '/';
+      if (routeSectionMap[path]) {
+        targetSection = routeSectionMap[path];
+        targetPath = (targetSection === 'hero') ? '/' : path;
+      }
+    }
+
+    if (targetSection) {
+      // Strip any '#' immediately from browser address bar
+      history.replaceState({ sectionId: targetSection }, '', targetPath);
+      currentRoutePath = targetPath;
+      setActiveNav(targetPath);
+
+      if (targetSection !== 'hero') {
+        setTimeout(() => {
+          const sec = document.getElementById(targetSection);
+          if (sec) {
+            const targetTop = Math.max(0, sec.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET);
+            window.scrollTo({
+              top: targetTop,
+              behavior: 'smooth'
+            });
+          }
+        }, 220);
+      }
+    } else {
+      setActiveNav('/');
+    }
+  }
+
+  window.addEventListener('load', dispatchInitialRoute);
 
 })();
 
