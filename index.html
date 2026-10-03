@@ -39,7 +39,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=1.5" rel="stylesheet">
+  <link href="assets/css/main.css?v=1.6" rel="stylesheet">
 
   <!-- Theme: apply saved preference before paint to prevent flash -->
   <script>
@@ -1034,157 +1034,66 @@
 
     </section><!-- /Creative Work Section -->
 
-    <!-- Work in Action / Personal Gallery Section -->
+    <!-- Work in Action / CircularGallery Section -->
     <section id="gallery" class="gallery-section section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Work in Action</h2>
-        <p>A personal gallery of real-world client deployments, hardware diagnostics, build staging, and developer life.</p>
+        <p>Development, deployment, testing, and real-world implementation.</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <!-- Category Highlights -->
-        <div class="gallery-highlight-pills">
-          <span class="gallery-pill"><i class="bi bi-people-fill text-info"></i> Client Walkthroughs</span>
-          <span class="gallery-pill"><i class="bi bi-geo-alt-fill text-warning"></i> On-Site Deployments</span>
-          <span class="gallery-pill"><i class="bi bi-tools text-danger"></i> Hardware Diagnostics</span>
-          <span class="gallery-pill"><i class="bi bi-cpu text-primary"></i> System Engineering</span>
-          <span class="gallery-pill"><i class="bi bi-terminal-fill text-success"></i> Build Staging &amp; POS</span>
-          <span class="gallery-pill"><i class="bi bi-moon-stars-fill text-warning"></i> Focused Development</span>
+        <!-- Category Filters -->
+        <div class="circular-gallery-filters" role="tablist" aria-label="Work in Action Categories">
+          <button class="cg-filter-btn active" data-category="all" role="tab" aria-selected="true">All</button>
+          <button class="cg-filter-btn" data-category="development" role="tab" aria-selected="false">Development</button>
+          <button class="cg-filter-btn" data-category="deployment" role="tab" aria-selected="false">Deployment</button>
+          <button class="cg-filter-btn" data-category="client-work" role="tab" aria-selected="false">Client Work</button>
+          <button class="cg-filter-btn" data-category="hardware" role="tab" aria-selected="false">Hardware</button>
         </div>
 
-        <!-- Bento Grid Gallery -->
-        <div class="gallery-bento-grid">
+        <!-- 3D CircularGallery Stage -->
+        <div class="circular-gallery-stage" id="circular-gallery-stage" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Interactive Work in Action 3D Gallery">
+          <!-- Navigation Arrow Buttons -->
+          <button class="cg-nav-arrow cg-prev-arrow" id="cg-prev" aria-label="Previous photo">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button class="cg-nav-arrow cg-next-arrow" id="cg-next" aria-label="Next photo">
+            <i class="bi bi-chevron-right"></i>
+          </button>
 
-          <!-- 1. CENRO System Walkthrough & Field Training -->
-          <div class="gallery-card" data-aos="fade-up" data-aos-delay="100">
-            <a href="assets/img/photos/cenro-deployment.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="CENRO System Walkthrough &amp; Training" data-description="Guiding operational personnel through the CENRO Waste Tracker workflow, demonstrating the driver mobile application and administrative tools while validating how the system performs in an actual working environment.">
-              <span class="gallery-card-badge"><i class="bi bi-people-fill me-1 text-info"></i>System Walkthrough</span>
-              <img src="assets/img/photos/cenro-deployment.jpg" alt="Guiding personnel through CENRO Waste Tracker workflow and driver mobile app validation" style="object-position: center 30%;" loading="lazy">
-              <div class="gallery-card-overlay">
-                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
-              </div>
-            </a>
-            <div class="gallery-card-body">
-              <h4 class="gallery-card-title">CENRO System Walkthrough &amp; Training</h4>
-              <p class="gallery-card-desc">
-                Guiding operational personnel through the CENRO Waste Tracker workflow, demonstrating the driver mobile application and administrative tools while validating how the system performs in an actual working environment.
-              </p>
-              <div class="gallery-card-footer">
-                <span class="gallery-tag"><i class="bi bi-people me-1"></i>Client Training</span>
-                <span class="text-secondary small"><i class="bi bi-check2-circle text-success me-1"></i>System Validation &bull; Field Deployment</span>
-              </div>
+          <!-- 3D Cylindrical Viewport -->
+          <div class="circular-gallery-viewport">
+            <div class="circular-gallery-track" id="cg-track">
+              <!-- Dynamically rendered 3D cards via circular-gallery.js -->
             </div>
           </div>
+        </div>
 
-          <!-- 2. On-Site Client Deployment -->
-          <div class="gallery-card" data-aos="fade-up" data-aos-delay="150">
-            <a href="assets/img/photos/field-deployment.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="On-Site Client Deployment" data-description="Deploying and validating the POS system in the client's actual store environment, testing cashier workflows, receipt printing, peripheral integration, and production configuration before daily operation.">
-              <span class="gallery-card-badge"><i class="bi bi-geo-alt-fill me-1 text-warning"></i>Client On-Site</span>
-              <img src="assets/img/photos/field-deployment.jpg" alt="Deploying and validating the POS system live in the client store environment" style="object-position: center 25%;" loading="lazy">
-              <div class="gallery-card-overlay">
-                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
-              </div>
-            </a>
-            <div class="gallery-card-body">
-              <h4 class="gallery-card-title">On-Site Client Deployment</h4>
-              <p class="gallery-card-desc">
-                Deploying and validating the POS system in the client's actual store environment, testing cashier workflows, receipt printing, peripheral integration, and production configuration before daily operation.
-              </p>
-              <div class="gallery-card-footer">
-                <span class="gallery-tag"><i class="bi bi-shop me-1"></i>Client Deployment</span>
-                <span class="text-secondary small"><i class="bi bi-check2-circle text-success me-1"></i>POS Testing &bull; Production Setup</span>
-              </div>
+        <!-- Synchronized Active Item Details Area -->
+        <div class="circular-gallery-details" id="cg-details" aria-live="polite">
+          <div class="cg-details-inner">
+            <h3 class="cg-active-title" id="cg-title">CENRO System Walkthrough &amp; Training</h3>
+            <p class="cg-active-desc" id="cg-desc">Guiding operational personnel through the CENRO Waste Tracker workflow, demonstrating the driver mobile application and administrative tools while validating how the system performs in an actual working environment.</p>
+            <div class="cg-active-tags" id="cg-tags">
+              <!-- Dynamically populated tags -->
             </div>
           </div>
+        </div>
 
-          <!-- 3. Hardware Diagnostics & Servicing -->
-          <div class="gallery-card" data-aos="fade-up" data-aos-delay="200">
-            <a href="assets/img/photos/hardware-servicing.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="Hardware Diagnostics &amp; Maintenance" data-description="Performing hands-on hardware diagnostics and maintenance to identify component issues, restore reliable operation, and better understand the physical systems supporting software environments.">
-              <span class="gallery-card-badge"><i class="bi bi-tools me-1 text-danger"></i>Hardware Lab</span>
-              <img src="assets/img/photos/hardware-servicing.jpg" alt="Performing hands-on hardware diagnostics and maintenance to ensure system reliability" style="object-position: center 40%;" loading="lazy">
-              <div class="gallery-card-overlay">
-                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
-              </div>
-            </a>
-            <div class="gallery-card-body">
-              <h4 class="gallery-card-title">Hardware Diagnostics &amp; Maintenance</h4>
-              <p class="gallery-card-desc">
-                Performing hands-on hardware diagnostics and maintenance to identify component issues, restore reliable operation, and better understand the physical systems supporting software environments.
-              </p>
-              <div class="gallery-card-footer">
-                <span class="gallery-tag"><i class="bi bi-tools me-1"></i>Diagnostics &amp; Maintenance</span>
-                <span class="text-secondary small"><i class="bi bi-shield-check text-info me-1"></i>Hardware Support</span>
-              </div>
-            </div>
+        <!-- Meta Controls: Counter, Drag/Swipe Hint, View All Photos -->
+        <div class="circular-gallery-footer-meta">
+          <div class="cg-counter" id="cg-counter" aria-label="Photo counter">01 / 06</div>
+          <div class="cg-drag-hint" id="cg-hint">
+            <span class="desktop-hint"><i class="bi bi-arrow-left-right me-1"></i>Drag, scroll, or use arrow keys</span>
+            <span class="mobile-hint"><i class="bi bi-hand-index-thumb me-1"></i>Swipe to explore</span>
           </div>
-
-          <!-- 4. Developer Workstation -->
-          <div class="gallery-card" data-aos="fade-up" data-aos-delay="250">
-            <a href="assets/img/photos/dev-battlestation.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="Development &amp; System Engineering" data-description="Working through active software development, database design, debugging, and system integration as projects move from initial implementation toward a stable, production-ready solution.">
-              <span class="gallery-card-badge"><i class="bi bi-cpu me-1 text-primary"></i>System Engineering</span>
-              <img src="assets/img/photos/dev-battlestation.jpg" alt="Active software development, database design, and system integration workflow" loading="lazy">
-              <div class="gallery-card-overlay">
-                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
-              </div>
-            </a>
-            <div class="gallery-card-body">
-              <h4 class="gallery-card-title">Development &amp; System Engineering</h4>
-              <p class="gallery-card-desc">
-                Working through active software development, database design, debugging, and system integration as projects move from initial implementation toward a stable, production-ready solution.
-              </p>
-              <div class="gallery-card-footer">
-                <span class="gallery-tag"><i class="bi bi-code-slash me-1"></i>Full-Stack Development</span>
-                <span class="text-secondary small"><i class="bi bi-diagram-3 text-primary me-1"></i>Database Design &bull; System Integration</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5. Build Staging Bench -->
-          <div class="gallery-card" data-aos="fade-up" data-aos-delay="300">
-            <a href="assets/img/photos/build-staging.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="Build Staging &amp; Hardware Testing" data-description="Preparing and testing a POS deployment before installation, including production builds, terminal configuration, receipt printing, barcode equipment, and hardware integration.">
-              <span class="gallery-card-badge"><i class="bi bi-terminal-fill me-1 text-success"></i>Build Staging</span>
-              <img src="assets/img/photos/build-staging.jpg" alt="Preparing and testing POS hardware and production builds before deployment" loading="lazy">
-              <div class="gallery-card-overlay">
-                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
-              </div>
-            </a>
-            <div class="gallery-card-body">
-              <h4 class="gallery-card-title">Build Staging &amp; Hardware Testing</h4>
-              <p class="gallery-card-desc">
-                Preparing and testing a POS deployment before installation, including production builds, terminal configuration, receipt printing, barcode equipment, and hardware integration.
-              </p>
-              <div class="gallery-card-footer">
-                <span class="gallery-tag"><i class="bi bi-printer me-1"></i>POS Integration</span>
-                <span class="text-secondary small"><i class="bi bi-check2-circle text-success me-1"></i>Deployment Testing &bull; Production Prep</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 6. Late-Night Engineering -->
-          <div class="gallery-card" data-aos="fade-up" data-aos-delay="350">
-            <a href="assets/img/photos/late-night-coding.jpg" class="glightbox gallery-card-media" data-gallery="work-in-action" data-title="Focused Development Session" data-description="Continuing application development through implementation, debugging, backend integration, database work, and code refinement while preparing features for testing and deployment.">
-              <span class="gallery-card-badge"><i class="bi bi-moon-stars-fill me-1 text-warning"></i>Focused Dev</span>
-              <img src="assets/img/photos/late-night-coding.jpg" alt="Focused development session implementing and debugging backend features using Antigravity" style="object-position: center 45%;" loading="lazy">
-              <div class="gallery-card-overlay">
-                <span class="gallery-card-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
-              </div>
-            </a>
-            <div class="gallery-card-body">
-              <h4 class="gallery-card-title">Focused Development Session</h4>
-              <p class="gallery-card-desc">
-                Continuing application development through implementation, debugging, backend integration, database work, and code refinement while preparing features for testing and deployment.
-              </p>
-              <div class="gallery-card-footer">
-                <span class="gallery-tag"><i class="bi bi-cpu me-1"></i>Backend Development</span>
-                <span class="text-secondary small"><i class="bi bi-bug text-warning me-1"></i>Debugging &bull; Feature Implementation</span>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /Bento Grid -->
+          <button type="button" class="cg-view-all-btn" id="cg-view-all" data-bs-toggle="modal" data-bs-target="#workInActionModal">
+            <i class="bi bi-grid-3x3-gap-fill me-1.5"></i>View All Photos
+          </button>
+        </div>
 
       </div>
 
@@ -1511,6 +1420,26 @@
     </div>
   </div>
 
+  <!-- Modal: View All Work in Action Photos Grid -->
+  <div class="modal fade cg-all-photos-modal" id="workInActionModal" tabindex="-1" aria-labelledby="workInActionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h5 class="modal-title" id="workInActionModalLabel">Work in Action — Photography Collection</h5>
+            <p class="text-secondary small mb-0">Browse real-world development, client deployments, and hardware operations.</p>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="cg-modal-grid" id="cg-modal-grid">
+            <!-- Dynamically populated thumbnail cards -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Scroll Top -->
   <a href="#hero" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Scroll to top"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -1521,6 +1450,9 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <!-- CircularGallery 3D Showcase Script -->
+  <script src="assets/js/circular-gallery.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
