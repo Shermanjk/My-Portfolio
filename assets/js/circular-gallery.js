@@ -107,8 +107,6 @@
       this.counterEl = document.getElementById('cg-counter');
       this.detailsEl = document.getElementById('cg-details');
       this.hintEl = document.getElementById('cg-hint');
-      this.prevBtn = document.getElementById('cg-prev');
-      this.nextBtn = document.getElementById('cg-next');
       this.filterBtns = document.querySelectorAll('.cg-filter-btn');
       this.modalGrid = document.getElementById('cg-modal-grid');
 
@@ -117,11 +115,17 @@
       this.filteredData = [...this.allData];
       this.currentCategory = 'all';
 
-      // Subtle, gentle curve for easy photo inspection (reduced from 1.5)
+      // Subtle, gentle curve for easy photo inspection
       this.bend = options.bend ?? 0.9;
       this.scrollSpeed = options.scrollSpeed ?? 1.3;
       this.scrollEase = options.scrollEase ?? 0.085;
       this.snapStrength = 0.14;
+
+      // Auto-Scroll (Endless Continuous Drift)
+      this.autoScrollSpeed = 0.55; // Pixels per frame (~33px/sec at 60fps)
+      this.isHovered = false;
+      this.isInteracting = false;
+      this.resumeTimer = null;
 
       // Animation State
       this.targetX = 0;
@@ -143,7 +147,6 @@
       this.slotWidth = 340;
       this.slotCount = 8;
       this.cardNodes = [];
-      this.lightbox = null;
 
       // Reduced motion preference
       this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -160,7 +163,6 @@
       this.setupEventListeners();
       this.setupFilters();
       this.setupModal();
-      this.initLightbox();
       this.updateDetails(0, true);
       this.wakeLoop();
     }
@@ -231,17 +233,15 @@
 
         const cropPos = item.objectPosition || 'center center';
 
+        // Clean photography card with subtle category badge (no intrusive zoom overlays)
         card.innerHTML = `
           <div class="cg-card-inner">
             <span class="cg-card-badge">${item.categoryLabel || item.category}</span>
             <img src="${item.image}" alt="${item.alt}" class="cg-card-img" style="object-position: ${cropPos};" loading="lazy" />
-            <div class="cg-card-overlay">
-              <span class="cg-zoom-btn" title="View Full Size"><i class="bi bi-arrows-angle-expand"></i></span>
-            </div>
           </div>
         `;
 
-        // Card Click Handler
+        // Card Click Handler: centers the selected photo
         card.addEventListener('click', (e) => this.onCardClick(e, i, itemIndex));
 
         this.track.appendChild(card);
@@ -275,7 +275,7 @@
         const card = node.el;
         const baseSlotX = node.slotIndex * this.slotWidth;
 
-        // Signed horizontal offset from viewport center
+        // Signed horizontal offset from viewport center with modular wrapping
         let dx = baseSlotX - this.currentX;
         dx = ((dx + halfTotal) % totalWidth + totalWidth) % totalWidth - halfTotal;
 
@@ -342,11 +342,18 @@
     }
 
     animate() {
+      const canAutoScroll = !this.isDragging && !this.isWheeling && !this.isHovered && !this.isInteracting && !this.prefersReducedMotion;
+
+      if (canAutoScroll) {
+        // Endless continuous drift forward
+        this.targetX += this.autoScrollSpeed;
+      }
+
       // Smooth interpolation toward target
       this.currentX += (this.targetX - this.currentX) * this.scrollEase;
 
-      // Apply snapping when user isn't actively dragging or wheeling
-      if (!this.isDragging && !this.isWheeling && this.cardNodes.length > 0) {
+      // Only apply magnetic snapping if user was actively interacting and has released
+      if (this.isInteracting && !this.isDragging && !this.isWheeling && this.cardNodes.length > 0) {
         const closestNode = this.cardNodes.find(n => n.slotIndex === this.activeSlotIndex);
         if (closestNode && typeof closestNode.dx === 'number') {
           const snapOffset = closestNode.dx;
@@ -360,9 +367,9 @@
 
       this.render();
 
-      // Check if settled to put RAF loop to sleep
+      // Check whether RAF loop can safely sleep (only if auto-scroll is not running)
       const diff = Math.abs(this.targetX - this.currentX);
-      if (!this.isDragging && !this.isWheeling && diff < 0.04) {
+      if (!canAutoScroll && !this.isDragging && !this.isWheeling && diff < 0.04) {
         this.currentX = this.targetX;
         this.render();
         this.isLoopRunning = false;
@@ -377,6 +384,14 @@
         this.isLoopRunning = true;
         this.animId = requestAnimationFrame(() => this.animate());
       }
+    }
+
+    scheduleAutoScrollResume(delay = 2500) {
+      clearTimeout(this.resumeTimer);
+      this.resumeTimer = setTimeout(() => {
+        this.isInteracting = false;
+        this.wakeLoop();
+      }, delay);
     }
 
     updateDetails(index, immediate = false) {
@@ -420,18 +435,18 @@
 
       this.dismissHint();
 
-      // If clicked item is NOT the active centered item -> snap to center first
+      // Clicking any card centers and selects it
       if (slotIndex !== this.activeSlotIndex) {
         const clickedNode = this.cardNodes.find(n => n.slotIndex === slotIndex);
         if (clickedNode && typeof clickedNode.dx === 'number') {
+          this.isInteracting = true;
           this.targetX += clickedNode.dx;
+          this.scheduleAutoScrollResume(3000);
           this.wakeLoop();
         }
-        return;
       }
-
-      // If already active and centered -> open full-size lightbox
-      this.openLightbox(itemIndex);
+      // Note: Zoom/enlarge is intentionally not triggered here.
+      // It is exclusively available when the viewer clicks "View All Photos".
     }
 
     dismissHint() {
@@ -445,24 +460,35 @@
 
     step(direction = 1) {
       this.dismissHint();
+      this.isInteracting = true;
       this.targetX += direction * this.slotWidth;
+      this.scheduleAutoScrollResume(2500);
       this.wakeLoop();
     }
 
     setupEventListeners() {
-      // Prev / Next Buttons
-      if (this.prevBtn) {
-        this.prevBtn.addEventListener('click', () => this.step(-1));
-      }
-      if (this.nextBtn) {
-        this.nextBtn.addEventListener('click', () => this.step(1));
-      }
-
-      // Pointer / Drag / Touch Events
       const stage = this.stage;
 
+      // Hover to pause / resume auto-scroll (Mouse only, prevents sticky hover on mobile)
+      stage.addEventListener('pointerenter', (e) => {
+        if (e.pointerType === 'mouse') {
+          this.isHovered = true;
+        }
+      });
+
+      stage.addEventListener('pointerleave', (e) => {
+        if (e.pointerType === 'mouse') {
+          this.isHovered = false;
+          this.wakeLoop();
+        }
+      });
+
+      // Pointer / Drag / Touch Events
       stage.addEventListener('pointerdown', (e) => {
         if (e.button !== 0 && e.pointerType === 'mouse') return;
+
+        this.isInteracting = true;
+        clearTimeout(this.resumeTimer);
 
         this.isPointerDown = true;
         this.isDragging = true;
@@ -501,6 +527,7 @@
           }
         } catch (_) {}
 
+        this.scheduleAutoScrollResume(2500);
         this.wakeLoop();
       };
 
@@ -509,6 +536,9 @@
 
       // Wheel & Trackpad
       stage.addEventListener('wheel', (e) => {
+        this.isInteracting = true;
+        clearTimeout(this.resumeTimer);
+
         const absX = Math.abs(e.deltaX);
         const absY = Math.abs(e.deltaY);
 
@@ -520,6 +550,7 @@
           clearTimeout(this.wheelTimer);
           this.wheelTimer = setTimeout(() => {
             this.isWheeling = false;
+            this.scheduleAutoScrollResume(2000);
             this.wakeLoop();
           }, 160);
           this.wakeLoop();
@@ -530,6 +561,7 @@
           clearTimeout(this.wheelTimer);
           this.wheelTimer = setTimeout(() => {
             this.isWheeling = false;
+            this.scheduleAutoScrollResume(2000);
             this.wakeLoop();
           }, 180);
           this.wakeLoop();
@@ -544,9 +576,6 @@
         } else if (e.key === 'ArrowRight') {
           e.preventDefault();
           this.step(1);
-        } else if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          this.openLightbox(this.activeNormalizedIndex);
         }
       });
 
@@ -559,6 +588,16 @@
           this.totalTrackWidth = this.slotCount * this.slotWidth;
           this.wakeLoop();
         }, 150);
+      });
+
+      // Page Visibility Change (pause when tab hidden to save CPU/battery)
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (this.animId) cancelAnimationFrame(this.animId);
+          this.isLoopRunning = false;
+        } else {
+          this.wakeLoop();
+        }
       });
     }
 
@@ -596,46 +635,8 @@
       this.activeSlotIndex = 0;
 
       this.buildTrack();
-      this.initLightbox();
       this.updateDetails(0, true);
       this.wakeLoop();
-    }
-
-    initLightbox() {
-      if (typeof GLightbox === 'undefined') return;
-
-      if (this.lightbox) {
-        try {
-          this.lightbox.destroy();
-        } catch (_) {}
-      }
-
-      const elements = this.filteredData.map(item => ({
-        href: item.image,
-        type: 'image',
-        title: item.title,
-        description: `
-          <div class="cg-lb-content">
-            <p class="cg-lb-desc mb-2">${item.fullDescription || item.description || item.shortDescription}</p>
-            <div class="cg-lb-tags">
-              ${item.tags.map(t => `<span class="badge bg-secondary-subtle text-light-emphasis me-1 mb-1">${t}</span>`).join('')}
-            </div>
-          </div>
-        `
-      }));
-
-      this.lightbox = GLightbox({
-        elements: elements,
-        touchNavigation: true,
-        loop: true,
-        zoomable: true
-      });
-    }
-
-    openLightbox(index) {
-      if (this.lightbox && typeof this.lightbox.openAt === 'function') {
-        this.lightbox.openAt(index);
-      }
     }
 
     setupModal() {
@@ -681,7 +682,7 @@
                 title: item.title,
                 description: `
                   <div class="cg-lb-content">
-                    <p class="cg-lb-desc mb-2">${item.description}</p>
+                    <p class="cg-lb-desc mb-2">${item.fullDescription || item.shortDescription || item.description}</p>
                     <div class="cg-lb-tags">
                       ${item.tags.map(t => `<span class="badge bg-secondary-subtle text-light-emphasis me-1 mb-1">${t}</span>`).join('')}
                     </div>
