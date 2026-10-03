@@ -1,16 +1,18 @@
 /**
- * CircularGallery — Interactive 3D Curved Showcase
- * Inspired by React Bits CircularGallery architecture.
- * Features:
- *  - Real-time 3D cylindrical projection (bend & depth arc)
- *  - Distance-based continuous center item enlargement
- *  - Pointer drag, mouse wheel, trackpad horizontal swipe & mobile touch
- *  - Spring snapping & momentum damping
- *  - Category filtering with safe state reset
- *  - Single synchronized details view with animated transitions
- *  - Integrated full-screen GLightbox for active centered item
- *  - "View All Photos" thumbnail grid modal
- *  - Scalable data model supporting arbitrary number of items
+ * CircularGallery — Interactive 3D Curved Showcase (Refined)
+ * Focused visual showcase of software development, system engineering,
+ * hardware integration, testing, training, and client deployments.
+ *
+ * Refinements:
+ *  - Dominant active center image (1.18x desktop / 1.07x mobile)
+ *  - Smooth distance-based continuous interpolation (adjacent ~0.92x, farther ~0.86x)
+ *  - Subtle 1px gold border & soft shadow (no neon glow)
+ *  - Reduced bend/curvature for natural photo inspection
+ *  - Custom per-image objectPosition to prevent improper cropping
+ *  - Compact synchronized info with counter adjacent to active title
+ *  - Shortened 1-2 line visible description; full text in lightbox & modal
+ *  - 2-3 compact tags
+ *  - Zero vertical bloat
  */
 
 (function() {
@@ -22,60 +24,72 @@
       id: "cenro-training",
       image: "assets/img/photos/cenro-deployment.jpg",
       title: "CENRO System Walkthrough & Training",
+      shortDescription: "Demonstrating the CENRO driver mobile app and administrative dispatch workflow to operational personnel in an active working environment.",
       description: "Guiding operational personnel through the CENRO Waste Tracker workflow, demonstrating the driver mobile application and administrative tools while validating how the system performs in an actual working environment.",
       category: "client-work",
       categoryLabel: "Client Work",
       tags: ["Client Training", "System Validation", "Field Deployment"],
+      objectPosition: "center 28%",
       alt: "Guiding operational personnel through CENRO Waste Tracker workflow and driver mobile app validation"
     },
     {
       id: "client-deployment",
       image: "assets/img/photos/field-deployment.jpg",
       title: "On-Site Client Deployment",
+      shortDescription: "Deploying and validating the POS system live in the store environment with cashier workflows, receipt printing, and hardware peripherals.",
       description: "Deploying and validating the POS system in the client's actual store environment, testing cashier workflows, receipt printing, peripheral integration, and production configuration before daily operation.",
       category: "deployment",
       categoryLabel: "Deployment",
       tags: ["Client Deployment", "POS Testing", "Production Setup"],
+      objectPosition: "center 24%",
       alt: "Deploying and validating the POS system in the client's actual store environment with receipt printing and peripheral integration"
     },
     {
       id: "hardware-diagnostics",
       image: "assets/img/photos/hardware-servicing.jpg",
       title: "Hardware Diagnostics & Maintenance",
+      shortDescription: "Performing hands-on hardware diagnostics, component maintenance, and thermal servicing to ensure reliable system operation.",
       description: "Performing hands-on hardware diagnostics and maintenance to identify component issues, restore reliable operation, and understand the physical systems supporting software environments.",
       category: "hardware",
       categoryLabel: "Hardware",
       tags: ["Diagnostics", "Maintenance", "Hardware Support"],
+      objectPosition: "center 42%",
       alt: "Performing hands-on hardware diagnostics and maintenance to identify component issues and restore reliable operation"
     },
     {
       id: "system-engineering",
       image: "assets/img/photos/dev-battlestation.jpg",
       title: "Development & System Engineering",
-      description: "Working through active software development, database design, debugging, and system integration as projects move from initial implementation toward a stable, production-ready solution.",
+      shortDescription: "Developing application features, designing database schemas, debugging, and integrating systems toward production readiness.",
+      description: "Working through active software development, database design, debugging, and system integration as projects move from implementation toward a stable, production-ready solution.",
       category: "development",
       categoryLabel: "Development",
-      tags: ["Full-Stack Development", "Database Design", "System Integration"],
+      tags: ["Full-Stack Dev", "Database Design", "System Integration"],
+      objectPosition: "center center",
       alt: "Working through active software development, database design, debugging, and system integration"
     },
     {
       id: "build-staging",
       image: "assets/img/photos/build-staging.jpg",
       title: "Build Staging & Hardware Testing",
+      shortDescription: "Staging pre-deployment POS builds, testing terminal configurations, barcode scanners, and receipt printer hardware.",
       description: "Preparing and testing a POS deployment before installation, including production builds, terminal configuration, receipt printing, barcode equipment, and hardware integration.",
       category: "deployment",
       categoryLabel: "Deployment",
-      tags: ["POS Integration", "Deployment Testing", "Production Preparation"],
+      tags: ["POS Integration", "Deployment Testing", "Production Prep"],
+      objectPosition: "center 32%",
       alt: "Preparing and testing a POS deployment before installation including production builds and barcode hardware integration"
     },
     {
       id: "focused-development",
       image: "assets/img/photos/late-night-coding.jpg",
       title: "Focused Development Session",
+      shortDescription: "Iterative backend development, debugging, database queries, and feature implementation using Antigravity.",
       description: "Continuing application development through implementation, debugging, backend integration, database work, and code refinement while preparing features for testing and deployment.",
       category: "development",
       categoryLabel: "Development",
-      tags: ["Backend Development", "Debugging", "Feature Implementation"],
+      tags: ["Backend Dev", "Debugging", "Feature Engineering"],
+      objectPosition: "center 40%",
       alt: "Focused development session implementing and debugging backend features using Antigravity"
     }
   ];
@@ -98,15 +112,16 @@
       this.filterBtns = document.querySelectorAll('.cg-filter-btn');
       this.modalGrid = document.getElementById('cg-modal-grid');
 
-      // Gallery Configuration (matching React Bits starting defaults)
+      // Gallery Configuration
       this.allData = workItems;
       this.filteredData = [...this.allData];
       this.currentCategory = 'all';
 
-      this.bend = options.bend ?? 1.5;
+      // Subtle, gentle curve for easy photo inspection (reduced from 1.5)
+      this.bend = options.bend ?? 0.9;
       this.scrollSpeed = options.scrollSpeed ?? 1.3;
-      this.scrollEase = options.scrollEase ?? 0.08;
-      this.snapStrength = 0.12;
+      this.scrollEase = options.scrollEase ?? 0.085;
+      this.snapStrength = 0.14;
 
       // Animation State
       this.targetX = 0;
@@ -124,13 +139,13 @@
       this.animId = null;
       this.isLoopRunning = false;
 
-      // Slot Configuration
-      this.slotWidth = 360;
+      // Slot Metrics
+      this.slotWidth = 340;
       this.slotCount = 8;
       this.cardNodes = [];
       this.lightbox = null;
 
-      // Accessibility & reduced motion
+      // Reduced motion preference
       this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (this.prefersReducedMotion) {
         this.bend = 0;
@@ -153,30 +168,40 @@
     updateResponsiveMetrics() {
       const w = window.innerWidth;
       if (w >= 1200) {
-        this.slotWidth = 380;
-        this.activeScale = 1.16;
-        this.minScale = 0.86;
-        this.bendFactor = this.prefersReducedMotion ? 0 : 1.5;
+        // Desktop: 3-5 images visible, center dominant at 1.18x (1.15-1.20x range)
+        this.slotWidth = 320;
+        this.activeScale = 1.18;
+        this.adjacentScale = 0.92;
+        this.farScale = 0.84;
+        this.bendFactor = this.prefersReducedMotion ? 0 : 0.75;
       } else if (w >= 992) {
-        this.slotWidth = 330;
-        this.activeScale = 1.14;
-        this.minScale = 0.88;
-        this.bendFactor = this.prefersReducedMotion ? 0 : 1.4;
-      } else if (w >= 768) {
+        // Laptop: 3-4 images visible, 1.16x
         this.slotWidth = 290;
-        this.activeScale = 1.10;
-        this.minScale = 0.90;
-        this.bendFactor = this.prefersReducedMotion ? 0 : 1.25;
+        this.activeScale = 1.16;
+        this.adjacentScale = 0.92;
+        this.farScale = 0.84;
+        this.bendFactor = this.prefersReducedMotion ? 0 : 0.7;
+      } else if (w >= 768) {
+        // Tablet: 3 images visible, 1.12x
+        this.slotWidth = 250;
+        this.activeScale = 1.12;
+        this.adjacentScale = 0.91;
+        this.farScale = 0.83;
+        this.bendFactor = this.prefersReducedMotion ? 0 : 0.6;
       } else if (w >= 480) {
-        this.slotWidth = 240;
-        this.activeScale = 1.07;
-        this.minScale = 0.92;
-        this.bendFactor = this.prefersReducedMotion ? 0 : 1.1;
-      } else {
+        // Mobile: 1 centered image with neighboring edges visible, active scale ~1.07 (1.05-1.08 range)
         this.slotWidth = 210;
+        this.activeScale = 1.07;
+        this.adjacentScale = 0.90;
+        this.farScale = 0.82;
+        this.bendFactor = this.prefersReducedMotion ? 0 : 0.48;
+      } else {
+        // Small Mobile (<480px): active scale ~1.06
+        this.slotWidth = 185;
         this.activeScale = 1.06;
-        this.minScale = 0.93;
-        this.bendFactor = this.prefersReducedMotion ? 0 : 0.9;
+        this.adjacentScale = 0.89;
+        this.farScale = 0.80;
+        this.bendFactor = this.prefersReducedMotion ? 0 : 0.42;
       }
     }
 
@@ -188,7 +213,6 @@
       const n = this.filteredData.length;
       if (n === 0) return;
 
-      // Create enough virtual slots to wrap continuously around viewport
       const minSlotsNeeded = Math.max(n * 2, 8);
       this.slotCount = minSlotsNeeded;
       this.totalTrackWidth = this.slotCount * this.slotWidth;
@@ -205,10 +229,12 @@
         card.setAttribute('data-slot-index', i);
         card.setAttribute('data-item-index', itemIndex);
 
+        const cropPos = item.objectPosition || 'center center';
+
         card.innerHTML = `
           <div class="cg-card-inner">
             <span class="cg-card-badge">${item.categoryLabel || item.category}</span>
-            <img src="${item.image}" alt="${item.alt}" class="cg-card-img" loading="lazy" />
+            <img src="${item.image}" alt="${item.alt}" class="cg-card-img" style="object-position: ${cropPos};" loading="lazy" />
             <div class="cg-card-overlay">
               <span class="cg-zoom-btn" title="View Full Size"><i class="bi bi-arrows-angle-expand"></i></span>
             </div>
@@ -235,9 +261,10 @@
       const viewportWidth = this.stage.clientWidth || window.innerWidth;
       const totalWidth = this.totalTrackWidth;
       const halfTotal = totalWidth / 2;
-      const maxDistance = viewportWidth * 0.55;
+      const maxDistance = viewportWidth * 0.52;
 
-      const R = Math.max(viewportWidth * 1.1, 750) / (this.bendFactor || 1);
+      // Arc radius calculation for gentle curvature
+      const R = Math.max(viewportWidth * 1.35, 950) / (this.bendFactor || 1);
 
       let minCenterDist = Infinity;
       let closestSlot = 0;
@@ -253,13 +280,26 @@
         dx = ((dx + halfTotal) % totalWidth + totalWidth) % totalWidth - halfTotal;
 
         const distance = Math.abs(dx);
+        const u = distance / (this.slotWidth || 300);
+
+        // Smooth continuous scaling interpolation:
+        // Center (u=0): activeScale (1.18x desktop / 1.07x mobile)
+        // Adjacent (u=1): adjacentScale (~0.92x desktop)
+        // Farther (u>=2): farScale (~0.84x desktop)
+        let scale;
+        if (u <= 1) {
+          const t = u * u * (3 - 2 * u);
+          scale = this.activeScale - t * (this.activeScale - this.adjacentScale);
+        } else {
+          const t = Math.min(u - 1, 1);
+          const tSmooth = t * t * (3 - 2 * t);
+          scale = this.adjacentScale - tSmooth * (this.adjacentScale - this.farScale);
+        }
+
         const normDist = Math.min(distance / maxDistance, 1.0);
+        const opacity = 1.0 - normDist * 0.45;
 
-        // Distance-based Scale & Opacity
-        const scale = this.activeScale - normDist * (this.activeScale - this.minScale);
-        const opacity = 1.0 - normDist * 0.48;
-
-        // Cylindrical Curvature (Bend)
+        // Subtle 3D Bend — reduced curvature so photos remain easy to inspect
         let X = dx;
         let Z = 0;
         let rotY = 0;
@@ -267,16 +307,16 @@
         if (this.bendFactor > 0) {
           const theta = dx / R;
           X = R * Math.sin(theta);
-          Z = -R * (1 - Math.cos(theta)) * 0.55 - distance * 0.08;
-          rotY = -theta * (180 / Math.PI) * 0.65;
+          Z = -R * (1 - Math.cos(theta)) * 0.28 - distance * 0.03;
+          rotY = -theta * (180 / Math.PI) * 0.28;
         }
 
-        // Apply 3D transform & opacity
+        // Apply hardware-accelerated transforms
         card.style.transform = `translate3d(calc(${X}px - 50%), -50%, ${Z}px) rotateY(${rotY}deg) scale(${scale})`;
         card.style.opacity = opacity.toFixed(3);
         card.style.zIndex = Math.round((1 - normDist) * 100);
 
-        // Track the slot nearest the center
+        // Track nearest item to center
         if (distance < minCenterDist) {
           minCenterDist = distance;
           closestSlot = node.slotIndex;
@@ -294,7 +334,7 @@
         node.el.setAttribute('aria-current', isActive ? 'true' : 'false');
       });
 
-      // Update text details only when normalized active item changes
+      // Update text details only when normalized active index changes
       if (closestNormalized !== this.activeNormalizedIndex) {
         this.activeNormalizedIndex = closestNormalized;
         this.updateDetails(closestNormalized);
@@ -307,7 +347,6 @@
 
       // Apply snapping when user isn't actively dragging or wheeling
       if (!this.isDragging && !this.isWheeling && this.cardNodes.length > 0) {
-        // Find distance of the closest slot
         const closestNode = this.cardNodes.find(n => n.slotIndex === this.activeSlotIndex);
         if (closestNode && typeof closestNode.dx === 'number') {
           const snapOffset = closestNode.dx;
@@ -321,7 +360,7 @@
 
       this.render();
 
-      // Check if settled to put RAF loop to sleep (battery/CPU friendly)
+      // Check if settled to put RAF loop to sleep
       const diff = Math.abs(this.targetX - this.currentX);
       if (!this.isDragging && !this.isWheeling && diff < 0.04) {
         this.currentX = this.targetX;
@@ -354,9 +393,12 @@
 
       const applyContent = () => {
         if (this.titleEl) this.titleEl.textContent = item.title;
-        if (this.descEl) this.descEl.textContent = item.description;
+        // Display 1-2 line concise narrative
+        if (this.descEl) this.descEl.textContent = item.shortDescription || item.description;
+        // Keep 2-3 compact tags
         if (this.tagsEl) {
-          this.tagsEl.innerHTML = item.tags
+          const visibleTags = item.tags.slice(0, 3);
+          this.tagsEl.innerHTML = visibleTags
             .map(tag => `<span class="cg-tag-pill">${tag}</span>`)
             .join('');
         }
@@ -374,12 +416,11 @@
     }
 
     onCardClick(e, slotIndex, itemIndex) {
-      // Ignore click if it was part of a drag movement
       if (this.dragMovedDistance > 8) return;
 
       this.dismissHint();
 
-      // If clicked item is NOT the active centered item -> snap it to center
+      // If clicked item is NOT the active centered item -> snap to center first
       if (slotIndex !== this.activeSlotIndex) {
         const clickedNode = this.cardNodes.find(n => n.slotIndex === slotIndex);
         if (clickedNode && typeof clickedNode.dx === 'number') {
@@ -389,7 +430,7 @@
         return;
       }
 
-      // If already active and centered -> open full-size lightbox!
+      // If already active and centered -> open full-size lightbox
       this.openLightbox(itemIndex);
     }
 
@@ -417,11 +458,10 @@
         this.nextBtn.addEventListener('click', () => this.step(1));
       }
 
-      // Pointer / Drag / Touch Events on the Stage
+      // Pointer / Drag / Touch Events
       const stage = this.stage;
 
       stage.addEventListener('pointerdown', (e) => {
-        // Only react to primary mouse button or touch
         if (e.button !== 0 && e.pointerType === 'mouse') return;
 
         this.isPointerDown = true;
@@ -469,12 +509,10 @@
 
       // Wheel & Trackpad
       stage.addEventListener('wheel', (e) => {
-        // Support horizontal swipe or vertical scroll with shift or trackpad
         const absX = Math.abs(e.deltaX);
         const absY = Math.abs(e.deltaY);
 
         if (absX > absY || e.shiftKey) {
-          // Horizontal scrolling: capture fully
           e.preventDefault();
           this.targetX += (e.deltaX || e.deltaY) * this.scrollSpeed * 0.8;
           this.isWheeling = true;
@@ -486,7 +524,6 @@
           }, 160);
           this.wakeLoop();
         } else if (absY > 30) {
-          // Gentle vertical wheel step
           this.isWheeling = true;
           this.targetX += Math.sign(e.deltaY) * this.slotWidth * 0.5;
           this.dismissHint();
@@ -526,7 +563,7 @@
     }
 
     setupFilters() {
-      if (!this.filterBtns) return;
+      if (!this.filterBtns || this.filterBtns.length === 0) return;
 
       this.filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -553,7 +590,6 @@
         this.filteredData = this.allData.filter(item => item.category === category);
       }
 
-      // Reset animation state cleanly
       this.targetX = 0;
       this.currentX = 0;
       this.activeNormalizedIndex = 0;
@@ -605,38 +641,38 @@
     setupModal() {
       if (!this.modalGrid) return;
 
-      this.modalGrid.innerHTML = this.allData.map((item, idx) => `
-        <div class="cg-modal-item" data-category="${item.category}">
-          <div class="cg-modal-card">
-            <div class="cg-modal-media" data-idx="${idx}">
-              <img src="${item.image}" alt="${item.alt}" loading="lazy" />
-              <div class="cg-modal-overlay">
-                <span class="cg-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
+      this.modalGrid.innerHTML = this.allData.map((item, idx) => {
+        const cropPos = item.objectPosition || 'center center';
+        return `
+          <div class="cg-modal-item" data-category="${item.category}">
+            <div class="cg-modal-card">
+              <div class="cg-modal-media" data-idx="${idx}">
+                <img src="${item.image}" alt="${item.alt}" style="object-position: ${cropPos};" loading="lazy" />
+                <div class="cg-modal-overlay">
+                  <span class="cg-zoom-btn"><i class="bi bi-arrows-angle-expand"></i></span>
+                </div>
               </div>
-            </div>
-            <div class="cg-modal-info">
-              <span class="cg-modal-badge">${item.categoryLabel || item.category}</span>
-              <h6 class="cg-modal-title">${item.title}</h6>
-              <p class="cg-modal-desc">${item.description}</p>
-              <div class="cg-modal-tags">
-                ${item.tags.map(t => `<span class="cg-tag-pill">${t}</span>`).join('')}
+              <div class="cg-modal-info">
+                <span class="cg-modal-badge">${item.categoryLabel || item.category}</span>
+                <h6 class="cg-modal-title">${item.title}</h6>
+                <p class="cg-modal-desc">${item.description}</p>
+                <div class="cg-modal-tags">
+                  ${item.tags.map(t => `<span class="cg-tag-pill">${t}</span>`).join('')}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
 
-      // Clicking any photo thumbnail in the modal opens it in the lightbox!
       this.modalGrid.querySelectorAll('.cg-modal-media').forEach(media => {
         media.addEventListener('click', () => {
           const idx = parseInt(media.getAttribute('data-idx'), 10);
-          // Close modal
           const modalEl = document.getElementById('workInActionModal');
           if (modalEl && typeof bootstrap !== 'undefined' && bootstrap.Modal) {
             const modalInstance = bootstrap.Modal.getInstance(modalEl);
             if (modalInstance) modalInstance.hide();
           }
-          // Open lightbox with all photos
           setTimeout(() => {
             const allLightbox = GLightbox({
               elements: this.allData.map(item => ({

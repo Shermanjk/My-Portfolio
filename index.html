@@ -39,7 +39,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=1.6" rel="stylesheet">
+  <link href="assets/css/main.css?v=1.7" rel="stylesheet">
 
   <!-- Theme: apply saved preference before paint to prevent flash -->
   <script>
@@ -1045,15 +1045,6 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <!-- Category Filters -->
-        <div class="circular-gallery-filters" role="tablist" aria-label="Work in Action Categories">
-          <button class="cg-filter-btn active" data-category="all" role="tab" aria-selected="true">All</button>
-          <button class="cg-filter-btn" data-category="development" role="tab" aria-selected="false">Development</button>
-          <button class="cg-filter-btn" data-category="deployment" role="tab" aria-selected="false">Deployment</button>
-          <button class="cg-filter-btn" data-category="client-work" role="tab" aria-selected="false">Client Work</button>
-          <button class="cg-filter-btn" data-category="hardware" role="tab" aria-selected="false">Hardware</button>
-        </div>
-
         <!-- 3D CircularGallery Stage -->
         <div class="circular-gallery-stage" id="circular-gallery-stage" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Interactive Work in Action 3D Gallery">
           <!-- Navigation Arrow Buttons -->
@@ -1075,23 +1066,25 @@
         <!-- Synchronized Active Item Details Area -->
         <div class="circular-gallery-details" id="cg-details" aria-live="polite">
           <div class="cg-details-inner">
-            <h3 class="cg-active-title" id="cg-title">CENRO System Walkthrough &amp; Training</h3>
-            <p class="cg-active-desc" id="cg-desc">Guiding operational personnel through the CENRO Waste Tracker workflow, demonstrating the driver mobile application and administrative tools while validating how the system performs in an actual working environment.</p>
+            <div class="cg-title-row">
+              <span class="cg-counter-pill" id="cg-counter" aria-label="Photo counter">01 / 06</span>
+              <h3 class="cg-active-title" id="cg-title">CENRO System Walkthrough &amp; Training</h3>
+            </div>
+            <p class="cg-active-desc" id="cg-desc">Demonstrating the CENRO driver mobile app and administrative dispatch workflow to operational personnel in an active working environment.</p>
             <div class="cg-active-tags" id="cg-tags">
               <!-- Dynamically populated tags -->
             </div>
           </div>
         </div>
 
-        <!-- Meta Controls: Counter, Drag/Swipe Hint, View All Photos -->
+        <!-- Meta Controls: Drag/Swipe Hint, View All Photos -->
         <div class="circular-gallery-footer-meta">
-          <div class="cg-counter" id="cg-counter" aria-label="Photo counter">01 / 06</div>
           <div class="cg-drag-hint" id="cg-hint">
-            <span class="desktop-hint"><i class="bi bi-arrow-left-right me-1"></i>Drag, scroll, or use arrow keys</span>
-            <span class="mobile-hint"><i class="bi bi-hand-index-thumb me-1"></i>Swipe to explore</span>
+            <span class="desktop-hint"><i class="bi bi-arrow-left-right me-1"></i>Drag, scroll, or use arrow keys &bull; Click active photo to zoom</span>
+            <span class="mobile-hint"><i class="bi bi-hand-index-thumb me-1"></i>Swipe to explore &bull; Tap active photo to zoom</span>
           </div>
           <button type="button" class="cg-view-all-btn" id="cg-view-all" data-bs-toggle="modal" data-bs-target="#workInActionModal">
-            <i class="bi bi-grid-3x3-gap-fill me-1.5"></i>View All Photos
+            <i class="bi bi-grid-3x3-gap-fill me-1.5"></i>View All Photos (6)
           </button>
         </div>
 
