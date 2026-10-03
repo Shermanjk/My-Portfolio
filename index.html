@@ -39,7 +39,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=1.7" rel="stylesheet">
+  <link href="assets/css/main.css?v=1.8" rel="stylesheet">
 
   <!-- Theme: apply saved preference before paint to prevent flash -->
   <script>
@@ -1066,26 +1066,24 @@
         <!-- Synchronized Active Item Details Area -->
         <div class="circular-gallery-details" id="cg-details" aria-live="polite">
           <div class="cg-details-inner">
-            <div class="cg-title-row">
-              <span class="cg-counter-pill" id="cg-counter" aria-label="Photo counter">01 / 06</span>
-              <h3 class="cg-active-title" id="cg-title">CENRO System Walkthrough &amp; Training</h3>
-            </div>
-            <p class="cg-active-desc" id="cg-desc">Demonstrating the CENRO driver mobile app and administrative dispatch workflow to operational personnel in an active working environment.</p>
+            <div class="cg-counter" id="cg-counter" aria-label="Photo counter">01 / 06</div>
+            <h3 class="cg-active-title" id="cg-title">CENRO System Walkthrough &amp; Training</h3>
+            <p class="cg-active-desc" id="cg-desc">Conducting a hands-on system walkthrough with CENRO personnel while validating the platform in a real operational environment.</p>
             <div class="cg-active-tags" id="cg-tags">
-              <!-- Dynamically populated tags -->
+              <span class="cg-tag-pill">Client Training</span>
+              <span class="cg-tag-pill">System Validation</span>
+              <span class="cg-tag-pill">Field Deployment</span>
+            </div>
+            <div class="cg-nav-hint" id="cg-hint">
+              <span class="desktop-hint">&larr; Drag, scroll, or use arrow keys &rarr;</span>
+              <span class="mobile-hint">Swipe to explore</span>
+            </div>
+            <div class="cg-view-all-wrapper">
+              <button type="button" class="cg-view-all-btn" id="cg-view-all" data-bs-toggle="modal" data-bs-target="#workInActionModal">
+                <i class="bi bi-grid-3x3-gap me-1.5"></i>View All Photos
+              </button>
             </div>
           </div>
-        </div>
-
-        <!-- Meta Controls: Drag/Swipe Hint, View All Photos -->
-        <div class="circular-gallery-footer-meta">
-          <div class="cg-drag-hint" id="cg-hint">
-            <span class="desktop-hint"><i class="bi bi-arrow-left-right me-1"></i>Drag, scroll, or use arrow keys &bull; Click active photo to zoom</span>
-            <span class="mobile-hint"><i class="bi bi-hand-index-thumb me-1"></i>Swipe to explore &bull; Tap active photo to zoom</span>
-          </div>
-          <button type="button" class="cg-view-all-btn" id="cg-view-all" data-bs-toggle="modal" data-bs-target="#workInActionModal">
-            <i class="bi bi-grid-3x3-gap-fill me-1.5"></i>View All Photos (6)
-          </button>
         </div>
 
       </div>

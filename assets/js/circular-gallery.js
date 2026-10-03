@@ -24,73 +24,73 @@
       id: "cenro-training",
       image: "assets/img/photos/cenro-deployment.jpg",
       title: "CENRO System Walkthrough & Training",
-      shortDescription: "Demonstrating the CENRO driver mobile app and administrative dispatch workflow to operational personnel in an active working environment.",
-      description: "Guiding operational personnel through the CENRO Waste Tracker workflow, demonstrating the driver mobile application and administrative tools while validating how the system performs in an actual working environment.",
+      shortDescription: "Conducting a hands-on system walkthrough with CENRO personnel while validating the platform in a real operational environment.",
+      fullDescription: "Guiding operational personnel through the CENRO Waste Tracker workflow, demonstrating the driver mobile application and administrative tools while validating how the system performs in an actual working environment.",
       category: "client-work",
       categoryLabel: "Client Work",
       tags: ["Client Training", "System Validation", "Field Deployment"],
       objectPosition: "center 28%",
-      alt: "Guiding operational personnel through CENRO Waste Tracker workflow and driver mobile app validation"
+      alt: "Conducting a hands-on system walkthrough with CENRO personnel while validating the platform in a real operational environment."
     },
     {
       id: "client-deployment",
       image: "assets/img/photos/field-deployment.jpg",
       title: "On-Site Client Deployment",
-      shortDescription: "Deploying and validating the POS system live in the store environment with cashier workflows, receipt printing, and hardware peripherals.",
-      description: "Deploying and validating the POS system in the client's actual store environment, testing cashier workflows, receipt printing, peripheral integration, and production configuration before daily operation.",
+      shortDescription: "Deploying and validating the POS system in the client's store environment before daily operation.",
+      fullDescription: "Deploying and validating the POS system in the client's actual store environment, testing cashier workflows, receipt printing, peripheral integration, and production configuration before daily operation.",
       category: "deployment",
       categoryLabel: "Deployment",
       tags: ["Client Deployment", "POS Testing", "Production Setup"],
       objectPosition: "center 24%",
-      alt: "Deploying and validating the POS system in the client's actual store environment with receipt printing and peripheral integration"
+      alt: "Deploying and validating the POS system in the client's store environment before daily operation."
     },
     {
       id: "hardware-diagnostics",
       image: "assets/img/photos/hardware-servicing.jpg",
       title: "Hardware Diagnostics & Maintenance",
-      shortDescription: "Performing hands-on hardware diagnostics, component maintenance, and thermal servicing to ensure reliable system operation.",
-      description: "Performing hands-on hardware diagnostics and maintenance to identify component issues, restore reliable operation, and understand the physical systems supporting software environments.",
+      shortDescription: "Performing hands-on diagnostics and maintenance to identify hardware issues and restore reliable operation.",
+      fullDescription: "Performing hands-on hardware diagnostics and maintenance to identify component issues, restore reliable operation, and understand the physical systems supporting software environments.",
       category: "hardware",
       categoryLabel: "Hardware",
       tags: ["Diagnostics", "Maintenance", "Hardware Support"],
       objectPosition: "center 42%",
-      alt: "Performing hands-on hardware diagnostics and maintenance to identify component issues and restore reliable operation"
+      alt: "Performing hands-on diagnostics and maintenance to identify hardware issues and restore reliable operation."
     },
     {
       id: "system-engineering",
       image: "assets/img/photos/dev-battlestation.jpg",
       title: "Development & System Engineering",
-      shortDescription: "Developing application features, designing database schemas, debugging, and integrating systems toward production readiness.",
-      description: "Working through active software development, database design, debugging, and system integration as projects move from implementation toward a stable, production-ready solution.",
+      shortDescription: "Active software development, database design, debugging, and system integration toward a stable production-ready solution.",
+      fullDescription: "Executing active full-stack software development, database schema refinement, API integration, and architectural testing across multiple terminal displays.",
       category: "development",
       categoryLabel: "Development",
-      tags: ["Full-Stack Dev", "Database Design", "System Integration"],
+      tags: ["Full-Stack Dev", "Database Design", "System Architecture"],
       objectPosition: "center center",
-      alt: "Working through active software development, database design, debugging, and system integration"
+      alt: "Active software development, database design, debugging, and system integration toward a stable production-ready solution."
     },
     {
       id: "build-staging",
       image: "assets/img/photos/build-staging.jpg",
       title: "Build Staging & Hardware Testing",
-      shortDescription: "Staging pre-deployment POS builds, testing terminal configurations, barcode scanners, and receipt printer hardware.",
-      description: "Preparing and testing a POS deployment before installation, including production builds, terminal configuration, receipt printing, barcode equipment, and hardware integration.",
-      category: "deployment",
-      categoryLabel: "Deployment",
-      tags: ["POS Integration", "Deployment Testing", "Production Prep"],
+      shortDescription: "Preparing and testing the POS system, printers, barcode equipment, and terminal configuration before deployment.",
+      fullDescription: "Configuring and bench-testing client workstation hardware, peripheral devices, thermal ESC/POS receipt printers, and operating systems in a staging environment prior to client rollout.",
+      category: "hardware",
+      categoryLabel: "Hardware",
+      tags: ["Staging", "Hardware Testing", "Peripheral Setup"],
       objectPosition: "center 32%",
-      alt: "Preparing and testing a POS deployment before installation including production builds and barcode hardware integration"
+      alt: "Preparing and testing the POS system, printers, barcode equipment, and terminal configuration before deployment."
     },
     {
       id: "focused-development",
       image: "assets/img/photos/late-night-coding.jpg",
       title: "Focused Development Session",
-      shortDescription: "Iterative backend development, debugging, database queries, and feature implementation using Antigravity.",
-      description: "Continuing application development through implementation, debugging, backend integration, database work, and code refinement while preparing features for testing and deployment.",
+      shortDescription: "Continuing implementation, debugging, backend integration, and code refinement while preparing features for testing.",
+      fullDescription: "Engaged in focused late-night software engineering, solving complex application logic, conducting code audits, and ensuring system stability under demanding project timelines.",
       category: "development",
       categoryLabel: "Development",
-      tags: ["Backend Dev", "Debugging", "Feature Engineering"],
+      tags: ["Backend Dev", "Code Auditing", "Optimization"],
       objectPosition: "center 40%",
-      alt: "Focused development session implementing and debugging backend features using Antigravity"
+      alt: "Continuing implementation, debugging, backend integration, and code refinement while preparing features for testing."
     }
   ];
 
@@ -168,40 +168,40 @@
     updateResponsiveMetrics() {
       const w = window.innerWidth;
       if (w >= 1200) {
-        // Desktop: 3-5 images visible, center dominant at 1.18x (1.15-1.20x range)
+        // Desktop: 3-5 images visible, center dominant at 1.17x (1.15-1.18 range)
         this.slotWidth = 320;
-        this.activeScale = 1.18;
-        this.adjacentScale = 0.92;
-        this.farScale = 0.84;
-        this.bendFactor = this.prefersReducedMotion ? 0 : 0.75;
+        this.activeScale = 1.17;
+        this.adjacentScale = 0.93;
+        this.farScale = 0.88;
+        this.bendFactor = this.prefersReducedMotion ? 0 : 0.65;
       } else if (w >= 992) {
-        // Laptop: 3-4 images visible, 1.16x
+        // Laptop: 3-4 images visible
         this.slotWidth = 290;
-        this.activeScale = 1.16;
-        this.adjacentScale = 0.92;
-        this.farScale = 0.84;
-        this.bendFactor = this.prefersReducedMotion ? 0 : 0.7;
+        this.activeScale = 1.15;
+        this.adjacentScale = 0.93;
+        this.farScale = 0.88;
+        this.bendFactor = this.prefersReducedMotion ? 0 : 0.6;
       } else if (w >= 768) {
-        // Tablet: 3 images visible, 1.12x
+        // Tablet: 3 images visible
         this.slotWidth = 250;
         this.activeScale = 1.12;
-        this.adjacentScale = 0.91;
-        this.farScale = 0.83;
-        this.bendFactor = this.prefersReducedMotion ? 0 : 0.6;
+        this.adjacentScale = 0.92;
+        this.farScale = 0.86;
+        this.bendFactor = this.prefersReducedMotion ? 0 : 0.5;
       } else if (w >= 480) {
-        // Mobile: 1 centered image with neighboring edges visible, active scale ~1.07 (1.05-1.08 range)
+        // Mobile: 1 centered image with neighboring edges visible, active scale 1.06 (1.05-1.08 range)
         this.slotWidth = 210;
-        this.activeScale = 1.07;
+        this.activeScale = 1.06;
         this.adjacentScale = 0.90;
-        this.farScale = 0.82;
-        this.bendFactor = this.prefersReducedMotion ? 0 : 0.48;
+        this.farScale = 0.84;
+        this.bendFactor = this.prefersReducedMotion ? 0 : 0.4;
       } else {
-        // Small Mobile (<480px): active scale ~1.06
+        // Small Mobile (<480px)
         this.slotWidth = 185;
         this.activeScale = 1.06;
         this.adjacentScale = 0.89;
-        this.farScale = 0.80;
-        this.bendFactor = this.prefersReducedMotion ? 0 : 0.42;
+        this.farScale = 0.82;
+        this.bendFactor = this.prefersReducedMotion ? 0 : 0.35;
       }
     }
 
@@ -283,9 +283,9 @@
         const u = distance / (this.slotWidth || 300);
 
         // Smooth continuous scaling interpolation:
-        // Center (u=0): activeScale (1.18x desktop / 1.07x mobile)
-        // Adjacent (u=1): adjacentScale (~0.92x desktop)
-        // Farther (u>=2): farScale (~0.84x desktop)
+        // Center (u=0): activeScale (1.15-1.18x desktop)
+        // Adjacent (u=1): adjacentScale (0.92-0.95x desktop)
+        // Farther (u>=2): farScale (0.86-0.90x desktop)
         let scale;
         if (u <= 1) {
           const t = u * u * (3 - 2 * u);
@@ -297,9 +297,9 @@
         }
 
         const normDist = Math.min(distance / maxDistance, 1.0);
-        const opacity = 1.0 - normDist * 0.45;
+        const opacity = Math.max(1.0 - normDist * 0.42, 0.58);
 
-        // Subtle 3D Bend — reduced curvature so photos remain easy to inspect
+        // Gentle, subtle 3D curvature: easy to inspect, zero aggressive distortion
         let X = dx;
         let Z = 0;
         let rotY = 0;
@@ -307,8 +307,8 @@
         if (this.bendFactor > 0) {
           const theta = dx / R;
           X = R * Math.sin(theta);
-          Z = -R * (1 - Math.cos(theta)) * 0.28 - distance * 0.03;
-          rotY = -theta * (180 / Math.PI) * 0.28;
+          Z = -R * (1 - Math.cos(theta)) * 0.20 - distance * 0.02;
+          rotY = -theta * (180 / Math.PI) * 0.20;
         }
 
         // Apply hardware-accelerated transforms
@@ -616,7 +616,7 @@
         title: item.title,
         description: `
           <div class="cg-lb-content">
-            <p class="cg-lb-desc mb-2">${item.description}</p>
+            <p class="cg-lb-desc mb-2">${item.fullDescription || item.description || item.shortDescription}</p>
             <div class="cg-lb-tags">
               ${item.tags.map(t => `<span class="badge bg-secondary-subtle text-light-emphasis me-1 mb-1">${t}</span>`).join('')}
             </div>
@@ -655,7 +655,7 @@
               <div class="cg-modal-info">
                 <span class="cg-modal-badge">${item.categoryLabel || item.category}</span>
                 <h6 class="cg-modal-title">${item.title}</h6>
-                <p class="cg-modal-desc">${item.description}</p>
+                <p class="cg-modal-desc">${item.fullDescription || item.description || item.shortDescription}</p>
                 <div class="cg-modal-tags">
                   ${item.tags.map(t => `<span class="cg-tag-pill">${t}</span>`).join('')}
                 </div>
