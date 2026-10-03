@@ -49,6 +49,8 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css?v=2.0" rel="stylesheet">
+  <!-- React Bits CircularCarousel CSS -->
+  <link href="assets/css/circular-carousel.css?v=1.0" rel="stylesheet">
 
   <!-- Theme: apply saved preference before paint to prevent flash -->
   <script>
@@ -1197,40 +1199,22 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <!-- 3D CircularGallery Stage -->
-        <div class="circular-gallery-stage" id="circular-gallery-stage" tabindex="0" role="region"
-          aria-roledescription="carousel" aria-label="Interactive Work in Action 3D Gallery">
-
-          <!-- 3D Cylindrical Viewport -->
-          <div class="circular-gallery-viewport">
-            <div class="circular-gallery-track" id="cg-track">
-              <!-- Dynamically rendered 3D cards via circular-gallery.js -->
-            </div>
-          </div>
+        <!-- React Bits CircularCarousel Component Root -->
+        <div class="circular-carousel-wrapper" id="circular-carousel-root">
+          <!-- Dynamically mounted 3D curved cylinder carousel via circular-carousel.js -->
         </div>
 
-        <!-- Synchronized Active Item Details Area -->
-        <div class="circular-gallery-details" id="cg-details" aria-live="polite">
-          <div class="cg-details-inner">
-            <div class="cg-counter" id="cg-counter" aria-label="Photo counter">01 / 06</div>
-            <h3 class="cg-active-title" id="cg-title">CENRO System Walkthrough &amp; Training</h3>
-            <p class="cg-active-desc" id="cg-desc">Conducting a hands-on system walkthrough with CENRO personnel while
-              validating the platform in a real operational environment.</p>
-            <div class="cg-active-tags" id="cg-tags">
-              <span class="cg-tag-pill">Client Training</span>
-              <span class="cg-tag-pill">System Validation</span>
-              <span class="cg-tag-pill">Field Deployment</span>
-            </div>
-            <div class="cg-nav-hint" id="cg-hint">
-              <span class="desktop-hint">&larr; Drag, scroll, or hover to pause &rarr;</span>
-              <span class="mobile-hint">Swipe to explore</span>
-            </div>
-            <div class="cg-view-all-wrapper">
-              <button type="button" class="cg-view-all-btn" id="cg-view-all" data-bs-toggle="modal"
-                data-bs-target="#workInActionModal">
-                <i class="bi bi-grid-3x3-gap me-1.5"></i>View All Photos
-              </button>
-            </div>
+        <!-- Carousel Footer: Interaction hint and View All Photos button -->
+        <div class="circular-carousel-footer" data-aos="fade-up" data-aos-delay="150">
+          <div class="circular-carousel-hint">
+            <span class="desktop-hint">&larr; Drag to spin, scroll horizontally, or hover to pause &rarr;</span>
+            <span class="mobile-hint">Swipe to explore</span>
+          </div>
+          <div class="cg-view-all-wrapper">
+            <button type="button" class="cg-view-all-btn" id="cg-view-all" data-bs-toggle="modal"
+              data-bs-target="#workInActionModal">
+              <i class="bi bi-grid-3x3-gap me-1.5"></i>View All Photos
+            </button>
           </div>
         </div>
 
@@ -1681,8 +1665,8 @@
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
 
-  <!-- CircularGallery 3D Showcase Script -->
-  <script src="assets/js/circular-gallery.js?v=2.0"></script>
+  <!-- React Bits CircularCarousel Script -->
+  <script src="assets/js/circular-carousel.js?v=1.0"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js?v=2.0"></script>
