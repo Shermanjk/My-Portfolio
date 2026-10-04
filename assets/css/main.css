@@ -3125,32 +3125,36 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Floating Card Navbar & Dropdowns — Redesign
+# Full-Width Professional Website Header & Dropdowns
 --------------------------------------------------------------*/
 
-/* ── Floating Card Navbar ── */
-.header.navbar-card {
+/* ── 1. Full-Width Site Header (No floating card, no outer rounded corners) ── */
+.header,
+.site-header {
   position: fixed !important;
-  top: 10px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: calc(100% - 32px) !important;
-  max-width: 1320px !important;
-  height: 56px !important;
-  min-height: 56px !important;
-  padding: 0 16px !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 58px !important;
+  min-height: 58px !important;
+  max-width: 100% !important;
+  transform: translateY(0) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(12, 12, 12, 0.96) !important;
+  border-radius: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 193, 7, 0.18) !important;
+  border-left: none !important;
+  border-right: none !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22) !important;
   overflow: visible !important;
   display: flex !important;
   align-items: center !important;
-  background: rgba(16, 16, 16, 0.94) !important;
-  border: 1px solid rgba(255, 193, 7, 0.22) !important;
-  border-radius: 14px !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  box-shadow:
-    0 8px 28px rgba(0, 0, 0, 0.38),
-    0 0 0 1px rgba(255, 193, 7, 0.03) !important;
-  z-index: 1000 !important;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               background 0.25s ease,
@@ -3158,45 +3162,50 @@ section,
               box-shadow 0.25s ease !important;
 }
 
-/* Scrolled state */
-.header.navbar-card.scrolled {
-  background: rgba(12, 12, 12, 0.98) !important;
-  border-color: rgba(255, 193, 7, 0.28) !important;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5) !important;
+/* Scrolled state: slightly more opaque, same height (no shift) */
+.header.scrolled,
+.site-header.scrolled {
+  background: rgba(10, 10, 10, 0.99) !important;
+  border-bottom-color: rgba(255, 193, 7, 0.25) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
 }
 
-/* ── Content offset for floating header ── */
+/* ── Content offset for fixed header ── */
 .header ~ main {
   margin-left: 0 !important;
-  padding-top: 76px !important;
+  padding-top: 58px !important;
 }
 
 .header ~ main .hero {
   margin-left: 0 !important;
   width: 100% !important;
-  min-height: calc(100vh - 76px) !important;
+  min-height: calc(100vh - 58px) !important;
   margin-top: 0 !important;
 }
 
-/* Scroll margin so section headings aren't hidden under floating card */
+/* Section scroll-margin-top so headings are not hidden */
 section,
 .section {
-  scroll-margin-top: 78px;
+  scroll-margin-top: 66px !important;
 }
 
-/* ── Inner flex row ── */
+/* ── 2. Inner navbar layout (centered container) ── */
 .navbar-inner,
 .header-inner {
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 28px !important;
+  min-height: 58px !important;
+  height: 58px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  width: 100% !important;
   min-width: 0 !important;
-  height: 56px !important;
-  padding: 0 !important;
+  position: relative !important;
 }
 
-/* ── Brand / Name ── */
+/* ── 3. Brand on the left ── */
 .navbar-brand,
 .header-logo {
   flex: 0 0 auto !important;
@@ -3204,27 +3213,27 @@ section,
   font-family: var(--heading-font) !important;
   font-size: 15px !important;
   font-weight: 700 !important;
-  color: var(--accent-primary) !important;
+  color: #ffc107 !important;
   text-decoration: none !important;
-  letter-spacing: 0.03em !important;
+  letter-spacing: 0.02em !important;
   margin: 0 !important;
   padding: 0 !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.18s ease, color 0.18s ease !important;
 }
 
 .navbar-brand:hover,
 .header-logo:hover {
-  opacity: 0.85 !important;
-  color: var(--accent-primary) !important;
+  opacity: 0.88 !important;
+  color: #ffc107 !important;
 }
 
-/* ── One Right-Side Navigation Group ── */
+/* ── 4. Main navigation alignment (Right side) ── */
 .navbar-actions,
 .header-actions {
   display: flex !important;
   align-items: center !important;
   justify-content: flex-end !important;
-  gap: 6px !important;
+  gap: 4px !important;
   margin-left: auto !important;
   min-width: 0 !important;
   flex: 0 1 auto !important;
@@ -3255,22 +3264,24 @@ section,
   width: auto !important;
 }
 
+/* ── 5. Links styling ── */
 .nav-link,
 .navmenu .nav-link {
+  position: relative !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 3px !important;
-  padding: 9px 10px !important;
-  background: transparent !important;
-  border: 1px solid transparent !important;
-  border-radius: 8px !important;
+  gap: 5px !important;
+  padding: 10px 12px !important;
   font-family: var(--nav-font) !important;
-  font-size: 12.5px !important;
+  font-size: 13px !important;
   font-weight: 600 !important;
   letter-spacing: 0.03em !important;
   text-transform: uppercase !important;
-  color: var(--nav-color) !important;
+  color: rgba(255, 255, 255, 0.72) !important;
   text-decoration: none !important;
+  border-radius: 5px !important;
+  border: none !important;
+  background: transparent !important;
   cursor: pointer !important;
   white-space: nowrap !important;
   width: auto !important;
@@ -3278,29 +3289,39 @@ section,
   height: auto !important;
   line-height: 1 !important;
   overflow: visible !important;
-  transition: all 0.18s ease !important;
+  transition: color 180ms ease, background 180ms ease !important;
 }
 
 .nav-link:hover,
 .navmenu .nav-link:hover {
-  color: var(--accent-primary) !important;
-  background: rgba(255, 193, 7, 0.08) !important;
-  border-color: rgba(255, 193, 7, 0.15) !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.04) !important;
 }
 
-/* Top-level active pill */
+/* ── 6. Active navigation styling ── */
 .nav-link.active,
 .navmenu .nav-link.active {
-  background: rgba(255, 193, 7, 0.10) !important;
   color: #ffc107 !important;
-  border: 1px solid rgba(255, 193, 7, 0.25) !important;
-  border-radius: 8px !important;
+  background: rgba(255, 193, 7, 0.07) !important;
+  border-radius: 5px !important;
+}
+
+.nav-link.active::after,
+.navmenu .nav-link.active::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 12px !important;
+  right: 12px !important;
+  bottom: -1px !important;
+  height: 2px !important;
+  background: #ffc107 !important;
+  border-radius: 2px !important;
 }
 
 /* Dropdown arrow: close to text */
 .dropdown-arrow {
   font-size: 10px !important;
-  margin-left: 2px !important;
+  margin-left: 3px !important;
   transition: transform 0.2s ease !important;
   display: inline-block !important;
   line-height: 1 !important;
@@ -3311,7 +3332,7 @@ section,
   transform: rotate(180deg) !important;
 }
 
-/* ── Dropdown Container ── */
+/* ── 7. Dropdown styling (Floating menu with small rounded corners) ── */
 .nav-item-dropdown {
   position: relative !important;
 }
@@ -3321,14 +3342,14 @@ section,
   top: calc(100% + 8px) !important;
   left: 50% !important;
   transform: translateX(-50%) translateY(4px) !important;
-  min-width: 270px !important;
+  min-width: 240px !important;
   padding: 8px !important;
-  background: rgba(16, 16, 16, 0.98) !important;
-  border: 1px solid rgba(255, 193, 7, 0.20) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
+  background: rgba(15, 15, 15, 0.98) !important;
+  border: 1px solid rgba(255, 193, 7, 0.18) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -3361,8 +3382,8 @@ section,
   display: flex !important;
   align-items: flex-start !important;
   gap: 12px !important;
-  padding: 9px 12px !important;
-  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
   text-decoration: none !important;
   background: transparent !important;
   border-left: 2px solid transparent !important;
@@ -3385,7 +3406,7 @@ section,
 }
 
 .dropdown-icon {
-  font-size: 16px !important;
+  font-size: 15px !important;
   line-height: 1.2 !important;
   color: var(--accent-primary) !important;
   margin-top: 1px !important;
@@ -3401,7 +3422,7 @@ section,
 
 .dropdown-title {
   font-family: var(--nav-font) !important;
-  font-size: 13px !important;
+  font-size: 12.5px !important;
   font-weight: 600 !important;
   color: #ffffff !important;
   line-height: 1.3 !important;
@@ -3422,22 +3443,29 @@ section,
   text-transform: none !important;
 }
 
-/* ── Theme Toggle in Dedicated Slot ── */
+/* ── 8. Theme Toggle in Dedicated Slot with Separator ── */
+.theme-toggle-wrap,
 .theme-toggle-wrapper {
   flex: 0 0 auto !important;
   margin-left: 8px !important;
   padding-left: 10px !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.10) !important;
   display: flex !important;
   align-items: center !important;
 }
 
-/* ── Laptop Responsive Adjustments (approx 1081px–1250px) ── */
+/* ── 9. Laptop Responsive Adjustments (approx 1081px–1250px) ── */
 @media (max-width: 1250px) {
+  .navbar-inner,
+  .header-inner {
+    padding-inline: 20px !important;
+  }
+
   .nav-link,
   .navmenu .nav-link {
     font-size: 12px !important;
-    padding: 7px 8px !important;
+    padding: 8px 8px !important;
+    padding-inline: 8px !important;
   }
 
   .nav-links,
@@ -3447,48 +3475,49 @@ section,
   }
 
   .navbar-actions {
-    gap: 4px !important;
+    gap: 2px !important;
   }
 }
 
-/* ── Mobile hamburger ── */
+/* ── 10. Mobile hamburger toggle ── */
 .header-toggle {
   display: none;
   align-items: center;
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
   color: var(--text-primary);
   font-size: 20px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   flex-shrink: 0;
   position: static !important;
+  margin-left: 6px;
 }
 
 .header-toggle:hover {
-  background: rgba(240, 165, 0, 0.1);
-  border-color: rgba(240, 165, 0, 0.35);
+  background: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.35);
   color: var(--accent-primary);
 }
 
-/* ── Switch to mobile drawer below 1080px to guarantee zero clipping ── */
+/* ── 11. Mobile / Tablet breakpoint (<= 1080px) ── */
 @media (max-width: 1080px) {
-  .header.navbar-card {
-    width: calc(100% - 20px) !important;
-    top: 8px !important;
-    height: 52px !important;
-    min-height: 52px !important;
-    padding: 0 14px !important;
-    border-radius: 12px !important;
+  .header,
+  .site-header {
+    height: 56px !important;
+    min-height: 56px !important;
+    border-radius: 0 !important;
   }
 
   .navbar-inner,
   .header-inner {
-    height: 52px !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    padding: 0 16px !important;
   }
 
   .header-logo,
@@ -3500,6 +3529,7 @@ section,
     display: none !important;
   }
 
+  .theme-toggle-wrap,
   .theme-toggle-wrapper {
     border-left: none !important;
     padding-left: 0 !important;
@@ -3511,33 +3541,36 @@ section,
   }
 
   .header ~ main {
-    padding-top: 68px !important;
+    padding-top: 56px !important;
   }
 
   .header ~ main .hero {
-    min-height: calc(100vh - 68px) !important;
+    min-height: calc(100vh - 56px) !important;
   }
 
   section,
   .section {
-    scroll-margin-top: 70px;
+    scroll-margin-top: 60px !important;
   }
 
+  /* Full-width straight-edged mobile nav drawer */
   .mobile-nav {
     display: none;
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
     left: 0;
+    right: 0;
     width: 100%;
-    background: rgba(14, 14, 16, 0.98);
-    border: 1px solid rgba(255, 193, 7, 0.20);
-    border-radius: 14px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 10px 12px 14px;
+    background: rgba(12, 12, 14, 0.98);
+    border-top: 1px solid rgba(255, 193, 7, 0.15);
+    border-bottom: 1px solid rgba(255, 193, 7, 0.20);
+    border-radius: 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 12px 16px 16px;
     z-index: 1001;
-    max-height: calc(100vh - 76px);
+    max-height: calc(100vh - 56px);
     overflow-y: auto;
   }
 
@@ -3565,7 +3598,7 @@ section,
     text-transform: uppercase;
     color: var(--nav-color);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 6px;
     transition: all 0.2s ease;
   }
 
@@ -3583,7 +3616,7 @@ section,
     padding: 9px 12px;
     background: transparent;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-family: var(--nav-font);
     font-size: 13.5px;
     font-weight: 600;
@@ -3639,16 +3672,20 @@ section,
   }
 }
 
-/* ── Light Mode Support ── */
-html[data-theme="light"] .header.navbar-card {
-  background: rgba(255, 255, 255, 0.94) !important;
-  border-color: rgba(240, 165, 0, 0.28) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(240, 165, 0, 0.04) !important;
+/* ── 12. Light Mode Support ── */
+html[data-theme="light"] .header,
+html[data-theme="light"] .site-header {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-top-color: rgba(0, 0, 0, 0.05) !important;
+  border-bottom-color: rgba(240, 165, 0, 0.25) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06) !important;
 }
 
-html[data-theme="light"] .header.navbar-card.scrolled {
-  background: rgba(255, 255, 255, 0.98) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12) !important;
+html[data-theme="light"] .header.scrolled,
+html[data-theme="light"] .site-header.scrolled {
+  background: rgba(255, 255, 255, 0.99) !important;
+  border-bottom-color: rgba(240, 165, 0, 0.35) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10) !important;
 }
 
 html[data-theme="light"] .nav-link,
@@ -3659,21 +3696,24 @@ html[data-theme="light"] .navmenu .nav-link {
 html[data-theme="light"] .nav-link:hover,
 html[data-theme="light"] .navmenu .nav-link:hover {
   color: var(--accent-primary) !important;
-  background: rgba(196, 127, 0, 0.08) !important;
-  border-color: rgba(196, 127, 0, 0.20) !important;
+  background: rgba(196, 127, 0, 0.06) !important;
 }
 
 html[data-theme="light"] .nav-link.active,
 html[data-theme="light"] .navmenu .nav-link.active {
-  background: rgba(196, 127, 0, 0.10) !important;
+  background: rgba(196, 127, 0, 0.08) !important;
   color: #c47f00 !important;
-  border-color: rgba(196, 127, 0, 0.3) !important;
+}
+
+html[data-theme="light"] .nav-link.active::after,
+html[data-theme="light"] .navmenu .nav-link.active::after {
+  background: #c47f00 !important;
 }
 
 html[data-theme="light"] .nav-dropdown {
   background: rgba(255, 255, 255, 0.98) !important;
   border-color: rgba(240, 165, 0, 0.25) !important;
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
 }
 
 html[data-theme="light"] .dropdown-item:hover,
@@ -3689,13 +3729,21 @@ html[data-theme="light"] .dropdown-desc {
   color: rgba(0, 0, 0, 0.6) !important;
 }
 
+html[data-theme="light"] .theme-toggle-wrap,
 html[data-theme="light"] .theme-toggle-wrapper {
-  border-left-color: rgba(0, 0, 0, 0.08) !important;
+  border-left-color: rgba(0, 0, 0, 0.10) !important;
+}
+
+html[data-theme="light"] .header-toggle {
+  border-color: rgba(0, 0, 0, 0.15);
+  color: var(--text-primary);
 }
 
 html[data-theme="light"] .mobile-nav {
   background: rgba(255, 255, 255, 0.98);
-  border-color: rgba(240, 165, 0, 0.25);
+  border-top-color: rgba(240, 165, 0, 0.20);
+  border-bottom-color: rgba(240, 165, 0, 0.30);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
 }
 
 html[data-theme="light"] .mobile-nav-link {
@@ -3981,13 +4029,15 @@ html[data-theme="light"] #theme-toggle .toggle-knob {
 /*--------------------------------------------------------------
 # Navbar hide on scroll down, show on scroll up
 --------------------------------------------------------------*/
-.header {
+.header,
+.site-header {
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               opacity  0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-.header.nav-hidden {
-  transform: translate(-50%, -150%) !important;
+.header.nav-hidden,
+.site-header.nav-hidden {
+  transform: translateY(-100%) !important;
   opacity: 0 !important;
   pointer-events: none !important;
 }

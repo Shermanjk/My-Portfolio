@@ -208,7 +208,7 @@
     '/creative': 'work'
   };
 
-  const HEADER_OFFSET = 76;
+  const HEADER_OFFSET = 58;
   let isProgrammaticScroll = false;
   let scrollTimeout = null;
   let currentRoutePath = null;
