@@ -48,7 +48,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=3.0" rel="stylesheet">
+  <link href="assets/css/main.css?v=3.1" rel="stylesheet">
 
   <!-- Theme: apply saved preference before paint to prevent flash -->
   <script>
@@ -69,111 +69,112 @@
 
   <!-- Header (Floating Card Navbar) -->
   <header id="header" class="header navbar-card">
-    <div class="header-inner">
+    <div class="navbar-inner header-inner">
 
-      <!-- Logo / Name -->
-      <a href="/" class="header-logo" aria-label="Sherwen Mortis — Home">Sherwen Mortis</a>
+      <!-- Brand / Name -->
+      <a href="/" class="navbar-brand header-logo" aria-label="Sherwen Mortis — Home">Sherwen Mortis</a>
 
-      <!-- Desktop Nav with Dropdowns -->
-      <nav id="navmenu" class="navmenu" aria-label="Primary Navigation">
-        <ul class="nav-list" role="menubar">
-          <li role="none">
-            <a href="/" class="nav-link active" role="menuitem">Home</a>
-          </li>
+      <!-- Right-Side Navigation Group -->
+      <div class="navbar-actions header-actions">
+        <!-- Desktop Nav with Dropdowns -->
+        <nav id="navmenu" class="navmenu" aria-label="Primary Navigation">
+          <ul class="nav-links nav-list" role="menubar">
+            <li role="none">
+              <a href="/" class="nav-link active" role="menuitem">Home</a>
+            </li>
 
-          <!-- ABOUT ▾ Dropdown -->
-          <li class="nav-item-dropdown" role="none" data-dropdown="about">
-            <button type="button" class="nav-link nav-dropdown-trigger" id="trigger-about"
-              aria-haspopup="menu" aria-expanded="false" aria-controls="dropdown-about">
-              <span>About</span>
-              <i class="bi bi-chevron-down dropdown-arrow" aria-hidden="true"></i>
-            </button>
-            <div class="nav-dropdown" id="dropdown-about" role="menu" aria-labelledby="trigger-about">
-              <a href="/about" class="dropdown-item" role="menuitem" data-path="/about">
-                <span class="dropdown-icon"><i class="bi bi-person"></i></span>
-                <div class="dropdown-text">
-                  <span class="dropdown-title">About Me</span>
-                  <span class="dropdown-desc">Background &amp; developer focus</span>
-                </div>
-              </a>
-              <a href="/skills" class="dropdown-item" role="menuitem" data-path="/skills">
-                <span class="dropdown-icon"><i class="bi bi-lightning-charge"></i></span>
-                <div class="dropdown-text">
-                  <span class="dropdown-title">Skills</span>
-                  <span class="dropdown-desc">Technologies &amp; development stack</span>
-                </div>
-              </a>
-              <a href="/services" class="dropdown-item" role="menuitem" data-path="/services">
-                <span class="dropdown-icon"><i class="bi bi-gear-wide-connected"></i></span>
-                <div class="dropdown-text">
-                  <span class="dropdown-title">Services</span>
-                  <span class="dropdown-desc">Software &amp; web development services</span>
-                </div>
-              </a>
-            </div>
-          </li>
+            <!-- ABOUT ▾ Dropdown -->
+            <li class="nav-item-dropdown" role="none" data-dropdown="about">
+              <button type="button" class="nav-link nav-dropdown-trigger" id="trigger-about"
+                aria-haspopup="menu" aria-expanded="false" aria-controls="dropdown-about">
+                <span>About</span>
+                <i class="bi bi-chevron-down dropdown-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="nav-dropdown" id="dropdown-about" role="menu" aria-labelledby="trigger-about">
+                <a href="/about" class="dropdown-item" role="menuitem" data-path="/about">
+                  <span class="dropdown-icon"><i class="bi bi-person"></i></span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">About Me</span>
+                    <span class="dropdown-desc">Background &amp; developer focus</span>
+                  </div>
+                </a>
+                <a href="/skills" class="dropdown-item" role="menuitem" data-path="/skills">
+                  <span class="dropdown-icon"><i class="bi bi-lightning-charge"></i></span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Skills</span>
+                    <span class="dropdown-desc">Technologies &amp; development stack</span>
+                  </div>
+                </a>
+                <a href="/services" class="dropdown-item" role="menuitem" data-path="/services">
+                  <span class="dropdown-icon"><i class="bi bi-gear-wide-connected"></i></span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Services</span>
+                    <span class="dropdown-desc">Software &amp; web development services</span>
+                  </div>
+                </a>
+              </div>
+            </li>
 
-          <!-- EXPERIENCE (Standalone) -->
-          <li role="none">
-            <a href="/experience" class="nav-link" role="menuitem">Experience</a>
-          </li>
+            <!-- EXPERIENCE (Standalone) -->
+            <li role="none">
+              <a href="/experience" class="nav-link" role="menuitem">Experience</a>
+            </li>
 
-          <!-- WORK ▾ Dropdown -->
-          <li class="nav-item-dropdown" role="none" data-dropdown="work">
-            <button type="button" class="nav-link nav-dropdown-trigger" id="trigger-work"
-              aria-haspopup="menu" aria-expanded="false" aria-controls="dropdown-work">
-              <span>Work</span>
-              <i class="bi bi-chevron-down dropdown-arrow" aria-hidden="true"></i>
-            </button>
-            <div class="nav-dropdown" id="dropdown-work" role="menu" aria-labelledby="trigger-work">
-              <a href="/portfolio" class="dropdown-item" role="menuitem" data-path="/portfolio">
-                <span class="dropdown-icon"><i class="bi bi-laptop"></i></span>
-                <div class="dropdown-text">
-                  <span class="dropdown-title">Featured Projects</span>
-                  <span class="dropdown-desc">Full-stack systems &amp; case studies</span>
-                </div>
-              </a>
-              <a href="/gallery" class="dropdown-item" role="menuitem" data-path="/gallery">
-                <span class="dropdown-icon"><i class="bi bi-camera"></i></span>
-                <div class="dropdown-text">
-                  <span class="dropdown-title">Work in Action</span>
-                  <span class="dropdown-desc">Development, testing &amp; deployment</span>
-                </div>
-              </a>
-              <a href="/creative" class="dropdown-item" role="menuitem" data-path="/creative">
-                <span class="dropdown-icon"><i class="bi bi-stars"></i></span>
-                <div class="dropdown-text">
-                  <span class="dropdown-title">Creative Work</span>
-                  <span class="dropdown-desc">Design &amp; visual projects</span>
-                </div>
-              </a>
-            </div>
-          </li>
+            <!-- WORK ▾ Dropdown -->
+            <li class="nav-item-dropdown" role="none" data-dropdown="work">
+              <button type="button" class="nav-link nav-dropdown-trigger" id="trigger-work"
+                aria-haspopup="menu" aria-expanded="false" aria-controls="dropdown-work">
+                <span>Work</span>
+                <i class="bi bi-chevron-down dropdown-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="nav-dropdown" id="dropdown-work" role="menu" aria-labelledby="trigger-work">
+                <a href="/portfolio" class="dropdown-item" role="menuitem" data-path="/portfolio">
+                  <span class="dropdown-icon"><i class="bi bi-laptop"></i></span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Featured Projects</span>
+                    <span class="dropdown-desc">Full-stack systems &amp; case studies</span>
+                  </div>
+                </a>
+                <a href="/gallery" class="dropdown-item" role="menuitem" data-path="/gallery">
+                  <span class="dropdown-icon"><i class="bi bi-camera"></i></span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Work in Action</span>
+                    <span class="dropdown-desc">Development, testing &amp; deployment</span>
+                  </div>
+                </a>
+                <a href="/creative" class="dropdown-item" role="menuitem" data-path="/creative">
+                  <span class="dropdown-icon"><i class="bi bi-stars"></i></span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Creative Work</span>
+                    <span class="dropdown-desc">Design &amp; visual projects</span>
+                  </div>
+                </a>
+              </div>
+            </li>
 
-          <!-- CONTACT (Standalone) -->
-          <li role="none">
-            <a href="/contact" class="nav-link" role="menuitem">Contact</a>
-          </li>
-        </ul>
-      </nav>
+            <!-- CONTACT (Standalone) -->
+            <li role="none">
+              <a href="/contact" class="nav-link" role="menuitem">Contact</a>
+            </li>
+          </ul>
+        </nav>
 
-      <!-- Right side actions: Divider + Theme Toggle + Mobile Toggle -->
-      <div class="header-actions">
-        <span class="nav-actions-divider" aria-hidden="true"></span>
-
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode" role="switch">
-          <span class="toggle-track">
-            <!-- Sun icon (left side) -->
-            <span class="toggle-icon-sun"><i class="bi bi-sun-fill"></i></span>
-            <!-- Moon icon (right side) -->
-            <span class="toggle-icon-moon"><i class="bi bi-moon-fill"></i></span>
-            <!-- Sliding knob -->
-            <span class="toggle-knob"></span>
-          </span>
-        </button>
+        <!-- Theme toggle in dedicated slot -->
+        <div class="theme-toggle-wrapper">
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode" role="switch">
+            <span class="toggle-track">
+              <!-- Sun icon (left side) -->
+              <span class="toggle-icon-sun"><i class="bi bi-sun-fill"></i></span>
+              <!-- Moon icon (right side) -->
+              <span class="toggle-icon-moon"><i class="bi bi-moon-fill"></i></span>
+              <!-- Sliding knob -->
+              <span class="toggle-knob"></span>
+            </span>
+          </button>
+        </div>
 
         <!-- Mobile hamburger toggle -->
-        <button class="header-toggle d-lg-none" id="mobile-nav-toggle" aria-label="Toggle navigation"
+        <button class="header-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation"
           aria-expanded="false" aria-controls="mobile-nav">
           <i class="bi bi-list"></i>
         </button>
@@ -1904,7 +1905,7 @@
   <script src="assets/js/circular-gallery.js?v=2.0"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js?v=3.0"></script>
+  <script src="assets/js/main.js?v=3.1"></script>
 
 </body>
 
