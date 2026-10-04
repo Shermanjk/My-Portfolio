@@ -3153,8 +3153,7 @@ section,
   -webkit-backdrop-filter: blur(12px) !important;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22) !important;
   overflow: visible !important;
-  display: flex !important;
-  align-items: center !important;
+  display: block !important;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               background 0.25s ease,
@@ -3302,17 +3301,16 @@ section,
 .nav-link.active,
 .navmenu .nav-link.active {
   color: #ffc107 !important;
-  background: rgba(255, 193, 7, 0.07) !important;
-  border-radius: 5px !important;
+  background: transparent !important;
 }
 
 .nav-link.active::after,
 .navmenu .nav-link.active::after {
   content: "" !important;
   position: absolute !important;
-  left: 12px !important;
-  right: 12px !important;
-  bottom: -1px !important;
+  left: 10px !important;
+  right: 10px !important;
+  bottom: 0px !important;
   height: 2px !important;
   background: #ffc107 !important;
   border-radius: 2px !important;
@@ -3447,11 +3445,17 @@ section,
 .theme-toggle-wrap,
 .theme-toggle-wrapper {
   flex: 0 0 auto !important;
-  margin-left: 8px !important;
-  padding-left: 10px !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.10) !important;
+  margin-left: 12px !important;
+  padding-left: 14px !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+  height: 24px !important;
   display: flex !important;
   align-items: center !important;
+}
+
+/* Hide mobile nav drawer by default on desktop */
+.mobile-nav {
+  display: none !important;
 }
 
 /* ── 9. Laptop Responsive Adjustments (approx 1081px–1250px) ── */
@@ -3575,7 +3579,7 @@ section,
   }
 
   .mobile-nav.open {
-    display: block;
+    display: block !important;
   }
 
   .mobile-nav-list {
@@ -3701,7 +3705,7 @@ html[data-theme="light"] .navmenu .nav-link:hover {
 
 html[data-theme="light"] .nav-link.active,
 html[data-theme="light"] .navmenu .nav-link.active {
-  background: rgba(196, 127, 0, 0.08) !important;
+  background: transparent !important;
   color: #c47f00 !important;
 }
 
