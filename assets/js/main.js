@@ -163,7 +163,7 @@
     { id: 'contact', path: '/contact' }
   ];
 
-  const HEADER_OFFSET = 64;
+  const HEADER_OFFSET = 58;
   let isProgrammaticScroll = false;
   let scrollTimeout = null;
   let currentRoutePath = null;
