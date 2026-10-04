@@ -193,8 +193,8 @@
     { id: 'services', path: '/services' },
     { id: 'experience', path: '/experience' },
     { id: 'portfolio', path: '/portfolio' },
-    { id: 'creative', path: '/creative' },
     { id: 'gallery', path: '/gallery' },
+    { id: 'creative', path: '/creative' },
     { id: 'contact', path: '/contact' }
   ];
 
