@@ -144,9 +144,10 @@
     '/experience': 'experience',
     '/portfolio': 'portfolio',
     '/projects': 'portfolio',
-    '/certificates': 'certificates',
-    '/certs': 'certificates',
-    '/creative': 'certificates',
+    '/certificates': 'about',
+    '/certs': 'about',
+    '/credentials': 'about',
+    '/creative': 'about',
     '/gallery': 'gallery',
     '/work-in-action': 'gallery',
     '/contact': 'contact'
@@ -161,21 +162,20 @@
     { id: 'experience', path: '/experience' },
     { id: 'portfolio', path: '/portfolio' },
     { id: 'gallery', path: '/gallery' },
-    { id: 'certificates', path: '/certificates' },
     { id: 'contact', path: '/contact' }
   ];
 
   const groupParentMap = {
     '/about': 'about',
+    '/certificates': 'about',
+    '/certs': 'about',
+    '/credentials': 'about',
     '/skills': 'about',
     '/services': 'about',
     '/process': 'about',
     '/portfolio': 'work',
     '/projects': 'work',
-    '/gallery': 'work',
-    '/certificates': 'work',
-    '/certs': 'work',
-    '/creative': 'work'
+    '/gallery': 'work'
   };
 
   const HEADER_OFFSET = 0; // No top bar — navigation lives in the left sidebar
@@ -360,11 +360,21 @@
     const isHero = (sectionId === 'hero');
     document.body.classList.toggle('on-hero', isHero);
 
-    // 3. Reset scroll position immediately to top
-    window.scrollTo({
-      top: 0,
-      behavior: 'instant'
-    });
+    // 3. Reset scroll position immediately to top (or smooth scroll to credentials if targeting /certificates)
+    const isCertRequest = (currentRoutePath === '/certificates' || (updateUrl && window.location.pathname === '/certificates'));
+    if (isCertRequest) {
+      setTimeout(() => {
+        const credEl = document.getElementById('about-credentials');
+        if (credEl) {
+          credEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 120);
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'instant'
+      });
+    }
 
     // 4. Synchronize URL pathname and active nav link
     const targetPath = getPathForSection(sectionId);
@@ -906,3 +916,192 @@
     });
   }
 })();
+
+/**
+ * Work in Action — Split Pop-Out Modal Controller
+ * Displays Enlarged Photo on Left and Rich Details on Right
+ * Supports Previous/Next cycling, Esc close, Arrow navigation, and Focus trapping
+ */
+(function () {
+  const galleryItemsData = [
+    {
+      img: 'assets/img/photos/cenro-deployment.jpg',
+      badge: 'Client Work',
+      title: 'CENRO System Walkthrough & Training',
+      desc: 'Conducting a hands-on system walkthrough with CENRO personnel while validating driver routing, municipal waste collection logging, and dispatch coordination in live operations.',
+      location: 'CENRO Municipal Operations HQ',
+      role: 'System Lead & Deployer',
+      tags: ['Client Training', 'System Validation', 'Field Deployment', 'Operations QA']
+    },
+    {
+      img: 'assets/img/photos/field-deployment.jpg',
+      badge: 'Deployment',
+      title: 'On-Site Client Deployment',
+      desc: 'Deploying and validating POS terminals in the client retail environment, testing cash drawer sync, ESC/POS receipt printing, and local database network sync before opening day.',
+      location: 'Retail Storefront / Client Site',
+      role: 'Deployment Engineer',
+      tags: ['Client Deployment', 'POS Testing', 'Production Setup', 'Hardware Sync']
+    },
+    {
+      img: 'assets/img/photos/hardware-servicing.jpg',
+      badge: 'Hardware',
+      title: 'Hardware Diagnostics & Maintenance',
+      desc: 'Diagnosing motherboard circuits, power delivery lines, and thermal management systems to resolve hardware instability and restore production workstations.',
+      location: 'Hardware Diagnostics Bench',
+      role: 'Systems Technician',
+      tags: ['Diagnostics', 'Maintenance', 'Hardware Support', 'Circuit Testing']
+    },
+    {
+      img: 'assets/img/photos/dev-battlestation.jpg',
+      badge: 'Development',
+      title: 'Development & System Engineering',
+      desc: 'Active full-stack engineering session refining relational database schemas, RESTful API endpoints, and responsive UI state across multi-display setups.',
+      location: 'Development Lab / Workstation',
+      role: 'Full-Stack Developer',
+      tags: ['Full-Stack Dev', 'Database Design', 'System Architecture', 'REST APIs']
+    },
+    {
+      img: 'assets/img/photos/build-staging.jpg',
+      badge: 'Hardware',
+      title: 'Build Staging & Hardware Testing',
+      desc: 'Bench-testing and pre-configuring client workstations, thermal receipt printers, handheld barcode scanners, and network peripherals prior to deployment.',
+      location: 'Staging & Integration Area',
+      role: 'Systems Integrator',
+      tags: ['Staging', 'Hardware Testing', 'Peripheral Setup', 'POS Integration']
+    },
+    {
+      img: 'assets/img/photos/late-night-coding.jpg',
+      badge: 'Development',
+      title: 'Focused Development Session',
+      desc: 'Late-night implementation sprint addressing core business logic, query optimization, rigorous code reviews, and test coverage before releasing to staging.',
+      location: 'Engineering Desk',
+      role: 'Backend & System Engineer',
+      tags: ['Backend Dev', 'Code Auditing', 'Optimization', 'Performance QA']
+    }
+  ];
+
+  const modal = document.getElementById('gallery-split-modal');
+  if (!modal) return;
+
+  const modalImg         = document.getElementById('modal-img');
+  const modalBadge       = document.getElementById('modal-badge');
+  const modalTitle       = document.getElementById('modal-title');
+  const modalDesc        = document.getElementById('modal-desc');
+  const modalLocation    = document.getElementById('modal-meta-location');
+  const modalRole        = document.getElementById('modal-meta-role');
+  const modalTags        = document.getElementById('modal-tags');
+  const modalCurrentIdx  = document.getElementById('modal-current-index');
+  const modalTotalCount  = document.getElementById('modal-total-count');
+  const modalCloseBtn    = document.getElementById('gallery-modal-close');
+  const modalBackdrop    = document.getElementById('gallery-modal-backdrop');
+  const modalPrevBtn     = document.getElementById('gallery-nav-prev');
+  const modalNextBtn     = document.getElementById('gallery-nav-next');
+  const galleryCards     = document.querySelectorAll('.gallery-card');
+
+  let currentIndex = 0;
+  let lastActiveTrigger = null;
+
+  if (modalTotalCount) {
+    modalTotalCount.textContent = String(galleryItemsData.length);
+  }
+
+  function renderModalItem(idx) {
+    const item = galleryItemsData[idx];
+    if (!item) return;
+
+    if (modalImg) {
+      modalImg.style.opacity = '0';
+      setTimeout(() => {
+        modalImg.src = item.img;
+        modalImg.alt = item.title;
+        modalImg.style.opacity = '1';
+      }, 80);
+    }
+    if (modalBadge) modalBadge.textContent = item.badge;
+    if (modalTitle) modalTitle.textContent = item.title;
+    if (modalDesc) modalDesc.textContent = item.desc;
+    if (modalLocation) modalLocation.textContent = item.location;
+    if (modalRole) modalRole.textContent = item.role;
+    if (modalCurrentIdx) modalCurrentIdx.textContent = String(idx + 1);
+
+    if (modalTags) {
+      modalTags.innerHTML = '';
+      item.tags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'gallery-modal-tag';
+        span.textContent = tag;
+        modalTags.appendChild(span);
+      });
+    }
+  }
+
+  function openModal(index, triggerEl) {
+    currentIndex = (index >= 0 && index < galleryItemsData.length) ? index : 0;
+    lastActiveTrigger = triggerEl || null;
+    renderModalItem(currentIndex);
+    modal.classList.add('is-active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('gallery-modal-open');
+    if (modalCloseBtn) modalCloseBtn.focus();
+  }
+
+  // Expose globally so dome-gallery.js can open the split modal
+  window.openGalleryModal = openModal;
+
+  function closeModal() {
+    modal.classList.remove('is-active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('gallery-modal-open');
+    if (lastActiveTrigger) {
+      lastActiveTrigger.focus();
+      lastActiveTrigger = null;
+    }
+  }
+
+  function prevItem() {
+    currentIndex = (currentIndex - 1 + galleryItemsData.length) % galleryItemsData.length;
+    renderModalItem(currentIndex);
+  }
+
+  function nextItem() {
+    currentIndex = (currentIndex + 1) % galleryItemsData.length;
+    renderModalItem(currentIndex);
+  }
+
+  // Card triggers
+  galleryCards.forEach(card => {
+    const trigger = card.querySelector('.gallery-card-trigger');
+    const idxAttr = card.getAttribute('data-gallery-index');
+    const idx = idxAttr ? parseInt(idxAttr, 10) : 0;
+
+    if (trigger) {
+      trigger.addEventListener('click', () => openModal(idx, trigger));
+    } else {
+      card.addEventListener('click', () => openModal(idx, card));
+    }
+  });
+
+  // Modal Controls
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+  if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+  if (modalPrevBtn) modalPrevBtn.addEventListener('click', prevItem);
+  if (modalNextBtn) modalNextBtn.addEventListener('click', nextItem);
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('is-active')) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeModal();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevItem();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nextItem();
+    }
+  });
+})();
+
+

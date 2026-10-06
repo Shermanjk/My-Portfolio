@@ -1,0 +1,189 @@
+/*--------------------------------------------------------------
+# DomeGallery — 3D Spherical Gallery Component (React Bits)
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# DomeGallery — 3D Spherical Gallery Component (Seamless Floating Dome)
+--------------------------------------------------------------*/
+.dome-gallery-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  max-width: 1300px;
+  margin: 0 auto;
+  border-radius: 0;
+  overflow: hidden;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  .dome-gallery-wrapper {
+    height: 480px;
+  }
+}
+
+.sphere-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  --radius: 540px;
+  --viewer-pad: 48px;
+  --circ: calc(var(--radius) * 3.14159);
+  --rot-y: calc((360deg / var(--segments-x)) / 2);
+  --rot-x: calc((360deg / var(--segments-y)) / 2);
+  --item-width: calc(var(--circ) / var(--segments-x));
+  --item-height: calc(var(--circ) / var(--segments-y));
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sphere-root * {
+  box-sizing: border-box;
+}
+
+.sphere,
+.item,
+.item__image {
+  transform-style: preserve-3d;
+}
+
+.sphere-main {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  background: transparent !important;
+  cursor: grab;
+}
+
+.sphere-main.is-dragging {
+  cursor: grabbing;
+}
+
+.stage {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  perspective: calc(var(--radius) * 2);
+  perspective-origin: 50% 50%;
+}
+
+.sphere {
+  transform: translateZ(calc(var(--radius) * -1));
+  will-change: transform;
+}
+
+/* ── Overlays: removed artificial radial card/vignette mask so dome breathes freely ── */
+.overlay,
+.overlay--blur {
+  display: none !important;
+}
+
+.edge-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 4;
+  pointer-events: none !important;
+}
+
+.edge-fade--top {
+  top: 0;
+  background: linear-gradient(to top, transparent, var(--background-color, #0a0a0a));
+}
+
+.edge-fade--bottom {
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, var(--background-color, #0a0a0a));
+}
+
+/* ── Individual Dome Tiles ── */
+.item {
+  width: calc(var(--item-width) * var(--item-size-x));
+  height: calc(var(--item-height) * var(--item-size-y));
+  position: absolute;
+  top: -999px;
+  bottom: -999px;
+  left: -999px;
+  right: -999px;
+  margin: auto;
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+  transition: transform 300ms;
+  transform: rotateY(calc(var(--rot-y) * (var(--offset-x) + ((var(--item-size-x) - 1) / 2)) + var(--rot-y-delta, 0deg)))
+    rotateX(calc(var(--rot-x) * (var(--offset-y) - ((var(--item-size-y) - 1) / 2)) + var(--rot-x-delta, 0deg)))
+    translateZ(var(--radius));
+}
+
+.item__image {
+  position: absolute;
+  display: block;
+  inset: 7px;
+  border-radius: var(--tile-radius, 14px);
+  background: #14141c;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease, border-color 300ms ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  pointer-events: auto;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.item__image:hover,
+.item__image:focus-visible {
+  transform: scale(1.1) translateZ(12px);
+  border-color: var(--accent-primary, #f0a500);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.65), 0 0 22px rgba(240, 165, 0, 0.35);
+  z-index: 50;
+  outline: none;
+}
+
+.item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  backface-visibility: hidden;
+  filter: var(--image-filter, none);
+  transition: filter 0.3s ease, transform 0.4s ease;
+}
+
+.item__image:hover img {
+  transform: scale(1.05);
+}
+
+/* Light mode support */
+html[data-theme="light"] .dome-gallery-wrapper {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .sphere-main {
+  background: transparent !important;
+}
+
+html[data-theme="light"] .edge-fade--top {
+  background: linear-gradient(to top, transparent, #ffffff);
+}
+
+html[data-theme="light"] .edge-fade--bottom {
+  background: linear-gradient(to bottom, transparent, #ffffff);
+}
+
+html[data-theme="light"] .item__image {
+  background: #ffffff;
+  border-color: #e5e7eb;
+}
