@@ -48,7 +48,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=4.1" rel="stylesheet">
+  <link href="assets/css/main.css?v=4.2" rel="stylesheet">
 
   <!-- Theme: apply saved preference before paint to prevent flash -->
   <script>
@@ -67,180 +67,72 @@
     <div id="scroll-progress-bar"></div>
   </div>
 
-  <!-- Header (Clean Full-Width Site Header) -->
-  <header id="header" class="header site-header">
-    <div class="navbar-inner header-inner">
+  <!-- Mobile: floating sidebar toggle (no top bar) -->
+  <button type="button" class="side-toggle" id="side-toggle" aria-label="Open navigation"
+    aria-expanded="false" aria-controls="sidebar">
+    <i class="bi bi-list" aria-hidden="true"></i>
+  </button>
+  <div class="side-backdrop" id="side-backdrop" aria-hidden="true"></div>
 
-      <!-- Brand / Name -->
-      <a href="/" class="navbar-brand header-logo" aria-label="Sherwen Mortis — Home">Sherwen Mortis</a>
+  <!-- Left Sidebar Navigation -->
+  <aside id="sidebar" class="side-nav" aria-label="Site navigation">
 
-      <!-- Right-Side Navigation Group -->
-      <div class="navbar-actions header-actions">
-        <!-- Desktop Nav with Dropdowns -->
-        <nav id="navmenu" class="navmenu" aria-label="Primary Navigation">
-          <ul class="nav-links nav-list" role="menubar">
-            <li role="none">
-              <a href="/" class="nav-link active" role="menuitem">Home</a>
-            </li>
-
-            <!-- ABOUT ▾ Dropdown -->
-            <li class="nav-item-dropdown" role="none" data-dropdown="about">
-              <button type="button" class="nav-link nav-dropdown-trigger" id="trigger-about"
-                aria-haspopup="menu" aria-expanded="false" aria-controls="dropdown-about">
-                <span>About</span>
-                <i class="bi bi-chevron-down dropdown-arrow" aria-hidden="true"></i>
-              </button>
-              <div class="nav-dropdown" id="dropdown-about" role="menu" aria-labelledby="trigger-about">
-                <a href="/about" class="dropdown-item" role="menuitem" data-path="/about">
-                  <span class="dropdown-icon"><i class="bi bi-person"></i></span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">About Me</span>
-                    <span class="dropdown-desc">Background &amp; developer focus</span>
-                  </div>
-                </a>
-                <a href="/skills" class="dropdown-item" role="menuitem" data-path="/skills">
-                  <span class="dropdown-icon"><i class="bi bi-lightning-charge"></i></span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Skills</span>
-                    <span class="dropdown-desc">Technologies &amp; development stack</span>
-                  </div>
-                </a>
-                <a href="/services" class="dropdown-item" role="menuitem" data-path="/services">
-                  <span class="dropdown-icon"><i class="bi bi-gear-wide-connected"></i></span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Services</span>
-                    <span class="dropdown-desc">Software &amp; web development services</span>
-                  </div>
-                </a>
-                <a href="/process" class="dropdown-item" role="menuitem" data-path="/process">
-                  <span class="dropdown-icon"><i class="bi bi-diagram-3"></i></span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">How I Build</span>
-                    <span class="dropdown-desc">Process, testing &amp; delivery</span>
-                  </div>
-                </a>
-              </div>
-            </li>
-
-            <!-- EXPERIENCE (Standalone) -->
-            <li role="none">
-              <a href="/experience" class="nav-link" role="menuitem">Experience</a>
-            </li>
-
-            <!-- WORK ▾ Dropdown -->
-            <li class="nav-item-dropdown" role="none" data-dropdown="work">
-              <button type="button" class="nav-link nav-dropdown-trigger" id="trigger-work"
-                aria-haspopup="menu" aria-expanded="false" aria-controls="dropdown-work">
-                <span>Work</span>
-                <i class="bi bi-chevron-down dropdown-arrow" aria-hidden="true"></i>
-              </button>
-              <div class="nav-dropdown" id="dropdown-work" role="menu" aria-labelledby="trigger-work">
-                <a href="/portfolio" class="dropdown-item" role="menuitem" data-path="/portfolio">
-                  <span class="dropdown-icon"><i class="bi bi-laptop"></i></span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Featured Projects</span>
-                    <span class="dropdown-desc">Full-stack systems &amp; case studies</span>
-                  </div>
-                </a>
-                <a href="/gallery" class="dropdown-item" role="menuitem" data-path="/gallery">
-                  <span class="dropdown-icon"><i class="bi bi-camera"></i></span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Work in Action</span>
-                    <span class="dropdown-desc">Development, testing &amp; deployment</span>
-                  </div>
-                </a>
-                <a href="/certificates" class="dropdown-item" role="menuitem" data-path="/certificates">
-                  <span class="dropdown-icon"><i class="bi bi-award"></i></span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Certificates</span>
-                    <span class="dropdown-desc">Credentials &amp; professional seminars</span>
-                  </div>
-                </a>
-              </div>
-            </li>
-
-            <!-- CONTACT (Standalone) -->
-            <li role="none">
-              <a href="/contact" class="nav-link" role="menuitem">Contact</a>
-            </li>
-          </ul>
-        </nav>
-
-        <!-- Theme toggle in dedicated slot with separator -->
-        <div class="theme-toggle-wrap theme-toggle-wrapper">
-          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode" role="switch">
-            <span class="toggle-track">
-              <!-- Sun icon (left side) -->
-              <span class="toggle-icon-sun"><i class="bi bi-sun-fill"></i></span>
-              <!-- Moon icon (right side) -->
-              <span class="toggle-icon-moon"><i class="bi bi-moon-fill"></i></span>
-              <!-- Sliding knob -->
-              <span class="toggle-knob"></span>
-            </span>
-          </button>
-        </div>
-
-        <!-- Mobile hamburger toggle -->
-        <button class="header-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation"
-          aria-expanded="false" aria-controls="mobile-nav">
-          <i class="bi bi-list"></i>
-        </button>
-      </div>
-
+    <!-- Brand / Profile -->
+    <div class="side-brand">
+      <a href="/" class="side-avatar" aria-label="Sherwen Mortis — Home">
+        <img src="assets/img/profile-img.jpg" alt="Sherwen Mortis" width="72" height="72">
+        <span class="side-status" title="Open to opportunities"></span>
+      </a>
+      <a href="/" class="side-name">Sherwen Mortis</a>
+      <span class="side-role">Full Stack Software Developer</span>
     </div>
 
-    <!-- Mobile nav drawer -->
-    <nav id="mobile-nav" class="mobile-nav" aria-hidden="true">
-      <ul class="mobile-nav-list">
-        <li><a href="/" class="mobile-nav-link active">Home</a></li>
+    <!-- Primary Navigation -->
+    <nav id="navmenu" class="side-menu" aria-label="Primary Navigation">
+      <ul class="side-list">
+        <li><a href="/" class="side-link active"><i class="bi bi-house"></i><span>Home</span></a></li>
 
-        <!-- Collapsible ABOUT on Mobile -->
-        <li class="mobile-nav-group" data-group="about">
-          <button type="button" class="mobile-group-toggle" aria-expanded="false">
-            <span>About</span>
-            <i class="bi bi-chevron-down mobile-chevron" aria-hidden="true"></i>
-          </button>
-          <div class="mobile-group-content">
-            <a href="/about" class="mobile-sublink">
-              <i class="bi bi-person me-2"></i>About Me
-            </a>
-            <a href="/skills" class="mobile-sublink">
-              <i class="bi bi-lightning-charge me-2"></i>Skills
-            </a>
-            <a href="/services" class="mobile-sublink">
-              <i class="bi bi-gear-wide-connected me-2"></i>Services
-            </a>
-            <a href="/process" class="mobile-sublink">
-              <i class="bi bi-diagram-3 me-2"></i>How I Build
-            </a>
-          </div>
-        </li>
+        <li class="side-group-label" id="trigger-about">About</li>
+        <li><a href="/about" class="side-link" data-path="/about"><i class="bi bi-person"></i><span>About Me</span></a></li>
+        <li><a href="/skills" class="side-link" data-path="/skills"><i class="bi bi-lightning-charge"></i><span>Skills</span></a></li>
+        <li><a href="/services" class="side-link" data-path="/services"><i class="bi bi-gear-wide-connected"></i><span>Services</span></a></li>
+        <li><a href="/process" class="side-link" data-path="/process"><i class="bi bi-diagram-3"></i><span>How I Build</span></a></li>
 
-        <li><a href="/experience" class="mobile-nav-link">Experience</a></li>
+        <li class="side-group-label">Career</li>
+        <li><a href="/experience" class="side-link" data-path="/experience"><i class="bi bi-briefcase"></i><span>Experience</span></a></li>
 
-        <!-- Collapsible WORK on Mobile -->
-        <li class="mobile-nav-group" data-group="work">
-          <button type="button" class="mobile-group-toggle" aria-expanded="false">
-            <span>Work</span>
-            <i class="bi bi-chevron-down mobile-chevron" aria-hidden="true"></i>
-          </button>
-          <div class="mobile-group-content">
-            <a href="/portfolio" class="mobile-sublink">
-              <i class="bi bi-laptop me-2"></i>Featured Projects
-            </a>
-            <a href="/gallery" class="mobile-sublink">
-              <i class="bi bi-camera me-2"></i>Work in Action
-            </a>
-            <a href="/certificates" class="mobile-sublink">
-              <i class="bi bi-award me-2"></i>Certificates
-            </a>
-          </div>
-        </li>
+        <li class="side-group-label" id="trigger-work">Work</li>
+        <li><a href="/portfolio" class="side-link" data-path="/portfolio"><i class="bi bi-laptop"></i><span>Featured Projects</span></a></li>
+        <li><a href="/gallery" class="side-link" data-path="/gallery"><i class="bi bi-camera"></i><span>Work in Action</span></a></li>
+        <li><a href="/certificates" class="side-link" data-path="/certificates"><i class="bi bi-award"></i><span>Certificates</span></a></li>
 
-        <li><a href="/contact" class="mobile-nav-link">Contact</a></li>
+        <li class="side-group-label">Connect</li>
+        <li><a href="/contact" class="side-link" data-path="/contact"><i class="bi bi-envelope"></i><span>Contact</span></a></li>
       </ul>
     </nav>
-  </header>
+
+    <!-- Footer: socials + theme toggle -->
+    <div class="side-footer">
+      <div class="side-socials">
+        <a href="https://github.com/shermanjk" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="mailto:mortis.sherwen@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+      </div>
+      <div class="side-theme">
+        <span class="side-theme-label">Theme</span>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode" role="switch">
+          <span class="toggle-track">
+            <!-- Sun icon (left side) -->
+            <span class="toggle-icon-sun"><i class="bi bi-sun-fill"></i></span>
+            <!-- Moon icon (right side) -->
+            <span class="toggle-icon-moon"><i class="bi bi-moon-fill"></i></span>
+            <!-- Sliding knob -->
+            <span class="toggle-knob"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </aside>
 
   <main class="main">
 
@@ -2251,7 +2143,7 @@
   <script src="assets/js/circular-gallery.js?v=2.0"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js?v=4.1"></script>
+  <script src="assets/js/main.js?v=4.2"></script>
 
 </body>
 

@@ -7415,3 +7415,397 @@ html[data-theme="light"] .cg-modal-card {
 
 
 
+
+/*--------------------------------------------------------------
+# Left Sidebar Navigation (replaces the top bar)
+--------------------------------------------------------------*/
+:root {
+  --side-width: 264px;
+}
+
+/* Sections no longer need a top-bar offset */
+section,
+.section {
+  scroll-margin-top: 0 !important;
+}
+
+.side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--side-width);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 18px 20px;
+  background:
+    radial-gradient(120% 60% at 0% 0%, rgba(240, 165, 0, 0.07) 0%, transparent 60%),
+    var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+
+/* ── Brand / profile ── */
+.side-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.side-avatar {
+  position: relative;
+  display: block;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--accent-primary), rgba(240, 165, 0, 0.15));
+  margin-bottom: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.side-avatar:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 22px rgba(240, 165, 0, 0.3);
+}
+
+.side-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 2px solid var(--bg-secondary);
+}
+
+.side-status {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2px solid var(--bg-secondary);
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  animation: side-pulse 2.4s infinite;
+}
+
+@keyframes side-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.side-name {
+  font-family: var(--nav-font);
+  font-weight: 700;
+  font-size: 1.08rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  transition: color 0.2s ease;
+}
+
+.side-name:hover {
+  color: var(--accent-primary);
+}
+
+.side-role {
+  margin-top: 3px;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+/* ── Menu ── */
+.side-menu {
+  flex: 1 1 auto;
+}
+
+.side-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-group-label {
+  margin: 16px 12px 6px;
+  font-family: var(--nav-font);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.65;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.side-group-label.active {
+  color: var(--accent-primary);
+  opacity: 1;
+}
+
+.side-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  margin: 2px 0;
+  border-radius: 10px;
+  font-family: var(--nav-font);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.side-link i {
+  font-size: 1.05rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.side-link:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateX(3px);
+}
+
+.side-link:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.side-link.active {
+  color: var(--text-primary);
+  background: linear-gradient(90deg, rgba(240, 165, 0, 0.16), rgba(240, 165, 0, 0.03));
+}
+
+.side-link.active i {
+  color: var(--accent-primary);
+}
+
+.side-link.active::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(240, 165, 0, 0.6);
+}
+
+/* ── Footer: socials + theme ── */
+.side-footer {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.side-socials {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.side-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+.side-socials a:hover {
+  color: #0a0a0a;
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.side-theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+}
+
+.side-theme-label {
+  font-family: var(--nav-font);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ── Floating mobile toggle (not a bar) ── */
+.side-toggle {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1002;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  background: rgba(20, 20, 20, 0.72);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: background 0.2s ease, left 0.3s ease, color 0.2s ease;
+}
+
+.side-toggle:hover {
+  color: var(--accent-primary);
+}
+
+.side-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* ── Desktop: sidebar always visible, content shifted right ── */
+@media (min-width: 1200px) {
+  body {
+    padding-left: var(--side-width);
+  }
+
+  #scroll-progress {
+    left: var(--side-width) !important;
+    width: auto !important;
+    right: 0 !important;
+  }
+}
+
+/* ── Below desktop: off-canvas drawer ── */
+@media (max-width: 1199.98px) {
+  .side-nav {
+    transform: translateX(-100%);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+  }
+
+  .side-nav.open {
+    transform: translateX(0);
+    box-shadow: 12px 0 40px rgba(0, 0, 0, 0.45);
+  }
+
+  .side-toggle {
+    display: inline-flex;
+  }
+
+  body.side-open .side-toggle {
+    left: calc(var(--side-width) + 12px);
+  }
+
+  body.side-open .side-backdrop {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  body.side-open {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --side-width: 82vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-nav,
+  .side-link,
+  .side-toggle {
+    transition: none;
+  }
+
+  .side-status {
+    animation: none;
+  }
+}
+
+/* ── Light mode ── */
+html[data-theme="light"] .side-nav {
+  background:
+    radial-gradient(120% 60% at 0% 0%, rgba(196, 127, 0, 0.08) 0%, transparent 60%),
+    #ffffff;
+  border-right-color: #e5e7eb;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+html[data-theme="light"] .side-avatar img,
+html[data-theme="light"] .side-status {
+  border-color: #ffffff;
+}
+
+html[data-theme="light"] .side-link:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: #111827;
+}
+
+html[data-theme="light"] .side-link.active {
+  color: #111827;
+  background: linear-gradient(90deg, rgba(196, 127, 0, 0.16), rgba(196, 127, 0, 0.03));
+}
+
+html[data-theme="light"] .side-link.active::before {
+  box-shadow: 0 0 8px rgba(196, 127, 0, 0.45);
+}
+
+html[data-theme="light"] .side-socials a,
+html[data-theme="light"] .side-theme {
+  background: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+html[data-theme="light"] .side-socials a:hover {
+  color: #ffffff;
+  background: #c47f00;
+  border-color: #c47f00;
+}
+
+html[data-theme="light"] .side-toggle {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: #e5e7eb;
+  color: #111827;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
