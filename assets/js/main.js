@@ -332,22 +332,41 @@
     });
   }
 
-  function scrollToSection(sectionId, updateUrl = true, pushHistory = true) {
-    const section = (sectionId === 'hero') ? document.getElementById('hero') : document.getElementById(sectionId);
-    if (!section && sectionId !== 'hero') return;
+  /**
+   * Discrete Section Viewer
+   * Switches visible section when tapping/clicking sidebar or in-page links.
+   * Completely eliminates continuous multi-section page scrolling.
+   */
+  function showSection(sectionId, updateUrl = true, pushHistory = true) {
+    const allSections = document.querySelectorAll('.main > section');
+    const targetSection = (sectionId === 'hero') 
+      ? document.getElementById('hero') 
+      : document.getElementById(sectionId);
 
-    isProgrammaticScroll = true;
-    clearTimeout(scrollTimeout);
+    if (!targetSection) return;
 
-    const targetTop = (sectionId === 'hero' || !section) 
-      ? 0 
-      : Math.max(0, section.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET);
-
-    window.scrollTo({
-      top: targetTop,
-      behavior: 'smooth'
+    // 1. Activate target section and hide all other sections
+    allSections.forEach(sec => {
+      if (sec === targetSection) {
+        sec.classList.add('section-active');
+        sec.removeAttribute('aria-hidden');
+      } else {
+        sec.classList.remove('section-active');
+        sec.setAttribute('aria-hidden', 'true');
+      }
     });
 
+    // 2. Body class for hero styling & footer visibility
+    const isHero = (sectionId === 'hero');
+    document.body.classList.toggle('on-hero', isHero);
+
+    // 3. Reset scroll position immediately to top
+    window.scrollTo({
+      top: 0,
+      behavior: 'instant'
+    });
+
+    // 4. Synchronize URL pathname and active nav link
     const targetPath = getPathForSection(sectionId);
     currentRoutePath = targetPath;
     setActiveNav(targetPath);
@@ -364,12 +383,17 @@
       }
     }
 
-    scrollTimeout = setTimeout(() => {
-      isProgrammaticScroll = false;
-    }, 750);
+    // 5. Close sidebar on mobile devices
+    closeSidebar();
+
+    // 6. Refresh animations and 3D layout calculations
+    if (typeof AOS !== 'undefined') {
+      try { AOS.refresh(); } catch (_) {}
+    }
+    window.dispatchEvent(new Event('resize'));
   }
 
-  // Intercept in-page section link clicks
+  // Intercept in-page and sidebar section navigation links
   document.addEventListener('click', function(e) {
     const link = e.target.closest('a');
     if (!link) return;
@@ -379,13 +403,15 @@
 
     if (href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
     if (link.target === '_blank') return;
+    if (link.hasAttribute('download')) return;
+    if (link.classList.contains('glightbox')) return;
 
     let targetSection = null;
 
-    // Check if link is hash
+    // Check if link is a hash link (#portfolio)
     if (href.startsWith('#')) {
       const id = href.slice(1);
-      if (document.getElementById(id)) {
+      if (id && document.getElementById(id) && id !== 'footer') {
         targetSection = id;
       }
     } else {
@@ -404,10 +430,7 @@
     if (targetSection) {
       e.preventDefault();
       closeAllDropdowns();
-      scrollToSection(targetSection, true, true);
-
-      // Close the off-canvas sidebar on small screens
-      closeSidebar();
+      showSection(targetSection, true, true);
     }
   });
 
@@ -415,67 +438,12 @@
   window.addEventListener('popstate', function() {
     const path = window.location.pathname.replace(/\/+$/, '') || '/';
     const sectionId = routeSectionMap[path] || 'hero';
-    scrollToSection(sectionId, false, false);
+    showSection(sectionId, false, false);
   });
-
-  // Scrollspy: highlight active menu item and cleanly synchronize URL pathname
-  function updateScrollspy() {
-    if (isProgrammaticScroll) return;
-
-    const scrollY = window.scrollY;
-
-    // Top of page -> Home / Hero
-    if (scrollY < 120) {
-      setActiveNav('/');
-      if (currentRoutePath !== '/' && window.location.pathname !== '/') {
-        history.replaceState({ sectionId: 'hero' }, '', '/');
-        currentRoutePath = '/';
-      }
-      return;
-    }
-
-    // Bottom of page -> Contact
-    if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 60) {
-      const last = trackedSections[trackedSections.length - 1];
-      setActiveNav(last.path);
-      if (currentRoutePath !== last.path && window.location.pathname !== last.path) {
-        history.replaceState({ sectionId: last.id }, '', last.path);
-        currentRoutePath = last.path;
-      }
-      return;
-    }
-
-    // Check which section is in view
-    const triggerPoint = scrollY + HEADER_OFFSET + 120;
-    let activeItem = trackedSections[0];
-
-    for (let i = 0; i < trackedSections.length; i++) {
-      const sec = document.getElementById(trackedSections[i].id);
-      if (sec) {
-        const top = sec.offsetTop;
-        const bottom = top + sec.offsetHeight;
-        if (triggerPoint >= top && triggerPoint < bottom) {
-          activeItem = trackedSections[i];
-          break;
-        } else if (triggerPoint >= top) {
-          activeItem = trackedSections[i];
-        }
-      }
-    }
-
-    setActiveNav(activeItem.path);
-
-    if (currentRoutePath !== activeItem.path && window.location.pathname !== activeItem.path) {
-      history.replaceState({ sectionId: activeItem.id }, '', activeItem.path);
-      currentRoutePath = activeItem.path;
-    }
-  }
-
-  window.addEventListener('scroll', updateScrollspy, { passive: true });
 
   // Initial Route Dispatcher on page load
   function dispatchInitialRoute() {
-    let targetSection = null;
+    let targetSection = 'hero';
     let targetPath = '/';
 
     // 1. Check legacy hash (e.g. #gallery -> rewrite to /gallery)
@@ -488,7 +456,7 @@
     }
 
     // 2. Check path (e.g. /gallery)
-    if (!targetSection) {
+    if (targetSection === 'hero') {
       const path = window.location.pathname.replace(/\/+$/, '') || '/';
       if (routeSectionMap[path]) {
         targetSection = routeSectionMap[path];
@@ -496,29 +464,19 @@
       }
     }
 
-    if (targetSection) {
-      // Strip any '#' immediately from browser address bar
+    // Strip any '#' hash if present
+    if (window.location.hash) {
       history.replaceState({ sectionId: targetSection }, '', targetPath);
-      currentRoutePath = targetPath;
-      setActiveNav(targetPath);
-
-      if (targetSection !== 'hero') {
-        setTimeout(() => {
-          const sec = document.getElementById(targetSection);
-          if (sec) {
-            const targetTop = Math.max(0, sec.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET);
-            window.scrollTo({
-              top: targetTop,
-              behavior: 'smooth'
-            });
-          }
-        }, 220);
-      }
-    } else {
-      setActiveNav('/');
     }
+
+    showSection(targetSection, false, false);
   }
 
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', dispatchInitialRoute);
+  } else {
+    dispatchInitialRoute();
+  }
   window.addEventListener('load', dispatchInitialRoute);
 
 })();

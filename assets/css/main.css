@@ -7748,3 +7748,89 @@ html[data-theme="light"] .side-toggle {
   color: #111827;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
+
+/* ==============================================================
+   DISCRETE SECTION NAVIGATION (Tab / Click-Driven Views)
+   Removes continuous page scrolling across sections.
+   Each section acts as its own discrete view navigated via sidebar.
+   ============================================================== */
+
+/* By default, hide all sections in main */
+.main > section {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Active section is visible and smoothly animated */
+.main > section.section-active {
+  display: block !important;
+  opacity: 1;
+  visibility: visible;
+  animation: sectionViewEnter 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hero section is flex-centered and fills viewport */
+.main > section#hero.section-active {
+  display: flex !important;
+  min-height: 100vh;
+}
+
+/* Content sections fill min-height so footer sits comfortably at the bottom */
+.main > section.section-active:not(#hero) {
+  min-height: calc(100vh - 220px);
+}
+
+/* Ensure all elements within active section are visible without waiting for scroll triggers */
+.main > section.section-active [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+/* On Hero view, hide the global footer for a pure 100vh hero presentation */
+body.on-hero #footer {
+  display: none !important;
+}
+
+/* On Hero view, hide scroll-top button */
+body.on-hero .scroll-top {
+  display: none !important;
+}
+
+/* Keyframe for entering a discrete section */
+@keyframes sectionViewEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main > section.section-active {
+    animation: none !important;
+  }
+}
+
+/* ── Embedded Stats Bar Card (Inside About Me) ── */
+.about .stats-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 40px 24px;
+  margin-top: 48px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+html[data-theme="light"] .about .stats-bar {
+  background: #fdfdfd;
+  border-color: #e5e7eb;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
