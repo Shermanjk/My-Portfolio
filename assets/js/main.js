@@ -151,7 +151,7 @@
   }
 
   /**
-   * Initiate GLightbox (Project screenshots and creative posters)
+   * Initiate GLightbox (Project screenshots, media, and certificates)
    */
   if (typeof GLightbox !== 'undefined') {
     GLightbox({
@@ -165,7 +165,7 @@
   /**
    * Section Router & Clean URL Navigation (HTML5 History API, no '#' in URLs)
    * Supports:
-   *  - Clean pathnames: /gallery, /about, /skills, /services, /experience, /portfolio, /creative, /contact, /
+   *  - Clean pathnames: /gallery, /about, /skills, /services, /experience, /portfolio, /certificates, /contact, /
    *  - Legacy hash redirects: /#gallery seamlessly rewrites to /gallery
    *  - Smooth scrolling with fixed header offset (64px)
    *  - Scrollspy with synchronized, non-flickering URL bar updates
@@ -181,7 +181,9 @@
     '/experience': 'experience',
     '/portfolio': 'portfolio',
     '/projects': 'portfolio',
-    '/creative': 'creative',
+    '/certificates': 'certificates',
+    '/certs': 'certificates',
+    '/creative': 'certificates',
     '/gallery': 'gallery',
     '/work-in-action': 'gallery',
     '/contact': 'contact'
@@ -196,7 +198,7 @@
     { id: 'experience', path: '/experience' },
     { id: 'portfolio', path: '/portfolio' },
     { id: 'gallery', path: '/gallery' },
-    { id: 'creative', path: '/creative' },
+    { id: 'certificates', path: '/certificates' },
     { id: 'contact', path: '/contact' }
   ];
 
@@ -208,6 +210,8 @@
     '/portfolio': 'work',
     '/projects': 'work',
     '/gallery': 'work',
+    '/certificates': 'work',
+    '/certs': 'work',
     '/creative': 'work'
   };
 
