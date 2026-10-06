@@ -7449,28 +7449,53 @@ section,
   scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
 }
 
-/* ── Brand / Name ── */
+/* ── Brand / Name (Acts as Home button) ── */
 .side-brand {
   display: flex;
   align-items: center;
-  padding: 8px 10px 18px;
-  margin-bottom: 12px;
+  padding: 4px 6px 14px;
+  margin-bottom: 8px;
   border-bottom: 1px solid var(--border-color);
 }
 
-.side-name {
+.side-brand .side-name {
   font-family: var(--nav-font);
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--text-primary);
   text-decoration: none;
   letter-spacing: 0.3px;
-  display: inline-block;
-  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
 }
 
-.side-name:hover {
+.side-brand .side-name:hover {
   color: var(--accent-primary);
+  background: rgba(255, 193, 7, 0.08);
+  transform: translateX(2px);
+}
+
+.side-brand .side-name.active {
+  color: var(--accent-primary);
+  background: linear-gradient(90deg, rgba(240, 165, 0, 0.16), rgba(240, 165, 0, 0.02));
+}
+
+.side-brand .side-name.active::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(240, 165, 0, 0.6);
 }
 
 /* ── Menu ── */
@@ -7570,20 +7595,22 @@ section,
 .side-socials {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
 }
 
 .side-socials a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 33px;
+  height: 33px;
+  border-radius: 9px;
   border: 1px solid var(--border-color);
   background: var(--bg-card);
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: 0.95rem;
   transition: all 0.25s ease;
 }
 
@@ -7592,6 +7619,15 @@ section,
   background: var(--accent-primary);
   border-color: var(--accent-primary);
   transform: translateY(-2px);
+}
+
+.side-copyright {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  opacity: 0.55;
+  font-family: var(--nav-font);
+  margin-top: 4px;
 }
 
 .side-theme {
@@ -7776,9 +7812,10 @@ html[data-theme="light"] .side-toggle {
   min-height: 100vh;
 }
 
-/* Content sections fill min-height so footer sits comfortably at the bottom */
+/* Content sections fill full height with clean bottom spacing (no footer in any panel) */
 .main > section.section-active:not(#hero) {
-  min-height: calc(100vh - 220px);
+  min-height: 100vh;
+  padding-bottom: 72px;
 }
 
 /* Ensure all elements within active section are visible without waiting for scroll triggers */
@@ -7788,9 +7825,16 @@ html[data-theme="light"] .side-toggle {
   visibility: visible !important;
 }
 
-/* On Hero view, hide the global footer for a pure 100vh hero presentation */
-body.on-hero #footer {
+/* Completely remove and hide footer from every panel */
+#footer,
+.footer {
   display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
 }
 
 /* On Hero view, hide scroll-top button */

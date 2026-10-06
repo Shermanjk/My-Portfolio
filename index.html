@@ -48,7 +48,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=4.4" rel="stylesheet">
+  <link href="assets/css/main.css?v=4.5" rel="stylesheet">
 
   <!-- Theme: apply saved preference before paint to prevent flash -->
   <script>
@@ -77,16 +77,14 @@
   <!-- Left Sidebar Navigation -->
   <aside id="sidebar" class="side-nav" aria-label="Site navigation">
 
-    <!-- Brand / Name -->
+    <!-- Brand / Name (Acts as Home button) -->
     <div class="side-brand">
-      <a href="/" class="side-name" aria-label="Sherwen Mortis — Home">Sherwen Mortis</a>
+      <a href="/" class="side-name side-link active" data-path="/" aria-label="Sherwen Mortis — Home" title="Home">Sherwen Mortis</a>
     </div>
 
     <!-- Primary Navigation -->
     <nav id="navmenu" class="side-menu" aria-label="Primary Navigation">
       <ul class="side-list">
-        <li><a href="/" class="side-link active"><i class="bi bi-house"></i><span>Home</span></a></li>
-
         <li class="side-group-label" id="trigger-about">About</li>
         <li><a href="/about" class="side-link" data-path="/about"><i class="bi bi-person"></i><span>About Me</span></a></li>
         <li><a href="/skills" class="side-link" data-path="/skills"><i class="bi bi-lightning-charge"></i><span>Skills</span></a></li>
@@ -106,12 +104,14 @@
       </ul>
     </nav>
 
-    <!-- Footer: socials + theme toggle -->
+    <!-- Footer: socials + theme toggle + copyright -->
     <div class="side-footer">
       <div class="side-socials">
         <a href="https://github.com/shermanjk" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a>
         <a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
         <a href="mailto:mortis.sherwen@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+        <a href="https://www.facebook.com/mortis.shad/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/sherweennn/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
       </div>
       <div class="side-theme">
         <span class="side-theme-label">Theme</span>
@@ -125,6 +125,9 @@
             <span class="toggle-knob"></span>
           </span>
         </button>
+      </div>
+      <div class="side-copyright">
+        &copy; 2026 Sherwen Mortis
       </div>
     </div>
   </aside>
@@ -1800,27 +1803,6 @@
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-    <div class="container">
-      <h3 class="sitename">Sherwen Mortis</h3>
-      <p>Full-Stack Web &amp; Mobile Developer | Freelancer — Building reliable business systems and modern
-        applications.</p>
-      <div class="footer-social">
-        <a href="https://github.com/shermanjk" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
-            class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/sherwen-mortis-7a4abb40a" target="_blank" rel="noopener noreferrer"
-          aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-        <a href="mailto:mortis.sherwen@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-        <a href="https://www.facebook.com/mortis.shad/" target="_blank" rel="noopener noreferrer"
-          aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/sherweennn/" target="_blank" rel="noopener noreferrer"
-          aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Sherwen Mortis. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
 
   <!-- Contact Toast Notification -->
   <div id="contact-toast" class="contact-toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -2136,7 +2118,7 @@
   <script src="assets/js/circular-gallery.js?v=2.0"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js?v=4.4"></script>
+  <script src="assets/js/main.js?v=4.5"></script>
 
 </body>
 
