@@ -3076,6 +3076,103 @@ section,
   letter-spacing: 0.2px;
 }
 
+/* ── Featured Academic Degree Card ── */
+.certificate-card-featured {
+  border-color: rgba(240, 165, 0, 0.45);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35), 0 0 25px rgba(240, 165, 0, 0.08);
+  position: relative;
+}
+
+.certificate-card-featured:hover {
+  border-color: rgba(240, 165, 0, 0.7);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 35px rgba(240, 165, 0, 0.16);
+}
+
+.cert-featured-ribbon {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: linear-gradient(135deg, #f0a500, #d97706);
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cert-tag-degree {
+  background: rgba(240, 165, 0, 0.18);
+  color: #f0a500;
+  border: 1px solid rgba(240, 165, 0, 0.45);
+  font-weight: 700;
+}
+
+.cert-skill-pill.cert-skill-highlight {
+  background: rgba(240, 165, 0, 0.12);
+  border-color: rgba(240, 165, 0, 0.35);
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+/* Inline Diploma Button (Resume Section) */
+.cert-inline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: rgba(240, 165, 0, 0.1);
+  border: 1px solid rgba(240, 165, 0, 0.35);
+  color: var(--accent-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  margin-top: 6px;
+}
+
+.cert-inline-btn:hover {
+  background: var(--accent-primary);
+  color: #0a0a0a;
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 14px rgba(240, 165, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+@media (min-width: 992px) {
+  .certificate-card-featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .certificate-card-featured .certificate-media {
+    border-bottom: none;
+    border-right: 1px solid var(--border-color);
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  .certificate-card-featured .certificate-media img {
+    height: 100%;
+  }
+
+  .certificate-card-featured .certificate-content {
+    padding: 32px 36px;
+    justify-content: center;
+  }
+
+  .certificate-card-featured .certificate-title {
+    font-size: 1.35rem;
+  }
+}
+
 @media (max-width: 991px) {
   .certificates-grid {
     grid-template-columns: 1fr;
@@ -6285,6 +6382,41 @@ html[data-theme="light"] .cert-tag-mobile {
   background: rgba(245, 158, 11, 0.14);
   color: #92400e;
   border-color: rgba(245, 158, 11, 0.35);
+}
+
+html[data-theme="light"] .certificate-card-featured {
+  background: #ffffff;
+  border-color: rgba(196, 127, 0, 0.45);
+  box-shadow: 0 10px 32px rgba(196, 127, 0, 0.1);
+}
+
+html[data-theme="light"] .certificate-card-featured:hover {
+  border-color: rgba(196, 127, 0, 0.7);
+  box-shadow: 0 18px 45px rgba(196, 127, 0, 0.16);
+}
+
+html[data-theme="light"] .cert-tag-degree {
+  background: rgba(196, 127, 0, 0.15);
+  color: #92400e;
+  border-color: rgba(196, 127, 0, 0.45);
+}
+
+html[data-theme="light"] .cert-skill-pill.cert-skill-highlight {
+  background: rgba(196, 127, 0, 0.12);
+  border-color: rgba(196, 127, 0, 0.4);
+  color: #92400e;
+}
+
+html[data-theme="light"] .cert-inline-btn {
+  background: rgba(196, 127, 0, 0.1);
+  border-color: rgba(196, 127, 0, 0.35);
+  color: #92400e;
+}
+
+html[data-theme="light"] .cert-inline-btn:hover {
+  background: #c47f00;
+  color: #ffffff;
+  border-color: #c47f00;
 }
 
 html[data-theme="light"] .badge-status-dev {
