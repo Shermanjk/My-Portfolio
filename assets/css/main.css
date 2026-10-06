@@ -6941,4 +6941,136 @@ html[data-theme="light"] .cg-modal-card {
 }
 
 
+/* ── Hero: Open-To Role Chips ── */
+.hero-open-roles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 760px;
+  margin: 18px auto 4px;
+}
+
+.hero-open-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.open-role-chip {
+  font-size: 0.76rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.open-role-chip:hover {
+  border-color: rgba(240, 165, 0, 0.45);
+  transform: translateY(-1px);
+}
+
+/* ── How I Build: Development Process ── */
+.process-step {
+  position: relative;
+  height: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.process-step:hover {
+  border-color: rgba(240, 165, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.process-step-num {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  opacity: 0.25;
+}
+
+.process-step-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(240, 165, 0, 0.1);
+  border: 1px solid rgba(240, 165, 0, 0.25);
+  color: var(--accent-primary);
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+}
+
+.process-step h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.process-step p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+.process-step-testing {
+  border-color: rgba(240, 165, 0, 0.3);
+  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(240, 165, 0, 0.04) 100%);
+}
+
+.process-test-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 24px;
+}
+
+.process-test-list li {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.process-test-list li i {
+  color: var(--accent-primary);
+  margin-right: 4px;
+}
+
+.process-test-list li strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.process-step .process-test-note {
+  font-size: 0.82rem;
+  color: var(--accent-primary);
+}
+
+@media (max-width: 767px) {
+  .process-test-list {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-open-roles {
+    gap: 6px;
+  }
+}
+
+
 

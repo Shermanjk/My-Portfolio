@@ -48,7 +48,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=3.6" rel="stylesheet">
+  <link href="assets/css/main.css?v=3.7" rel="stylesheet">
 
   <!-- Theme: apply saved preference before paint to prevent flash -->
   <script>
@@ -256,6 +256,19 @@
           <p class="hero-supporting-text">
             Building and maintaining full-stack applications, business systems, responsive web experiences, backend services, databases, integrations, and deployment-ready solutions.
           </p>
+
+          <!-- Open To Roles -->
+          <div class="hero-open-roles" aria-label="Roles I am open to">
+            <span class="hero-open-label"><i class="bi bi-briefcase me-1"></i>Open to:</span>
+            <span class="open-role-chip">Full Stack Developer</span>
+            <span class="open-role-chip">Web / Frontend Developer</span>
+            <span class="open-role-chip">Backend / API Developer</span>
+            <span class="open-role-chip">.NET / C# Developer</span>
+            <span class="open-role-chip">Software Developer</span>
+            <span class="open-role-chip">Junior QA / Software Tester</span>
+            <span class="open-role-chip">IT / Technical Support</span>
+            <span class="open-role-chip">Freelance &amp; Remote</span>
+          </div>
 
           <!-- Hero Action Buttons -->
           <div class="hero-cta-buttons">
@@ -475,12 +488,17 @@
                 <i class="bi bi-tools"></i>
                 <h4>Tools &amp; Workflow</h4>
               </div>
-              <p class="skill-category-note">Version control, systematic debugging, testing, and deployment preparation</p>
+              <p class="skill-category-note">Version control, QA and testing, systematic debugging, and deployment preparation</p>
               <div class="skill-tags">
                 <span class="skill-tag"><i class="devicon-git-plain colored"></i> Git</span>
                 <span class="skill-tag"><i class="devicon-github-original"></i> GitHub</span>
                 <span class="skill-tag"><i class="bi bi-bug"></i> Debugging</span>
-                <span class="skill-tag"><i class="bi bi-check2-circle"></i> Testing</span>
+                <span class="skill-tag"><i class="bi bi-check2-circle"></i> Manual Testing</span>
+                <span class="skill-tag"><i class="bi bi-card-checklist"></i> Test Cases</span>
+                <span class="skill-tag"><i class="bi bi-flag"></i> Bug Reporting</span>
+                <span class="skill-tag"><i class="bi bi-hdd-network"></i> API Testing</span>
+                <span class="skill-tag"><i class="bi bi-arrow-repeat"></i> Regression Testing</span>
+                <span class="skill-tag"><i class="bi bi-people"></i> User Acceptance Testing</span>
                 <span class="skill-tag"><i class="bi bi-cloud-check"></i> Deployment Preparation</span>
                 <span class="skill-tag"><i class="bi bi-gear-wide-connected"></i> System Maintenance</span>
               </div>
@@ -614,6 +632,86 @@
       </div>
 
     </section><!-- /Services Section -->
+
+    <!-- How I Build / Development Process Section -->
+    <section id="process" class="process section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>How I Build</h2>
+        <p>From requirements to maintenance, with testing built into every stage</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="process-step">
+              <span class="process-step-num">01</span>
+              <div class="process-step-icon"><i class="bi bi-chat-square-text"></i></div>
+              <h4>Requirements</h4>
+              <p>Understand the real workflow with clients and staff, then define scope, roles, and expected outcomes.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="process-step">
+              <span class="process-step-num">02</span>
+              <div class="process-step-icon"><i class="bi bi-diagram-3"></i></div>
+              <h4>Design</h4>
+              <p>Plan the database schema, API structure, and interface layouts before writing production code.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="process-step">
+              <span class="process-step-num">03</span>
+              <div class="process-step-icon"><i class="bi bi-code-slash"></i></div>
+              <h4>Build</h4>
+              <p>Develop frontend, backend, and database features in small increments, tracked with Git.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="process-step process-step-testing">
+              <span class="process-step-num">04</span>
+              <div class="process-step-icon"><i class="bi bi-bug"></i></div>
+              <h4>Testing &amp; Quality Assurance</h4>
+              <p>Every feature is verified before release, not only at the end of the project.</p>
+              <ul class="process-test-list">
+                <li><i class="bi bi-check2-circle"></i> <strong>Functional testing:</strong> walk through real workflows such as checkout, stock updates, and reports.</li>
+                <li><i class="bi bi-check2-circle"></i> <strong>API testing:</strong> verify endpoints, responses, authentication, and error handling.</li>
+                <li><i class="bi bi-check2-circle"></i> <strong>Edge cases &amp; validation:</strong> invalid input, duplicates, empty states, and permission checks.</li>
+                <li><i class="bi bi-check2-circle"></i> <strong>Regression checks:</strong> re-test existing features after each change.</li>
+                <li><i class="bi bi-check2-circle"></i> <strong>Cross-device checks:</strong> confirm responsive behavior on desktop, tablet, and mobile.</li>
+                <li><i class="bi bi-check2-circle"></i> <strong>User acceptance:</strong> validate with real users in the actual environment.</li>
+              </ul>
+              <p class="process-test-note"><i class="bi bi-arrow-repeat me-1"></i>Bugs are logged, fixed, and re-tested before the next stage.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="process-step">
+              <span class="process-step-num">05</span>
+              <div class="process-step-icon"><i class="bi bi-cloud-arrow-up"></i></div>
+              <h4>Deployment</h4>
+              <p>Release to Cloudflare Pages/Workers, Vercel, Render, or GitHub Pages, followed by a smoke test on the live site.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="process-step">
+              <span class="process-step-num">06</span>
+              <div class="process-step-icon"><i class="bi bi-tools"></i></div>
+              <h4>Maintenance</h4>
+              <p>Fix issues, apply improvements, and update features based on user feedback after launch.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- /Process Section -->
 
     <!-- Experience & Education Section -->
     <!-- Experience & Education Section -->
@@ -1911,7 +2009,7 @@
   <script src="assets/js/circular-gallery.js?v=2.0"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js?v=3.6"></script>
+  <script src="assets/js/main.js?v=3.7"></script>
 
 </body>
 
