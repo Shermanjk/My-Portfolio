@@ -1,0 +1,348 @@
+/*--------------------------------------------------------------
+# What I Do — Organic High-Tech Circuit Architecture Tree
+# Card-Free, Borderless Design with Schematic Tattoo Watermarks
+--------------------------------------------------------------*/
+
+.services-tree-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 10px 0 30px;
+  overflow: visible;
+}
+
+/* ── Central Root Hub (Trunk Origin) ── */
+.tree-root-hub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 44px;
+  z-index: 2;
+}
+
+.tree-root-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background: rgba(240, 165, 0, 0.08);
+  border: 1px solid rgba(240, 165, 0, 0.28);
+  color: var(--accent-primary, #f0a500);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.tree-root-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-primary, #f0a500);
+  box-shadow: 0 0 10px var(--accent-primary, #f0a500);
+  position: relative;
+}
+
+.tree-root-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-primary, #f0a500);
+  animation: root-pulse-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes root-pulse-ping {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.tree-trunk-stem {
+  width: 2px;
+  height: 38px;
+  background: linear-gradient(180deg, rgba(240, 165, 0, 0.5) 0%, rgba(240, 165, 0, 0.15) 100%);
+  margin: 6px auto 0;
+}
+
+/* ── Circuit Layout Grid (Two Symmetrical Branches) ── */
+.tree-circuit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px 70px;
+  position: relative;
+  z-index: 1;
+}
+
+.tree-branch-col {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ── Branch Category Headers ── */
+.tree-branch-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.branch-pill {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+}
+
+.branch-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(240, 165, 0, 0.35) 0%, transparent 100%);
+}
+
+/* ── Individual Tree Node (100% Open, Zero Box, Zero Cutoffs) ── */
+.tree-node {
+  position: relative;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 8px 0 16px 0 !important;
+  overflow: visible !important; /* No clipping or box crop */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.tree-node:hover {
+  transform: translateY(-2px);
+}
+
+/* ── Background Tattoo Watermark Icon (Soft Feathered Glow, No Sharp Cutoff) ── */
+.tree-tattoo-watermark {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  opacity: 0.04;
+  color: var(--text-primary, #ffffff);
+  font-size: 115px;
+  line-height: 1;
+  /* Soft radial feathered mask so the icon never has any straight rectangular cropped edges */
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 90%);
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 90%);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+  transform-origin: center center;
+}
+
+.tree-node:hover .tree-tattoo-watermark {
+  opacity: 0.15;
+  color: var(--accent-primary, #f0a500);
+  transform: translateY(-50%) scale(1.08) rotate(-3deg);
+  filter: drop-shadow(0 0 24px rgba(240, 165, 0, 0.25));
+}
+
+/* ── Node Circuit Trace & Junction Socket ── */
+.tree-node-socket {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.socket-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-primary, #f0a500);
+  box-shadow: 0 0 10px rgba(240, 165, 0, 0.7);
+  flex-shrink: 0;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tree-node:hover .socket-dot {
+  transform: scale(1.3);
+  box-shadow: 0 0 14px rgba(240, 165, 0, 1);
+}
+
+.socket-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(240, 165, 0, 0.45) 0%, rgba(240, 165, 0, 0.1) 80%, transparent 100%);
+  transition: background 0.3s ease;
+}
+
+.tree-node:hover .socket-line {
+  background: linear-gradient(90deg, rgba(240, 165, 0, 0.8) 0%, rgba(240, 165, 0, 0.3) 80%, transparent 100%);
+}
+
+.socket-branch-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--accent-primary, #f0a500);
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(240, 165, 0, 0.06);
+  border: 1px solid rgba(240, 165, 0, 0.18);
+}
+
+/* ── Node Content ── */
+.tree-node-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tree-node-title {
+  font-family: var(--heading-font);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+  transition: color 0.3s ease;
+}
+
+.tree-node:hover .tree-node-title {
+  color: #ffffff;
+}
+
+.tree-node-desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0 0 16px 0;
+  max-width: 520px;
+}
+
+/* ── Tech Stack Badges ── */
+.tree-node-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.tree-tech-pill {
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.22s ease;
+  cursor: default;
+}
+
+.tree-node:hover .tree-tech-pill:hover {
+  background: rgba(240, 165, 0, 0.12);
+  border-color: rgba(240, 165, 0, 0.35);
+  color: var(--accent-primary, #f0a500);
+  transform: translateY(-1px);
+}
+
+/* ── Responsive Behavior ── */
+@media (max-width: 991.98px) {
+  .tree-circuit-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .tree-tattoo-watermark {
+    font-size: 95px;
+    right: 5px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .tree-node-title {
+    font-size: 1.15rem;
+  }
+
+  .tree-tattoo-watermark {
+    font-size: 80px;
+    right: 0;
+  }
+}
+
+/* ── Light Mode Support ── */
+html[data-theme="light"] .tree-root-badge {
+  background: rgba(196, 127, 0, 0.08);
+  border-color: rgba(196, 127, 0, 0.25);
+  color: var(--accent-primary, #c47f00);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="light"] .tree-trunk-stem {
+  background: linear-gradient(180deg, rgba(196, 127, 0, 0.45) 0%, rgba(196, 127, 0, 0.15) 100%);
+}
+
+html[data-theme="light"] .tree-branch-header {
+  border-bottom-color: #e5e7eb;
+}
+
+html[data-theme="light"] .branch-pill {
+  color: #111827;
+}
+
+html[data-theme="light"] .tree-node {
+  background: transparent !important;
+  border: none !important;
+}
+
+html[data-theme="light"] .tree-tattoo-watermark {
+  color: #111827;
+  opacity: 0.04;
+}
+
+html[data-theme="light"] .tree-node:hover .tree-tattoo-watermark {
+  color: var(--accent-primary, #c47f00);
+  opacity: 0.14;
+}
+
+html[data-theme="light"] .socket-branch-tag {
+  background: rgba(196, 127, 0, 0.08);
+  border-color: rgba(196, 127, 0, 0.22);
+  color: var(--accent-primary, #c47f00);
+}
+
+html[data-theme="light"] .tree-node-title {
+  color: #111827;
+}
+
+html[data-theme="light"] .tree-node-desc {
+  color: #4b5563;
+}
+
+html[data-theme="light"] .tree-tech-pill {
+  background: #f8f9fa;
+  border-color: #e5e7eb;
+  color: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+html[data-theme="light"] .tree-node:hover .tree-tech-pill:hover {
+  background: rgba(196, 127, 0, 0.08);
+  border-color: rgba(196, 127, 0, 0.35);
+  color: var(--accent-primary, #c47f00);
+}

@@ -1,0 +1,588 @@
+/* ==========================================================================
+   FEATURED PROJECTS SHOWCASE (CARD-FREE ALTERNATING HORIZON)
+   ========================================================================== */
+
+/* Container & Overall Flow */
+.projects-showcase-container {
+  display: flex;
+  flex-direction: column;
+  gap: 72px; /* Generous breathable spacing between architectural stages */
+  position: relative;
+  width: 100%;
+}
+
+/* Individual Project Stage (Card-Free) */
+.project-card-showcase {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 10px 0 !important;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+  gap: 40px 48px;
+  align-items: center;
+  overflow: visible !important;
+  transition: transform 0.35s ease;
+}
+
+.project-card-showcase.flagship {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.project-card-showcase:hover {
+  border: none !important;
+  box-shadow: none !important;
+  transform: none;
+}
+
+/* Alternating Layout for Even Projects on Desktop */
+@media (min-width: 992px) {
+  .project-card-showcase.is-reversed {
+    grid-template-columns: minmax(0, 0.56fr) minmax(0, 0.44fr);
+  }
+  .project-card-showcase.is-reversed .showcase-content-col {
+    order: 2;
+    padding-left: 12px;
+  }
+  .project-card-showcase.is-reversed .showcase-preview-col {
+    order: 1;
+  }
+}
+
+/* ── Ambient Radial Tattoo Watermark (Zero rectangular cutoff) ── */
+.project-tattoo-watermark {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+  font-size: clamp(180px, 20vw, 290px);
+  line-height: 1;
+  color: var(--accent-primary, #f0a500);
+  opacity: 0.038;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+  overflow: visible;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 72%);
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 72%);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-card-showcase.is-reversed .project-tattoo-watermark {
+  right: auto;
+  left: 2%;
+}
+
+.project-card-showcase:hover .project-tattoo-watermark {
+  opacity: 0.065;
+  transform: translateY(-50%) scale(1.03);
+}
+
+/* ── Architectural Project Divider (Hairline + Glowing Diamond Node) ── */
+.project-showcase-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.project-showcase-divider .divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.08) 25%, rgba(255, 255, 255, 0.08) 75%, transparent 100%);
+}
+
+.project-showcase-divider .divider-node {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 0.55rem;
+  color: var(--accent-primary, #f0a500);
+  filter: drop-shadow(0 0 6px rgba(240, 165, 0, 0.6));
+  opacity: 0.85;
+}
+
+/* ── Left / Content Column: Project Intelligence Dossier ── */
+.showcase-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Sequence Index Tag (e.g., 01 // FLAGSHIP ARCHITECTURE) */
+.project-sequence-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-primary, #f0a500);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-sequence-tag::after {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: rgba(240, 165, 0, 0.45);
+}
+
+/* Project Title */
+.showcase-title {
+  font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-primary, #ffffff);
+  margin-top: 6px;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+/* Project Synopsis */
+.showcase-purpose {
+  font-size: 0.93rem;
+  line-height: 1.62;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.72));
+  margin-bottom: 10px;
+}
+
+/* Tech Stack Pills */
+.showcase-content-col .project-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 8px 0 14px;
+}
+
+.showcase-content-col .tech-tag {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 4px 11px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.86);
+  letter-spacing: 0.2px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.showcase-content-col .tech-tag:hover {
+  border-color: rgba(240, 165, 0, 0.45);
+  background: rgba(240, 165, 0, 0.08);
+  color: var(--accent-primary, #f0a500);
+  transform: translateY(-1.5px);
+}
+
+/* Feature Checklist with Guide Line */
+.showcase-features-list {
+  list-style: none;
+  padding-left: 14px;
+  margin: 10px 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-left: 2px solid rgba(240, 165, 0, 0.28);
+  position: relative;
+}
+
+.showcase-features-list li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.88rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.78));
+  line-height: 1.4;
+}
+
+.showcase-features-list li i {
+  color: var(--accent-primary, #f0a500);
+  font-size: 0.92rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(240, 165, 0, 0.35));
+}
+
+/* Action Buttons */
+.showcase-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.showcase-actions .btn-primary {
+  background: linear-gradient(135deg, #f0a500 0%, #d89400 100%);
+  border: none;
+  color: #0c0d12;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(240, 165, 0, 0.25);
+  transition: all 0.25s ease;
+}
+
+.showcase-actions .btn-primary:hover {
+  background: linear-gradient(135deg, #ffb61a 0%, #e8a000 100%);
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(240, 165, 0, 0.42);
+}
+
+.showcase-actions .btn-outline-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.showcase-actions .btn-outline-secondary:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(240, 165, 0, 0.4);
+  color: var(--accent-primary, #f0a500);
+  transform: translateY(-2px);
+}
+
+/* ── Right / Preview Column: Floating High-Fidelity Device Viewport ── */
+.showcase-preview-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Floating Window Mockup */
+.project-showcase-window {
+  background: #111218;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.55), 0 0 25px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  width: 100%;
+  position: relative;
+}
+
+.project-showcase-window:hover {
+  border-color: rgba(240, 165, 0, 0.45);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.65), 0 0 35px rgba(240, 165, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+/* Window Header Bar */
+.window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(20, 22, 28, 0.95);
+  padding: 9px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.window-controls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.ctrl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+
+.window-address-bar {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 3px 14px;
+  font-size: 0.76rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.68));
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 320px;
+  width: 100%;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Viewport Screen Image Frame */
+.window-viewport {
+  position: relative;
+  overflow: hidden;
+  background: #0a0b0e;
+  height: 285px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-viewport a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.window-viewport img {
+  width: 100%;
+  height: 100%;
+  max-height: 285px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.project-showcase-window:hover .window-viewport img {
+  transform: scale(1.02);
+}
+
+.viewport-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.project-showcase-window:hover .viewport-overlay {
+  opacity: 1;
+}
+
+/* Screen Switcher Pills */
+.project-gallery-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  padding-top: 10px;
+}
+
+.project-gallery-thumbs a {
+  transition: all 0.25s ease;
+  font-size: 0.74rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 11px;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 20px;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.project-gallery-thumbs a:hover {
+  background: rgba(240, 165, 0, 0.15) !important;
+  border-color: rgba(240, 165, 0, 0.4) !important;
+  color: var(--accent-primary, #f0a500) !important;
+  transform: translateY(-1.5px);
+}
+
+/* ── Light Theme Adaptations ── */
+html[data-theme="light"] .project-card-showcase,
+html[data-theme="light"] .project-card-showcase.flagship {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .showcase-title {
+  color: #1a1e29;
+}
+
+html[data-theme="light"] .showcase-purpose {
+  color: #4b5563;
+}
+
+html[data-theme="light"] .showcase-content-col .tech-tag {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #374151;
+}
+
+html[data-theme="light"] .showcase-content-col .tech-tag:hover {
+  background: rgba(217, 119, 6, 0.08);
+  border-color: rgba(217, 119, 6, 0.4);
+  color: #d97706;
+}
+
+html[data-theme="light"] .showcase-features-list {
+  border-left-color: rgba(217, 119, 6, 0.35);
+}
+
+html[data-theme="light"] .showcase-features-list li {
+  color: #4b5563;
+}
+
+html[data-theme="light"] .showcase-actions .btn-outline-secondary {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #374151;
+}
+
+html[data-theme="light"] .showcase-actions .btn-outline-secondary:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: #d97706;
+  color: #d97706;
+}
+
+html[data-theme="light"] .project-showcase-window {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="light"] .project-showcase-window:hover {
+  border-color: rgba(217, 119, 6, 0.4);
+  box-shadow: 0 20px 45px rgba(217, 119, 6, 0.12);
+}
+
+html[data-theme="light"] .window-header {
+  background: #f8fafc;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="light"] .window-address-bar {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.06);
+  color: #64748b;
+}
+
+html[data-theme="light"] .window-viewport {
+  background: #f1f5f9;
+}
+
+html[data-theme="light"] .project-gallery-thumbs a {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #475569 !important;
+}
+
+html[data-theme="light"] .project-gallery-thumbs a:hover {
+  background: rgba(217, 119, 6, 0.1) !important;
+  border-color: #d97706 !important;
+  color: #d97706 !important;
+}
+
+html[data-theme="light"] .project-showcase-divider .divider-line {
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.1) 75%, transparent 100%);
+}
+
+html[data-theme="light"] .project-tattoo-watermark {
+  opacity: 0.025;
+  color: #d97706;
+}
+
+/* ── Responsive Refinements ── */
+@media (max-width: 1199px) {
+  .project-card-showcase {
+    gap: 32px 36px;
+  }
+  .window-viewport {
+    height: 260px;
+  }
+  .window-viewport img {
+    max-height: 260px;
+  }
+}
+
+@media (max-width: 991px) {
+  .projects-showcase-container {
+    gap: 56px;
+  }
+  .project-card-showcase {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  /* On mobile/tablet, ensure Info is always first, then Viewport below */
+  .project-card-showcase.is-reversed .showcase-content-col {
+    order: 1;
+    padding-left: 0;
+  }
+  .project-card-showcase.is-reversed .showcase-preview-col {
+    order: 2;
+  }
+  .window-viewport {
+    height: 240px;
+  }
+  .window-viewport img {
+    max-height: 240px;
+  }
+  .project-tattoo-watermark {
+    font-size: 190px;
+    right: -20px;
+    opacity: 0.03;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-showcase-container {
+    gap: 48px;
+  }
+  .window-viewport {
+    height: 220px;
+  }
+  .window-viewport img {
+    max-height: 220px;
+  }
+  .project-sequence-tag {
+    font-size: 0.72rem;
+  }
+  .showcase-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .showcase-actions .btn {
+    text-align: center;
+    width: 100%;
+  }
+}

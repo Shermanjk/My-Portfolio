@@ -51,6 +51,9 @@
   <link href="assets/css/main.css?v=4.5" rel="stylesheet">
   <link href="assets/css/dome-gallery.css" rel="stylesheet">
   <link href="assets/css/credentials.css" rel="stylesheet">
+  <link href="assets/css/services-tree.css" rel="stylesheet">
+  <link href="assets/css/process-tree.css" rel="stylesheet">
+  <link href="assets/css/projects-showcase.css" rel="stylesheet">
 
   <!-- Theme: apply saved preference before paint to prevent flash -->
   <script>
@@ -722,75 +725,214 @@
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4 justify-content-center">
+        <div class="services-tree-wrapper">
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="bi bi-layout-wtf"></i>
-              </div>
-              <h4>Web Application Development</h4>
-              <p>Building responsive, fast, and secure web applications using React, TypeScript, Vite, and modern CSS
-                frameworks.</p>
+          <!-- Central Trunk Origin / Apex -->
+          <div class="tree-root-hub text-center" data-aos="fade-up">
+            <div class="tree-root-badge">
+              <span class="tree-root-pulse"></span>
+              <i class="bi bi-diagram-3-fill me-2 text-accent"></i>Full-Stack Engineering Architecture
             </div>
+            <div class="tree-trunk-stem"></div>
           </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="bi bi-phone"></i>
-              </div>
-              <h4>Mobile App Development</h4>
-              <p>Creating cross-platform mobile applications with Flutter and Dart, connecting directly to cloud APIs
-                and offline storage.</p>
-            </div>
-          </div>
+          <!-- Dual Symmetrical Branches Grid -->
+          <div class="tree-circuit-grid">
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="bi bi-server"></i>
+            <!-- ==============================================
+                 BRANCH 1: Client Interfaces & Interactive UX
+                 ============================================== -->
+            <div class="tree-branch-col branch-client" data-aos="fade-up" data-aos-delay="150">
+              
+              <div class="tree-branch-header">
+                <span class="branch-pill">
+                  <i class="bi bi-display me-2 text-accent"></i>Client Interfaces &amp; UX
+                </span>
+                <div class="branch-line"></div>
               </div>
-              <h4>REST APIs &amp; Real-Time Backends</h4>
-              <p>Engineering server-side REST APIs, WebSockets for instant live data sync, and JWT-secured
-                authentication flows using Node.js, C#, .NET, and PHP.</p>
-            </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="bi bi-database-check"></i>
+              <!-- Node 01: Web Application Development -->
+              <div class="tree-node" data-node="web">
+                <div class="tree-node-socket">
+                  <span class="socket-dot"></span>
+                  <span class="socket-line"></span>
+                  <span class="socket-branch-tag">Node 01 // Frontend</span>
+                </div>
+
+                <div class="tree-tattoo-watermark" aria-hidden="true">
+                  <i class="bi bi-window-stack"></i>
+                </div>
+
+                <div class="tree-node-content">
+                  <h3 class="tree-node-title">Web Application Development</h3>
+                  <p class="tree-node-desc">
+                    Building responsive, fast, and secure web applications using React, TypeScript, Vite, and modern component systems with strict state management.
+                  </p>
+                  <div class="tree-node-tech">
+                    <span class="tree-tech-pill">React</span>
+                    <span class="tree-tech-pill">TypeScript</span>
+                    <span class="tree-tech-pill">Vite</span>
+                    <span class="tree-tech-pill">Tailwind CSS</span>
+                    <span class="tree-tech-pill">Responsive Web Design</span>
+                  </div>
+                </div>
               </div>
-              <h4>Database Design &amp; Optimization</h4>
-              <p>Architecting normalized relational schemas with MySQL and PostgreSQL, writing optimized queries and
-                ensuring data integrity.</p>
-            </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="bi bi-shop-window"></i>
+              <!-- Node 02: Mobile App Development -->
+              <div class="tree-node" data-node="mobile">
+                <div class="tree-node-socket">
+                  <span class="socket-dot"></span>
+                  <span class="socket-line"></span>
+                  <span class="socket-branch-tag">Node 02 // Mobile</span>
+                </div>
+
+                <div class="tree-tattoo-watermark" aria-hidden="true">
+                  <i class="bi bi-phone"></i>
+                </div>
+
+                <div class="tree-node-content">
+                  <h3 class="tree-node-title">Mobile App Development</h3>
+                  <p class="tree-node-desc">
+                    Creating cross-platform mobile applications with Flutter and Dart, connecting directly to cloud APIs, local caching, and offline-first storage.
+                  </p>
+                  <div class="tree-node-tech">
+                    <span class="tree-tech-pill">Flutter</span>
+                    <span class="tree-tech-pill">Dart</span>
+                    <span class="tree-tech-pill">Cloud APIs</span>
+                    <span class="tree-tech-pill">Offline Storage</span>
+                    <span class="tree-tech-pill">Cross-Platform</span>
+                  </div>
+                </div>
               </div>
-              <h4>POS &amp; Inventory Management</h4>
-              <p>Delivering custom point-of-sale solutions with barcode integration, inventory tracking, sales
-                reporting, and receipt export.</p>
-            </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-card">
-              <div class="service-card-icon">
-                <i class="bi bi-palette"></i>
+              <!-- Node 03: UI/UX & Visual Design -->
+              <div class="tree-node" data-node="design">
+                <div class="tree-node-socket">
+                  <span class="socket-dot"></span>
+                  <span class="socket-line"></span>
+                  <span class="socket-branch-tag">Node 03 // Product Design</span>
+                </div>
+
+                <div class="tree-tattoo-watermark" aria-hidden="true">
+                  <i class="bi bi-bezier2"></i>
+                </div>
+
+                <div class="tree-node-content">
+                  <h3 class="tree-node-title">UI/UX &amp; Visual Design</h3>
+                  <p class="tree-node-desc">
+                    Designing user-centric layouts, wireframes, component libraries, and branding assets with Figma to translate client specifications into intuitive software.
+                  </p>
+                  <div class="tree-node-tech">
+                    <span class="tree-tech-pill">Figma</span>
+                    <span class="tree-tech-pill">Wireframing</span>
+                    <span class="tree-tech-pill">Design Systems</span>
+                    <span class="tree-tech-pill">User Journeys</span>
+                    <span class="tree-tech-pill">Visual Hierarchy</span>
+                  </div>
+                </div>
               </div>
-              <h4>UI/UX &amp; Visual Design</h4>
-              <p>Designing user-centric layouts, wireframes, and branding assets with Figma to translate client
-                requirements into clean software.</p>
-            </div>
-          </div>
 
-        </div>
+            </div><!-- /.branch-client -->
+
+            <!-- ==============================================
+                 BRANCH 2: Core Systems, Data & Commerce
+                 ============================================== -->
+            <div class="tree-branch-col branch-systems" data-aos="fade-up" data-aos-delay="200">
+              
+              <div class="tree-branch-header">
+                <span class="branch-pill">
+                  <i class="bi bi-cpu me-2 text-accent"></i>Core Systems &amp; Data
+                </span>
+                <div class="branch-line"></div>
+              </div>
+
+              <!-- Node 04: REST APIs & Real-Time Backends -->
+              <div class="tree-node" data-node="api">
+                <div class="tree-node-socket">
+                  <span class="socket-dot"></span>
+                  <span class="socket-line"></span>
+                  <span class="socket-branch-tag">Node 04 // Backend</span>
+                </div>
+
+                <div class="tree-tattoo-watermark" aria-hidden="true">
+                  <i class="bi bi-hdd-network"></i>
+                </div>
+
+                <div class="tree-node-content">
+                  <h3 class="tree-node-title">REST APIs &amp; Real-Time Backends</h3>
+                  <p class="tree-node-desc">
+                    Engineering server-side REST APIs, WebSockets for live data sync, and JWT-secured authentication flows using Node.js, C#, .NET, and PHP.
+                  </p>
+                  <div class="tree-node-tech">
+                    <span class="tree-tech-pill">Node.js</span>
+                    <span class="tree-tech-pill">Express.js</span>
+                    <span class="tree-tech-pill">C# / .NET</span>
+                    <span class="tree-tech-pill">PHP</span>
+                    <span class="tree-tech-pill">WebSockets</span>
+                    <span class="tree-tech-pill">REST APIs</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Node 05: Database Design & Optimization -->
+              <div class="tree-node" data-node="data">
+                <div class="tree-node-socket">
+                  <span class="socket-dot"></span>
+                  <span class="socket-line"></span>
+                  <span class="socket-branch-tag">Node 05 // Persistence</span>
+                </div>
+
+                <div class="tree-tattoo-watermark" aria-hidden="true">
+                  <i class="bi bi-database-fill-gear"></i>
+                </div>
+
+                <div class="tree-node-content">
+                  <h3 class="tree-node-title">Database Design &amp; Optimization</h3>
+                  <p class="tree-node-desc">
+                    Architecting normalized relational schemas with MySQL and PostgreSQL, writing indexed queries, handling transactions, and ensuring data integrity.
+                  </p>
+                  <div class="tree-node-tech">
+                    <span class="tree-tech-pill">PostgreSQL</span>
+                    <span class="tree-tech-pill">MySQL</span>
+                    <span class="tree-tech-pill">Supabase</span>
+                    <span class="tree-tech-pill">Schema Normalization</span>
+                    <span class="tree-tech-pill">Query Optimization</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Node 06: POS & Inventory Management -->
+              <div class="tree-node" data-node="commerce">
+                <div class="tree-node-socket">
+                  <span class="socket-dot"></span>
+                  <span class="socket-line"></span>
+                  <span class="socket-branch-tag">Node 06 // Commerce</span>
+                </div>
+
+                <div class="tree-tattoo-watermark" aria-hidden="true">
+                  <i class="bi bi-upc-scan"></i>
+                </div>
+
+                <div class="tree-node-content">
+                  <h3 class="tree-node-title">POS &amp; Inventory Management</h3>
+                  <p class="tree-node-desc">
+                    Delivering custom point-of-sale systems with real-time barcode integration, inventory tracking, credit ledgers, sales reporting, and thermal receipt export.
+                  </p>
+                  <div class="tree-node-tech">
+                    <span class="tree-tech-pill">POS Terminals</span>
+                    <span class="tree-tech-pill">Barcode Scanning</span>
+                    <span class="tree-tech-pill">Inventory Tracking</span>
+                    <span class="tree-tech-pill">Thermal Receipts</span>
+                    <span class="tree-tech-pill">Sales Analytics</span>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /.branch-systems -->
+
+          </div><!-- /.tree-circuit-grid -->
+
+        </div><!-- /.services-tree-wrapper -->
       </div>
 
     </section><!-- /Services Section -->
@@ -805,72 +947,223 @@
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
+        <div class="lifecycle-tree-wrapper">
 
-          <div class="col-lg-4 col-md-6">
-            <div class="process-step">
-              <span class="process-step-num">01</span>
-              <div class="process-step-icon"><i class="bi bi-chat-square-text"></i></div>
-              <h4>Requirements</h4>
-              <p>Understand the real workflow with clients and staff, then define scope, roles, and expected outcomes.</p>
-            </div>
+          <!-- Central Growing Trunk Line -->
+          <div class="lifecycle-trunk-line" aria-hidden="true">
+            <div class="trunk-glow-bar"></div>
+            <div class="trunk-origin-root"></div>
+            <div class="trunk-canopy-cap"></div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
-            <div class="process-step">
-              <span class="process-step-num">02</span>
-              <div class="process-step-icon"><i class="bi bi-diagram-3"></i></div>
-              <h4>Design</h4>
-              <p>Plan the database schema, API structure, and interface layouts before writing production code.</p>
-            </div>
-          </div>
+          <!-- Chronological Alternating Tree Nodes -->
+          <div class="lifecycle-tree-nodes">
 
-          <div class="col-lg-4 col-md-6">
-            <div class="process-step">
-              <span class="process-step-num">03</span>
-              <div class="process-step-icon"><i class="bi bi-code-slash"></i></div>
-              <h4>Build</h4>
-              <p>Develop frontend, backend, and database features in small increments, tracked with Git.</p>
-            </div>
-          </div>
+            <!-- STAGE 01: Requirements (Left Branch) -->
+            <div class="tree-stage-row stage-left" data-aos="fade-up" data-aos-delay="100">
+              <div class="tree-stage-content">
+                <div class="tree-stage-tag">
+                  <span class="stage-num">Stage 01</span>
+                  <span class="stage-cat">// Discovery &amp; Scope</span>
+                </div>
+                <h3 class="tree-stage-title">Requirements</h3>
+                <p class="tree-stage-desc">
+                  Understand the real workflow with clients and staff, then define scope, user roles, technical constraints, and expected outcomes before starting implementation.
+                </p>
+                <div class="tree-stage-highlights">
+                  <span class="highlight-pill"><i class="bi bi-person-check text-accent me-1"></i>User Workflows</span>
+                  <span class="highlight-pill"><i class="bi bi-file-earmark-text text-accent me-1"></i>Functional Scope</span>
+                  <span class="highlight-pill"><i class="bi bi-shield-check text-accent me-1"></i>Outcome Targets</span>
+                </div>
+                <!-- Tattoo Watermark -->
+                <div class="tree-stage-tattoo" aria-hidden="true">
+                  <i class="bi bi-chat-square-text"></i>
+                </div>
+              </div>
 
-          <div class="col-lg-12">
-            <div class="process-step process-step-testing">
-              <span class="process-step-num">04</span>
-              <div class="process-step-icon"><i class="bi bi-bug"></i></div>
-              <h4>Testing &amp; Quality Assurance</h4>
-              <p>Every feature is verified before release, not only at the end of the project.</p>
-              <ul class="process-test-list">
-                <li><i class="bi bi-check2-circle"></i> <strong>Functional testing:</strong> walk through real workflows such as checkout, stock updates, and reports.</li>
-                <li><i class="bi bi-check2-circle"></i> <strong>API testing:</strong> verify endpoints, responses, authentication, and error handling.</li>
-                <li><i class="bi bi-check2-circle"></i> <strong>Edge cases &amp; validation:</strong> invalid input, duplicates, empty states, and permission checks.</li>
-                <li><i class="bi bi-check2-circle"></i> <strong>Regression checks:</strong> re-test existing features after each change.</li>
-                <li><i class="bi bi-check2-circle"></i> <strong>Cross-device checks:</strong> confirm responsive behavior on desktop, tablet, and mobile.</li>
-                <li><i class="bi bi-check2-circle"></i> <strong>User acceptance:</strong> validate with real users in the actual environment.</li>
-              </ul>
-              <p class="process-test-note"><i class="bi bi-arrow-repeat me-1"></i>Bugs are logged, fixed, and re-tested before the next stage.</p>
+              <!-- Branch Limb & Connector Bud -->
+              <div class="tree-branch-limb" aria-hidden="true">
+                <span class="limb-line"></span>
+                <span class="limb-bud"></span>
+              </div>
             </div>
-          </div>
 
-          <div class="col-lg-6 col-md-6">
-            <div class="process-step">
-              <span class="process-step-num">05</span>
-              <div class="process-step-icon"><i class="bi bi-cloud-arrow-up"></i></div>
-              <h4>Deployment</h4>
-              <p>Release to Cloudflare Pages/Workers, Vercel, Render, or GitHub Pages, followed by a smoke test on the live site.</p>
+            <!-- STAGE 02: Design (Right Branch) -->
+            <div class="tree-stage-row stage-right" data-aos="fade-up" data-aos-delay="150">
+              <!-- Branch Limb & Connector Bud -->
+              <div class="tree-branch-limb" aria-hidden="true">
+                <span class="limb-bud"></span>
+                <span class="limb-line"></span>
+              </div>
+
+              <div class="tree-stage-content">
+                <div class="tree-stage-tag">
+                  <span class="stage-num">Stage 02</span>
+                  <span class="stage-cat">// Architecture &amp; Schemas</span>
+                </div>
+                <h3 class="tree-stage-title">Design</h3>
+                <p class="tree-stage-desc">
+                  Plan the database schema, relational keys, API contract structure, and interface component layouts before writing a single line of production code.
+                </p>
+                <div class="tree-stage-highlights">
+                  <span class="highlight-pill"><i class="bi bi-database text-accent me-1"></i>Relational Schemas</span>
+                  <span class="highlight-pill"><i class="bi bi-diagram-3 text-accent me-1"></i>API Contracts</span>
+                  <span class="highlight-pill"><i class="bi bi-layout-wtf text-accent me-1"></i>UI Component Specs</span>
+                </div>
+                <!-- Tattoo Watermark -->
+                <div class="tree-stage-tattoo" aria-hidden="true">
+                  <i class="bi bi-diagram-3"></i>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="col-lg-6 col-md-6">
-            <div class="process-step">
-              <span class="process-step-num">06</span>
-              <div class="process-step-icon"><i class="bi bi-tools"></i></div>
-              <h4>Maintenance</h4>
-              <p>Fix issues, apply improvements, and update features based on user feedback after launch.</p>
+            <!-- STAGE 03: Build (Left Branch) -->
+            <div class="tree-stage-row stage-left" data-aos="fade-up" data-aos-delay="200">
+              <div class="tree-stage-content">
+                <div class="tree-stage-tag">
+                  <span class="stage-num">Stage 03</span>
+                  <span class="stage-cat">// Incremental Engineering</span>
+                </div>
+                <h3 class="tree-stage-title">Build</h3>
+                <p class="tree-stage-desc">
+                  Develop frontend interfaces, backend logic, and database migrations in small, verifiable increments with strict Git commits and clean code documentation.
+                </p>
+                <div class="tree-stage-highlights">
+                  <span class="highlight-pill"><i class="bi bi-git text-accent me-1"></i>Git Commit Tracking</span>
+                  <span class="highlight-pill"><i class="bi bi-code-slash text-accent me-1"></i>Frontend &amp; Backend</span>
+                  <span class="highlight-pill"><i class="bi bi-layers text-accent me-1"></i>Modular Migrations</span>
+                </div>
+                <!-- Tattoo Watermark -->
+                <div class="tree-stage-tattoo" aria-hidden="true">
+                  <i class="bi bi-code-slash"></i>
+                </div>
+              </div>
+
+              <!-- Branch Limb & Connector Bud -->
+              <div class="tree-branch-limb" aria-hidden="true">
+                <span class="limb-line"></span>
+                <span class="limb-bud"></span>
+              </div>
             </div>
-          </div>
 
-        </div>
+            <!-- STAGE 04: Testing & QA (Right Branch - Feature Node) -->
+            <div class="tree-stage-row stage-right stage-qa" data-aos="fade-up" data-aos-delay="250">
+              <!-- Branch Limb & Connector Bud -->
+              <div class="tree-branch-limb" aria-hidden="true">
+                <span class="limb-bud"></span>
+                <span class="limb-line"></span>
+              </div>
+
+              <div class="tree-stage-content">
+                <div class="tree-stage-tag">
+                  <span class="stage-num">Stage 04</span>
+                  <span class="stage-cat">// Quality Assurance Hub</span>
+                </div>
+                <h3 class="tree-stage-title">Testing &amp; Quality Assurance</h3>
+                <p class="tree-stage-desc">
+                  Every feature is verified before release, not only at the end of the project. Bugs are systematically logged, isolated, resolved, and re-tested.
+                </p>
+                
+                <!-- QA Verification Grid -->
+                <div class="tree-qa-checklist">
+                  <div class="qa-check-item">
+                    <i class="bi bi-check2-circle text-accent"></i>
+                    <span><strong>Functional testing:</strong> checkout, stock, reports</span>
+                  </div>
+                  <div class="qa-check-item">
+                    <i class="bi bi-check2-circle text-accent"></i>
+                    <span><strong>API testing:</strong> endpoints, tokens, errors</span>
+                  </div>
+                  <div class="qa-check-item">
+                    <i class="bi bi-check2-circle text-accent"></i>
+                    <span><strong>Validation checks:</strong> edge cases, empty states</span>
+                  </div>
+                  <div class="qa-check-item">
+                    <i class="bi bi-check2-circle text-accent"></i>
+                    <span><strong>Regression checks:</strong> re-test after every change</span>
+                  </div>
+                  <div class="qa-check-item">
+                    <i class="bi bi-check2-circle text-accent"></i>
+                    <span><strong>Cross-device:</strong> desktop, tablet, mobile</span>
+                  </div>
+                  <div class="qa-check-item">
+                    <i class="bi bi-check2-circle text-accent"></i>
+                    <span><strong>User acceptance:</strong> actual field conditions</span>
+                  </div>
+                </div>
+
+                <div class="tree-qa-status-note">
+                  <i class="bi bi-arrow-repeat text-accent me-1"></i>
+                  <span>Zero-defect commitment: bugs are logged, fixed, and re-verified before the next stage.</span>
+                </div>
+                <!-- Tattoo Watermark -->
+                <div class="tree-stage-tattoo" aria-hidden="true">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- STAGE 05: Deployment (Left Branch) -->
+            <div class="tree-stage-row stage-left" data-aos="fade-up" data-aos-delay="300">
+              <div class="tree-stage-content">
+                <div class="tree-stage-tag">
+                  <span class="stage-num">Stage 05</span>
+                  <span class="stage-cat">// Production Release</span>
+                </div>
+                <h3 class="tree-stage-title">Deployment</h3>
+                <p class="tree-stage-desc">
+                  Release to Cloudflare Pages/Workers, Vercel, Render, or GitHub Pages with HTTPS, asset compression, and smoke tests validating live production sanity.
+                </p>
+                <div class="tree-stage-highlights">
+                  <span class="highlight-pill"><i class="bi bi-cloud-check text-accent me-1"></i>Cloudflare / Vercel</span>
+                  <span class="highlight-pill"><i class="bi bi-speedometer2 text-accent me-1"></i>Zero-Downtime Builds</span>
+                  <span class="highlight-pill"><i class="bi bi-patch-check text-accent me-1"></i>Live Smoke Tests</span>
+                </div>
+                <!-- Tattoo Watermark -->
+                <div class="tree-stage-tattoo" aria-hidden="true">
+                  <i class="bi bi-cloud-arrow-up"></i>
+                </div>
+              </div>
+
+              <!-- Branch Limb & Connector Bud -->
+              <div class="tree-branch-limb" aria-hidden="true">
+                <span class="limb-line"></span>
+                <span class="limb-bud"></span>
+              </div>
+            </div>
+
+            <!-- STAGE 06: Maintenance (Right Branch) -->
+            <div class="tree-stage-row stage-right" data-aos="fade-up" data-aos-delay="350">
+              <!-- Branch Limb & Connector Bud -->
+              <div class="tree-branch-limb" aria-hidden="true">
+                <span class="limb-bud"></span>
+                <span class="limb-line"></span>
+              </div>
+
+              <div class="tree-stage-content">
+                <div class="tree-stage-tag">
+                  <span class="stage-num">Stage 06</span>
+                  <span class="stage-cat">// Perpetual Lifecycle Care</span>
+                </div>
+                <h3 class="tree-stage-title">Maintenance &amp; Evolution</h3>
+                <p class="tree-stage-desc">
+                  Post-launch telemetry monitoring, rapid patch application, performance optimization, and iterative feature enhancements driven by operational user feedback.
+                </p>
+                <div class="tree-stage-highlights">
+                  <span class="highlight-pill"><i class="bi bi-activity text-accent me-1"></i>Telemetry &amp; Logs</span>
+                  <span class="highlight-pill"><i class="bi bi-lightning-charge text-accent me-1"></i>Performance Patches</span>
+                  <span class="highlight-pill"><i class="bi bi-arrow-clockwise text-accent me-1"></i>Iterative Updates</span>
+                </div>
+                <!-- Tattoo Watermark -->
+                <div class="tree-stage-tattoo" aria-hidden="true">
+                  <i class="bi bi-tools"></i>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.lifecycle-tree-nodes -->
+
+        </div><!-- /.lifecycle-tree-wrapper -->
       </div>
 
     </section><!-- /Process Section -->
@@ -1181,9 +1474,13 @@
 
           <!-- 1. FLAGSHIP PROJECT: Hardware Store POS System -->
           <div class="project-card-showcase flagship" data-aos="fade-up" data-aos-delay="100">
+            <!-- Background Radial Tattoo Watermark (Unclipped) -->
+            <div class="project-tattoo-watermark" aria-hidden="true"><i class="bi bi-upc-scan"></i></div>
+
             <!-- Left Column: Project Information (approx 38–42%) -->
             <div class="showcase-content-col">
               <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                <span class="project-sequence-tag">01 // FLAGSHIP ARCHITECTURE</span>
                 <span class="badge-flagship"><i class="bi bi-star-fill me-1"></i>Flagship Project</span>
                 <span class="badge-status badge-status-completed"><i
                     class="bi bi-check-circle-fill me-1"></i>Production</span>
@@ -1294,11 +1591,22 @@
             </div>
           </div><!-- End Hardware Store POS -->
 
+          <div class="project-showcase-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-node"><i class="bi bi-diamond-fill"></i></span>
+            <span class="divider-line"></span>
+          </div>
+
+
           <!-- 2. Isra Hardware Trading Website -->
-          <div class="project-card-showcase" data-aos="fade-up" data-aos-delay="150">
+          <div class="project-card-showcase is-reversed" data-aos="fade-up" data-aos-delay="150">
+            <!-- Background Radial Tattoo Watermark (Unclipped) -->
+            <div class="project-tattoo-watermark" aria-hidden="true"><i class="bi bi-globe-americas"></i></div>
+
             <!-- Left Column: Project Information (approx 38–42%) -->
             <div class="showcase-content-col">
               <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                <span class="project-sequence-tag">02 // FULL-STACK PLATFORM</span>
                 <span class="badge-status badge-status-info"><i class="bi bi-globe me-1"></i>Full-Stack Business
                   Website</span>
                 <span class="badge-status badge-status-live"><i class="bi bi-broadcast me-1"></i>Live Website</span>
@@ -1408,11 +1716,22 @@
             </div>
           </div><!-- End Isra Hardware Trading Website -->
 
+          <div class="project-showcase-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-node"><i class="bi bi-diamond-fill"></i></span>
+            <span class="divider-line"></span>
+          </div>
+
+
           <!-- 3. CENRO Waste Tracker System -->
           <div class="project-card-showcase" data-aos="fade-up" data-aos-delay="200">
+            <!-- Background Radial Tattoo Watermark (Unclipped) -->
+            <div class="project-tattoo-watermark" aria-hidden="true"><i class="bi bi-geo-alt-fill"></i></div>
+
             <!-- Left Column: Project Information (approx 38–42%) -->
             <div class="showcase-content-col">
               <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                <span class="project-sequence-tag">03 // MUNICIPAL ECOSYSTEM</span>
                 <span class="badge-status badge-status-info"><i class="bi bi-phone me-1"></i>Web &amp; Mobile</span>
                 <span class="badge-status badge-status-live"><i class="bi bi-broadcast me-1"></i>Live Platform</span>
               </div>
@@ -1533,11 +1852,22 @@
             </div>
           </div><!-- End CENRO Project -->
 
+          <div class="project-showcase-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-node"><i class="bi bi-diamond-fill"></i></span>
+            <span class="divider-line"></span>
+          </div>
+
+
           <!-- 4. Karenderya Inventory & Billing System -->
-          <div class="project-card-showcase" data-aos="fade-up" data-aos-delay="250">
+          <div class="project-card-showcase is-reversed" data-aos="fade-up" data-aos-delay="250">
+            <!-- Background Radial Tattoo Watermark (Unclipped) -->
+            <div class="project-tattoo-watermark" aria-hidden="true"><i class="bi bi-receipt-cutoff"></i></div>
+
             <!-- Left Column: Project Information (approx 38–42%) -->
             <div class="showcase-content-col">
               <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                <span class="project-sequence-tag">04 // DESKTOP SYSTEM</span>
                 <span class="badge-status badge-status-info"><i class="bi bi-laptop me-1"></i>Desktop Software</span>
                 <span class="badge-status badge-status-completed"><i
                     class="bi bi-check-circle-fill me-1"></i>Completed</span>
