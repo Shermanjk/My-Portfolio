@@ -79,29 +79,13 @@
   will-change: transform;
 }
 
-/* ── Overlays: removed artificial radial card/vignette mask so dome breathes freely ── */
+/* ── Overlays & Edge Fades: removed completely so dome breathes freely without any card/box boundary ── */
 .overlay,
-.overlay--blur {
-  display: none !important;
-}
-
-.edge-fade {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 80px;
-  z-index: 4;
-  pointer-events: none !important;
-}
-
-.edge-fade--top {
-  top: 0;
-  background: linear-gradient(to top, transparent, var(--background-color, #0a0a0a));
-}
-
+.overlay--blur,
+.edge-fade,
+.edge-fade--top,
 .edge-fade--bottom {
-  bottom: 0;
-  background: linear-gradient(to bottom, transparent, var(--background-color, #0a0a0a));
+  display: none !important;
 }
 
 /* ── Individual Dome Tiles ── */
@@ -165,25 +149,38 @@
 }
 
 /* Light mode support */
+html[data-theme="light"] #dome-gallery-container,
+html[data-theme="light"] .dome-gallery-container,
 html[data-theme="light"] .dome-gallery-wrapper {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-html[data-theme="light"] .sphere-main {
+html[data-theme="light"] .sphere-root,
+html[data-theme="light"] .sphere-main,
+html[data-theme="light"] .stage,
+html[data-theme="light"] .sphere {
   background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
-html[data-theme="light"] .edge-fade--top {
-  background: linear-gradient(to top, transparent, #ffffff);
-}
-
+html[data-theme="light"] .edge-fade,
+html[data-theme="light"] .edge-fade--top,
 html[data-theme="light"] .edge-fade--bottom {
-  background: linear-gradient(to bottom, transparent, #ffffff);
+  display: none !important;
+  background: transparent !important;
 }
 
 html[data-theme="light"] .item__image {
   background: #ffffff;
-  border-color: #e5e7eb;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="light"] .item__image:hover,
+html[data-theme="light"] .item__image:focus-visible {
+  border-color: var(--accent-primary, #c47f00);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14), 0 0 18px rgba(196, 127, 0, 0.22);
 }

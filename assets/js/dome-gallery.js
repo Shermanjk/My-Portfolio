@@ -218,15 +218,6 @@
     stage.appendChild(sphere);
     main.appendChild(stage);
 
-    // Edge fades (smooth gradient transition at top and bottom)
-    const edgeFadeTop = document.createElement('div');
-    edgeFadeTop.className = 'edge-fade edge-fade--top';
-
-    const edgeFadeBottom = document.createElement('div');
-    edgeFadeBottom.className = 'edge-fade edge-fade--bottom';
-
-    main.appendChild(edgeFadeTop);
-    main.appendChild(edgeFadeBottom);
 
     root.appendChild(main);
     wrapper.appendChild(root);
@@ -263,51 +254,101 @@
 
     applyTransform(rotation.x, rotation.y);
 
-    // ── Inertia & Momentum Physics ──
-    let inertiaRAF = null;
+    // ── Continuous Auto-Spin & Unified Physics Engine ──
+    const AUTO_SPIN_BASE = 0.11; // Ambient degrees per frame at 60fps
+    const AUTO_SPIN_HOVER = 0.02; // Slow glide on mouse hover for easy clicking
+    let currentAutoSpeed = AUTO_SPIN_BASE;
+    let isHovered = false;
+    let inertiaVx = 0;
+    let inertiaVy = 0;
+    let spinRAF = null;
+    let lastFrameTime = performance.now();
+    let isGalleryVisible = true;
 
-    function stopInertia() {
-      if (inertiaRAF) {
-        cancelAnimationFrame(inertiaRAF);
-        inertiaRAF = null;
+    function isModalOpen() {
+      const modal = document.getElementById('gallery-split-modal');
+      return modal && modal.classList.contains('modal-active');
+    }
+
+    function updateRender(time) {
+      const dt = Math.min(36, Math.max(1, time - lastFrameTime));
+      const deltaFactor = dt / 16.67; // Normalized to standard 60fps
+      lastFrameTime = time;
+
+      if (!isPointerDown && !isModalOpen()) {
+        const hasInertia = Math.abs(inertiaVx) > 0.005 || Math.abs(inertiaVy) > 0.005;
+
+        if (hasInertia) {
+          // Apply flick inertia with dampening
+          const d = clamp(CONFIG.dragDampening, 0, 1);
+          const frictionMul = Math.pow(0.94 + 0.055 * d, deltaFactor);
+          inertiaVx *= frictionMul;
+          inertiaVy *= frictionMul;
+
+          rotation.x = clamp(
+            rotation.x - (inertiaVy * deltaFactor) / 200,
+            -CONFIG.maxVerticalRotationDeg,
+            CONFIG.maxVerticalRotationDeg
+          );
+          rotation.y = wrapAngleSigned(rotation.y + (inertiaVx * deltaFactor) / 200);
+
+          if (Math.abs(inertiaVx) <= 0.005 && Math.abs(inertiaVy) <= 0.005) {
+            inertiaVx = 0;
+            inertiaVy = 0;
+          }
+        } else {
+          // Continuous Ambient Turntable Rotation (Auto-Spin)
+          const targetSpeed = isHovered ? AUTO_SPIN_HOVER : AUTO_SPIN_BASE;
+          currentAutoSpeed += (targetSpeed - currentAutoSpeed) * (0.06 * deltaFactor);
+
+          rotation.y = wrapAngleSigned(rotation.y + currentAutoSpeed * deltaFactor);
+
+          // Gentle vertical horizon stabilization towards 0°
+          if (Math.abs(rotation.x) > 0.01) {
+            rotation.x += (0 - rotation.x) * (0.015 * deltaFactor);
+          }
+        }
+
+        applyTransform(rotation.x, rotation.y);
+      }
+
+      if (isGalleryVisible) {
+        spinRAF = requestAnimationFrame(updateRender);
       }
     }
 
-    function startInertia(vx, vy) {
-      const MAX_V = 1.4;
-      let vX = clamp(vx, -MAX_V, MAX_V) * 80;
-      let vY = clamp(vy, -MAX_V, MAX_V) * 80;
-      let frames = 0;
-      const d = clamp(CONFIG.dragDampening, 0, 1);
-      const frictionMul = 0.94 + 0.055 * d;
-      const stopThreshold = 0.015 - 0.01 * d;
-      const maxFrames = Math.round(90 + 270 * d);
+    function startSpinLoop() {
+      if (spinRAF) cancelAnimationFrame(spinRAF);
+      lastFrameTime = performance.now();
+      spinRAF = requestAnimationFrame(updateRender);
+    }
 
-      function step() {
-        vX *= frictionMul;
-        vY *= frictionMul;
-
-        if (Math.abs(vX) < stopThreshold && Math.abs(vY) < stopThreshold) {
-          inertiaRAF = null;
-          return;
-        }
-        if (++frames > maxFrames) {
-          inertiaRAF = null;
-          return;
-        }
-
-        const nextX = clamp(rotation.x - vY / 200, -CONFIG.maxVerticalRotationDeg, CONFIG.maxVerticalRotationDeg);
-        const nextY = wrapAngleSigned(rotation.y + vX / 200);
-
-        rotation.x = nextX;
-        rotation.y = nextY;
-        applyTransform(nextX, nextY);
-
-        inertiaRAF = requestAnimationFrame(step);
+    function stopSpinLoop() {
+      if (spinRAF) {
+        cancelAnimationFrame(spinRAF);
+        spinRAF = null;
       }
+    }
 
-      stopInertia();
-      inertiaRAF = requestAnimationFrame(step);
+    // Hover slowdown detection on gallery
+    wrapper.addEventListener('pointerenter', () => { isHovered = true; });
+    wrapper.addEventListener('pointerleave', () => { isHovered = false; });
+
+    // Performance: Pause auto-spin loop when gallery is offscreen
+    if ('IntersectionObserver' in window) {
+      const visibilityObserver = new IntersectionObserver((entries) => {
+        const isVisible = entries[0].isIntersecting;
+        if (isVisible && !isGalleryVisible) {
+          isGalleryVisible = true;
+          startSpinLoop();
+        } else if (!isVisible && isGalleryVisible) {
+          isGalleryVisible = false;
+          stopSpinLoop();
+        }
+      }, { threshold: 0.05 });
+      visibilityObserver.observe(container);
+    } else {
+      startSpinLoop();
     }
 
     // ── Pointer Event Tracking (Seamless Mouse & Touch Drag + Robust Tile Click) ──
@@ -368,7 +409,8 @@
         const vx = clamp(velocity.vx, -1.2, 1.2);
         const vy = clamp(velocity.vy, -1.2, 1.2);
         if (Math.abs(vx) > 0.005 || Math.abs(vy) > 0.005) {
-          startInertia(vx, vy);
+          inertiaVx = vx * 80;
+          inertiaVy = vy * 80;
         }
       } else {
         // Tap/click on a photo tile
@@ -391,7 +433,8 @@
       // Don't drag on right clicks
       if (e.button && e.button !== 0) return;
 
-      stopInertia();
+      inertiaVx = 0;
+      inertiaVy = 0;
       isPointerDown = true;
       hasMoved = false;
 
@@ -408,6 +451,9 @@
       window.addEventListener('pointerup', onGlobalPointerUp);
       window.addEventListener('pointercancel', onGlobalPointerUp);
     });
+
+    // Start continuous auto-spin
+    startSpinLoop();
   }
 
   // Initialize once DOM is ready
