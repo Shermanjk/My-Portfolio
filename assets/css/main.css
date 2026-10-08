@@ -74,6 +74,12 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   color: var(--default-color);
   background-color: var(--bg-primary);
@@ -6591,8 +6597,72 @@ html[data-theme="light"] .modal-project .btn-close {
     padding: 22px 18px;
   }
   .modal-project .modal-dialog {
-    margin: 70px 12px 1.5rem;
+    margin: 65px auto 1.5rem;
     max-width: calc(100% - 24px);
+  }
+  .modal-project .modal-content {
+    max-height: calc(100vh - 90px);
+  }
+}
+
+@media (max-width: 576px) {
+  .modal-project .modal-dialog {
+    margin: 50px auto 1rem;
+    max-width: calc(100% - 16px);
+  }
+  .modal-project .modal-content {
+    max-height: calc(100vh - 70px);
+    border-radius: 14px;
+  }
+  .modal-project .modal-header {
+    padding: 1rem 1.1rem 0.85rem;
+  }
+  .modal-project .modal-title {
+    font-size: 1.15rem;
+    line-height: 1.35;
+  }
+  .modal-project .modal-body {
+    padding: 1.1rem 1.1rem;
+    font-size: 0.9rem;
+  }
+  .modal-project .modal-body p {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .project-features-list {
+    margin-top: 8px;
+    margin-bottom: 14px;
+  }
+  .project-features-list li {
+    font-size: 0.84rem;
+    padding-left: 24px;
+    margin-bottom: 8px;
+    line-height: 1.45;
+  }
+  .project-features-list li i {
+    font-size: 0.85rem;
+  }
+  .project-tech-stack {
+    gap: 5px;
+  }
+  .project-tech-stack .tech-tag {
+    font-size: 0.74rem;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 520px) {
+  .modal-project .modal-footer {
+    flex-direction: column-reverse;
+    gap: 8px;
+    padding: 0.85rem 1.1rem;
+    align-items: stretch !important;
+  }
+  .modal-project .modal-footer .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 8px 12px;
   }
 }
 
@@ -7140,6 +7210,107 @@ body.gallery-modal-open {
     height: 36px;
     font-size: 0.95rem;
   }
+}
+
+@media (max-width: 576px) {
+  .gallery-modal {
+    padding: 12px 8px;
+  }
+  .gallery-modal-container {
+    max-width: 100%;
+    width: 100%;
+  }
+  .gallery-modal-dialog {
+    max-height: 92vh;
+    border-radius: 16px;
+  }
+  .gallery-modal-left {
+    padding: 12px;
+  }
+  .gallery-modal-media-frame {
+    min-height: 180px;
+    max-height: 220px;
+    border-radius: 10px;
+  }
+  .gallery-modal-img {
+    border-radius: 10px;
+  }
+  .gallery-modal-counter {
+    bottom: 10px;
+    left: 12px;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+  }
+  .gallery-modal-close {
+    top: -8px;
+    right: 2px;
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+  .gallery-modal-scrollable {
+    padding: 16px 14px 12px;
+  }
+  .gallery-modal-title {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+  }
+  .gallery-modal-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .gallery-modal-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .modal-meta-box {
+    padding: 8px 12px;
+  }
+  .meta-val {
+    font-size: 0.78rem;
+  }
+  .gallery-modal-nav-footer {
+    padding: 10px 14px;
+  }
+  .gallery-modal-arrow-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    min-height: 38px;
+  }
+}
+
+@media (max-width: 380px) {
+  .gallery-modal {
+    padding: 8px 4px;
+  }
+  .gallery-modal-dialog {
+    max-height: 94vh;
+    border-radius: 12px;
+  }
+  .gallery-modal-media-frame {
+    min-height: 155px;
+    max-height: 185px;
+  }
+  .gallery-modal-scrollable {
+    padding: 12px 10px 10px;
+  }
+  .gallery-modal-title {
+    font-size: 1.05rem;
+  }
+  .gallery-modal-close {
+    top: -6px;
+    right: 0px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ── GLightbox Layering & Mobile Responsiveness ── */
+.glightbox-container {
+  z-index: 100050 !important;
+}
+.goverlay {
+  z-index: 100040 !important;
 }
 
 /* ── Light Mode Support ── */

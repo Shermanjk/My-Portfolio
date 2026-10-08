@@ -23,6 +23,12 @@
   }
 }
 
+@media (max-width: 480px) {
+  .dome-gallery-wrapper {
+    height: 400px;
+  }
+}
+
 .sphere-root {
   position: relative;
   width: 100%;

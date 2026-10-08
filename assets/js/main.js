@@ -1120,6 +1120,30 @@
       nextItem();
     }
   });
+
+  // Mobile & tablet touch swipe gesture support for split modal
+  let touchStartX = 0;
+  let touchStartY = 0;
+  modal.addEventListener('touchstart', (e) => {
+    if (e.touches && e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  modal.addEventListener('touchend', (e) => {
+    if (e.changedTouches && e.changedTouches.length === 1) {
+      const diffX = e.changedTouches[0].clientX - touchStartX;
+      const diffY = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.4) {
+        if (diffX < 0) {
+          nextItem();
+        } else {
+          prevItem();
+        }
+      }
+    }
+  }, { passive: true });
 })();
 
 
