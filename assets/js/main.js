@@ -944,12 +944,12 @@
     },
     {
       img: 'assets/img/photos/hardware-servicing.jpg',
-      badge: 'Hardware',
-      title: 'Hardware Diagnostics & Maintenance',
-      desc: 'Diagnosing motherboard circuits, power delivery lines, and thermal management systems to resolve hardware instability and restore production workstations.',
-      location: 'Hardware Diagnostics Bench',
-      role: 'Systems Technician',
-      tags: ['Diagnostics', 'Maintenance', 'Hardware Support', 'Circuit Testing']
+      badge: 'Hardware Servicing',
+      title: 'Precision Component Servicing & Thermal Management',
+      desc: 'Detailed motherboard component-level maintenance, micro-ribbon cable seating, trackpad and I/O bus realignment, thermal compound application, and precision reassembly on enterprise laptops.',
+      location: 'EMCOR — Technical Support & Service Center',
+      role: 'Technical Support & Hardware Specialist',
+      tags: ['Component Repair', 'Thermal Management', 'Ribbon Bus Assembly', 'Hardware Servicing']
     },
     {
       img: 'assets/img/photos/dev-battlestation.jpg',
@@ -977,6 +977,24 @@
       location: 'Engineering Desk',
       role: 'Backend & System Engineer',
       tags: ['Backend Dev', 'Code Auditing', 'Optimization', 'Performance QA']
+    },
+    {
+      img: 'assets/img/photos/laptop-motherboard-servicing.jpg',
+      badge: 'Enterprise Hardware',
+      title: 'Laptop Teardown & Bench Diagnostics',
+      desc: 'Hands-on enterprise laptop disassembly, component-level inspection, dual cooling fan maintenance, thermal paste re-application, battery replacement, and motherboard power delivery line validation.',
+      location: 'EMCOR — Technical Support & Systems Facility',
+      role: 'Technical Support & Hardware Specialist',
+      tags: ['Laptop Teardown', 'Cooling Overhaul', 'Motherboard Inspection', 'Enterprise Hardware']
+    },
+    {
+      img: 'assets/img/photos/pc-hardware-bench-repair.jpg',
+      badge: 'Bench Diagnostics',
+      title: 'Workstation Teardown & Storage Diagnostics',
+      desc: 'In-depth workstation teardown, diagnosing mechanical hard drive and SATA/NVMe SSD storage failures, memory module testing, precision hardware assembly, and workstation stability validation.',
+      location: 'EMCOR — Technical Support & Service Center',
+      role: 'Technical Support & Hardware Specialist',
+      tags: ['Storage Diagnostics', 'Workstation Teardown', 'Hardware Repair', 'Component Testing']
     }
   ];
 

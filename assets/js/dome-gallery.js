@@ -23,8 +23,8 @@
     {
       index: 2,
       src: 'assets/img/photos/hardware-servicing.jpg',
-      alt: 'Hardware Diagnostics & Maintenance',
-      title: 'Hardware Diagnostics & Maintenance'
+      alt: 'Precision Component Servicing & Thermal Management',
+      title: 'Precision Component Servicing & Thermal Management'
     },
     {
       index: 3,
@@ -43,6 +43,18 @@
       src: 'assets/img/photos/late-night-coding.jpg',
       alt: 'Focused Development Session',
       title: 'Focused Development Session'
+    },
+    {
+      index: 6,
+      src: 'assets/img/photos/laptop-motherboard-servicing.jpg',
+      alt: 'Enterprise Laptop Teardown & Bench Diagnostics',
+      title: 'Enterprise Laptop Teardown & Bench Diagnostics'
+    },
+    {
+      index: 7,
+      src: 'assets/img/photos/pc-hardware-bench-repair.jpg',
+      alt: 'Workstation Teardown & Storage Diagnostics',
+      title: 'Workstation Teardown & Storage Diagnostics'
     }
   ];
 
