@@ -947,7 +947,7 @@
       badge: 'Hardware Servicing',
       title: 'Precision Component Servicing & Thermal Management',
       desc: 'Detailed motherboard component-level maintenance, micro-ribbon cable seating, trackpad and I/O bus realignment, thermal compound application, and precision reassembly on enterprise laptops.',
-      location: 'EMCOR — Technical Support & Service Center',
+      location: 'EMCOR — Service Center',
       role: 'Technical Support & Hardware Specialist',
       tags: ['Component Repair', 'Thermal Management', 'Ribbon Bus Assembly', 'Hardware Servicing']
     },
@@ -983,7 +983,7 @@
       badge: 'Enterprise Hardware',
       title: 'Laptop Teardown & Bench Diagnostics',
       desc: 'Hands-on enterprise laptop disassembly, component-level inspection, dual cooling fan maintenance, thermal paste re-application, battery replacement, and motherboard power delivery line validation.',
-      location: 'EMCOR — Technical Support & Systems Facility',
+      location: 'EMCOR — Service Center',
       role: 'Technical Support & Hardware Specialist',
       tags: ['Laptop Teardown', 'Cooling Overhaul', 'Motherboard Inspection', 'Enterprise Hardware']
     },
@@ -992,7 +992,7 @@
       badge: 'Bench Diagnostics',
       title: 'Workstation Teardown & Storage Diagnostics',
       desc: 'In-depth workstation teardown, diagnosing mechanical hard drive and SATA/NVMe SSD storage failures, memory module testing, precision hardware assembly, and workstation stability validation.',
-      location: 'EMCOR — Technical Support & Service Center',
+      location: 'EMCOR — Service Center',
       role: 'Technical Support & Hardware Specialist',
       tags: ['Storage Diagnostics', 'Workstation Teardown', 'Hardware Repair', 'Component Testing']
     }
