@@ -7440,8 +7440,11 @@ body.gallery-modal-open {
 .glightbox-container {
   z-index: 100050 !important;
 }
-.goverlay {
-  z-index: 100040 !important;
+.glightbox-container .goverlay {
+  z-index: 1 !important;
+}
+.glightbox-container .gcontainer {
+  z-index: 10 !important;
 }
 
 /* ── Light Mode Support ── */
