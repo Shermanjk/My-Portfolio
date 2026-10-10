@@ -74,13 +74,16 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
-html,
-body {
+html {
   overflow-x: hidden;
+  scrollbar-gutter: stable;
   max-width: 100vw;
 }
 
 body {
+  overflow-x: clip;
+  overflow-y: visible;
+  max-width: 100vw;
   color: var(--default-color);
   background-color: var(--bg-primary);
   font-family: var(--default-font);
@@ -8118,7 +8121,7 @@ section,
   }
 
   body.side-open {
-    overflow: hidden;
+    overflow: hidden !important;
   }
 }
 
@@ -8193,6 +8196,11 @@ html[data-theme="light"] .side-toggle {
    Removes continuous page scrolling across sections.
    Each section acts as its own discrete view navigated via sidebar.
    ============================================================== */
+
+/* Main container: prevent horizontal bleed during section transitions */
+.main {
+  overflow: clip;
+}
 
 /* By default, hide all sections in main */
 .main > section {
